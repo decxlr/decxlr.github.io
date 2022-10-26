@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/dragon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/dragon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="baidu-site-verification" content="6EMwG3w0uT">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"godx06.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="瞬时数据指那些存储在内存当中，有可能因为程序关闭或其他原因导致内存被回收而丢失的数据。  数据持久化就是指将那些内存中的瞬时数据保存在存储设备中，保证即使在手机或电脑关机的情况下，这些数据仍然不会丢失。Android中主要有3种方式实现数据持久化：文件存储、SharePreferences和数据库存储。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android数据存储">
+<meta property="og:url" content="https://godx06.github.io/2022/08/19/Android%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/index.html">
+<meta property="og:site_name" content="君不见の博客">
+<meta property="og:description" content="瞬时数据指那些存储在内存当中，有可能因为程序关闭或其他原因导致内存被回收而丢失的数据。  数据持久化就是指将那些内存中的瞬时数据保存在存储设备中，保证即使在手机或电脑关机的情况下，这些数据仍然不会丢失。Android中主要有3种方式实现数据持久化：文件存储、SharePreferences和数据库存储。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-08-19T01:50:22.000Z">
+<meta property="article:modified_time" content="2022-08-19T09:26:35.175Z">
+<meta property="article:author" content="君不见">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="Note">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://godx06.github.io/2022/08/19/Android%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Android数据存储 | 君不见の博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="君不见の博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">君不见の博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录生活中的点点滴滴</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">2</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">1</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">11</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://godx06.github.io/2022/08/19/Android%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/tsy.png">
+      <meta itemprop="name" content="君不见">
+      <meta itemprop="description" content="君不见，黄河之水天上来，奔流到海不复回。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="君不见の博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android数据存储
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-08-19 09:50:22 / 修改时间：17:26:35" itemprop="dateCreated datePublished" datetime="2022-08-19T09:50:22+08:00">2022-08-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2022/08/19/Android%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/#SOHUCS" itemprop="discussionUrl">
+        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2022/08/19/Android数据存储/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>瞬时数据指那些存储在内存当中，有可能因为程序关闭或其他原因导致内存被回收而丢失的数据。  <br>数据持久化就是指将那些内存中的瞬时数据保存在存储设备中，保证即使在手机或电脑关机的情况下，这些数据仍然不会丢失。<br>Android中主要有3种方式实现数据持久化：文件存储、SharePreferences和数据库存储。</p>
+<h2 id="文件存储"><a href="#文件存储" class="headerlink" title="文件存储"></a>文件存储</h2><p>文件存储比较适用于存储一些简单的文本数据或二进制数据。</p>
+<h3 id="将数据存储在文件中"><a href="#将数据存储在文件中" class="headerlink" title="将数据存储在文件中"></a>将数据存储在文件中</h3><p>Context类中提供了一个openFileOutput方法，可以将数据存储到指定的文件中。<br>它接收两个参数：第一个参数是文件名，不包含路径，默认保存到&#x2F;data&#x2F;data&#x2F;package&#x2F;files目录下；第二个参数是文件的操作模式，主要有两种模式：MODE_PRIVATE和MODE_APPEND.<br>其中MODE_PRIVATE是默认的操作模式，表示当指定同样文件名的时候，所写入的内容将会覆盖原文件中的内容；而MODE_APPEND则表示如果该文件已经存在，就往文件中追加内容，不存在就创建新文件。<br>openFileOutput返回的是一个FileOutputStream对象。<br>新建一个FilePersistenceTest项目。主要代码如下：<br>  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">  <span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">RelativeLayout</span> <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:tools</span>=<span class="string">&quot;http://schemas.android.com/tools&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">&quot;@+id/activity_main&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">tools:context</span>=<span class="string">&quot;com.fkq.filepersistencetest.MainActivity&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">EditText</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/edit&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_centerInParent</span>=<span class="string">&quot;true&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:hint</span>=<span class="string">&quot;Type someing here&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure><br>  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AppCompatActivity</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> EditText editText;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        editText = (EditText) findViewById(R.id.edit);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onDestroy</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onDestroy();</span><br><span class="line">        Log.e(<span class="string">&quot;MainActivity&quot;</span>,<span class="string">&quot;进来了吗&quot;</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">inputText</span> <span class="operator">=</span> editText.getText().toString();</span><br><span class="line">        save(inputText);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">save</span><span class="params">(String inputText)</span> &#123;</span><br><span class="line">        <span class="type">FileOutputStream</span> <span class="variable">out</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="type">BufferedWriter</span> <span class="variable">writer</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            out = openFileOutput(<span class="string">&quot;data&quot;</span>, Context.MODE_PRIVATE);</span><br><span class="line">            writer = <span class="keyword">new</span> <span class="title class_">BufferedWriter</span>(<span class="keyword">new</span> <span class="title class_">OutputStreamWriter</span>(out));</span><br><span class="line">            writer.write(inputText);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (writer != <span class="literal">null</span>) &#123;</span><br><span class="line">                    writer.close();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>可以通过Android Studio右侧的Device File Explorer的&#x2F;data&#x2F;data&#x2F;com.example.filepersistencetest&#x2F;files&#x2F;目录查看文件。</p>
+<h3 id="从文件中读取数据"><a href="#从文件中读取数据" class="headerlink" title="从文件中读取数据"></a>从文件中读取数据</h3><p>Context类中提供了一个openFileInput方法，用于从文件中读取数据。它只接收一个参数，即要读取的文件名，然后系统会自动到&#x2F;data&#x2F;data&#x2F;package name&#x2F;files目录下去加载这个文件，并返回一个FileInputStream对象，得到了这个对象之后再通过java流的方式将数据读取出来。<br>修改MainActivity中的代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AppCompatActivity</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> EditText edit;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        edit = (EditText) findViewById(R.id.edit);</span><br><span class="line">        <span class="type">String</span> <span class="variable">inputText</span> <span class="operator">=</span> load();</span><br><span class="line">        <span class="keyword">if</span>(!TextUtils.isEmpty(inputText))&#123;</span><br><span class="line">            edit.setText(inputText);</span><br><span class="line">            edit.setSelection(inputText.length());</span><br><span class="line">            Toast.makeText(<span class="built_in">this</span>, <span class="string">&quot;Restoring succeeded&quot;</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onDestroy</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onDestroy();</span><br><span class="line">        <span class="type">String</span> <span class="variable">inputText</span> <span class="operator">=</span> edit.getText().toString();</span><br><span class="line">        save(inputText);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">save</span><span class="params">(String inputText)</span>&#123;</span><br><span class="line">        <span class="type">FileOutputStream</span> <span class="variable">out</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="type">BufferedWriter</span> <span class="variable">writer</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            out = openFileOutput(<span class="string">&quot;data&quot;</span>, Context.MODE_PRIVATE);</span><br><span class="line">            writer = <span class="keyword">new</span> <span class="title class_">BufferedWriter</span>(<span class="keyword">new</span> <span class="title class_">OutputStreamWriter</span>(out));</span><br><span class="line">            writer.write(inputText);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">if</span>(writer != <span class="literal">null</span>)&#123;</span><br><span class="line">                    writer.close();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">load</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">FileInputStream</span> <span class="variable">in</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="type">BufferedReader</span> <span class="variable">reader</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="type">StringBuilder</span> <span class="variable">content</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            in = openFileInput(<span class="string">&quot;data&quot;</span>);</span><br><span class="line">            reader = <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(in));</span><br><span class="line">            <span class="type">String</span> <span class="variable">line</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">            <span class="keyword">while</span>((line = reader.readLine()) != <span class="literal">null</span>)&#123;</span><br><span class="line">                content.append(line);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">if</span>(reader != <span class="literal">null</span>)&#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    reader.close();</span><br><span class="line">                &#125; <span class="keyword">catch</span>(IOException e)&#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> content.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="SharePreferences存储"><a href="#SharePreferences存储" class="headerlink" title="SharePreferences存储"></a>SharePreferences存储</h2><p>SharedPreferences是使用键值对的方式存储数据的，并且支持多种不同的数据类型存储。  </p>
+<h3 id="将数据存储到SharePreferences中"><a href="#将数据存储到SharePreferences中" class="headerlink" title="将数据存储到SharePreferences中"></a>将数据存储到SharePreferences中</h3><p>首先要获得SharePreferences对象，有三种方法：</p>
+<ul>
+<li>Context类中的getSharedPreferences方法：</li>
+<li>Activity类中的getPreferences方法：</li>
+<li>PreferenceManager类中的getDefaultSharedPreferences方法</li>
+</ul>
+<p>得到SharePreferences对象后，向SharePreferences文件中存储数据三步骤：</p>
+<ul>
+<li>调用SharePreferences对象的edit()方法来获取一个SharedPreferences.Editor对象。</li>
+<li>向SharedPreferences.Editor对象中添加数据。</li>
+</ul>
+<ul>
+<li>调用apply()方法将添加的数据提交，从而完成数据存储操作。</li>
+</ul>
+<p>主要部分代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SharedPreferences.<span class="type">Editor</span> <span class="variable">editor</span> <span class="operator">=</span> getSharedPreferences(<span class="string">&quot;data&quot;</span>, MODE_PRIVATE).edit();</span><br><span class="line">editor.putString(<span class="string">&quot;name&quot;</span>, <span class="string">&quot;Tom&quot;</span>);</span><br><span class="line">editor.putInt(<span class="string">&quot;age&quot;</span>, <span class="number">28</span>);</span><br><span class="line">editor.putBoolean(<span class="string">&quot;married&quot;</span>, <span class="literal">false</span>);</span><br><span class="line">editor.apply();</span><br></pre></td></tr></table></figure>
+
+<h3 id="从SharePreferences中读取数据"><a href="#从SharePreferences中读取数据" class="headerlink" title="从SharePreferences中读取数据"></a>从SharePreferences中读取数据</h3><p>SharePreferences对象中提供了一系列的get方法，用于对存储的数据进行读取，每种get方法都对应了SharedPreferences.Editor中的一种put方法，比如读取取布尔型数据就用getBoolean方法，读取字符串数据就用getString方法。<br>这些get方法接收两个参数，第一个参数是键，传入存储数据时使用的键就可以得到响相应的值了；第二个参数是默认值，即表示当传入的键找不到对应的值时会以什么样的默认值进行返回。<br>主要部分代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">SharedPreferences</span> <span class="variable">preferences</span> <span class="operator">=</span> getSharedPreferences(<span class="string">&quot;data&quot;</span>,MODE_PRIVATE);</span><br><span class="line"><span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> preferences.getString(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;&quot;</span>);</span><br><span class="line"><span class="type">int</span> <span class="variable">age</span> <span class="operator">=</span> preferences.getInt(<span class="string">&quot;age&quot;</span>,<span class="number">0</span>);</span><br><span class="line"><span class="type">boolean</span> <span class="variable">married</span> <span class="operator">=</span> preferences.getBoolean(<span class="string">&quot;married&quot;</span>,<span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="SQLite数据库存储"><a href="#SQLite数据库存储" class="headerlink" title="SQLite数据库存储"></a>SQLite数据库存储</h2><p>SQLite是一款轻量级的关系型数据库，它的运算速度非常快，占用资源很少。它不仅支持标准的SQL语法，还遵循了数据库的ACID事务。他甚至不需要设置用户名和密码就可以使用。</p>
+<h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><blockquote>
+<p>Android 提供了SQLiteOpenHelper帮助类，借助这个类可以非常简单地对数据库进行创建和升级。  </p>
+</blockquote>
+<blockquote>
+<p>SQLiteOpenHelper是一个抽象类，想使用它，就需要创建一个自己的帮助类去继承它。SQLiteOpenHelper中有两个抽象方法，分别是onCreate()和onUpgrade(),我们必须在自己的帮助类里重写这两个方法，然后分别在两个方法中去实现创建、升级数据库的逻辑。  </p>
+</blockquote>
+<blockquote>
+<p>SQLiteOpenHelper还有两个非常重要的实例方法：getReadableDatabase()和getWriteableDatabase()。这两个方法都可以创建或打开一个现有的数据库（如果数据库已存在则打开，否则创建一个新的数据库），并返回一个可对数据库进行读写操作的对象。不同的是，当数据库不可写入的时候（如磁盘空间已满），getReadableDatabase方法返回的对象将以只读的方式去打开数据库，而getWritableDatabase方法则将出现异常。  </p>
+</blockquote>
+<blockquote>
+<p>SQLiteOpenHelper中有两个构造方法可重写，一般使用参数少一点的即可。这个构造方法一共接收4个参数，第一个参数是Context，第二个参数是数据库名，第三个参数允许我们在查询数据的时候返回一个自定的Cursor，一般都是传入null，第四个参数表示当前数据库的版本号，可用于对数据库进行升级操作。构建出SQLiteOpenHelper的实例后，再调用它的getReadableDatabase()或getWritableDatabase()方法就能够创建数据库了。此时onCreate方法也会执行，通常会在这里处理一些创建表的逻辑。</p>
+</blockquote>
+<p>新建一个DatabaseTest项目。<br>SQLite的数据类型：integer表示整型，real表示浮点型，text表示文本类型，blob表示二进制类型。此外，使用primary key将id设为主键，并用autoincrement关键字表示id列是自增长的。<br>新建MyDatabaseOpenHelper类继承自SQLiteOpenHelper：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyDatabaseOpenHelper</span> <span class="keyword">extends</span> <span class="title class_">SQLiteOpenHelper</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">CREATE_BOOK</span> <span class="operator">=</span> <span class="string">&quot;create table Book(&quot;</span></span><br><span class="line">            + <span class="string">&quot;id integer primary key autoincrement,&quot;</span></span><br><span class="line">            + <span class="string">&quot;author text,&quot;</span></span><br><span class="line">            + <span class="string">&quot;price real,&quot;</span></span><br><span class="line">            + <span class="string">&quot;pages integer,&quot;</span></span><br><span class="line">            + <span class="string">&quot;name text)&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Context mContext;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MyDatabaseOpenHelper</span><span class="params">(Context context, String name, SQLiteDatabase.CursorFactory factory, <span class="type">int</span> version)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(context, name, factory, version);</span><br><span class="line">        mContext = context;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(SQLiteDatabase db)</span> &#123;</span><br><span class="line">        db.execSQL(CREATE_BOOK);</span><br><span class="line">        Toast.makeText(mContext, <span class="string">&quot;Create succeeded&quot;</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onUpgrade</span><span class="params">(SQLiteDatabase db, <span class="type">int</span> oldVersion, <span class="type">int</span> newVersion)</span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 我们把建表语句定义成了一个字符串常量，然后在onCreate()方法中又调用了SQLiteDatabase的exexSQL()方法去执行这条建表语句，并弹出Toast.<br> 然后在布局文件中添加一个按钮，再修改MainActivity中的代码：<br> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">   <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">       <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">       setContentView(R.layout.activity_main);</span><br><span class="line">       dbHelper = <span class="keyword">new</span> <span class="title class_">MyDatabaseHelper</span>(<span class="built_in">this</span>,<span class="string">&quot;BookStore.db&quot;</span>,<span class="literal">null</span>,<span class="number">2</span>);</span><br><span class="line">       <span class="type">Button</span> <span class="variable">crateDatabase</span> <span class="operator">=</span> findViewById(R.id.create_database);</span><br><span class="line">       crateDatabase.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">           <span class="meta">@Override</span></span><br><span class="line">           <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View view)</span> &#123;</span><br><span class="line">               dbHelper.getWritableDatabase();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br></pre></td></tr></table></figure><br>这样，点击按钮后就会创建成功了。</p>
+<h3 id="使用adb-shell检查数据库"><a href="#使用adb-shell检查数据库" class="headerlink" title="使用adb shell检查数据库"></a>使用adb shell检查数据库</h3><p>adb 是Android SDK自带的调试工具，它在Android SDK的platform-tools目录下。  <br>首先配置好环境，把sdk下的platform-tools路径配置到Path下。  <br>配置好后，打开命令行界面，输入adb shell，进入设备的控制台。<br>$代表普通管理员，输入su就可以切换成超级管理员，符号为#，这样才能继续。  <br>然后cd &#x2F;data&#x2F;data&#x2F;com.example.databasetest&#x2F;databases 进入目录。<br>ls 查看该目录下的文件<br>sqlite3 BookStore.db 打开数据库<br>.table 查看数据库中有哪些表<br>.schema 查看建表语句<br>.exit或.quit 退出数据库的编辑<br>再输入exit就可以退出设备控制台  </p>
+<h3 id="升级数据库"><a href="#升级数据库" class="headerlink" title="升级数据库"></a>升级数据库</h3><p>onUpgrade()方法是用来对数据库进行升级的。<br>现在需要再添加一张Category表用于记录图书的分类，这个时候就需要升级数据库。  <br>修改MyDatabaseHelper类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyDatabaseHelper</span> <span class="keyword">extends</span> <span class="title class_">SQLiteOpenHelper</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">CREATE_BOOK</span> <span class="operator">=</span> <span class="string">&quot;create table Book(&quot;</span></span><br><span class="line">            + <span class="string">&quot;id integer primary key autoincrement,&quot;</span></span><br><span class="line">            + <span class="string">&quot;author text,&quot;</span></span><br><span class="line">            + <span class="string">&quot;price real,&quot;</span></span><br><span class="line">            + <span class="string">&quot;pages integer,&quot;</span></span><br><span class="line">            + <span class="string">&quot;name text)&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">CREATE_CATEGORY</span> <span class="operator">=</span> <span class="string">&quot;create table Category(&quot;</span></span><br><span class="line">            + <span class="string">&quot;id integer primary key autoincrement,&quot;</span></span><br><span class="line">            + <span class="string">&quot;category_name text,&quot;</span></span><br><span class="line">            + <span class="string">&quot;category_code integer)&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Context mContext;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MyDatabaseHelper</span><span class="params">(Context context, String name,</span></span><br><span class="line"><span class="params">                            SQLiteDatabase.CursorFactory factory, <span class="type">int</span> version)</span>&#123;</span><br><span class="line">        <span class="built_in">super</span>(context,name,factory,version);</span><br><span class="line">        mContext = context;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(SQLiteDatabase db)</span> &#123;</span><br><span class="line">        db.execSQL(CREATE_BOOK);</span><br><span class="line">        db.execSQL(CREATE_CATEGORY);</span><br><span class="line">        Toast.makeText(mContext, <span class="string">&quot;Create succeeded&quot;</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onUpgrade</span><span class="params">(SQLiteDatabase db, <span class="type">int</span> oldVersion, <span class="type">int</span> newVersion)</span> &#123;</span><br><span class="line">        db.execSQL(<span class="string">&quot;drop table if exists Book&quot;</span>);</span><br><span class="line">        db.execSQL(<span class="string">&quot;drop table if exists Category&quot;</span>);</span><br><span class="line">        onCreate(db);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们在onUpgrade方法中执行了两条DROP语句，如果发现数据库中已经存在Book表或Category表，就将这两张表删除掉，然后再调用onCreate()方法重新创建。<br>然后修改MainActivity中的代码。  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">databaseOpenHelper = <span class="keyword">new</span> <span class="title class_">MyDatabaseOpenHelper</span>(<span class="built_in">this</span>, <span class="string">&quot;BookStore.db&quot;</span>, <span class="literal">null</span>, <span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+<p>为了让onUpgrade方法得到执行，修改数据库的版本号为2，表示对数据库进行升级。  </p>
+<h3 id="添加数据"><a href="#添加数据" class="headerlink" title="添加数据"></a>添加数据</h3><p>SQLiteDatabase的insert()方法专用于添加数据，它接收3个参数：第一个参数是表名，第二个参数用于在未指定添加数据的情况下给某些可为空的列自动赋值NULL，传入null即可，第三个参数是一个ContentValues对象，它提供了一系列的put()方法重载，用于向ContentValues中添加数据。  <br>主要代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Button</span> <span class="variable">addData</span> <span class="operator">=</span> findViewById(R.id.add_data);</span><br><span class="line">addData.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View view)</span> &#123;</span><br><span class="line">                <span class="type">SQLiteDatabase</span> <span class="variable">db</span> <span class="operator">=</span> dbHelper.getWritableDatabase();</span><br><span class="line">                <span class="type">ContentValues</span> <span class="variable">values</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ContentValues</span>();</span><br><span class="line">                <span class="comment">//开始组装第一条数据</span></span><br><span class="line">                values.put(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;The Da Vinci Code&quot;</span>);</span><br><span class="line">                values.put(<span class="string">&quot;author&quot;</span>,<span class="string">&quot;Dan Brown&quot;</span>);</span><br><span class="line">                values.put(<span class="string">&quot;pages&quot;</span>,<span class="number">454</span>);</span><br><span class="line">                values.put(<span class="string">&quot;price&quot;</span>,<span class="number">16.96</span>);</span><br><span class="line">                db.insert(<span class="string">&quot;Book&quot;</span>,<span class="literal">null</span>,values);<span class="comment">//插入第一条数据</span></span><br><span class="line">                values.clear();</span><br><span class="line">                <span class="comment">//开始组装第二条数据</span></span><br><span class="line">                values.put(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;The Lost Symbol&quot;</span>);</span><br><span class="line">                values.put(<span class="string">&quot;author&quot;</span>,<span class="string">&quot;Dan Brown&quot;</span>);</span><br><span class="line">                values.put(<span class="string">&quot;pages&quot;</span>,<span class="number">510</span>);</span><br><span class="line">                values.put(<span class="string">&quot;price&quot;</span>,<span class="number">19.95</span>);</span><br><span class="line">                db.insert(<span class="string">&quot;Book&quot;</span>,<span class="literal">null</span>,values);<span class="comment">//插入第二条数据</span></span><br><span class="line">                Toast.makeText(MainActivity.<span class="built_in">this</span>,</span><br><span class="line">                        <span class="string">&quot;Succeeded&quot;</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);        </span><br></pre></td></tr></table></figure>
+<h3 id="更新数据"><a href="#更新数据" class="headerlink" title="更新数据"></a>更新数据</h3><p>利用update()方法更新数据，方法接收4个参数：第一个参数是表名；第二个参数是ContentValues对象，要把更新数据在这里组装进去；第三个和第四个参数用于约束更新某一行或某几行中的数据，不指定的话默认就是更新所有行。  <br>主要代码：  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Button</span> <span class="variable">updateData</span> <span class="operator">=</span> findViewById(R.id.update_data);</span><br><span class="line"> updateData.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View view)</span> &#123;</span><br><span class="line">                <span class="type">SQLiteDatabase</span> <span class="variable">db</span> <span class="operator">=</span> dbHelper.getWritableDatabase();</span><br><span class="line">                <span class="type">ContentValues</span> <span class="variable">values</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ContentValues</span>();</span><br><span class="line">                values.put(<span class="string">&quot;price&quot;</span>,<span class="number">10.99</span>);</span><br><span class="line">                db.update(<span class="string">&quot;Book&quot;</span>,values,<span class="string">&quot;name = ?&quot;</span>,</span><br><span class="line">                        <span class="keyword">new</span> <span class="title class_">String</span>[] &#123;<span class="string">&quot;The Da Vinci Code&quot;</span>&#125;);</span><br><span class="line">                Toast.makeText(MainActivity.<span class="built_in">this</span>,</span><br><span class="line">                        <span class="string">&quot;Succeeded&quot;</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+<p>第三个参数相当于SQL语句的where部分，表示更新所有name等于？的行，？是一个占位符。第四个参数中数组中的内容为这个占位符指定了相应的内容。  </p>
+<h3 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h3><p>SQLiteDatabase中提供了一个delete()方法，专门用于删除数据。方法接收3个参数：第一个参数仍然是表名，第二、第三个参数又是用于约束删除某一行或者某几行的数据，不指定的话默认就是删除所有行。<br>主要代码部分：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Button</span> <span class="variable">deleteButton</span> <span class="operator">=</span> findViewById(R.id.delete_data);</span><br><span class="line">deleteButton.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View view)</span> &#123;</span><br><span class="line">        <span class="type">SQLiteDatabase</span> <span class="variable">db</span> <span class="operator">=</span> dbHelper.getWritableDatabase();</span><br><span class="line">        db.delete(<span class="string">&quot;Book&quot;</span>,<span class="string">&quot;pages &gt; ?&quot;</span>,<span class="keyword">new</span> <span class="title class_">String</span>[] &#123;<span class="string">&quot;500&quot;</span>&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="查询数据"><a href="#查询数据" class="headerlink" title="查询数据"></a>查询数据</h3><p>SQLiteDatabase中提供了query()方法对数据库进行查询。这个方法最短的一个方法重载也需要传递7个参数。<br>第一个参数表名；<br>第二个参数用于指定查询哪几列，如果不指定默认查询所有列；<br>第三、第四个参数用于约束查询某一行或某几行的数据，如果不指定则默认查询所有航的数据。<br>第五个参数用于指定需要去group by的列，不指定则表示不对查询结构进行group by操作。<br>第六个参数用于对group by 之后的数据进行进一步的过滤，不指定则表示不进行过滤。<br>第七个参数用于指定查询结果的排序方式，不指定则表示使用默认的排序方式。  </p>
+<table>
+<thead>
+<tr>
+<th>query()方法参数</th>
+<th>对应SQL部分</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>table</td>
+<td>from tanle_name</td>
+<td>指定查询的表名</td>
+</tr>
+<tr>
+<td>columns</td>
+<td>select colum1,column2</td>
+<td>指定查询的列名</td>
+</tr>
+<tr>
+<td>selection</td>
+<td>where column &#x3D; value</td>
+<td>指定where的约束条件</td>
+</tr>
+<tr>
+<td>selectionArgs</td>
+<td>-</td>
+<td>为where中的占位符提供具体的值</td>
+</tr>
+<tr>
+<td>groupBy</td>
+<td>group by column</td>
+<td>指定需要group by的列</td>
+</tr>
+<tr>
+<td>having</td>
+<td>having column &#x3D; value</td>
+<td>对group by后的结果进一步约束</td>
+</tr>
+<tr>
+<td>orderBy</td>
+<td>order by column1,column2</td>
+<td>指定查询结果的排序方式</td>
+</tr>
+</tbody></table>
+<p>调用query()方法后返回一个Cursor对象，查询到的所有的数据都是从这个对象中取出。  <br>主要代码： </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Button</span> <span class="variable">queryButton</span> <span class="operator">=</span> findViewById(R.id.query_data);</span><br><span class="line">queryButton.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View view)</span> &#123;</span><br><span class="line">                <span class="type">SQLiteDatabase</span> <span class="variable">db</span> <span class="operator">=</span> dbHelper.getWritableDatabase();</span><br><span class="line">                <span class="comment">//查询Book表中的所有数据</span></span><br><span class="line">                <span class="type">Cursor</span> <span class="variable">cursor</span> <span class="operator">=</span> db.query(<span class="string">&quot;Book&quot;</span>,<span class="literal">null</span>,<span class="literal">null</span>,<span class="literal">null</span>,</span><br><span class="line">                        <span class="literal">null</span>,<span class="literal">null</span>,<span class="literal">null</span>);</span><br><span class="line">                <span class="keyword">if</span>(cursor.moveToFirst())&#123;</span><br><span class="line">                    <span class="keyword">do</span> &#123;</span><br><span class="line">                        <span class="comment">//遍历Cursor对象，取出数据并打印</span></span><br><span class="line">                        <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> cursor.getString(cursor.getColumnIndex(<span class="string">&quot;name&quot;</span>));</span><br><span class="line">                        <span class="type">String</span> <span class="variable">author</span> <span class="operator">=</span> cursor.getString(cursor.getColumnIndex(<span class="string">&quot;author&quot;</span>));</span><br><span class="line">                        <span class="type">int</span> <span class="variable">pages</span> <span class="operator">=</span> cursor.getInt(cursor.getColumnIndex(<span class="string">&quot;pages&quot;</span>));</span><br><span class="line">                        <span class="type">double</span> <span class="variable">price</span> <span class="operator">=</span> cursor.getDouble(cursor.getColumnIndex(<span class="string">&quot;price&quot;</span>));</span><br><span class="line">                        Log.d(TAG, <span class="string">&quot;book name is &quot;</span>+name);</span><br><span class="line">                        Log.d(TAG, <span class="string">&quot;book author is &quot;</span>+author);</span><br><span class="line">                        Log.d(TAG, <span class="string">&quot;book pages is &quot;</span>+pages);</span><br><span class="line">                        Log.d(TAG, <span class="string">&quot;book price is &quot;</span>+price);</span><br><span class="line">                    &#125;<span class="keyword">while</span> (cursor.moveToNext());</span><br><span class="line">                &#125;</span><br><span class="line">                cursor.close();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="使用SQL操作数据库"><a href="#使用SQL操作数据库" class="headerlink" title="使用SQL操作数据库"></a>使用SQL操作数据库</h3><p>添加数据：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db.execSQL(<span class="string">&quot;insert into Book(name, author, pages,price) values(?,?,?,?)&quot;</span>,</span><br><span class="line">	<span class="keyword">new</span> <span class="title class_">String</span>[] &#123;<span class="string">&quot;Love and Peace&quot;</span>,<span class="string">&quot;W&quot;</span>,<span class="string">&quot;488&quot;</span>,<span class="string">&quot;20.25&quot;</span>&#125;);</span><br><span class="line">db.execSQL(<span class="string">&quot;insert into Book(name, author, pages,price) values(?,?,?,?)&quot;</span>,</span><br><span class="line">   <span class="keyword">new</span> <span class="title class_">String</span>[] &#123;<span class="string">&quot;I Find It&quot;</span>,<span class="string">&quot;H&quot;</span>,<span class="string">&quot;688&quot;</span>,<span class="string">&quot;10.95&quot;</span>&#125;);</span><br></pre></td></tr></table></figure>
+<p>更新数据：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">db.execSQL(<span class="string">&quot;update Book set price = ? where name = ?&quot;</span>,</span><br><span class="line">                        <span class="keyword">new</span> <span class="title class_">String</span>[] &#123;<span class="string">&quot;10.99&quot;</span>,<span class="string">&quot;The Da Vinci Code&quot;</span>&#125;);</span><br></pre></td></tr></table></figure>
+<p>删除数据：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">db.execSQL(<span class="string">&quot;delete from Book where pages &lt; ?&quot;</span>,</span><br><span class="line">                        <span class="keyword">new</span> <span class="title class_">String</span>[] &#123;<span class="string">&quot;500&quot;</span>&#125;);</span><br></pre></td></tr></table></figure>
+<p>查询数据：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Cursor</span> <span class="variable">cursor</span> <span class="operator">=</span> db.rawQuery(<span class="string">&quot;select * from Book&quot;</span>,<span class="literal">null</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="使用LitePal操作数据库"><a href="#使用LitePal操作数据库" class="headerlink" title="使用LitePal操作数据库"></a>使用LitePal操作数据库</h2><p>LitePal是一款开源的Android数据库框架，它采用了对象关系映射（ORM）的模式，并将我们平时开发最常用到的一些数据库功能进行了封装，不用编写一行SQL语句就可以完成各种建表和增删改查的操作。  </p>
+<h3 id="配置LitePal"><a href="#配置LitePal" class="headerlink" title="配置LitePal"></a>配置LitePal</h3><p>首先是再app&#x2F;build.gradle文件中添加依赖</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line"></span><br><span class="line">    implementation &#x27;androidx.appcompat:appcompat:1.3.0&#x27;</span><br><span class="line">    implementation &#x27;com.google.android.material:material:1.4.0&#x27;</span><br><span class="line">    implementation &#x27;androidx.constraintlayout:constraintlayout:2.0.4&#x27;</span><br><span class="line">    testImplementation &#x27;junit:junit:4.13.2&#x27;</span><br><span class="line">    androidTestImplementation &#x27;androidx.test.ext:junit:1.1.3&#x27;</span><br><span class="line">    androidTestImplementation &#x27;androidx.test.espresso:espresso-core:3.4.0&#x27;</span><br><span class="line">    implementation &#x27;org.litepal.guolindev:core:3.2.3&#x27;//这里</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接下来配置litepal.xml文件  <br>右击app&#x2F;src&#x2F;main目录→NEW→Folder→Assets Folder，新建好assets文件夹，然后右击assets文件夹，新建文件，起名为litepal.xml。<br>其中代码如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">litepal</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dbname</span> <span class="attr">value</span>=<span class="string">&quot;BookStore&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">dbname</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">list</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">list</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">litepal</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>dbname标签用于指定数据库名，version标签用于指定数据库版本号，list标签用于指定所有的映射模型。<br>最后配置LitePalApplication，修改AndroidManifest.xml中的代码：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    xmlns:tools=&quot;http://schemas.android.com/tools&quot;</span><br><span class="line">    package=&quot;com.example.litepaltest&quot;&gt;</span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">application</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:name</span>=<span class="string">&quot;org.litepal.LitePalApplication&quot;</span></span></span><br></pre></td></tr></table></figure>
+<p>正常情况已经完成了。我在这里报错了，之后在项目的根目录对应的settings.gradle中修改</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">pluginManagement &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        gradlePluginPortal()</span><br><span class="line">        google()</span><br><span class="line">        mavenCentral()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">dependencyResolutionManagement &#123;</span><br><span class="line">    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)</span><br><span class="line">    repositories &#123;</span><br><span class="line">        google()</span><br><span class="line">        mavenCentral()</span><br><span class="line">        jcenter()//这里</span><br><span class="line">        maven &#123; url &#x27;https://jitpack.io&#x27; &#125;//这里</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">rootProject.name = &quot;LitePalTest&quot;</span><br><span class="line">include &#x27;:app&#x27;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>结果还是无法解决，然后在项目根目录（app目录外面那个）的build.gradle里添加几行代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line"></span><br><span class="line">    repositories &#123;</span><br><span class="line">        maven&#123; url &#x27;https://maven.aliyun.com/repository/google&#x27;&#125;</span><br><span class="line">        maven&#123; url &#x27;https://maven.aliyun.com/repository/gradle-plugin&#x27;&#125;</span><br><span class="line">        maven&#123; url &#x27;https://maven.aliyun.com/repository/public&#x27;&#125;</span><br><span class="line">        maven&#123; url &#x27;https://maven.aliyun.com/repository/jcenter&#x27;&#125;</span><br><span class="line"></span><br><span class="line">        google()</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath &#x27;com.android.tools.build:gradle:3.2.0&#x27;</span><br><span class="line">        // NOTE: Do not place your application dependencies here; they belong</span><br><span class="line">        // in the individual module build.gradle files</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//以上为新添加</span><br><span class="line"></span><br><span class="line">// Top-level build file where you can add configuration options common to all sub-projects/modules.</span><br><span class="line">plugins &#123;</span><br><span class="line">    id &#x27;com.android.application&#x27; version &#x27;7.2.2&#x27; apply false</span><br><span class="line">    id &#x27;com.android.library&#x27; version &#x27;7.2.2&#x27; apply false</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">task clean(type: Delete) &#123;</span><br><span class="line">    delete rootProject.buildDir</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这是添加镜像仓库的代码。最后没有报错了。</p>
+<h3 id="创建和升级数据库"><a href="#创建和升级数据库" class="headerlink" title="创建和升级数据库"></a>创建和升级数据库</h3><blockquote>
+<p>LitePal采取的是对象关系映射（ORM）的模式，那什么是对象关系映射呢？简单点说：我们的编程语言是面向对象语言，而使用的数据库是关系型数据库，那么将面向对象的语言和面向对象的数据库之间建立一种映射关系，这就是对象关系映射。</p>
+</blockquote>
+<p>新建LitePalTest项目，布局文件与上一个项目相同。  <br>定义一个Book类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Book</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> id;</span><br><span class="line">    <span class="keyword">private</span> String author;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">double</span> price;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> pages;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getId</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setId</span><span class="params">(<span class="type">int</span> id)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getAuthor</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> author;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setAuthor</span><span class="params">(String author)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.author = author;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">getPrice</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setPrice</span><span class="params">(<span class="type">double</span> price)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.price = price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getPages</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> pages;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setPages</span><span class="params">(<span class="type">int</span> pages)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.pages = pages;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接下来将Book类添加到映射模型列表中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;litepal&gt;</span><br><span class="line">    &lt;dbname value=&quot;BookStore&quot;&gt;&lt;/dbname&gt;</span><br><span class="line"></span><br><span class="line">    &lt;version value=&quot;2&quot;&gt;&lt;/version&gt;</span><br><span class="line"></span><br><span class="line">    &lt;list&gt;</span><br><span class="line">        &lt;mapping class=&quot;com.example.litepaltest.Book&quot;&gt;&lt;/mapping&gt;</span><br><span class="line">    &lt;/list&gt;</span><br><span class="line">&lt;/litepal&gt;</span><br></pre></td></tr></table></figure>
+<p>修改MainActivity代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">    setContentView(R.layout.activity_main);</span><br><span class="line">    <span class="type">Button</span> <span class="variable">createDatabase</span> <span class="operator">=</span> findViewById(R.id.create_database);</span><br><span class="line">    createDatabase.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View view)</span> &#123;</span><br><span class="line">            LitePal.getDatabase();</span><br><span class="line">            Toast.makeText(MainActivity.<span class="built_in">this</span>, <span class="string">&quot;Succeeded&quot;</span>,</span><br><span class="line">                    Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<p>LitePal.getDatabase()方法就是一次最简单的数据库操作，点击一下按钮后数据库就会自动创建完成。</p>
+<p>LitePal升级数据库不会像SQLiteOpenHelper升级数据库需要先把之前的drop掉，然后再重新创建。<br>LitePal升级数据库非常简单，只需要改你想改的任何内容，然后将版本号加1就行了。<br>例如：向Book表添加一个press（出版社）列；向数据库添加一张Category表。<br>修改Book类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.litepaltest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.litepal.crud.LitePalSupport;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Book</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> id;</span><br><span class="line">    <span class="keyword">private</span> String author;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">double</span> price;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> pages;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String press;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getId</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setId</span><span class="params">(<span class="type">int</span> id)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getAuthor</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> author;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setAuthor</span><span class="params">(String author)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.author = author;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">getPrice</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setPrice</span><span class="params">(<span class="type">double</span> price)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.price = price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getPages</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> pages;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setPages</span><span class="params">(<span class="type">int</span> pages)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.pages = pages;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getPress</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> press;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setPress</span><span class="params">(String press)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.press = press;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>新建一个Category类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.litepaltest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Category</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> id;</span><br><span class="line">    <span class="keyword">private</span> String categoryName;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> categoryCode;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setId</span><span class="params">(<span class="type">int</span> id)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setCategoryCode</span><span class="params">(<span class="type">int</span> categoryCode)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.categoryCode = categoryCode;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setCategoryName</span><span class="params">(String categoryName)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.categoryName = categoryName;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>修改litepal.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">litepal</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dbname</span> <span class="attr">value</span>=<span class="string">&quot;BookStore&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">dbname</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span> <span class="attr">value</span>=<span class="string">&quot;2&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">list</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mapping</span> <span class="attr">class</span>=<span class="string">&quot;com.example.litepaltest.Book&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">mapping</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mapping</span> <span class="attr">class</span>=<span class="string">&quot;com.example.litepaltest.Category&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">list</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">litepal</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这样就可以了。</p>
+<h3 id="添加数据-1"><a href="#添加数据-1" class="headerlink" title="添加数据"></a>添加数据</h3><p>进行CRUD操作必须要让现有的模型类继承自LitePalSupport类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Book</span> <span class="keyword">extends</span> <span class="title class_">LitePalSupport</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> id;</span><br></pre></td></tr></table></figure>
+<p>添加数据的代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Button</span> <span class="variable">addData</span> <span class="operator">=</span> findViewById(R.id.add_data);</span><br><span class="line">addData.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View view)</span> &#123;</span><br><span class="line">        <span class="type">Book</span> <span class="variable">book</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Book</span>();</span><br><span class="line">        book.setName(<span class="string">&quot;The Da Vinci Code&quot;</span>);</span><br><span class="line">        book.setAuthor(<span class="string">&quot;Dan Brown&quot;</span>);</span><br><span class="line">        book.setPages(<span class="number">454</span>);</span><br><span class="line">        book.setPrice(<span class="number">16.96</span>);</span><br><span class="line">        book.setPress(<span class="string">&quot;Unknow&quot;</span>);</span><br><span class="line">        book.save();</span><br><span class="line">        Toast.makeText(MainActivity.<span class="built_in">this</span>, <span class="string">&quot;Succeeded&quot;</span>,</span><br><span class="line">                Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>只需要创建一个Book实例，然后将所有要存储的数据设置好，最后调用下save()方法就可以了。<br>save()方法是从LitePalSupport中继承而来。</p>
+<h3 id="更新数据-1"><a href="#更新数据-1" class="headerlink" title="更新数据"></a>更新数据</h3><p>对于LitePal来说，对象是否已存储就是根据调用model.isSaved()方法的结果来判断的，返回true就表示已存储，返回false就表示未存储。<br>只有两种情况下返回true：一种情况是已经调用过model.save()方法添加数据，一种情况是model对象是通过LitePal提供的查询API查出来的，由于是从数据库查出来的，所以会被认为是已存储的对象。  </p>
+<p>更新数据的第一种方式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Button</span> <span class="variable">updateData</span> <span class="operator">=</span> findViewById(R.id.update_data);</span><br><span class="line">updateData.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View view)</span> &#123;</span><br><span class="line">        <span class="type">Book</span> <span class="variable">book</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Book</span>();</span><br><span class="line">        book.setName(<span class="string">&quot;The Lost Symbol&quot;</span>);</span><br><span class="line">        book.setAuthor(<span class="string">&quot;Dan Brown&quot;</span>);</span><br><span class="line">        book.setPages(<span class="number">510</span>);</span><br><span class="line">        book.setPrice(<span class="number">19.95</span>);</span><br><span class="line">        book.setPress(<span class="string">&quot;Unknow&quot;</span>);</span><br><span class="line">        book.save();</span><br><span class="line">        book.setPrice(<span class="number">10.99</span>);</span><br><span class="line">        book.save();</span><br><span class="line">        Toast.makeText(MainActivity.<span class="built_in">this</span>, <span class="string">&quot;Succeeded&quot;</span>,</span><br><span class="line">                Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>LitePal会发现当前的Book对象是已存储的，因此不会添加而是直接更新。  但是只能对已存储的对象进行操作，限制较大。<br>更新数据的第二种方式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Button</span> <span class="variable">updateData</span> <span class="operator">=</span> findViewById(R.id.update_data);</span><br><span class="line">updateData.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View view)</span> &#123;</span><br><span class="line">        <span class="type">Book</span> <span class="variable">book</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Book</span>();</span><br><span class="line">        book.setPrice(<span class="number">14.95</span>);</span><br><span class="line">        book.setPress(<span class="string">&quot;Anchor&quot;</span>);</span><br><span class="line">        book.updateAll(<span class="string">&quot;name= ? and author = ?&quot;</span>,</span><br><span class="line">                <span class="string">&quot;The Lost Symbol&quot;</span>,<span class="string">&quot;Dan Brown&quot;</span>);</span><br><span class="line">        Toast.makeText(MainActivity.<span class="built_in">this</span>, <span class="string">&quot;Succeeded&quot;</span>,</span><br><span class="line">                Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>set指定的是要更新的内容；updateAll是更新的条件限制，不指定就代表对说有的数据生效。  <br>int类型的默认值是0，boolen类型的默认值是false，String类型的默认值是null。  <br>更新为默认值；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Button</span> <span class="variable">updateData</span> <span class="operator">=</span> findViewById(R.id.update_data);</span><br><span class="line">updateData.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View view)</span> &#123;</span><br><span class="line">        <span class="type">Book</span> <span class="variable">book</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Book</span>();</span><br><span class="line">        book.setToDefault(<span class="string">&quot;pages&quot;</span>);</span><br><span class="line">        book.updateAll();</span><br><span class="line">        Toast.makeText(MainActivity.<span class="built_in">this</span>, <span class="string">&quot;Succeeded&quot;</span>,</span><br><span class="line">                Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="删除数据-1"><a href="#删除数据-1" class="headerlink" title="删除数据"></a>删除数据</h3><p>删除数据的方式主要有2种。  <br>第一种是直接调用已存储对象的delete()方法。  <br>第二种如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Button</span> <span class="variable">deleteData</span> <span class="operator">=</span> findViewById(R.id.delete_data);</span><br><span class="line">deleteData.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View view)</span> &#123;</span><br><span class="line">        LitePal.deleteAll(Book.class,<span class="string">&quot;price &lt; ?&quot;</span>,<span class="string">&quot;15&quot;</span>);</span><br><span class="line">        Toast.makeText(MainActivity.<span class="built_in">this</span>, <span class="string">&quot;Succeeded&quot;</span>,</span><br><span class="line">                Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>另外，deleteAll()如果不指定条件就意味着删除表中所有数据。</p>
+<h3 id="查询数据-1"><a href="#查询数据-1" class="headerlink" title="查询数据"></a>查询数据</h3><p>查询这张表里的所有数据：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Button</span> <span class="variable">queryData</span> <span class="operator">=</span> findViewById(R.id.query_data);</span><br><span class="line">queryData.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View view)</span> &#123;</span><br><span class="line">        List&lt;Book&gt; books = LitePal.findAll(Book.class);</span><br><span class="line">        <span class="keyword">for</span>(Book book: books)&#123;</span><br><span class="line">            Log.d(TAG, <span class="string">&quot;book name is &quot;</span>+book.getName());</span><br><span class="line">            Log.d(TAG, <span class="string">&quot;book author is &quot;</span>+book.getAuthor());</span><br><span class="line">            Log.d(TAG, <span class="string">&quot;book pages is &quot;</span>+book.getPages());</span><br><span class="line">            Log.d(TAG, <span class="string">&quot;book price is &quot;</span>+book.getPrice());</span><br><span class="line">            Log.d(TAG, <span class="string">&quot;book press is &quot;</span>+book.getPress());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>查询表中第一条数据：<br><code>Book firstbook = LitePal.findFirst(Book.class);</code>  </p>
+</blockquote>
+<blockquote>
+<p>查询表中最后一条数据：<br><code>Book lastbook = LitePal.findLast(Book.class);</code>  </p>
+</blockquote>
+<blockquote>
+<p>select()方法用于指定查询哪几列的数据，对应了SQL当中的select关键字。比如只查name和author这两列的数据：<br><code>List&lt;Book&gt; books = LitePal.select(&quot;name&quot;,&quot;author&quot;).find(Book.class);</code>  </p>
+</blockquote>
+<blockquote>
+<p>where()方法用于指定查询的约束条件，对应了SQL当中的where关键字。比如只查页数大于400的数据：  </p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Book&gt; books = LitePal.where(&quot;pages&gt;?&quot;, &quot;400&quot;).find(Book.class);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>order()方法用于指定结果的排序方式，对应了SQL当中的order by 关键字。比如将查询结果按照书价从高到低排序：<br><code>List&lt;Book&gt; books = LitePal.order(&quot;price desc&quot;).find(Book.class);</code><br>降序：desc ; 升序: asc或者不写。   </p>
+</blockquote>
+<blockquote>
+<p>limit()方法用于指定查询结果的数量，比如只查询表中的前3条数据：<br><code>List&lt;Book&gt; books = LitePal.limit(3).find(Book.class);</code>  </p>
+</blockquote>
+<blockquote>
+<p>offset()方法用于指定查询结果的偏移量，比如查询表中的第2条、第3条、第4条数据：<br><code>List&lt;Book&gt; books = LitePal.limit(3).offset(1).find(Book.class);</code><br>由于limit（3）查询到的是前3条数据，再加上offset（1）进行一个位置的偏移，就能实现查询第2条、第3条、第4条数据的功能。  </p>
+</blockquote>
+<blockquote>
+<p>对以上5个方法进行任意的连缀组合：  </p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Book&gt; books = LitePal.select(&quot;name&quot;, &quot;author&quot;, &quot;pages&quot;)</span><br><span class="line">                        .where(&quot;pages&gt;?&quot;, &quot;400&quot;)</span><br><span class="line">                        .order(&quot;pages&quot;)</span><br><span class="line">                        .limit(10)</span><br><span class="line">                        .offset(10)</span><br><span class="line">                        .find(Book.class);</span><br></pre></td></tr></table></figure>
+
+<p>上述API满足不了的时候，支持SQL查询，利用findBySQL()方法进行查询：</p>
+<pre><code>Cursor c = LitePal.findBySQL(&quot;select * from Book where pages &gt; ? and price &lt; ?&quot;,&quot;400&quot;,&quot;20&quot;);
+</code></pre>
+<p>其中第一个参数自定SQL语句，后面的参数指定占位符的值。</p>
+
+    </div>
+
+       <div>
+        
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------本文到这里结束了，感谢您的阅读------</div>
+    
+</div>
+
+        
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div><您的支持将是我继续创作的动力！></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechat.png" alt="君不见 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="君不见 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>君不见
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://godx06.github.io/2022/08/19/Android%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/" title="Android数据存储">https://godx06.github.io/2022/08/19/Android数据存储/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+ 
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"><i class="fa fa-tag"></i> Android</a>
+              <a href="/tags/Note/" rel="tag"><i class="fa fa-tag"></i> Note</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/08/09/Android%E5%B9%BF%E6%92%AD%E6%9C%BA%E5%88%B6/" rel="prev" title="Android广播机制">
+      <i class="fa fa-chevron-left"></i> Android广播机制
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/10/03/Android%E4%BD%BF%E7%94%A8Scan-Kit-%E5%8D%8E%E4%B8%BA%E7%BB%9F%E4%B8%80%E6%89%AB%E7%A0%81%E6%9C%8D%E5%8A%A1/" rel="next" title="Android使用Scan Kit 华为统一扫码服务">
+      Android使用Scan Kit 华为统一扫码服务 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="SOHUCS"></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+
+<div id="music163player">
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=544151109&auto=1&height=32"></iframe>
+</div>
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8"><span class="nav-number">1.</span> <span class="nav-text">文件存储</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%86%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E5%9C%A8%E6%96%87%E4%BB%B6%E4%B8%AD"><span class="nav-number">1.1.</span> <span class="nav-text">将数据存储在文件中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8E%E6%96%87%E4%BB%B6%E4%B8%AD%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="nav-number">1.2.</span> <span class="nav-text">从文件中读取数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SharePreferences%E5%AD%98%E5%82%A8"><span class="nav-number">2.</span> <span class="nav-text">SharePreferences存储</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%86%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E5%88%B0SharePreferences%E4%B8%AD"><span class="nav-number">2.1.</span> <span class="nav-text">将数据存储到SharePreferences中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8ESharePreferences%E4%B8%AD%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="nav-number">2.2.</span> <span class="nav-text">从SharePreferences中读取数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQLite%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%98%E5%82%A8"><span class="nav-number">3.</span> <span class="nav-text">SQLite数据库存储</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">3.1.</span> <span class="nav-text">创建数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8adb-shell%E6%A3%80%E6%9F%A5%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">3.2.</span> <span class="nav-text">使用adb shell检查数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%87%E7%BA%A7%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">3.3.</span> <span class="nav-text">升级数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%95%B0%E6%8D%AE"><span class="nav-number">3.4.</span> <span class="nav-text">添加数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE"><span class="nav-number">3.5.</span> <span class="nav-text">更新数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE"><span class="nav-number">3.6.</span> <span class="nav-text">删除数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE"><span class="nav-number">3.7.</span> <span class="nav-text">查询数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8SQL%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">3.8.</span> <span class="nav-text">使用SQL操作数据库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8LitePal%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">4.</span> <span class="nav-text">使用LitePal操作数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AELitePal"><span class="nav-number">4.1.</span> <span class="nav-text">配置LitePal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%92%8C%E5%8D%87%E7%BA%A7%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">4.2.</span> <span class="nav-text">创建和升级数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%95%B0%E6%8D%AE-1"><span class="nav-number">4.3.</span> <span class="nav-text">添加数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE-1"><span class="nav-number">4.4.</span> <span class="nav-text">更新数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE-1"><span class="nav-number">4.5.</span> <span class="nav-text">删除数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE-1"><span class="nav-number">4.6.</span> <span class="nav-text">查询数据</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="君不见"
+      src="/images/tsy.png">
+  <p class="site-author-name" itemprop="name">君不见</p>
+  <div class="site-description" itemprop="description">君不见，黄河之水天上来，奔流到海不复回。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/godx06" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godx06" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/3451246424@qq.com" title="E-Mail → 3451246424@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/7655616259/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;7655616259&#x2F;profile?rightmod&#x3D;1&amp;wvr&#x3D;6&amp;mod&#x3D;personinfo&amp;is_all&#x3D;1" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/m0_61465701?spm=1018.2226.3001.5343" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;m0_61465701?spm&#x3D;1018.2226.3001.5343" rel="noopener" target="_blank"><i class="fab fa-skype fa-fw"></i>CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://leetcode.cn/" title="https:&#x2F;&#x2F;leetcode.cn&#x2F;" rel="noopener" target="_blank">力扣</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.nowcoder.com/" title="https:&#x2F;&#x2F;www.nowcoder.com&#x2F;" rel="noopener" target="_blank">牛客</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+
+    
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">君不见</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  <script>
+  NexT.utils.loadComments(document.querySelector('#SOHUCS'), () => {
+    var appid = 'cyw4nNoc5';
+    var conf = '00d96ca2de6f5fc1a13903b7caf0a878';
+    var width = window.innerWidth || document.documentElement.clientWidth;
+    if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>');
+    } else {
+      var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})});
+    }
+  });
+  </script>
+  <script src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
