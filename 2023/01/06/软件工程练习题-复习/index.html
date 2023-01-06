@@ -1,0 +1,2631 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/dragon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/dragon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="baidu-site-verification" content="6EMwG3w0uT">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"godx06.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="教材为《软件工程：从理论到实践》毛新军 董威 编著">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件工程练习题(复习)">
+<meta property="og:url" content="https://godx06.github.io/2023/01/06/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%BB%83%E4%B9%A0%E9%A2%98-%E5%A4%8D%E4%B9%A0/index.html">
+<meta property="og:site_name" content="君不见の博客">
+<meta property="og:description" content="教材为《软件工程：从理论到实践》毛新军 董威 编著">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEBadc5587740613be2b5b495856963aceb?method=download&shareKey=1e79cc655b9119192ad2433c2efbe916">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEBbb12bd1a9247d20890c901611dc38310?method=download&shareKey=9894ce454b328efffb5cc0277dd7ee44">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEB01262adfc1b69860e840f954aba5ae1f?method=download&shareKey=2b4960e8f35eaa8ccb38b314ec112c1f">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEB7da1e95b10d3501d72da9f079f9daa3c?method=download&shareKey=8c7d3ca14b06cac0f466cde2b750c009">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEB4b43c511bc3630e99d2b3c99cd41a42b?method=download&shareKey=53af0183a1e6374904b554aca7977e10">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEBf5753c47942f91ed6faffe402b894143?method=download&shareKey=8b32099bfb005c109c6059ff33aecbfe">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEBb240c9a541aefc26f12cccebd8aefa1c?method=download&shareKey=eea5c35550959008bcb5b766ecf43310">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEBf1cbd6ede441ad33f01991e267089eae?method=download&shareKey=6c180a4383c724f29b64ebfc664f1e88">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEB74917fa9f08b5749ab445eb3012345ac?method=download&shareKey=a6fca25f751653318a76260db3bc57d5">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEB750704ff5492703f561ae46c89bdd478?method=download&shareKey=962fc6c020810b803decc736f51c7220">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEB750704ff5492703f561ae46c89bdd478?method=download&shareKey=962fc6c020810b803decc736f51c7220">
+<meta property="article:published_time" content="2023-01-06T11:53:44.000Z">
+<meta property="article:modified_time" content="2023-01-06T11:59:18.612Z">
+<meta property="article:author" content="君不见">
+<meta property="article:tag" content="Practices">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://note.youdao.com/yws/api/personal/file/WEBadc5587740613be2b5b495856963aceb?method=download&shareKey=1e79cc655b9119192ad2433c2efbe916">
+
+<link rel="canonical" href="https://godx06.github.io/2023/01/06/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%BB%83%E4%B9%A0%E9%A2%98-%E5%A4%8D%E4%B9%A0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>软件工程练习题(复习) | 君不见の博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="君不见の博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">君不见の博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录生活中的点点滴滴</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">5</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">5</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">17</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://godx06.github.io/2023/01/06/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%BB%83%E4%B9%A0%E9%A2%98-%E5%A4%8D%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/tsy.png">
+      <meta itemprop="name" content="君不见">
+      <meta itemprop="description" content="君不见，黄河之水天上来，奔流到海不复回。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="君不见の博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          软件工程练习题(复习)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-01-06 19:53:44 / 修改时间：19:59:18" itemprop="dateCreated datePublished" datetime="2023-01-06T19:53:44+08:00">2023-01-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">软件工程</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2023/01/06/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%BB%83%E4%B9%A0%E9%A2%98-%E5%A4%8D%E4%B9%A0/#SOHUCS" itemprop="discussionUrl">
+        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2023/01/06/软件工程练习题-复习/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>教材为《软件工程：从理论到实践》<br>毛新军 董威 编著</p>
+<h2 id="第一章-软件工程课程概述"><a href="#第一章-软件工程课程概述" class="headerlink" title="第一章 软件工程课程概述"></a>第一章 软件工程课程概述</h2><h3 id="计算机软件发生的变化"><a href="#计算机软件发生的变化" class="headerlink" title="计算机软件发生的变化"></a>计算机软件发生的变化</h3><ul>
+<li><p>1、随着互联网、计算机基础设施、用户需求等多方面因素的影响，计算机软件系统在很多方面都发生了深刻的变化。下面哪些方面计算机软件系统发生了变化？</p>
+<p><strong>A、软件系统的部署平台</strong></p>
+<p><strong>B、软件系统的部署运行形态</strong></p>
+<p><strong>C、软件系统的要素交互模式</strong></p>
+<p><strong>D、软件系统的代码规模</strong></p>
+</li>
+<li><p>2、关于计算机软件形态的变化，下面哪种说法是错误的？</p>
+<p><strong>A、软件系统是一个纯粹的技术系统，与社会、物理等要素是相对独立的。</strong></p>
+<p><strong>B、集中同构系统是当前软件系统的主要部署和运行方式。</strong></p>
+<p>C、软件系统的规模和复杂度正在快速增加。</p>
+<p><strong>D、人类对于软件系统的需求和演化的认知已经比较全面</strong></p>
+</li>
+</ul>
+<h3 id="软件工程的发展"><a href="#软件工程的发展" class="headerlink" title="软件工程的发展"></a>软件工程的发展</h3><ul>
+<li><p>1、近年来，软件开发方法和技术发生了很大的变化。下列关于软件开发过程和方法的说法哪些是错误的？</p>
+<p>A、敏捷开发方法是拥抱软件系统变化的一种开发模型</p>
+<p><strong>B、螺旋模型解决了软件需求快速变化的问题</strong></p>
+<p><strong>C、DevOps模型严格区分软件开发、部署、运行和维护等阶段</strong></p>
+<p>D、瀑布模型要求规范的需求文档</p>
+</li>
+<li><p>2、软件开发技术不断推陈出新，对于提高软件开发效率和质量产生了重要作用。下面哪些说法是错误的？</p>
+<p>A、开源软件的开发采用了基于群智的软件开发模式</p>
+<p><strong>B、依靠松散组合的互联网大众是无法开发出高质量软件产品的</strong>C、软件重用是提供软件开发效率和质量的重要手段</p>
+<p>D、设计模式是一种软件重用形式</p>
+</li>
+</ul>
+<h2 id="第二章-从程序到软件"><a href="#第二章-从程序到软件" class="headerlink" title="第二章 从程序到软件"></a>第二章 从程序到软件</h2><h3 id="程序及其质量"><a href="#程序及其质量" class="headerlink" title="程序及其质量"></a>程序及其质量</h3><ul>
+<li><p>1、代码的结构清晰、可理解性好，这类代码的内部质量高。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>2、程序具有良好的可扩展性且易于维护，则该程序的外部质量高。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>3、在编写代码的过程中，对程序做适当的注释可有助于提高代码的哪些属性（多选）。</p>
+<p><strong>A、代码的内部质量</strong></p>
+<p>B、代码的外部质量</p>
+<p><strong>C、代码的可理解性</strong></p>
+<p>D、代码的可扩展性</p>
+</li>
+</ul>
+<h3 id="程序质量保证方法"><a href="#程序质量保证方法" class="headerlink" title="程序质量保证方法"></a>程序质量保证方法</h3><ul>
+<li><p>2、以下哪些方法可以有效地保证和提高代码质量（多选）</p>
+<p><strong>A、互相检查代码</strong></p>
+<p><strong>B、代码重用</strong></p>
+<p><strong>C、采用面向对象的程序设计方法</strong></p>
+<p>D、多编写程序</p>
+</li>
+<li><p>3、代码重用有何实际的意义和价值</p>
+<p><strong>A、提高开发效率</strong></p>
+<p><strong>B、提高代码质量</strong></p>
+<p>C、学习他人的编码风格</p>
+<p><strong>D、减少开发工作量</strong></p>
+</li>
+<li><p>1、编程风格影响程序的可读性，但不会影响最终软件产品的质量。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>2、关于程序标识符命名，以下说法不正确的是。</p>
+<p>A、命名应使用标准英文单词或缩写，不要使用拼音</p>
+<p>B、命名应遵循望文知义原则，即名称应含义清晰、明确</p>
+<p>C、命名都不要过长，应控制在规定的最大长度以内</p>
+<p><strong>D、所有命名都应尽量使用缩写</strong></p>
+</li>
+</ul>
+<h3 id="程序质量分析方法"><a href="#程序质量分析方法" class="headerlink" title="程序质量分析方法"></a>程序质量分析方法</h3><ul>
+<li><p>1、以下哪些软件工具可以完成程序代码的静态分析工作。（多选题）</p>
+<p>A、JUnit </p>
+<p><strong>B、Sonarqube</strong></p>
+<p><strong>C、CheckStyle</strong></p>
+<p>D、Eclipse</p>
+</li>
+<li><p>2、结对编程可有效地支持代码的人工审查工作。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>3、以下哪一项是通过运行程序来发现代码问题的。</p>
+<p>A、代码检查</p>
+<p>B、代码扫描</p>
+<p>C、人工检查</p>
+<p><strong>D、程序测试</strong></p>
+</li>
+<li><p>4、人工审查代码包含以下哪几个步骤。</p>
+<p><strong>A、发现缺陷和问题</strong></p>
+<p><strong>B、阅读和理解代码</strong></p>
+<p>C、运行程序代码</p>
+<p><strong>D、提出改进的建议</strong></p>
+</li>
+</ul>
+<h3 id="软件及其质量"><a href="#软件及其质量" class="headerlink" title="软件及其质量"></a>软件及其质量</h3><ul>
+<li><p>1、软件质量等同于程序质量。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>2、软件之所以需要文档，是处于以下的原因。</p>
+<p><strong>A、记录开发成果</strong></p>
+<p><strong>B、分享和交流开发成果</strong></p>
+<p><strong>C、分析和发现开发成果中的问题</strong></p>
+<p>D、减少开发工作量</p>
+</li>
+</ul>
+<h3 id="开源软件"><a href="#开源软件" class="headerlink" title="开源软件"></a>开源软件</h3><ul>
+<li><p>1、开源软件可以任意的下载、传播和修改，无需遵循任何的要求。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>2、免费使用的软件属于开源软件。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>3、关于开源软件的开发，以下哪些阐述是错误的。</p>
+<p>A、互联网大众参与贡献的结果</p>
+<p>B、需要依托开源托管平台</p>
+<p><strong>C、采用团队的组织方式</strong> </p>
+<p>D、任何人都可参与修改代码</p>
+</li>
+</ul>
+<h2 id="第三章-软件工程概述"><a href="#第三章-软件工程概述" class="headerlink" title="第三章 软件工程概述"></a>第三章 软件工程概述</h2><h3 id="软件工程产生背景"><a href="#软件工程产生背景" class="headerlink" title="软件工程产生背景"></a>软件工程产生背景</h3><ul>
+<li><p>1、编写程序仅仅是软件开发的一项工作，软件开发还牵涉其他方面的工作。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>2、以下哪些是导致软件危机的主要原因。</p>
+<p>A、软件工程师人数太少</p>
+<p><strong>B、软件过于复杂</strong></p>
+<p><strong>C、对软件及其开发认识不够</strong></p>
+<p><strong>D、缺乏理论指导和技术的支持</strong></p>
+</li>
+<li><p>3、在现阶段软件危机依然存在。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>4、软件危机有哪些主要的表现形式。</p>
+<p><strong>A、软件开发成本太高</strong></p>
+<p><strong>B、软件质量无法保证</strong></p>
+<p>C、待开发软件项目的数量太多</p>
+<p><strong>D、软件项目无法按时交付</strong></p>
+</li>
+</ul>
+<h3 id="软件工程的概念和思想"><a href="#软件工程的概念和思想" class="headerlink" title="软件工程的概念和思想"></a>软件工程的概念和思想</h3><ul>
+<li><p>1、软件工程中“工程”的内涵包括哪些方面。</p>
+<p><strong>A、遵循过程来开发</strong></p>
+<p><strong>B、保证产品质量</strong></p>
+<p>C、采用最新的技术</p>
+<p><strong>D、借助工具支持</strong></p>
+</li>
+<li><p>2、软件工程要求采用各种技术和文档规范，以进行规范化的开发，产生规范化的软件产品。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>3、软件工程的原则对于软件开发而言可产生什么样的成效。</p>
+<p>A、保证软件开发不会出错</p>
+<p><strong>B、确保软件开发的质量</strong></p>
+<p><strong>C、有效应对软件系统的复杂性</strong></p>
+<p>D、减少软件开发的工作量</p>
+</li>
+<li><p>4、以下哪些属于软件工程的基本构成要素。</p>
+<p><strong>A、过程</strong></p>
+<p>B、建模语言</p>
+<p>C、程序设计语言</p>
+<p><strong>D、辅助工具</strong></p>
+</li>
+</ul>
+<h3 id="计算机辅助软件工程"><a href="#计算机辅助软件工程" class="headerlink" title="计算机辅助软件工程"></a>计算机辅助软件工程</h3><ul>
+<li><p>1、计算机辅助软件工程对于软件开发而言有何作用。</p>
+<p><strong>A、提高开发效率</strong> </p>
+<p><strong>B、提高开发质量</strong></p>
+<p><strong>C、减少开发工作量</strong></p>
+<p><strong>D、减低开发成本</strong></p>
+</li>
+<li><p>2、Microsoft Office也是一个CASE工具。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>3、SonarQube是一个CASE工具，以下哪一项不是该工具提供的功能。</p>
+<p>A、分析代码的内部质量</p>
+<p>B、发现代码中的缺陷</p>
+<p><strong>C、修复代码中的缺陷</strong></p>
+<p>D、产生代码质量的报告</p>
+</li>
+<li><p>4、Eclipse和Visual Studio都是CASE环境。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+</ul>
+<h3 id="软件工程视角下的软件开发"><a href="#软件工程视角下的软件开发" class="headerlink" title="软件工程视角下的软件开发"></a>软件工程视角下的软件开发</h3><ul>
+<li><p>1、开源软件的开发是一项基于互联网大众群体创作的过程。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>2、针对特定的软件（如微信），构思软件需求是一项软件创作的活动。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>3、基于软件设计的模型和文档来编写程序是一项什么样的活动。</p>
+<p><strong>A、生产活动</strong></p>
+<p>B、创作活动</p>
+<p>C、既是生产活动也是创作活动</p>
+</li>
+<li><p>4、根据确定的软件需求来进行软件设计，这是一项什么样的活动。</p>
+<p>A、生产活动</p>
+<p>B、创作活动</p>
+<p><strong>C、既是生产活动也是创作活动</strong></p>
+</li>
+</ul>
+<h2 id="第四章-软件过程模型和开发方法"><a href="#第四章-软件过程模型和开发方法" class="headerlink" title="第四章 软件过程模型和开发方法"></a>第四章 软件过程模型和开发方法</h2><h3 id="软件过程模型"><a href="#软件过程模型" class="headerlink" title="软件过程模型"></a>软件过程模型</h3><ul>
+<li><p>1、以下哪些过程模型支持迭代开发。</p>
+<p>A、瀑布模型</p>
+<p>B、增量模型</p>
+<p><strong>C、原型模型</strong></p>
+<p><strong>D、螺旋模型</strong></p>
+</li>
+<li><p>2、以下哪些模型可以有效应对软件需求的变化。</p>
+<p>A、瀑布模型</p>
+<p><strong>B、迭代模型</strong></p>
+<p><strong>C、原型模型</strong></p>
+<p>D、增量模型</p>
+</li>
+<li><p>3、瀑布模型、迭代模型、螺旋模型都是以文档为中心的，而非以代码为中心的，属于重型的软件开发方法。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>1、UP模型是以代码为中心的一类开发方法。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>2、软件过程不等同于软件生命周期，前者是对于开发而言的，后者是针对软件而言的。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>3、关于增量模型和迭代模型，以下哪些描述是正确的。</p>
+<p>A、都支持需求变化</p>
+<p><strong>B、都支持快速交付产品</strong></p>
+<p>C、都支持迭代软件开发</p>
+<p><strong>D、都属于重型软件开发方法</strong></p>
+</li>
+</ul>
+<h3 id="敏捷软件开发方法"><a href="#敏捷软件开发方法" class="headerlink" title="敏捷软件开发方法"></a>敏捷软件开发方法</h3><ul>
+<li><p>1、敏捷开发方法以代码为中心。</p>
+<p><strong>A、正确</strong> </p>
+<p>B、错误</p>
+</li>
+<li><p>2、敏捷开发方法具有哪些优点。</p>
+<p><strong>A、应对需求变化</strong></p>
+<p><strong>B、快速交付软件产品</strong></p>
+<p>C、软件质量要优于其他方法</p>
+<p>D、软件更加易于维护</p>
+</li>
+<li><p>3、Scrum、极限编程均属于特殊的敏捷开发方法，因而具有敏捷开发方法的基本特征。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>1、Scrum开发方法具有以下的特点。</p>
+<p><strong>A、迭代开发</strong></p>
+<p><strong>B、每个“Sprint”周期只实现某个功能</strong></p>
+<p><strong>C、持续交互产品</strong></p>
+<p>D、以质量为优先</p>
+</li>
+<li><p>2、关于测试驱动开发，哪些描述是不正确的。</p>
+<p><strong>A、只需要编写测试代码，无需编写功能代码</strong></p>
+<p><strong>B、需要同时编写测试代码和功能代码</strong></p>
+<p>C、先编写测试代码，再编写功能代码</p>
+<p><strong>D、先编写功能代码，再编写测试代码</strong></p>
+</li>
+</ul>
+<h3 id="群体化开发方法"><a href="#群体化开发方法" class="headerlink" title="群体化开发方法"></a>群体化开发方法</h3><ul>
+<li><p>1、群体化开发方法所依赖的软件开发者是开放的，而不是封闭的。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>2、群体化开发方法需要依赖于互联网平台来吸引大量的软件开发者群体。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>3、关于群体化开发方法，以下哪些阐述是正确的。</p>
+<p><strong>A、开发者包括核心开发者和外围开发者</strong></p>
+<p><strong>B、开发成果来自于群体的智慧</strong></p>
+<p><strong>C、群体化开发方法的成功实践之一是开源软件</strong></p>
+<p>D、由于开发群体数量大，质量难以保证</p>
+</li>
+<li><p>1、关于群体化开发的Issue机制，以下哪些描述是错误的。</p>
+<p>A、Issue用于支持开发任务管理</p>
+<p><strong>B、Issue就是指某个错误</strong></p>
+<p>C、任何人都可以提出Issue</p>
+<p>D、Issue机制体现了群体创作的理念</p>
+</li>
+<li><p>2、基于Git的分布式版本管理支持创建同一个软件的多个代码仓库，每个仓库由不同的开发人员进行管理，但是通常只有一个中心代码仓库。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>3、关于Pull&#x2F;Request机制，以下哪些描述是正确的。</p>
+<p><strong>A、支持群体的分布式协同开发</strong></p>
+<p><strong>B、允许开发者将其贡献的代码汇聚到中心仓库中</strong></p>
+<p>C、开发者只要提交了Pull&#x2F;Request，其代码就会被接纳到中心仓库中 </p>
+<p><strong>D、开发者所提交了Pull&#x2F;Request必须进行质量分析</strong></p>
+</li>
+<li><p>1、开源软件是通过群体化方法开发出来的。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>2、参与群体化开发人员的水平参差不齐，所编写代码的质量也不一样，因而群体化开发方法无法保证代码的质量。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>3、软件开发知识分享具有哪些方面的特点。</p>
+<p><strong>A、任何人都可以参与知识分享</strong></p>
+<p><strong>B、所分享知识的质量参差不齐，可能会有低质量甚至错误的知识</strong></p>
+<p>C、只有核心人员才有资格提问</p>
+<p><strong>D、需要依赖于互联网平台</strong></p>
+</li>
+</ul>
+<h2 id="第五章-软件需求工程基础"><a href="#第五章-软件需求工程基础" class="headerlink" title="第五章 软件需求工程基础"></a>第五章 软件需求工程基础</h2><p>###软件需求</p>
+<ul>
+<li><p>1、软件需求可能来自于哪些软件利益相关方。</p>
+<p><strong>A、用户</strong></p>
+<p><strong>B、客户</strong></p>
+<p>C、软件项目经理</p>
+<p><strong>D、软件开发者</strong></p>
+</li>
+<li><p>2、以下哪一项不属于合法的软件需求。</p>
+<p>A、用户需要某项功能</p>
+<p>B、用户需要某项性能</p>
+<p>C、用户要求在某个时间点交付产品</p>
+<p><strong>D、用户要求采用某种设计模式和技术来开发软件</strong></p>
+</li>
+<li><p>3、以下关于软件需求的描述，哪些项是不正确的。</p>
+<p>A、软件需求易于变化</p>
+<p>B、开源软件的需求通常来自于软件开发工程师 </p>
+<p>C、同一个需求可能来自于多个利益相关者，可能会存在冲突<strong>D、软件需求一旦确定就不允许变化</strong></p>
+</li>
+<li><p>1、需求工程师必须获得完整、准确和一致的软件需求，才能进行后续的软件开发。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>2、遗留的软硬件系统也可以作为软件的利益相关者，对待开发软件系统的需求提出要求。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+</ul>
+<h3 id="需求工程"><a href="#需求工程" class="headerlink" title="需求工程"></a>需求工程</h3><ul>
+<li><p>1、开展软件需求获取和分析，不仅需要需求工程的相关知识，也需要软件所对应领域工程的知识。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>2、需求获取工作可以一次性完成。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>3、下列哪些属于需求工程的活动。</p>
+<p><strong>A、需求获取和构思、需求建模和分析</strong></p>
+<p><strong>B、需求获取和构思、基于需求构建软件原型</strong></p>
+<p><strong>C、需求建模与分析、软件需求的管理</strong></p>
+<p>D、基于需求的软件设计、软件需求评审</p>
+</li>
+<li><p>1、软件需求工程需要具备哪些方面的知识和能力。</p>
+<p><strong>A、需求工程知识</strong></p>
+<p><strong>B、领域知识</strong></p>
+<p>C、软件设计能力</p>
+<p><strong>D、与用户沟通和协商的能力</strong></p>
+</li>
+<li><p>2、需求工程需要提供哪些技术手段来支持软件需求的获取和分析。</p>
+<p><strong>A、抽象和建模技术</strong></p>
+<p><strong>B、系统的需求工程步骤</strong></p>
+<p><strong>C、CASE工具和规范</strong></p>
+<p><strong>D、需求分析的策略</strong></p>
+</li>
+<li><p>3、需求工程的CASE工具可以提供哪些方面的辅助和支持。</p>
+<p><strong>A、编写需求文档</strong></p>
+<p><strong>B、绘制需求模型</strong></p>
+<p><strong>C、跟踪需求变化</strong></p>
+<p>D、开展需求的设计</p>
+</li>
+</ul>
+<h3 id="需求分析方法学"><a href="#需求分析方法学" class="headerlink" title="需求分析方法学"></a>需求分析方法学</h3><ul>
+<li><p>1、结构化需求分析方法学有多种，面向数据流的需求分析方法学仅仅是其中的一种。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>2、关于面向数据流的需求分析方法学，以下哪些描述是正确的。</p>
+<p><strong>A、该方法学只能用于描述和分析功能需求，无法刻画和分析非功能性需求</strong></p>
+<p><strong>B、软件系统的功能对应于有何数据以及对数据进行什么样的处理</strong></p>
+<p>C、该方法学可以用于描述和分析功能性和非功能性需求</p>
+<p>D、软件系统的性能对应于有何数据以及对数据进行什么样的处理</p>
+</li>
+<li><p>3、</p>
+<p>以下是一张数据流图，图中哪些图形化符号画错了。</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/WEBadc5587740613be2b5b495856963aceb?method=download&shareKey=1e79cc655b9119192ad2433c2efbe916" alt=","></p>
+<p><strong>A、外部实体</strong></p>
+<p>B、转换</p>
+<p><strong>C、数据流</strong></p>
+<p>D、数据存储</p>
+</li>
+<li><p>1、面向数据流的需求分析方法学体现了哪些方面的需求分析思想和原则。</p>
+<p><strong>A、抽象建模</strong></p>
+<p><strong>B、自顶向下、逐步求精</strong></p>
+<p>C、软件重用</p>
+<p>D、模块化</p>
+</li>
+<li><p>2、数据流图在精化过程中，需要保持哪些方面的平衡？</p>
+<p>A、数据流的平衡</p>
+<p>B、转换的平衡</p>
+<p>C、外部实体的平衡</p>
+<p><strong>D、父图和子图的平衡</strong></p>
+</li>
+<li><p>3、类是对象的实例，对象是类的模板。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>1、以下关于UML的陈述，哪些是正确的。</p>
+<p><strong>A、UML是一种建模语言，而不是程序设计语言</strong></p>
+<p><strong>B、UML支持对软件系统的多个视点进行建模，有助于获得软件系统的完整视图</strong></p>
+<p>C、UML模型可在计算机上执行</p>
+<p><strong>D、UML可建立图形化的软件模型，有助于加强对软件的直观理解和认识</strong></p>
+</li>
+<li><p>2、面向对象的方法既可对软件需求进行建模和分析，也可以对软件设计及实现进行建模和分析。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>3、UML提供了哪些图以对软件需求进行建模和分析。</p>
+<p><strong>A、用例图</strong></p>
+<p><strong>B、类图</strong></p>
+<p><strong>C、状态图</strong></p>
+<p>D、构件图</p>
+</li>
+<li><p>4、UML主要支持对软件的功能需求进行建模，无法对非功能性需求（如性能等）进行建模。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+</ul>
+<h3 id="需求工程的输出和评审"><a href="#需求工程的输出和评审" class="headerlink" title="需求工程的输出和评审"></a>需求工程的输出和评审</h3><ul>
+<li><p>1、需求工程完成后将输出哪些方面的软件制品。</p>
+<p><strong>A、软件需求模型</strong></p>
+<p><strong>B、软件需求文档</strong></p>
+<p><strong>C、软件需求原型</strong></p>
+<p>D、软件设计模型</p>
+</li>
+<li><p>2、软件需求文档采用图文并茂的方式，详细描述了软件系统的功能性和非功能性需求。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>3、软件需求缺陷存在哪些方面的表现形式。</p>
+<p><strong>A、没有如实地记录用户所提出的任何需求</strong></p>
+<p><strong>B、对软件需求的描述与用户的理解不一致</strong></p>
+<p><strong>C、多个软件需求项之间存在冲突</strong></p>
+<p><strong>D、对软件需求的描述不详尽，导致不清楚需求细节</strong></p>
+</li>
+<li><p>1、如果软件需求存在缺陷，会对软件开发带来什么样的后果。</p>
+<p><strong>A、导致设计存在缺陷</strong></p>
+<p><strong>B、导致代码存在缺陷</strong></p>
+<p><strong>C、影响软件开发进度</strong></p>
+<p><strong>D、无法满足用户要求</strong></p>
+</li>
+<li><p>2、软件需求确认（Requirement Validation）和软件需求验证（Requirement Verification）二个概念的内涵是一样的。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>3、软件需求的追溯管理涉及哪些工作。</p>
+<p><strong>A、追溯谁提出了需求变更</strong></p>
+<p><strong>B、追溯对需求进行了哪些变革</strong></p>
+<p><strong>C、追溯需求变更会对开发产生什么样的影响</strong></p>
+<p><strong>D、追溯需求变更的可行性</strong></p>
+</li>
+</ul>
+<h2 id="第六章-获取软件需求"><a href="#第六章-获取软件需求" class="headerlink" title="第六章 获取软件需求"></a>第六章 获取软件需求</h2><h3 id="获取软件需求的方法和过程"><a href="#获取软件需求的方法和过程" class="headerlink" title="获取软件需求的方法和过程"></a>获取软件需求的方法和过程</h3><ul>
+<li><p>1、其他的物理或软件系统也可以作为软件系统的利益相关者。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>2、软件开发者不能作为软件系统的利益相关者，提出软件系统的需求。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>3、有哪些方式可以获得软件需求。</p>
+<p><strong>A、听取客户或用户的意见</strong></p>
+<p><strong>B、听取软件开发者的建议</strong></p>
+<p><strong>C、听取互联网大众的意见</strong></p>
+<p>D、听取软件测试人员的意见</p>
+</li>
+<li><p>1、获取软件需求难在哪些方面。</p>
+<p><strong>A、软件利益相关者说不清楚软件需求是什么</strong></p>
+<p><strong>B、软件利益相关者区分不清哪些是软件需求、哪些不是软件需求</strong></p>
+<p><strong>C、软件利益相关者不掌握领域知识，导致提不出软件需求</strong></p>
+<p><strong>D、软件利益相关者没有投入时间来想定和构思软件需求</strong></p>
+</li>
+<li><p>2、有哪些常见的软件需求获取方法。</p>
+<p><strong>A、与软件利益相关者的面谈和会议</strong></p>
+<p><strong>B、针对软件利益相关者的业务调查问卷</strong></p>
+<p><strong>C、开发者实际体验业务</strong></p>
+<p><strong>D、开发者构思软件需求</strong></p>
+</li>
+<li><p>3、获取软件需求包含哪些方面的工作。</p>
+<p><strong>A、开展业务调查，明确软件开发的目的和动机，即明确软件要解决的问题</strong></p>
+<p><strong>B、采取多种方式和手段，从软件利益相关者哪里导出和构思软件需求</strong></p>
+<p>C、对获取的软件需求进行分析，以发现不一致和矛盾的软件需求 </p>
+<p><strong>D、尽可能描述清楚所获得的每一个软件需求</strong></p>
+</li>
+</ul>
+<h3 id="明确问题及基于软件的解决方案"><a href="#明确问题及基于软件的解决方案" class="headerlink" title="明确问题及基于软件的解决方案"></a>明确问题及基于软件的解决方案</h3><ul>
+<li><p>1、需求工程师需要与用户或客户一道，通过调研分析，明确待开发软件系统欲解决的问题，并确保问题有意义、有价值。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>2、只要是用户提出的问题，都值得交由软件来加以解决。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>3、任何问题都可以找到基于软件的解决方法。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+</ul>
+<h3 id="导出和构思软件需求"><a href="#导出和构思软件需求" class="headerlink" title="导出和构思软件需求"></a>导出和构思软件需求</h3><ul>
+<li><p>1、用户提出的任何要求都可以作为软件需求。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>2、相比较而言，软件的功能性需求比非功能性需求更为重要。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>3、非功能性需求包括哪些方面的需求。</p>
+<p>A、软件行为需求</p>
+<p><strong>B、软件开发约束需求</strong></p>
+<p><strong>C、软件质量需求</strong></p>
+<p>D、软件结构需求</p>
+</li>
+<li><p>4、任何软件需求都有其出处，也即都有提出该需求的相应利益相关者。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+</ul>
+<h3 id="描述和验证初步的软件需求"><a href="#描述和验证初步的软件需求" class="headerlink" title="描述和验证初步的软件需求"></a>描述和验证初步的软件需求</h3><ul>
+<li><p>1、可以采用哪些手段来描述获得的初步软件需求。</p>
+<p>A、UML类图</p>
+<p><strong>B、UML的用例图</strong></p>
+<p><strong>C、自然语言</strong></p>
+<p><strong>D、软件原型</strong></p>
+</li>
+<li><p>2、获取软件需求该项工作结束后，软件需求工程将可能产生哪些软件制品。</p>
+<p><strong>A、UML的用例图</strong></p>
+<p>B、UML的类图</p>
+<p><strong>C、用自然语言描述的初步软件需求文档</strong></p>
+<p><strong>D、软件原型</strong></p>
+</li>
+<li><p>3、用自然语言描述初步的软件需求存在哪些不足。</p>
+<p>A、有些初步软件需求无法用自然语言表述</p>
+<p><strong>B、自然语言描述存在二义性和歧义性问题</strong></p>
+<p>C、自然语言描述无法给出初步软件需求的详实信息</p>
+<p><strong>D、自然语言描述存在不直观的问题</strong></p>
+</li>
+<li><p>4、与自然语言描述相比较，软件原型的初步需求描述有何优点。</p>
+<p><strong>A、直观，易于理解初步软件需求</strong></p>
+<p><strong>B、易于发现初步软件需求描述中存在的问题</strong></p>
+<p>C、该方法比较简单</p>
+<p><strong>D、易于帮助用户导出更多的软件需求</strong></p>
+</li>
+<li><p>1、以下是一张UML用例图，请指出该图存在哪些问题。<img src="https://note.youdao.com/yws/api/personal/file/WEBbb12bd1a9247d20890c901611dc38310?method=download&shareKey=9894ce454b328efffb5cc0277dd7ee44" alt=" 用例图 "></p>
+<p><strong>A、执行者与用例之间的边不正确</strong></p>
+<p><strong>B、系统边界画的不正确</strong></p>
+<p>C、用例之间的关系不正确</p>
+<p>D、用例画的不正确</p>
+</li>
+<li><p>2、在用例图中，外部执行者与用例之间的边表示什么样的内涵。</p>
+<p>A、依赖关系</p>
+<p>B、继承关系</p>
+<p><strong>C、触发关系</strong></p>
+<p><strong>D、交互关系</strong></p>
+</li>
+<li><p>3、如果某项初步软件需求存在可行性问题，需求工程师和用户就需要斟酌是否将该项需求作为最终的软件需求。</p>
+<p>**A、正确 **</p>
+<p>B、错误</p>
+</li>
+</ul>
+<h2 id="第七章-分析软件需求"><a href="#第七章-分析软件需求" class="headerlink" title="第七章 分析软件需求"></a>第七章 分析软件需求</h2><h3 id="分析软件需求的任务和过程"><a href="#分析软件需求的任务和过程" class="headerlink" title="分析软件需求的任务和过程"></a>分析软件需求的任务和过程</h3><ul>
+<li><p>1、在获取软件需求阶段，所获得的初步软件需求还存在哪些方面的问题和不足。</p>
+<p><strong>A、有遗漏的需求</strong></p>
+<p><strong>B、需求描述不准确</strong></p>
+<p><strong>C、需求之间的关系不清晰</strong></p>
+<p>D、尚未形成需求文档</p>
+</li>
+<li><p>2、分析软件需求是要在获取软件需求的基础上，对需求进行进一步的建模、精化和细化。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>3、分析软件需求的任务是。</p>
+<p><strong>A、建立需求模型</strong></p>
+<p><strong>B、细化软件需求</strong></p>
+<p><strong>C、发现需求问题</strong></p>
+<p><strong>D、形成需求文档</strong></p>
+</li>
+</ul>
+<h3 id="软件需求模型及UML表示方法"><a href="#软件需求模型及UML表示方法" class="headerlink" title="软件需求模型及UML表示方法"></a>软件需求模型及UML表示方法</h3><ul>
+<li><p>1、需求分析人员需要从哪些视点来详细地刻画软件需求。</p>
+<p><strong>A、用例视点</strong></p>
+<p>B、构件视点</p>
+<p><strong>C、行为视点</strong></p>
+<p>D、部署视点</p>
+</li>
+<li><p>2、对软件需求进行多视点建模的目的是为了加强对软件需求的理解、描述和分析。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>3、用例视点的需求模型用UML的哪个图来描述。</p>
+<p>A、类图</p>
+<p>B、通信图</p>
+<p><strong>C、用例图</strong></p>
+<p>D、状态图</p>
+</li>
+<li><p>1、哪些UML的图可以用来描述软件需求的行为模型。</p>
+<p><strong>A、状态图</strong></p>
+<p>B、类图</p>
+<p><strong>C、顺序图</strong></p>
+<p><strong>D、通信图</strong></p>
+</li>
+<li><p>2、在需求分析阶段，可用类图来描述软件需求中的行为特征。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>3、状态图有助于加强对软件需求行为特征的理解、描述和分析。</p>
+<p>**A、正确 **</p>
+<p>B、错误</p>
+</li>
+</ul>
+<h3 id="分析和确定软件需求的优先级"><a href="#分析和确定软件需求的优先级" class="headerlink" title="分析和确定软件需求的优先级"></a>分析和确定软件需求的优先级</h3><ul>
+<li><p>1、对于用户而言，所有的软件需求都不可或缺，重要性是一样的。</p>
+<p>A、正确</p>
+<p>**B、错误 **</p>
+</li>
+<li><p>2、需求分析工程师可以考虑哪些方面的因素来确定软件需求的优先级。</p>
+<p>A、功能点的数量</p>
+<p>**B、需求的重要性 **</p>
+<p>**C、用户需要的紧迫程度 **</p>
+<p>D、需求的规模</p>
+</li>
+<li><p>3、在软件开发过程中，具有高优先级的软件需求需要进行优先的分析、设计和实现。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+</ul>
+<h3 id="建立和分析软件需求模型"><a href="#建立和分析软件需求模型" class="headerlink" title="建立和分析软件需求模型"></a>建立和分析软件需求模型</h3><ul>
+<li><p>1、需要为每个用例建立一个或者多个的交互模型，以获得关于这些用例的详实需求信息。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>2、软件需求模型所涉及的分析类主要包括以下几种。</p>
+<p><strong>A、实体类</strong></p>
+<p>B、虚拟类</p>
+<p><strong>C、边界类</strong></p>
+<p><strong>D、控制类</strong></p>
+</li>
+<li><p>3、如果类A的对象向类B的对象发消息M,那么意味着类B具有相应的职责和行为来处理消息M。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>4、如果类A的对象向类B的对象发送一个带有参数P的消息M,那么意味着类A和&#x2F;或类B具有与P相对应的属性。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>1、以下的顺序图存在哪些方面的绘图错误。 <img src="https://note.youdao.com/yws/api/personal/file/WEB01262adfc1b69860e840f954aba5ae1f?method=download&shareKey=2b4960e8f35eaa8ccb38b314ec112c1f" alt=" 顺序图 "></p>
+<p>A、LoginResult(FAILED)返回消息绘制错误</p>
+<p><strong>B、LoginUI对象没有活跃期</strong></p>
+<p><strong>C、LoginUI没有下划线</strong></p>
+<p><strong>D、Login（account, password）消息绘制错误</strong> </p>
+</li>
+<li><p>2、以下是一张分析类图，请说明哪些方面存在绘制错误。 <img src="https://note.youdao.com/yws/api/personal/file/WEB7da1e95b10d3501d72da9f079f9daa3c?method=download&shareKey=8c7d3ca14b06cac0f466cde2b750c009" alt=" 分析类图 "></p>
+<p><strong>A、类名不应该带有下划线</strong></p>
+<p><strong>B、带箭头的关系图符错误</strong></p>
+<p>C、不带箭头的关系图符错误</p>
+<p>D、每个类不应该带有《boundary》《control》《entity》等版类符号</p>
+</li>
+<li><p>3、在需求分析阶段，需要为每一个类建立起状态图。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+</ul>
+<h3 id="文档化、确认和验证软件需求"><a href="#文档化、确认和验证软件需求" class="headerlink" title="文档化、确认和验证软件需求"></a>文档化、确认和验证软件需求</h3><ul>
+<li><p>1、哪些人员需要参与软件需求文档的撰写工作。</p>
+<p><strong>A、用户</strong></p>
+<p><strong>B、客户</strong></p>
+<p><strong>C、需求工程师</strong></p>
+<p>D、设计工程师</p>
+</li>
+<li><p>2、哪些人员需要参与软件需求文档的评审</p>
+<p><strong>A、用户</strong></p>
+<p><strong>B、软件测试工程师</strong></p>
+<p>C、程序员</p>
+<p><strong>D、软件需求工程师</strong></p>
+</li>
+<li><p>3、基于UML的软件需求模型可能包括哪些UML图</p>
+<p>A、用例图、顺序图、类图、部署图</p>
+<p><strong>B、用例图、顺序图、类图、状态图</strong></p>
+<p>C、用例图、顺序图、类图、构件图</p>
+<p><strong>D、用例图、通信图、类图、状态图</strong></p>
+</li>
+</ul>
+<h2 id="第八章-软件设计基础"><a href="#第八章-软件设计基础" class="headerlink" title="第八章 软件设计基础"></a>第八章 软件设计基础</h2><h3 id="软件设计"><a href="#软件设计" class="headerlink" title="软件设计"></a>软件设计</h3><ul>
+<li><p>1、软件设计根据实际可有可无，软件开发主要是根据需求把代码编写出来。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>2、软构件作为设计元素的主要目的是为了促进对软构件的重用。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>3、高质量的软件设计应该具有哪些特性？</p>
+<p><strong>A、满足要求</strong></p>
+<p><strong>B、充分优化</strong></p>
+<p>C、尽量使用新技术</p>
+<p><strong>D、简单易懂</strong></p>
+</li>
+</ul>
+<h3 id="软件设计的过程和原则"><a href="#软件设计的过程和原则" class="headerlink" title="软件设计的过程和原则"></a>软件设计的过程和原则</h3><ul>
+<li><p>1、软件设计过程主要是形成软件设计规格说明，不需要进行管理。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>2、软件设计过程是迭代的，需要对不完善的设计制品进行不断迭代</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>3、设计约束包括哪些方面</p>
+<p><strong>A、资源约束</strong></p>
+<p>B、领导意图</p>
+<p><strong>C、技术制约</strong></p>
+<p>D、功能需求</p>
+</li>
+<li><p>4、软件设计工程师需要较高的技术水平和丰富经验，其余都不重要。</p>
+<p>A、正确</p>
+<p>**B、错误 **</p>
+</li>
+</ul>
+<h3 id="结构化软件设计方法学"><a href="#结构化软件设计方法学" class="headerlink" title="结构化软件设计方法学"></a>结构化软件设计方法学</h3><ul>
+<li><p>1、面向数据流的结构化软件设计方法在当前已经完全过时了。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>2、变换型数据流图中包括</p>
+<p><strong>A、输入流</strong></p>
+<p><strong>B、输出流</strong></p>
+<p>C、事务中心</p>
+<p><strong>D、交换流</strong></p>
+</li>
+<li><p>3、变换型和事务型数据流图的设计过程完全相同。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>1、数据流图经过转换后，得到什么样的设计模型。</p>
+<p>A、设计类图</p>
+<p>B、流图</p>
+<p><strong>C、层次化的软件模块图</strong></p>
+<p>D、构件图</p>
+</li>
+<li><p>2、变换型数据流图中的变换流可能有多个转换，事务型数据流图中的事务中心只对应于一个转换。</p>
+<p>**A、正确 **</p>
+<p>B、错误</p>
+</li>
+<li><p>3、结构化软件设计方法学包含有多种方法，面向数据流的软件设计方法学只是其中的一种。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+</ul>
+<h3 id="面向对象软件设计方法学"><a href="#面向对象软件设计方法学" class="headerlink" title="面向对象软件设计方法学"></a>面向对象软件设计方法学</h3><ul>
+<li><p>1、面向对象软件从需求模型到设计模型是精化过程，而不是转换过程。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>2、面向对象软件设计原则包括</p>
+<p>A、尽量开放原则</p>
+<p><strong>B、接口隔离原则</strong></p>
+<p><strong>C、依赖倒置原则</strong></p>
+<p><strong>D、最少知识原则</strong></p>
+</li>
+<li><p>3、与结构化设计方法学相比较，面向对象的软件设计有何优势？</p>
+<p>A、技术更为简单</p>
+<p><strong>B、采用精化而非转换的方法</strong></p>
+<p><strong>C、支持粗粒度的软件重用</strong></p>
+<p><strong>D、与分析采用相同的概念模型</strong></p>
+</li>
+</ul>
+<h3 id="软件设计的CASE工具"><a href="#软件设计的CASE工具" class="headerlink" title="软件设计的CASE工具"></a>软件设计的CASE工具</h3><ul>
+<li><p>1、下面哪些既是需求分析工具也是设计工具。</p>
+<p>A、Juint</p>
+<p><strong>B、StarUML</strong></p>
+<p><strong>C、IBM Rational Rose</strong></p>
+<p>D、Visual Studio</p>
+</li>
+<li><p>2、Microsoft Office和WPS可以作为软件设计CASE工具，支持软件设计文档的编写。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>3、软件设计工具通常可以提供哪些方面的支持。</p>
+<p><strong>A、生成设计模型</strong></p>
+<p><strong>B、生成需求模型</strong></p>
+<p>C、绘制设计模型</p>
+<p><strong>D、检查设计模型的质量</strong></p>
+</li>
+</ul>
+<h3 id="软件设计的输出、评审和管理"><a href="#软件设计的输出、评审和管理" class="headerlink" title="软件设计的输出、评审和管理"></a>软件设计的输出、评审和管理</h3><ul>
+<li><p>1、软件设计模型包括哪些内容。</p>
+<p><strong>A、类图</strong></p>
+<p><strong>B、活动图</strong></p>
+<p>C、用例图</p>
+<p><strong>D、用例交换图</strong></p>
+</li>
+<li><p>2、软件设计评审一般只需要软件设计人员参加，程序员不需要参加。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>3、 软件设计通常会存在哪些方面的质量问题。</p>
+<p><strong>A、没有遵循和满足需求</strong></p>
+<p><strong>B、设计不够详尽，无法指导编程</strong></p>
+<p><strong>C、设计存在矛盾和不一致</strong></p>
+<p><strong>D、软件设计的模块化、重用程度不高</strong></p>
+</li>
+</ul>
+<h3 id="软件设计管理"><a href="#软件设计管理" class="headerlink" title="软件设计管理"></a>软件设计管理</h3><ul>
+<li><p>1、软件设计制品通过评审后就不需要再进行更多管理了。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+</ul>
+<h2 id="第九章-软件体系结构设计"><a href="#第九章-软件体系结构设计" class="headerlink" title="第九章 软件体系结构设计"></a>第九章 软件体系结构设计</h2><h3 id="软件体系结构设计概述"><a href="#软件体系结构设计概述" class="headerlink" title="软件体系结构设计概述"></a>软件体系结构设计概述</h3><ul>
+<li><p>1、对于复杂的软件系统需要设计体系结构，简单的软件就不需要了。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>2、软件体系结构就只是一个模型，不需要从多个视点或不同层次来刻画。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>3、下面属于软件体系结构风格的有哪些？</p>
+<p><strong>A、管道&#x2F;过滤器</strong></p>
+<p><strong>B、层次</strong></p>
+<p><strong>C、MVC</strong></p>
+<p>D、适配器</p>
+</li>
+<li><p>1、每个软件开发都应该从已有的体系结构风格中选择一个来直接使用，无需对体系结构风格进行必要的修改。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>2、软件体系结构在软件开发中起到承上启下、影响全局的作用，非常重要。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>3、可以用哪些图来描述软件体系结构。</p>
+<p><strong>A、包图</strong></p>
+<p>B、用例图</p>
+<p><strong>C、部署图</strong></p>
+<p>D、顺序图</p>
+</li>
+<li><p>1、软件体系结构由哪些要素组成。</p>
+<p><strong>A、构件或模块</strong></p>
+<p>B、数据流</p>
+<p><strong>C、连接子</strong></p>
+<p><strong>D、约束和限制</strong></p>
+</li>
+<li><p>2、可以从哪些视点来描述软件体系结构。 </p>
+<p><strong>A、逻辑构成视点</strong></p>
+<p><strong>B、物理部署视点</strong></p>
+<p><strong>C、程序开发视点</strong></p>
+<p><strong>D、代码运行视点</strong></p>
+</li>
+<li><p>3、软件非功能性需求在软件体系结构设计中发挥着关键性的作用。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+</ul>
+<h3 id="软件体系结构模型的表示方法"><a href="#软件体系结构模型的表示方法" class="headerlink" title="软件体系结构模型的表示方法"></a>软件体系结构模型的表示方法</h3><ul>
+<li><p>1、类图不能用来描述软件体系结构</p>
+<p>A、正确 </p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>2、部署图中的边包括</p>
+<p><strong>A、计算节点之间的通信关联</strong></p>
+<p><strong>B、软件制品之间的依赖关系</strong></p>
+<p>C、节点之间的继承关系</p>
+<p><strong>D、软件制品与构件之间的依赖关系</strong></p>
+</li>
+<li><p>3、构件图中的构件接口包括</p>
+<p><strong>A、供给接口</strong></p>
+<p>B、实现接口</p>
+<p><strong>C、需求接口</strong></p>
+<p>D、转换接口</p>
+</li>
+</ul>
+<h3 id="软件体系结构设计过程"><a href="#软件体系结构设计过程" class="headerlink" title="软件体系结构设计过程"></a>软件体系结构设计过程</h3><ul>
+<li><p>1、软件体系结构的设计是一个迭代的过程。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>2、软件体系结构设计过程要形成哪些制品</p>
+<p><strong>A、体系结构设计文档</strong></p>
+<p><strong>B、体系结构模型</strong></p>
+<p>C、详细设计文档</p>
+<p><strong>D、软件部署模型</strong></p>
+</li>
+</ul>
+<h3 id="设计初步的软件体系结构"><a href="#设计初步的软件体系结构" class="headerlink" title="设计初步的软件体系结构"></a>设计初步的软件体系结构</h3><ul>
+<li><p>1、影响软件体系结构初步设计的关键软件需求有何特点。</p>
+<p><strong>A、核心、基础的需求</strong></p>
+<p><strong>B、对软件系统影响大的质量需求</strong></p>
+<p><strong>C、重要开发约束需求</strong></p>
+<p><strong>D、实现难度大、风险高的需求</strong></p>
+</li>
+<li><p>2、软件体系结构设计师应结合自己的开发经验来选择合适的软件体系结构风格，从而来开展软件体系结构设计</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>3、软件架构师需根据选定的软件体系结构风格，依据关键软件需求，进一步确定软件体系结构中的软件模块、每个模块的职责、模块间的逻辑关系，形成软件系统体系结构的逻辑视图。</p>
+<p>**A、正确 **</p>
+<p>B、错误</p>
+</li>
+</ul>
+<h3 id="重用已有软件资源"><a href="#重用已有软件资源" class="headerlink" title="重用已有软件资源"></a>重用已有软件资源</h3><ul>
+<li><p>1、重用已有软件资源就是要找到完全符合自己需求的相关制品</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>2、在软件体系结构设计阶段，可重用的软件资源包括。</p>
+<p><strong>A、云服务</strong></p>
+<p><strong>B、开源软件</strong></p>
+<p>C、代码片段</p>
+<p><strong>D、软构件</strong></p>
+</li>
+<li><p>3、可以从哪些地方寻找可重用的软件资源</p>
+<p><strong>A、历史项目库</strong></p>
+<p><strong>B、开源社区</strong></p>
+<p><strong>C、网络中的云服务</strong></p>
+<p>D、对其他公司制品进行破解</p>
+</li>
+</ul>
+<h3 id="精化软件体系结构"><a href="#精化软件体系结构" class="headerlink" title="精化软件体系结构"></a>精化软件体系结构</h3><ul>
+<li><p>1、软件系统的基础服务包括</p>
+<p><strong>A、数据持久服务</strong></p>
+<p><strong>B、隐私保护服务</strong></p>
+<p><strong>C、安全控制服务</strong></p>
+<p><strong>D、消息通讯服务</strong></p>
+</li>
+<li><p>2、软件系统中的子系统、构件、设计类等设计元素是在详细设计阶段才确定的</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>3、以下哪些元素属于设计元素。</p>
+<p>A、用例</p>
+<p>B、交互图</p>
+<p><strong>C、构件</strong></p>
+<p><strong>D、模块</strong></p>
+</li>
+</ul>
+<h3 id="设计软件部署模型"><a href="#设计软件部署模型" class="headerlink" title="设计软件部署模型"></a>设计软件部署模型</h3><ul>
+<li><p>1、软件部署模型只需要描述系统物理节点的结构。（答案B） A. 正确  B. 错误</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>2、软件的部署模型描述了哪些方面的信息。</p>
+<p><strong>A、计算节点</strong></p>
+<p><strong>B、软构件</strong></p>
+<p><strong>C、软件制品</strong></p>
+<p><strong>D、节点之间的交互</strong></p>
+</li>
+<li><p>3、部署图中的计算节点既可以是计算机，也可以是诸如手机、可穿戴设备等嵌入式设备。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+</ul>
+<h3 id="文档化和评审软件系统结构设计"><a href="#文档化和评审软件系统结构设计" class="headerlink" title="文档化和评审软件系统结构设计"></a>文档化和评审软件系统结构设计</h3><ul>
+<li><p>1、软件体系结构设计文档可作为单独的文档，加以撰写和管理。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>2、软件体系结构设计评审的任务是要看体系结构的设计是否满足软件需求要求。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>3、软件体系结构评审要关注的主要问题包括</p>
+<p><strong>A、满足性</strong></p>
+<p><strong>B、可追踪性</strong></p>
+<p><strong>C、优化性</strong></p>
+<p>D、创新性</p>
+</li>
+</ul>
+<h2 id="第十章-软件用户界面设计"><a href="#第十章-软件用户界面设计" class="headerlink" title="第十章 软件用户界面设计"></a>第十章 软件用户界面设计</h2><h3 id="用户界面设计概述"><a href="#用户界面设计概述" class="headerlink" title="用户界面设计概述"></a>用户界面设计概述</h3><ul>
+<li><p>1、一个软件采用哪种人机交互方式，需要结合软件的特征和用户的需求考虑。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>2、用户只和软件界面进行交互，看不到内部，所以界面设计比其他设计更重要。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>3、用户也可通过语音、手势等方式也可以与软件进行交互，因此人机交互的方式多种多样。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+</ul>
+<h3 id="用户界面组成及表示方法"><a href="#用户界面组成及表示方法" class="headerlink" title="用户界面组成及表示方法"></a>用户界面组成及表示方法</h3><ul>
+<li><p>1、用户界面设计模型一般用可以展示原型的工具进行设计，采用类图、顺序图等进行界面设计没有必要</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>2、下面属于动态界面元素的是</p>
+<p>A、确认按钮</p>
+<p>B、窗口中不变的图标</p>
+<p><strong>C、随用户选择变化的文本</strong></p>
+<p>D、多选框</p>
+</li>
+<li><p>3、以下是word界面的一个截图，包含3个界面元素，第一个是“自动保存”的文字描述，用户点击后面二个图元可以设置自动保存模式，保存当前的文件。这三个界面元素分别属于什么形式的界面元素。 <img src="https://note.youdao.com/yws/api/personal/file/WEB4b43c511bc3630e99d2b3c99cd41a42b?method=download&shareKey=53af0183a1e6374904b554aca7977e10" alt=","></p>
+<p><strong>A、静态元素、输入元素、命令元素</strong></p>
+<p>B、动态元素、输入元素、输入元素</p>
+<p>C、静态元素、动态元素、输入元素</p>
+<p>D、动态元素、静态元素、输入元素</p>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>静态元素，负责向用户显示某些信息，但是这些信息在软件运行过程中不会发生变化，如静态文本，图标、图形、图像等。</li>
+<li>动态元素，负责向用户显示某些信息，但是这些信息会随软件系统的运行状况而展示不同的内容，且显示的内容不允许用户来直接修改，如不可编辑的文本，图标、图形、图像等。</li>
+<li>用户输入元素，采用可编辑的文本、单选钮（radio button）、多选框（checkbox）、选择列表（select list）等形式，接受用户的信息输入。</li>
+<li>用户命令元素，负责接受用户的命令输入，以触发后端的业务逻辑处理或刷新界面，如点击按钮、菜单、超链等。</li>
+</ul>
+</blockquote>
+<ul>
+<li><p>1、图形化的用户界面可以用UML的什么模型来表示。</p>
+<p>A、包图</p>
+<p>B、顺序图</p>
+<p><strong>C、类图</strong></p>
+<p>D、状态图</p>
+</li>
+<li><p>2、图形化用户界面的跳转关系可以用UML的什么图来表示。</p>
+<p>A、包图</p>
+<p><strong>B、顺序图</strong></p>
+<p><strong>C、类图</strong></p>
+<p>D、用例图</p>
+</li>
+<li><p>3、以下是word界面的一个截图，该图中包含哪些界面元素。 <img src="https://note.youdao.com/yws/api/personal/file/WEBf5753c47942f91ed6faffe402b894143?method=download&shareKey=8b32099bfb005c109c6059ff33aecbfe" alt=","></p>
+<p>A、动态元素</p>
+<p><strong>B、静态元素</strong></p>
+<p><strong>C、输入元素</strong></p>
+<p>D、命令元素</p>
+</li>
+</ul>
+<h3 id="用户界面设计的过程和原则"><a href="#用户界面设计的过程和原则" class="headerlink" title="用户界面设计的过程和原则"></a>用户界面设计的过程和原则</h3><ul>
+<li><p>1、用户界面设计的原则包括</p>
+<p><strong>A、直观性</strong></p>
+<p><strong>B、易操作性</strong></p>
+<p>C、个性化</p>
+<p><strong>D、人性化</strong></p>
+</li>
+</ul>
+<blockquote>
+<p>用户界面设计要自始至终遵循以用户为中心的基本原则，即要从用户的角度、站在他们的立场来开展用户界面的设计，以支持用户方便操作和灵活使用软件为目标，以用户的意见、建议、反馈等为准绳来不断地优化和改进用户界面设计，以用户是否满意为基准来判断用户界面设计的好坏。</p>
+<ul>
+<li>直观性</li>
+<li>易操作性</li>
+<li>一致性</li>
+<li>反应性</li>
+<li>容错性</li>
+<li>人性化</li>
+</ul>
+</blockquote>
+<h3 id="用户界面的初步设计"><a href="#用户界面的初步设计" class="headerlink" title="用户界面的初步设计"></a>用户界面的初步设计</h3><ul>
+<li><p>1、用户界面的初步设计需要设计出较为完善的用户界面原型</p>
+<p>A、正确</p>
+<p>**B、错误 **</p>
+</li>
+</ul>
+<blockquote>
+<p>该项设计活动旨在依据需求用例模型和用例交互模型，明确目标软件系统存在哪些输入和输出、需要哪些用户界面、这些用户界面有哪些界面设计元素。用户界面设计工程师需要开展以下工作，以完成初步的用户界面设计。</p>
+<p> 1.构思用户界面的设计元素。</p>
+<p> 2.确定用户界面的操作。 </p>
+</blockquote>
+<h3 id="建立用户界面间的跳转关系"><a href="#建立用户界面间的跳转关系" class="headerlink" title="建立用户界面间的跳转关系"></a>建立用户界面间的跳转关系</h3><ul>
+<li><p>1、用户操作软件系统的主界面指用户开始使用某项用例时系统呈现出来的界面</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>2、应尽量把界面元素放在一起，减少界面之间的跳转</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+</ul>
+<blockquote>
+<p>用户界面之间存在一定的逻辑关系，有主次之分，存在跳转关系。在本步骤，用户界面设计工程师需要标识和分析用户界面之间的上述关系。</p>
+<ul>
+<li>首先要标识出用户操作软件系统的主界面。</li>
+<li>其次要标识和表示不同用户界面之间的跳转关系。</li>
+</ul>
+<p>UML的交互图和类图可用来表示用户界面间的跳转关系。前者表示特定应用场景下的用户界面跳转及跳转发生时的消息传递，后者借助有向关联关系表示在目标软件系统中不同界面间可能发生的跳转及跳转的原因。</p>
+</blockquote>
+<h3 id="精化用户界面设计"><a href="#精化用户界面设计" class="headerlink" title="精化用户界面设计"></a>精化用户界面设计</h3><ul>
+<li><p>1、精化用户界面设计的工作包括</p>
+<p><strong>A、查漏补缺</strong></p>
+<p><strong>B、优化设计</strong></p>
+<p><strong>C、保持一致</strong></p>
+<p>D、实现最终界面</p>
+</li>
+</ul>
+<blockquote>
+<p>用户界面设计工程师需要对每个用户界面进行精心的设计，以得到更为具体、完整、优化和友好的用户界面。它主要包括以下几个方面的工作。</p>
+<ul>
+<li>查漏补缺，补充用户界面中遗漏的界面设计元素，形成完整的用户界面模型。</li>
+<li>建立跳转，将用户界面的跳转动作与相关的界面元素及其操作事件关联起来，建立起关于界面跳转的详细工作流程。</li>
+<li>优化设计，结合用例中用户与软件系统的交互，探讨将用户界面进行合并和拆分的可能性。</li>
+<li>调整布局，对用户界面中的多个界面元素进行组织和布局，需要考虑将哪些界面元素组织在一个区域以加强用户对用户界面的理解，简便用户的操作；需要将哪些界面元素按照什么样的方式进行对齐，以提高界面的美观性。</li>
+<li>美化界面，对界面元素进行美化，以提升界面元素的美观性。</li>
+<li>保持一致，确保软件系统中不同用户界面的风格的一致性。</li>
+<li>调整模型，同步修改用户界面的UML模型，以确保用户界面与其描述模型二者之间的一致性。</li>
+</ul>
+</blockquote>
+<h3 id="用户界面设计的输出"><a href="#用户界面设计的输出" class="headerlink" title="用户界面设计的输出"></a>用户界面设计的输出</h3><ul>
+<li><p>1、用户界面设计的输出就是最终实现的软件界面。</p>
+<p>A、正确</p>
+<p>**B、错误 **</p>
+</li>
+<li><p>2、用户界面设计的评审需要用户参与。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+</ul>
+<blockquote>
+<h4 id="用户界面设计的输出制品"><a href="#用户界面设计的输出制品" class="headerlink" title="用户界面设计的输出制品"></a>用户界面设计的输出制品</h4><p>软件用户界面的设计活动结束之后，将产生目标软件系统的以下软件制品：</p>
+<ul>
+<li>可运行的用户界面原型</li>
+<li>用户界面的设计模型</li>
+</ul>
+<h4 id="用户界面设计评审"><a href="#用户界面设计评审" class="headerlink" title="用户界面设计评审"></a>用户界面设计评审</h4><p>用户界面设计完成之后，用户界面设计工程师需要邀请用户、程序员、软件详细设计工程师等多方，对用户界面设计模型及原型进行验证和评审。</p>
+<ul>
+<li>用户界面是否反映了软件需求。</li>
+<li>用户界面是否符合用户的操作习惯和要求。</li>
+<li>用户界面的风格是否一致。</li>
+<li>用户界面及其设计元素是否美观和直观，易于理解。</li>
+<li>用户界面的布局是否合理，跳转是否流畅，界面跳转与用例中的交互动作序列在逻辑上是否协调一致。</li>
+<li>用户界面的原型展示与其UML模型描述二者之间是否一致，用户界面的类图和顺序图二个模型之间是否一致。</li>
+<li>用户界面的不同设计元素之间是否一致。</li>
+</ul>
+</blockquote>
+<h3 id="评审用户界面设计"><a href="#评审用户界面设计" class="headerlink" title="评审用户界面设计"></a>评审用户界面设计</h3><ul>
+<li><p>1、用户界面设计的评审需要用户的深度参与。</p>
+<p>**A、正确 **</p>
+<p>B、错误</p>
+</li>
+</ul>
+<blockquote>
+<h4 id="软件体系结构设计评审"><a href="#软件体系结构设计评审" class="headerlink" title="软件体系结构设计评审"></a>软件体系结构设计评审</h4><p>    用户界面设计完成之后，用户界面设计工程师需要邀请用户、程序员、软件详细设计工程师等多方，对用户界面设计模型及原型进行验证和评审。</p>
+<ul>
+<li>用户界面是否反映了软件需求。</li>
+<li>用户界面是否符合用户的操作习惯和要求。</li>
+<li>用户界面的风格是否一致。</li>
+<li>用户界面及其设计元素是否美观和直观，易于理解。</li>
+<li>用户界面的布局是否合理，跳转是否流畅，界面跳转与用例中的交互动作序列在逻辑上是否协调一致。</li>
+<li>用户界面的原型展示与其UML模型描述二者之间是否一致，用户界面的类图和顺序图二个模型之间是否一致。</li>
+<li>用户界面的不同设计元素之间是否一致。</li>
+</ul>
+</blockquote>
+<h2 id="第十一章-软件详细设计"><a href="#第十一章-软件详细设计" class="headerlink" title="第十一章 软件详细设计"></a>第十一章 软件详细设计</h2><h3 id="软件详细设计概述和UML建模"><a href="#软件详细设计概述和UML建模" class="headerlink" title="软件详细设计概述和UML建模"></a>软件详细设计概述和UML建模</h3><ul>
+<li><p>1、软件详细设计是体系结构设计与软件实现间的“桥梁”，相对于软件体系结构设计，它更加关注软件的“实现”，是体系结构设计得到落实的“关键”。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>2、软件详细设计阶段需要针对哪些设计元素进行精化和细化。</p>
+<p><strong>A、子系统</strong></p>
+<p><strong>B、构件</strong></p>
+<p><strong>C、关键设计类</strong></p>
+<p><strong>D、用户界面类</strong></p>
+</li>
+<li><p>3、在体系结构设计阶段，每个设计元素都是一个“黑盒子”，软件架构师仅给出了这些设计元素的职责划分以及对外接口，软件详细设计则是要给出这些设计元素的内部细节信息，让每个设计元素从“黑盒子”变为“白盒子”，进而指导后续的编码实现。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>4、对一个关键类的详细设计，只要给出该类包含的所有成员变量和成员方法就可以了。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+</ul>
+<blockquote>
+<h4 id="软件详细设计"><a href="#软件详细设计" class="headerlink" title="软件详细设计"></a>软件详细设计</h4><p>    软件详细设计是软件体系结构设计与软件实现之间的桥梁，不同于软件体系结构设计，软件详细设计是从微观和局部的视角，对软件体系结构设计和用户界面设计的设计元素（包括子系统、构件、用户界面类、关键设计类等）做进一步的精化和细化，给出软件系统的细节性、细粒度和底层的设计信息，用以指导后续的软件实现工作。     软件体系结构设计和用户界面设计会产生一组软件设计元素，包括子系统、构件、用户界面类、关键设计类等。在软件体系结构设计阶段，软件架构师仅仅给出了这些设计元素的职责划分，明确了设计元素的对外接口，这些设计元素还都是一个个“黑盒子”，不清楚其内部有哪些具体的设计细节，如软构件内部有哪些具体的设计类，每个设计类内部有哪些属性和方法，每个方法采用什么样的算法来实现其功能的。详细设计就是要给出这些设计元素的内部细节信息，让每个设计元素从“黑盒子”变为“白盒子”，进而来指导后续这些设计元素的编码实现。</p>
+<h4 id="软件详细设计的任务和过程"><a href="#软件详细设计的任务和过程" class="headerlink" title="软件详细设计的任务和过程"></a>软件详细设计的任务和过程</h4><p>    软件详细设计的任务是对体系结构设计和用户界面设计成果进行细化和精化，获得高质量、面向实现的详细设计模型。如图10.1所示，软件详细设计的输入包括软件需求、软件体系结构设计、软件用户界面设计、以及软件实现的约束和限制，最终产生软件详细设计模型和文档。 <img src="https://note.youdao.com/yws/api/personal/file/WEBb240c9a541aefc26f12cccebd8aefa1c?method=download&shareKey=eea5c35550959008bcb5b766ecf43310" alt=","></p>
+<p>    软件详细设计包括用例设计、类设计、数据设计、子系统&#x2F;构件设计、文档化和评审软件详细设计五个步骤。</p>
+<ul>
+<li>用例设计：给出用例的具体实现解决方案，即详细描述用例是如何通过各个设计元素（包括子系统、软构件、设计类、用户界面类等）的交互和协作来完成的。</li>
+<li>类设计：给出每一个设计类的具体细节，包括类的属性定义、方法的实现算法等，使得程序员能够基于类设计给出这些类的实现代码。</li>
+<li>数据设计：数据设计是要对软件所涉及的持久数据及其操作进行设计，明确持久数据的存储方式和格式，细化对数据进行操作（如写入、读出、修改、删除、查询等）的实现细节。</li>
+<li>子系统&#x2F;软构件设计：针对粗粒度的子系统和构件，给出其细粒度的设计元素，明确这些设计元素之间的协作关系，使得它们能够实现子系统&#x2F;构件接口所规定的功能和服务。</li>
+<li>文档化和评审软件详细设计：通过文档描述软件详细设计的具体信息及成果，并组织软件详细设计的软件制品（包括设计模型和文档）进行评审，以发现和纠正存在的问题和不足。</li>
+</ul>
+<p><img src="https://note.youdao.com/yws/api/personal/file/WEBf1cbd6ede441ad33f01991e267089eae?method=download&shareKey=6c180a4383c724f29b64ebfc664f1e88" alt=" , "></p>
+<h4 id="软件详细设计的原则"><a href="#软件详细设计的原则" class="headerlink" title="软件详细设计的原则"></a>软件详细设计的原则</h4><p>    软件详细设计除了要遵循模块化、高内聚度、低耦合度、信息隐藏等设计原则之外，还需要结合软件详细设计的具体要求，遵循以下原则。</p>
+<ul>
+<li>针对软件需求：设计模型能够支持所有软件需求项；</li>
+<li>深入优化设计：从可靠性、可重用性等软件质量视角对详细设计进行优化；</li>
+<li>设计足够详细：设计模型详实到足以支持程序员编码；</li>
+<li>充分软件重用：从不同维度和层次进行软件重用，提高软件开发效率和质量，减低开发成本。</li>
+</ul>
+<h4 id="详细设计的表示方法及UML活动图"><a href="#详细设计的表示方法及UML活动图" class="headerlink" title="详细设计的表示方法及UML活动图"></a>详细设计的表示方法及UML活动图</h4><p>    软件详细设计会产生一系列的软件设计模型，它们可用UML的相关图加以表示。例如，用交互图，尤其是顺序图，来表示用例设计的结果；用类图来刻画类设计和子系统设计的结果；用构件图来表示软构件的设计；用状态图来表示特定类对象的状态变迁等；用活动图来表示多个类对象的交互和协作等。     活动图用于描述实体为完成某项功能而执行的操作序列，它刻画了实体的动态行为特征。</p>
+</blockquote>
+<ul>
+<li><p>1、软件详细设计包括____。</p>
+<p><strong>A、用例设计</strong></p>
+<p>B、界面设计</p>
+<p><strong>C、关键类设计</strong></p>
+<p><strong>D、数据设计</strong></p>
+</li>
+<li><p>2、软件详细设计原则包括____。</p>
+<p><strong>A、模块化和信息隐藏</strong></p>
+<p><strong>B、高内聚、低耦合</strong></p>
+<p><strong>C、针对软件需求</strong></p>
+<p><strong>D、深入优化设计</strong></p>
+</li>
+<li><p>3、下面对软件详细设计模型的表示描述正确的是____。</p>
+<p><strong>A、用顺序图来表示用例设计</strong></p>
+<p><strong>B、用类图、状态图和活动图来表示类设计</strong></p>
+<p><strong>C、用E-R图和类图来表示数据设计</strong></p>
+<p><strong>D、用构件图来表示构件设计</strong></p>
+</li>
+<li><p>4、详细设计中“详细”是指设计要提供足够多的细节，可有效支持编码实现。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>1、详细设计是在软件体系结构设计的基础上开展，无需参考软件需求。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>2、以下关于UML活动图的描述，哪些是正确的。</p>
+<p>A、用于描述结构特征</p>
+<p><strong>B、用于描述行为特征</strong></p>
+<p><strong>C、可刻画对象的并发和同步动作</strong></p>
+<p><strong>D、可用于刻画操作流程</strong></p>
+</li>
+<li><p>3、以下是一个活动图，该图存在哪些错误。 <img src="https://note.youdao.com/yws/api/personal/file/WEB74917fa9f08b5749ab445eb3012345ac?method=download&shareKey=a6fca25f751653318a76260db3bc57d5" alt=" ， "></p>
+<p><strong>A、LoginUI、LoginManager应该有下划线以表示对象</strong></p>
+<p><strong>B、终止节点不应有外出的连线</strong></p>
+<p>C、箭头符号出错</p>
+<p>D、泳道绘制出错</p>
+</li>
+</ul>
+<h3 id="面向对象详细设计模式"><a href="#面向对象详细设计模式" class="headerlink" title="面向对象详细设计模式"></a>面向对象详细设计模式</h3><ul>
+<li><p>1、使用软件设计模式可以起到什么作用</p>
+<p><strong>A、使软件设计更加规范化，代码编写更为工程化</strong></p>
+<p><strong>B、提高软件开发效率，缩短软件开发周期</strong></p>
+<p><strong>C、提高软件设计的质量</strong></p>
+<p><strong>D、提高软件设计工程师以及程序员的逻辑思维能和抽象分析能力</strong></p>
+</li>
+<li><p>2、下面关于单例模式的描述中正确的是</p>
+<p><strong>A、单例模式适用于那些一个类只允许实例化一个对象的场景</strong></p>
+<p><strong>B、单例模式通过将构造函数设为私有函数来避免对类进行实例化操作</strong></p>
+<p>C、单例模式提供一个全局的实例对象变量</p>
+<p><strong>D、单例模式中在不同地方调用getInstance()函数返回的都是同一个实例化对象</strong></p>
+</li>
+<li><p>3、下面关于观察者模式的描述中正确的是</p>
+<p><strong>A、观察者模式适用于当某对象状态发生改变时，需要通知其所有依赖该对象的应用场景</strong></p>
+<p>B、在观察者模式中，所有的观察者应该都是同一类型的</p>
+<p>C、在观察者模式中，需要在每个具体目标里面保存其所有的观察者</p>
+<p><strong>D、使用观察者模式可有效降低目标主题与观察者之间的耦合关系</strong></p>
+</li>
+</ul>
+<h3 id="用例设计"><a href="#用例设计" class="headerlink" title="用例设计"></a>用例设计</h3><ul>
+<li><p>1、下面关于用例设计的描述中正确的是____。</p>
+<p><strong>A、用例设计阶段需要对需求分析阶段的每一个用例都进行设计</strong></p>
+<p><strong>B、用例设计的主要目标是设计每个用例的具体实现方案</strong></p>
+<p>C、用例设计阶段的用例实现图和设计类图与需求分析阶段的用例交互图和分析类图是一样的</p>
+<p><strong>D、用例设计不仅要考虑需求分析阶段的软件需求模型，还要考虑体系结构和界面设计阶段的设计成果</strong></p>
+</li>
+<li><p>2、下面关于用例交互图和用例实现图的关系描述正确的是____</p>
+<p>A、用例交互图和用例实现图都是描述用例的交互行为，因此其实是一样的</p>
+<p><strong>B、用例交互图面向的是用户，用例实现图面向的是编程人员，二者针对的对象不同，因此两者的参与对象和交互行为描述方式也不一样</strong></p>
+<p><strong>C、用例实现图的设计必须以用例交互图为基础，不能脱离用例交互图</strong></p>
+<p><strong>D、用例交互图中的分析类通常都与用例实现图中的设计类存在一定的对应关系</strong></p>
+</li>
+<li><p>3、下面关于设计类图的描述正确的是____</p>
+<p>A、设计类图中的类与分析类图中的类应该是完全一样、一一对应的</p>
+<p>B、必须针对每个用例的实现都建立一个设计类图</p>
+<p><strong>C、设计类图中的节点可以是子系统&#x2F;构件</strong></p>
+<p><strong>D、根据用例实现图中相关对象之间的交互来确定设计类图中相应类之间的关系</strong></p>
+</li>
+</ul>
+<h3 id="类设计"><a href="#类设计" class="headerlink" title="类设计"></a>类设计</h3><ul>
+<li><p>1、类设计的任务是，对详细软件设计所产生的设计类作进一步的精化和细化，使得程序员通过类设计模型就可进行相应的编码工作</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>2、类设计过程中需要考虑的输入包括____。</p>
+<p><strong>A、软件需求模型，包括用例图、用例的交互图、分析类图等</strong></p>
+<p><strong>B、软件体系结构设计模型、用户界面设计模型</strong></p>
+<p><strong>C、用例设计阶段产生的用例实现图</strong></p>
+<p><strong>D、用例设计阶段产生的设计类图</strong></p>
+</li>
+<li><p>3、类设计应遵循的原则包括____。</p>
+<p><strong>A、模块化和信息隐藏</strong></p>
+<p><strong>B、高内聚度、低耦合度</strong></p>
+<p><strong>C、对类的内部结构、行为等给予准确的表达，对类的接口、属性、方法等方面给予足够详细的设计</strong></p>
+<p><strong>D、类的内部属性、方法等设计与类的职责、关系等是相互一致的</strong></p>
+</li>
+<li><p>4、按照信息隐藏的原则，除非确有必要，否则应将类“隐藏”于包的内部，只对包中的其它类可见</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>1、下面关于类之间关系描述正确的是____</p>
+<p><strong>A、在不违背简单性、自然性原则的前提下，应尽量采用语义连接强度较小的关系</strong></p>
+<p><strong>B、依赖是最弱的类关系，表现为类A在某个方法中临时性使用类B</strong></p>
+<p><strong>C、关联表现的是两个类间存在稳定的关系</strong></p>
+<p>D、聚合表示的是两个对象间存在一个对象撤销另一个类也消亡的部分整体关系，组合表示的是多个整体对象共享同一部件对象的部分整体关系</p>
+</li>
+<li><p>2、在设计类时，一个类的方法和属性主要来源于用例实现图中对象间传递的消息及其参数</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>3、类设计的成果包括____</p>
+<p>A、用例实现图</p>
+<p><strong>B、精化后的设计类图</strong></p>
+<p><strong>C、描述类方法实现算法的活动图</strong></p>
+<p><strong>D、描述类对象状态变化的状态图</strong></p>
+</li>
+</ul>
+<h3 id="数据设计"><a href="#数据设计" class="headerlink" title="数据设计"></a>数据设计</h3><ul>
+<li><p>1、 数据设计就是设计数据库的表格</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>2、数据库表通常可用类图来描述，类名表示表格名称，类的属性表示表格字段，类的方法表示数据操作</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>3、在确定需要永久保存的数据时，通常需要根据软件需求模型和设计模型明确系统涉及到哪些实体，以及实体之间有什么关系，从而建立系统的实体-关系模型</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>1、确定数据存储和组织的方式时，不仅要关心系统需要考虑哪些数据，还需要考虑这些数据之间的关系</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>2、确定数据存储和组织的方式时，对二个类之间存在1:1或者1：n的关联关系，可以使用外键的方式降低数据的冗余性</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+</ul>
+<h3 id="子系统和软结构设计"><a href="#子系统和软结构设计" class="headerlink" title="子系统和软结构设计"></a>子系统和软结构设计</h3><ul>
+<li><p>1、如果一个软件在设计时没有划分子系统，也没有构件，则不需要开展子系统&#x2F;构件设计。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>2、子系统&#x2F;构件的设计与整个软件系统的设计是类似的，也包括用例设计、类设计、和数据设计。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+</ul>
+<h3 id="文档化和评审软件详细设计"><a href="#文档化和评审软件详细设计" class="headerlink" title="文档化和评审软件详细设计"></a>文档化和评审软件详细设计</h3><ul>
+<li><p>1、撰写软件详细设计文档会增加项目开发工作量，影响开发进度，因此该文档应该越简单越好。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>2、下列哪些人员需要参与软件详细设计评审。</p>
+<p><strong>A、用户</strong></p>
+<p><strong>B、软件架构师</strong></p>
+<p><strong>C、程序员</strong></p>
+<p><strong>D、测试人员</strong></p>
+</li>
+<li><p>3、设计评审时不仅需要关注功能性需求的实现方案，还需要关注非功能性需求的实现方案。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>4、 以下属于详细设计评审时需要关注的内容的是____</p>
+<p><strong>A、规范性，即文档是否遵循相应的文档规范</strong></p>
+<p><strong>B、正确性，即设计模型是否能支持所有的软件需求项</strong></p>
+<p><strong>C、充分性，即设计模型是否足够详细到能支持编码实现</strong></p>
+<p><strong>D、优化性，即设计模型是否已充分优化方式支持所有软件需求的实现</strong></p>
+</li>
+</ul>
+<h2 id="第十二章-软件实现基础"><a href="#第十二章-软件实现基础" class="headerlink" title="第十二章 软件实现基础"></a>第十二章 软件实现基础</h2><h3 id="软件实现概述"><a href="#软件实现概述" class="headerlink" title="软件实现概述"></a>软件实现概述</h3><ul>
+<li><p>1、软件实现就是程序编码。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>2、下面关于软件实现的描述正确的是____。</p>
+<p><strong>A、软件实现需要考虑软件体系结构设计模型和用户界面设计模型</strong></p>
+<p><strong>B、软件实现需要考虑软件详细设计模型</strong></p>
+<p><strong>C、软件实现阶段需要开展必要的单元测试</strong></p>
+<p><strong>D、软件实现的主要目标是产生目标软件系统的高质量程序代码</strong></p>
+</li>
+<li><p>3、软件设计模型往往存在不够详细、考虑不周全的情况，因此程序员在软件实现时既要依据软件设计模型，同时也需要发挥他们的智慧和主观能动性，发现设计中存在的问题。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>4、下面哪些活动属于软件实现。</p>
+<p><strong>A、编写代码</strong></p>
+<p><strong>B、单元测试</strong></p>
+<p><strong>C、代码调试</strong></p>
+<p><strong>D、软件测试</strong></p>
+</li>
+</ul>
+<h3 id="程序设计语言"><a href="#程序设计语言" class="headerlink" title="程序设计语言"></a>程序设计语言</h3><ul>
+<li><p>1、下面关于程序设计语言的描述正确的是____</p>
+<p><strong>A、虽然机器语言代码的执行效率比较高，但由于用机器语言编程效率低且容易出错，因此现在几乎很少有人用机器语言进行编程</strong></p>
+<p><strong>B、汇编语言代码可以直接操作计算机硬件，且占用存储空间少、执行效率高</strong></p>
+<p><strong>C、结构化程序设计语言以过程和函数作为基本模块，整个程序由一个个函数组成</strong></p>
+<p><strong>D、面向对象程序设计以类作为基本的模块单元，以对象作为程序运行的基本要素，以消息传递作为对象之间的交互手段</strong></p>
+</li>
+<li><p>2、下面属于面向对象程序设计语言的是____</p>
+<p>A、C</p>
+<p><strong>B、Java</strong></p>
+<p><strong>C、Python</strong></p>
+<p><strong>D、C++</strong></p>
+</li>
+<li><p>3、软件开发时，程序设计语言的选择需要考虑以下哪些因素____</p>
+<p><strong>A、软件的应用领域</strong></p>
+<p><strong>B、与遗留软件系统的交互</strong></p>
+<p><strong>C、软件的特殊功能及需求</strong></p>
+<p><strong>D、软件的目标平台</strong></p>
+</li>
+</ul>
+<h3 id="高质量编码"><a href="#高质量编码" class="headerlink" title="高质量编码"></a>高质量编码</h3><ul>
+<li><p>1、代码质量分为外部质量和内部质量，确保代码内部质量的有效手段是软件测试。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>2、为提高代码的可理解性和可维护性，下面描述正确的是____</p>
+<p><strong>A、在编写代码时，程序员要遵循编码规范来编写代码</strong></p>
+<p><strong>B、在编写代码时，程序员要依据模块化的原则尽量把相对独立的功能封装成函数</strong></p>
+<p><strong>C、在编写代码时，程序员要尽可能地降低代码的复杂度</strong></p>
+<p>D、在编写代码时，程序员要编写必要的异常定义和处理代码</p>
+</li>
+<li><p>3、编码过程中程序员可能发现软件设计模型和文档中存在不合理、有问题的地方，这种情况下，程序员在编写代码的同时还要同步修改和完善相应的软件设计模型和文档。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>4、关于良好的代码编程风格，下面描述正确的是____</p>
+<p><strong>A、格式化代码的布局，尽可能使其清晰、明了</strong></p>
+<p><strong>B、尽可能提供简洁的代码，不要人为地增加代码的复杂度</strong></p>
+<p><strong>C、对代码辅之以适当的文档，以加强程序的理解</strong></p>
+<p><strong>D、加强程序代码的结构化组织，提高代码的可读性</strong></p>
+</li>
+</ul>
+<h3 id="支持软件实现的CASE工具"><a href="#支持软件实现的CASE工具" class="headerlink" title="支持软件实现的CASE工具"></a>支持软件实现的CASE工具</h3><ul>
+<li><p>1、下面属于C&#x2F;C++编译器的是</p>
+<p><strong>A、gcc&#x2F;g++</strong></p>
+<p><strong>B、cl</strong></p>
+<p><strong>C、 clang</strong></p>
+<p>D、javac</p>
+</li>
+<li><p>2、集成开发环境（IDE）是用于提供程序开发环境的应用程序，一般包括代码编辑器、编译器、调试器和图形用户界面等工具。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>3、下面属于集成开发环境的是____</p>
+<p><strong>A、Visual Studio</strong></p>
+<p><strong>B、Eclipse</strong></p>
+<p><strong>C、Android Studio</strong></p>
+<p><strong>D、PyCharm</strong></p>
+</li>
+</ul>
+<h3 id="软件实现的输出"><a href="#软件实现的输出" class="headerlink" title="软件实现的输出"></a>软件实现的输出</h3><ul>
+<li><p>1、软件实现的输出包括____</p>
+<p><strong>A、源程序代码</strong></p>
+<p><strong>B、可执行程序</strong></p>
+<p><strong>C、软件测试报告</strong></p>
+<p>D、用户使用手册</p>
+</li>
+</ul>
+<h2 id="第十三章-编写代码"><a href="#第十三章-编写代码" class="headerlink" title="第十三章 编写代码"></a>第十三章 编写代码</h2><h3 id="编写代码的任务"><a href="#编写代码的任务" class="headerlink" title="编写代码的任务"></a>编写代码的任务</h3><ul>
+<li><p>1、下面关于编写代码的描述正确的是____。</p>
+<p><strong>A、编写代码旨在借助于程序设计语言，编写出目标软件系统的源程序代码</strong></p>
+<p><strong>B、程序员在编写代码过程中还需要开展程序单元测试、代码审查等质量保证工作</strong></p>
+<p><strong>C、编写代码过程中程序员要充分发挥其创新性和主观能动性，创作出算法精巧、运行高效的代码</strong></p>
+<p><strong>D、编写代码过程中程序员需要基于软件设计模型和文档，遵循特定的编程风格，确保其程序代码满足工程化开发要求</strong></p>
+</li>
+</ul>
+<h3 id="基于设计编写代码"><a href="#基于设计编写代码" class="headerlink" title="基于设计编写代码"></a>基于设计编写代码</h3><ul>
+<li><p>1、下面关于基于设计编写代码的描述正确的是____</p>
+<p><strong>A、基于设计编写代码指将软件设计模型映射为用程序设计语言所描述的程序代码</strong></p>
+<p><strong>B、基于设计编写代码包括编写类代码、编写用户界面代码、编写数据设计代码</strong></p>
+<p>C、基于设计编写代码只是简单的映射，对程序员要求不高</p>
+<p><strong>D、基于设计编写代码须保证代码与设计的一致性，若设计存在问题则需修改设计</strong></p>
+</li>
+<li><p>2、下面属于编写类代码主要工作的是____</p>
+<p><strong>A、编写类的定义代码</strong>    </p>
+<p><strong>B、编写类中方法的实现代码</strong>  </p>
+<p><strong>C、编写描述类之间关系的代码</strong>  </p>
+<p><strong>D、编写类与类间的组织关系代码</strong></p>
+</li>
+<li><p>3、下面属于编写用户界面代码主要工作的是____</p>
+<p><strong>A、定义界面设计元素</strong></p>
+<p><strong>B、编写界面类代码</strong>   </p>
+<p><strong>C、编写界面事件的响应处理代码</strong></p>
+<p><strong>D、编写界面之间的跳转关系代码</strong></p>
+</li>
+<li><p>4、下面属于编写数据设计代码主要工作的是____</p>
+<p><strong>A、在数据库管理系统中创建相应的数据库关系表格</strong></p>
+<p><strong>B、编写与数据库建立连接的程序代码</strong></p>
+<p><strong>C、编写操作数据库的程序代码</strong></p>
+<p>D、管理数据管理系统中的数据</p>
+</li>
+</ul>
+<h3 id="代码片段重用"><a href="#代码片段重用" class="headerlink" title="代码片段重用"></a>代码片段重用</h3><ul>
+<li><p>1、关于代码片段重用，下面描述正确的是____</p>
+<p><strong>A、一个代码片段通常实现了类中的一个具体、细粒度的功能</strong></p>
+<p><strong>B、开源技术问答社区中有大量经过实践检验、具有较高质量的代码片段</strong></p>
+<p><strong>C、程序员可以自己编写精巧、优雅、高效的程序代码片段</strong></p>
+<p><strong>D、程序员可以通过重用开源社区中的高质量的代码片段来完成相应的编程任务</strong></p>
+</li>
+</ul>
+<h3 id="软件缺陷"><a href="#软件缺陷" class="headerlink" title="软件缺陷"></a>软件缺陷</h3><ul>
+<li><p>1、关于软件缺陷，下面描述正确的是____</p>
+<p><strong>A、软件缺陷既包括程序代码中的不正确实现，也包括需求和设计中的不正确描述</strong></p>
+<p><strong>B、软件缺陷产生于软件开发全过程，只要有人介入的地方就有可能产生软件缺陷</strong></p>
+<p><strong>C、任何人都有可能在软件开发过程中犯错误，进而引入软件缺陷</strong></p>
+<p><strong>D、对于大型复杂的软件系统而言，要开发出零缺陷的软件系统几乎是不可能的</strong></p>
+</li>
+<li><p>2、关于软件缺陷的描述，下面说法正确的是____。</p>
+<p>A、只有在软件公司才需要对软件缺陷进行详细的描述</p>
+<p><strong>B、对发现的缺陷进行详细描述有助于缺陷的管理，进而提高软件产品的质量</strong></p>
+<p><strong>C、对发现的缺陷进行详细描述可以帮助开发人员分析、纠正和修复软件缺陷</strong></p>
+<p><strong>D、对软件缺陷的描述一般包括标识符、类型、严重程度、症状、原因等方面</strong></p>
+</li>
+<li><p>3、</p>
+<p>关于软件缺陷的应对方法，下面说法正确的是____。</p>
+<p><strong>A、为达到预防缺陷的目的，要求开发人员对开发的每一步都要积极思考该步骤是否会产生软件缺陷，从而达到尽量少犯错误的目标</strong></p>
+<p><strong>B、由于软件缺陷不可避免，对一些核心模块，往往提供容错模块和代码来提高软件的可靠性</strong></p>
+<p><strong>C、发现缺陷不仅包括软件测试，还包括文档和模型评审、代码走查等</strong></p>
+<p><strong>D、修复软件缺陷有可能引入新的缺陷，因此缺陷修复需谨慎，且修复后需开展回归测试</strong></p>
+</li>
+<li><p>4、关于软件缺陷的状态，下面说法正确的是____。</p>
+<p><strong>A、测试人员发现软件缺陷后，软件缺陷一开始都是处于尚未确认状态</strong></p>
+<p><strong>B、对尚未确认的缺陷进行确认后，缺陷可能变成有效、无效、或重复状态</strong></p>
+<p><strong>C、在分析软件缺陷时可能因缺陷的描述信息不完整，导致无法准确理解缺陷内容</strong></p>
+<p><strong>D、所有报告的软件缺陷最终都应处于关闭状态</strong></p>
+</li>
+</ul>
+<h3 id="程序调试"><a href="#程序调试" class="headerlink" title="程序调试"></a>程序调试</h3><ul>
+<li><p>1、关于程序调试，下面描述正确的是____</p>
+<p><strong>A、程序调试是通过运行程序代码，确定软件缺陷的原因，定位和修复缺陷的过程</strong></p>
+<p><strong>B、对复杂的软件系统，程序员通常需要花费大量的时间和精力用于软件调试</strong></p>
+<p><strong>C、程序调试不是盲目地运行程序，程序员需要在理解缺陷及其症状的前提下，构想和假设产生缺陷的原因，然后有目标的开展调试</strong></p>
+<p>D、只有通过gdb, Debugger等调试工具分步运行程序才是程序调试</p>
+</li>
+</ul>
+<h3 id="基于群智知识来解决编程和调试问题"><a href="#基于群智知识来解决编程和调试问题" class="headerlink" title="基于群智知识来解决编程和调试问题"></a>基于群智知识来解决编程和调试问题</h3><ul>
+<li><p>1、 关于基于群智知识来解决编程和调试问题，下面描述正确的是____</p>
+<p><strong>A、群智知识主要指开源技术问答社区中的互联网大众的知识</strong></p>
+<p><strong>B、典型的技术问答社区包括Stack Overflow、CSDN等</strong></p>
+<p><strong>C、程序员可以在开源社区中搜索已有的问题解决方案，也可以发布问题寻求帮忙</strong></p>
+<p><strong>D、在自己难以解决身边又缺乏高手帮忙的情况下，基于群智知识是解决问题的一种有效手段</strong></p>
+</li>
+</ul>
+<h3 id="编写代码的输出"><a href="#编写代码的输出" class="headerlink" title="编写代码的输出"></a>编写代码的输出</h3><ul>
+<li><p>1、编写的输出包括____</p>
+<p><strong>A、源程序代码</strong></p>
+<p><strong>B、可执行程序</strong></p>
+<p><strong>C、程序单元测试报告</strong></p>
+<p>D、用户使用手册</p>
+</li>
+</ul>
+<h2 id="第十四章-软件测试"><a href="#第十四章-软件测试" class="headerlink" title="第十四章 软件测试"></a>第十四章 软件测试</h2><h3 id="软件测试概述"><a href="#软件测试概述" class="headerlink" title="软件测试概述"></a>软件测试概述</h3><ul>
+<li><p>1、软件测试的目的是要发现和纠正代码中的错误。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>2、程序调试是软件测试的工作之一</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>3、以下活动哪些需要运行程序代码。</p>
+<p>A、代码走查</p>
+<p><strong>B、调试</strong></p>
+<p><strong>C、测试</strong></p>
+<p>D、静态分析</p>
+</li>
+<li><p>4、软件测试的对象是程序代码，而非软件文档。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>1、软件测试是如何发现软件中的缺陷的。</p>
+<p>A、程序代码能够对测试数据进行处理</p>
+<p>B、程序代码处理测试数据时不会报错</p>
+<p><strong>C、程序处理测试数据的结果与预期结果不一致</strong></p>
+<p>D、程序处理测试数据不会出现异常</p>
+</li>
+<li><p>2、软件测试用例实际上就是一组测试数据。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>3、软件测试可以通过穷尽所有的测试用例来发现程序代码中的所有缺陷。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>4、关于测试用例的描述，以下哪些是正确的。</p>
+<p>A、测试用例就是一组测试数据</p>
+<p><strong>B、测试用例刻画了针对特定的输入数据和前置条件，程序代码的预期运行结果</strong></p>
+<p><strong>C、一个程序代码的测试用例理论上有无穷多个</strong></p>
+<p><strong>D、测试用例必须交给待测试的代码进行处理</strong></p>
+</li>
+</ul>
+<h3 id="软件测试的过程和策略"><a href="#软件测试的过程和策略" class="headerlink" title="软件测试的过程和策略"></a>软件测试的过程和策略</h3><ul>
+<li><p>1、软件测试工作都由软件测试人员来完成。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>2、软件测试工作贯穿于软件开发全过程。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>3、在软件开发的早期阶段（需求分析和软件设计阶段），软件测试人员就可以开展软件测试工作。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>1、以下哪个软件测试的次序是正确的。</p>
+<p>A、系统测试、确认测试、集成测试、单元测试</p>
+<p>B、系统测试、集成测试、确认测试、单元测试</p>
+<p><strong>C、单元测试、集成测试、确认测试、系统测试</strong></p>
+<p>D、单元测试、确认测试、集成测试、系统测试</p>
+</li>
+<li><p>2、α测试、β测试属于确认测试。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+</ul>
+<h3 id="软件测试技术"><a href="#软件测试技术" class="headerlink" title="软件测试技术"></a>软件测试技术</h3><ul>
+<li><p>1、白盒测试技术通常用于集成测试和确认测试阶段，黑盒测试通常用于单元测试阶段。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>2、如果某个测试技术实现路径覆盖，那么它也就能实现基本路径覆盖。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>3、以下是某个程序模块的流图。该模块包含有多少条基本路径。其中，1是入口，7是出口。 <img src="https://note.youdao.com/yws/api/personal/file/WEB750704ff5492703f561ae46c89bdd478?method=download&shareKey=962fc6c020810b803decc736f51c7220" alt=" 程序模块 "></p>
+<p>A、1条</p>
+<p>B、2条</p>
+<p><strong>C、3条</strong></p>
+<p>D、4条</p>
+</li>
+</ul>
+<blockquote>
+<h4 id="白盒测试技术"><a href="#白盒测试技术" class="headerlink" title="白盒测试技术"></a>白盒测试技术</h4><p>    该测试技术的前提是知道软件模块（如类方法）的内部实现细节（如其实现算法及相应的活动图）。在此情况下，针对该软件模块设计和运行测试用例，测试软件模块的运行是否正常，能否满足设计要求。单元测试通常采用白盒测试技术，基本路径测试是一类典型的白盒测试技术。</p>
+<h4 id="黑盒测试技术"><a href="#黑盒测试技术" class="headerlink" title="黑盒测试技术"></a>黑盒测试技术</h4><p>    该测试技术的前提是已知软件模块（如构件、子系统甚至整个软件系统）的功能（如用户登录、异常告警等），但是不知道该软件模块的内部实现细节（如其内部的控制流程和实现算法），这种情况下针对该软件模块设计和运行测试用例，测试软件模块的运行是否正常，能否满足用户的需求。通常，集成测试和确认测试大多采用黑盒测试技术，典型的黑盒测试技术包括等价分类法和边界取值法。</p>
+</blockquote>
+<ul>
+<li><p>1、以下是某个程序模块的流图。该模块包含那几条基本路径。其中，1是入口，7是出口。</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/WEB750704ff5492703f561ae46c89bdd478?method=download&shareKey=962fc6c020810b803decc736f51c7220" alt=" 程序流图 "></p>
+<p><strong>A、1-2-3-5-7,1-2-4-5-7,1-2-4-5-6-2-3-5-7</strong></p>
+<p>B、1-2-3-5-7，1-2-4-5-6-7</p>
+<p>C、1-2-4-5-7,1-2-3-5-7</p>
+<p>D、1-2-4-5-6-7,1-2-3-5-7</p>
+</li>
+<li><p>2、如果某个模块有二个参数，参数1对应于一个集合，参数2对应于一个布尔量，那么采用等价分类法，可为该模块设计多少个测试用例。</p>
+<p>A、2个</p>
+<p>B、3个</p>
+<p><strong>C、4个</strong></p>
+<p>D、5个</p>
+</li>
+<li><p>3、边界取值法是一类黑盒技术，用于支持单元测试。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+</ul>
+<h3 id="软件测试计划的制定"><a href="#软件测试计划的制定" class="headerlink" title="软件测试计划的制定"></a>软件测试计划的制定</h3><ul>
+<li><p>1、软件测试工程师独立于软件开发工程师。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>2、软件测试组织负责制定软件测试计划。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+</ul>
+<h2 id="第十五章-软件部署"><a href="#第十五章-软件部署" class="headerlink" title="第十五章 软件部署"></a>第十五章 软件部署</h2><h3 id="软件及其环境"><a href="#软件及其环境" class="headerlink" title="软件及其环境"></a>软件及其环境</h3><ul>
+<li><p>1、软件的运行环境既可以是物理设备，也可以是软件系统。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>2、运行在Android手机上的“12306”APP，其运行环境包括哪些。</p>
+<p><strong>A、Android</strong></p>
+<p><strong>B、手机</strong></p>
+<p><strong>C、“12306”服务器端软件</strong></p>
+<p><strong>D、移动互联网</strong></p>
+</li>
+<li><p>3、部署在Android手机上的“微信”APP，其运行环境包括哪些。</p>
+<p><strong>A、Android</strong></p>
+<p><strong>B、手机</strong></p>
+<p><strong>C、“微信”服务器端软件</strong></p>
+<p><strong>D、移动互联网</strong></p>
+</li>
+</ul>
+<h3 id="软件部署的方式和方法"><a href="#软件部署的方式和方法" class="headerlink" title="软件部署的方式和方法"></a>软件部署的方式和方法</h3><ul>
+<li><p>1、软件部署既包括部署和配置运行环境，也包括部署和配置软件系统。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>2、微信软件采用集中式部署方式。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>3、“12306”软件采用分布式部署方式。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+</ul>
+<h2 id="第十六章-软件维护和演化"><a href="#第十六章-软件维护和演化" class="headerlink" title="第十六章 软件维护和演化"></a>第十六章 软件维护和演化</h2><ul>
+<li><p>1、软件维护有哪些基本的形式。</p>
+<p><strong>A、纠正性、完善性、适应性、预防性维护</strong></p>
+<p>B、纠正性、完善性、演化性、预防性维护</p>
+<p>C、演化性、完善性、适应性、预防性维护</p>
+<p>D、纠正性、完善性、适应性、演化性维护</p>
+</li>
+<li><p>2、哪种软件维护形式不改变软件系统的基本功能。</p>
+<p>A、完善性</p>
+<p>B、纠正性</p>
+<p>C、适应性</p>
+<p><strong>D、预防性</strong></p>
+</li>
+<li><p>3、在开源软件开发过程中，某个开发者提出了某个Issue以建议增加某项功能，并为此提供代码，该项工作属于何种维护形式。</p>
+<p>A、预防性</p>
+<p><strong>B、完善性</strong></p>
+<p>C、纠正性</p>
+<p>D、适应性</p>
+</li>
+<li><p>1、开源软件的开发过程实际上就是一个持续维护和演化的过程。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>2、在对软件进行维护和演化时，必须停止软件对外提供服务。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>3、与软件维护相比较，软件演化有何特点。</p>
+<p><strong>A、软件演化功能增强的粒度大，会引起软件版本的变化</strong></p>
+<p><strong>B、软件演化持续进行，并且采用主动的方式来应对变化</strong></p>
+<p>C、软件演化的持续时间长、会引起版本的变化</p>
+<p>D、软件演化持续进行，且持续的时间更长</p>
+</li>
+</ul>
+<h3 id="软件逻辑老化"><a href="#软件逻辑老化" class="headerlink" title="软件逻辑老化"></a>软件逻辑老化</h3><ul>
+<li><p>1、软件不存在物理老化的问题，但是存在逻辑老化的现象。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>2、软件逻辑老化具有哪些方面的表现形式。</p>
+<p><strong>A、质量下降</strong></p>
+<p><strong>B、变更成本增加</strong></p>
+<p><strong>C、用户满意度降低</strong></p>
+<p><strong>D、维护更加困难</strong></p>
+</li>
+<li><p>3、导致逻辑老化的原因有哪些。</p>
+<p><strong>A、软件外部环境的变化</strong></p>
+<p><strong>B、软件设计低劣</strong></p>
+<p><strong>C、代码质量低劣</strong></p>
+<p><strong>D、文档没有得到及时更新</strong></p>
+</li>
+<li><p>4、如果一个软件的价值较高，但是内部质量较低，此时该采取什么策略来解决该软件的老化问题。</p>
+<p>A、抛弃该软件</p>
+<p>B、不断增强该软件的功能</p>
+<p><strong>C、对软件进行重工程，以提高软件的内部质量</strong></p>
+<p>D、仅提供纠正性维护，不再实施完善性维护</p>
+</li>
+</ul>
+<h3 id="软件维护技术及过程"><a href="#软件维护技术及过程" class="headerlink" title="软件维护技术及过程"></a>软件维护技术及过程</h3><ul>
+<li><p>1、软件维护可能会产生副作用问题，导致软件质量下降。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>2、以下哪些维护技术不改变软件系统的功能。</p>
+<p><strong>A、代码重构</strong></p>
+<p>B、完善性维护</p>
+<p><strong>C、设计重构</strong></p>
+<p><strong>D、再工程</strong></p>
+</li>
+<li><p>3、根据程序代码（包括源代码和可执行代码）得到软件的设计信息，该项工作属于逆向工程和设计重构。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>1、根据程序代码（包括源代码和可执行代码）和设计文档得到软件的需求信息，该项工作属于逆向工程和设计重构。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>2、软件再工程的目的是在不改变软件功能的前提下，得到质量更高的软件系统。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>3、如果软件维护过程中能够获得软件系统的设计文档，在此情况下软件维护人员需要开展哪些方面的维护工作。</p>
+<p>A、阅读代码以理解软件的设计信息</p>
+<p><strong>B、阅读文档以理解软件的设计信息</strong></p>
+<p><strong>C、修改软件设计文档以进行软件维护</strong></p>
+<p><strong>D、修改程序代码以进行软件维护</strong></p>
+</li>
+</ul>
+<h2 id="第十七章-软件项目管理"><a href="#第十七章-软件项目管理" class="headerlink" title="第十七章 软件项目管理"></a>第十七章 软件项目管理</h2><h3 id="软件项目管理概述"><a href="#软件项目管理概述" class="headerlink" title="软件项目管理概述"></a>软件项目管理概述</h3><ul>
+<li><p>1、任何两个软件项目都不一样，软件项目具有唯一性。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>2、软件项目管理主要包含哪些方面的管理对象。</p>
+<p>A、人员、制品、薪酬</p>
+<p><strong>B、人员、制品、过程</strong></p>
+<p>C、制品、薪酬、过程</p>
+<p>D、薪酬、人员、过程</p>
+</li>
+<li><p>3、对各类软件模型、文档、原型、代码、数据等的管理属于软件制品管理的范畴。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>1、对人员、过程和制品等的管理均涉及风险管理的内容。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>2、关于软件度量、测量和估算的描述，哪些是正确的。</p>
+<p><strong>A、度量是对简单属性的定量描述，测量和估算是对复杂属性的描述。</strong></p>
+<p><strong>B、测量是对当前状况的定量描述，估算是未来状况的定量描述。</strong></p>
+<p>C、测量是未来状况的定量描述，估算是对当前状况的定量描述。</p>
+<p><strong>D、它们均是对软件过程、产品和资源等项目特征的定量描述。</strong></p>
+</li>
+<li><p>3、可以基于代码行数量、功能点的数量等来测量和估算软件项目的规模。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>1、在项目实施之前，可以参照历史数据、经验模型、类比等方式来估算软件项目的规模。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>2、在项目实施之前，有必要通过对软件项目进行估算，以辅助合同的签署以及软件项目计划的制定。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>3、在项目实施过程中，有必要通过对软件项目进行度量和测量，以掌握软件开发的实际情况。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>4、由于软件项目的唯一性，任何一个项目的度量、测量和估算数据对其他的项目而言没有任何参考意义和价值。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+</ul>
+<h3 id="软件项目计划"><a href="#软件项目计划" class="headerlink" title="软件项目计划"></a>软件项目计划</h3><ul>
+<li><p>1、软件项目计划包含哪些方面的规划。</p>
+<p><strong>A、进度计划</strong></p>
+<p><strong>B、质量计划</strong></p>
+<p><strong>C、资源计划</strong></p>
+<p>D、活动计划</p>
+</li>
+<li><p>2、软件项目计划用于指导后续的软件开发工作。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>3、可以用什么样的图来表示软件项目计划。</p>
+<p>A、UML图</p>
+<p><strong>B、甘特图</strong></p>
+<p>C、数据流图</p>
+<p><strong>D、网络图</strong></p>
+</li>
+<li><p>4、软件项目进度计划所包含的关键路径可能有多条。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>1、制定软件项目计划时要考虑哪些方面的内容和因素。</p>
+<p><strong>A、项目所采用的过程模型</strong></p>
+<p><strong>B、软件项目的工作量和成本等估算</strong></p>
+<p><strong>C、项目已有的资源（如人力资源）</strong></p>
+<p><strong>D、客户或用户对项目提出的具体要求</strong></p>
+</li>
+<li><p>2、必须要基于项目的估算来制定软件项目计划。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>3、软件项目计划所涉及的所有人员都应参与软件项目计划的制定，以确保他们就计划的内容达成一致意见，并掌握和承诺软件项目计划的相关内容。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+</ul>
+<h3 id="软件项目跟踪"><a href="#软件项目跟踪" class="headerlink" title="软件项目跟踪"></a>软件项目跟踪</h3><ul>
+<li><p>1、软件项目跟踪需要关注哪些方面的内容。</p>
+<p><strong>A、进度偏差</strong></p>
+<p><strong>B、资源使用情况</strong></p>
+<p>C、软件规模</p>
+<p><strong>D、项目实施问题和风险</strong></p>
+</li>
+<li><p>2、所有项目组成员都要加入到软件项目跟踪小组，并对软件项目进行跟踪。</p>
+<p>A、正确</p>
+<p><strong>B、错误</strong></p>
+</li>
+<li><p>3、软件项目需要对照软件项目计划来开展。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>1、软件项目追踪的目的是要获得软件项目的可视性，掌握软件项目的实际状况和问题。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>2、应周期性或者定期地进行软件项目追踪。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+</ul>
+<h3 id="软件配置管理"><a href="#软件配置管理" class="headerlink" title="软件配置管理"></a>软件配置管理</h3><ul>
+<li><p>1、软件开发过程中会产生大量不同形式、不同类别的软件制品。所有这些软件制品都需要进行配置管理。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>2、软件文档、程序模块、测试用例甚至标准和规约都可作为软件配置项。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>3、软件配置管理应该贯穿于软件开发全过程。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>4、关于软件基线，以下哪些说法是正确的。</p>
+<p><strong>A、软件基线是一个软件制品</strong></p>
+<p><strong>B、软件基线是一个软件配置项</strong></p>
+<p>C、软件基线不可对它进行修改</p>
+<p><strong>D、软件基线必须通过正式复审和批准</strong></p>
+</li>
+<li><p>1、每个软件配置项都有一个唯一的标识符。同一个软件制品（如软件需求规格说明书）可能会有多个不同版本的软件配置项。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>2、以下关于软件配置项之间的关系，哪些陈述是正确的。</p>
+<p><strong>A、任何软件配置项都不应是孤立的，否则这样的软件配置项没有意义和价值</strong></p>
+<p>B、软件项目中可能会存在孤立的、与任何其他软件配置项没有关联关系的软件配置项</p>
+<p><strong>C、如果二个软件配置项之间存在关联关系，那么对一个软件配置项的修改可能会影响另一个软件配置项。</strong></p>
+<p>D、软件配置项及其之间的关系可以用树来加以表示。</p>
+</li>
+<li><p>3、可采用版本树来表示软件配置项的版本演化。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+</ul>
+<h3 id="软件风险管理"><a href="#软件风险管理" class="headerlink" title="软件风险管理"></a>软件风险管理</h3><ul>
+<li><p>1、在软件开发过程中，已经发生的有害事件不能称为软件风险。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>2、软件风险具有哪些方面的特点。</p>
+<p><strong>A、尚未发生但是可能会发生</strong></p>
+<p><strong>B、给软件项目开发和管理带来不利影响</strong></p>
+<p>C、软件风险一定会发生</p>
+<p><strong>D、事先难以确定</strong></p>
+</li>
+<li><p>3、随着软件项目实施的进展，软件风险发生的概率以及危险度会发生变化。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>4、软件风险管理包含哪些方面的工作。</p>
+<p><strong>A、识别风险、分析其危险度</strong></p>
+<p><strong>B、持续观察和监控风险发生的变化</strong></p>
+<p><strong>C、化解和消除软件风险</strong></p>
+<p><strong>D、制定风险管理计划</strong></p>
+</li>
+</ul>
+<h3 id="软件质量保证"><a href="#软件质量保证" class="headerlink" title="软件质量保证"></a>软件质量保证</h3><ul>
+<li><p>1、软件可靠性是一类内在质量表现形式。</p>
+<p>A、正确</p>
+<p>**B、错误 **</p>
+</li>
+<li><p>2、制定标准和规范有助于提高软件制品的质量。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>3、软件质量保证活动应该贯穿于软件开发全过程。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+<li><p>1、以下哪些属于软件质量保证活动。</p>
+<p><strong>A、测试程序代码</strong></p>
+<p><strong>B、审查开发活动</strong></p>
+<p><strong>C、审核软件制品</strong></p>
+<p><strong>D、组织人员培训</strong></p>
+</li>
+<li><p>2、软件质量保证小组应该在软件项目实施初期就制定好软件质量保证计划。</p>
+<p><strong>A、正确</strong></p>
+<p>B、错误</p>
+</li>
+</ul>
+
+    </div>
+
+       <div>
+        
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------本文到这里结束了，感谢您的阅读------</div>
+    
+</div>
+
+        
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div><您的支持将是我继续创作的动力！></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechat.png" alt="君不见 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="君不见 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>君不见
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://godx06.github.io/2023/01/06/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%BB%83%E4%B9%A0%E9%A2%98-%E5%A4%8D%E4%B9%A0/" title="软件工程练习题(复习)">https://godx06.github.io/2023/01/06/软件工程练习题-复习/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+ 
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Practices/" rel="tag"><i class="fa fa-tag"></i> Practices</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/01/06/JDBC%E5%AD%A6%E4%B9%A0/" rel="prev" title="JDBC学习">
+      <i class="fa fa-chevron-left"></i> JDBC学习
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/01/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E9%83%A8%E5%88%86%E9%A2%98%E7%9B%AE/" rel="next" title="蓝桥杯部分题目">
+      蓝桥杯部分题目 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="SOHUCS"></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+
+<div id="music163player">
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=544151109&auto=1&height=32"></iframe>
+</div>
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E8%AF%BE%E7%A8%8B%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">第一章 软件工程课程概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%BD%AF%E4%BB%B6%E5%8F%91%E7%94%9F%E7%9A%84%E5%8F%98%E5%8C%96"><span class="nav-number">1.1.</span> <span class="nav-text">计算机软件发生的变化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%9A%84%E5%8F%91%E5%B1%95"><span class="nav-number">1.2.</span> <span class="nav-text">软件工程的发展</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E4%BB%8E%E7%A8%8B%E5%BA%8F%E5%88%B0%E8%BD%AF%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">第二章 从程序到软件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E5%8F%8A%E5%85%B6%E8%B4%A8%E9%87%8F"><span class="nav-number">2.1.</span> <span class="nav-text">程序及其质量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E8%B4%A8%E9%87%8F%E4%BF%9D%E8%AF%81%E6%96%B9%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">程序质量保证方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E8%B4%A8%E9%87%8F%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95"><span class="nav-number">2.3.</span> <span class="nav-text">程序质量分析方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%8F%8A%E5%85%B6%E8%B4%A8%E9%87%8F"><span class="nav-number">2.4.</span> <span class="nav-text">软件及其质量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6"><span class="nav-number">2.5.</span> <span class="nav-text">开源软件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E6%A6%82%E8%BF%B0"><span class="nav-number">3.</span> <span class="nav-text">第三章 软件工程概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%BA%A7%E7%94%9F%E8%83%8C%E6%99%AF"><span class="nav-number">3.1.</span> <span class="nav-text">软件工程产生背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%9A%84%E6%A6%82%E5%BF%B5%E5%92%8C%E6%80%9D%E6%83%B3"><span class="nav-number">3.2.</span> <span class="nav-text">软件工程的概念和思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%BE%85%E5%8A%A9%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B"><span class="nav-number">3.3.</span> <span class="nav-text">计算机辅助软件工程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E8%A7%86%E8%A7%92%E4%B8%8B%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91"><span class="nav-number">3.4.</span> <span class="nav-text">软件工程视角下的软件开发</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E8%BD%AF%E4%BB%B6%E8%BF%87%E7%A8%8B%E6%A8%A1%E5%9E%8B%E5%92%8C%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">第四章 软件过程模型和开发方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%BF%87%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.1.</span> <span class="nav-text">软件过程模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%8F%E6%8D%B7%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95"><span class="nav-number">4.2.</span> <span class="nav-text">敏捷软件开发方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BE%A4%E4%BD%93%E5%8C%96%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95"><span class="nav-number">4.3.</span> <span class="nav-text">群体化开发方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0-%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82%E5%B7%A5%E7%A8%8B%E5%9F%BA%E7%A1%80"><span class="nav-number">5.</span> <span class="nav-text">第五章 软件需求工程基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9C%80%E6%B1%82%E5%B7%A5%E7%A8%8B"><span class="nav-number">5.1.</span> <span class="nav-text">需求工程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%AD%A6"><span class="nav-number">5.2.</span> <span class="nav-text">需求分析方法学</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9C%80%E6%B1%82%E5%B7%A5%E7%A8%8B%E7%9A%84%E8%BE%93%E5%87%BA%E5%92%8C%E8%AF%84%E5%AE%A1"><span class="nav-number">5.3.</span> <span class="nav-text">需求工程的输出和评审</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%8E%B7%E5%8F%96%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82"><span class="nav-number">6.</span> <span class="nav-text">第六章 获取软件需求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82%E7%9A%84%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%87%E7%A8%8B"><span class="nav-number">6.1.</span> <span class="nav-text">获取软件需求的方法和过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%8E%E7%A1%AE%E9%97%AE%E9%A2%98%E5%8F%8A%E5%9F%BA%E4%BA%8E%E8%BD%AF%E4%BB%B6%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">6.2.</span> <span class="nav-text">明确问题及基于软件的解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BC%E5%87%BA%E5%92%8C%E6%9E%84%E6%80%9D%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82"><span class="nav-number">6.3.</span> <span class="nav-text">导出和构思软件需求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%8F%E8%BF%B0%E5%92%8C%E9%AA%8C%E8%AF%81%E5%88%9D%E6%AD%A5%E7%9A%84%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82"><span class="nav-number">6.4.</span> <span class="nav-text">描述和验证初步的软件需求</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%88%86%E6%9E%90%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82"><span class="nav-number">7.</span> <span class="nav-text">第七章 分析软件需求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%9E%90%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82%E7%9A%84%E4%BB%BB%E5%8A%A1%E5%92%8C%E8%BF%87%E7%A8%8B"><span class="nav-number">7.1.</span> <span class="nav-text">分析软件需求的任务和过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82%E6%A8%A1%E5%9E%8B%E5%8F%8AUML%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95"><span class="nav-number">7.2.</span> <span class="nav-text">软件需求模型及UML表示方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%9E%90%E5%92%8C%E7%A1%AE%E5%AE%9A%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7"><span class="nav-number">7.3.</span> <span class="nav-text">分析和确定软件需求的优先级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E5%92%8C%E5%88%86%E6%9E%90%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82%E6%A8%A1%E5%9E%8B"><span class="nav-number">7.4.</span> <span class="nav-text">建立和分析软件需求模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%A1%A3%E5%8C%96%E3%80%81%E7%A1%AE%E8%AE%A4%E5%92%8C%E9%AA%8C%E8%AF%81%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82"><span class="nav-number">7.5.</span> <span class="nav-text">文档化、确认和验证软件需求</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%85%AB%E7%AB%A0-%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80"><span class="nav-number">8.</span> <span class="nav-text">第八章 软件设计基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1"><span class="nav-number">8.1.</span> <span class="nav-text">软件设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E7%9A%84%E8%BF%87%E7%A8%8B%E5%92%8C%E5%8E%9F%E5%88%99"><span class="nav-number">8.2.</span> <span class="nav-text">软件设计的过程和原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E5%8C%96%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95%E5%AD%A6"><span class="nav-number">8.3.</span> <span class="nav-text">结构化软件设计方法学</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95%E5%AD%A6"><span class="nav-number">8.4.</span> <span class="nav-text">面向对象软件设计方法学</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E7%9A%84CASE%E5%B7%A5%E5%85%B7"><span class="nav-number">8.5.</span> <span class="nav-text">软件设计的CASE工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E7%9A%84%E8%BE%93%E5%87%BA%E3%80%81%E8%AF%84%E5%AE%A1%E5%92%8C%E7%AE%A1%E7%90%86"><span class="nav-number">8.6.</span> <span class="nav-text">软件设计的输出、评审和管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E7%AE%A1%E7%90%86"><span class="nav-number">8.7.</span> <span class="nav-text">软件设计管理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B9%9D%E7%AB%A0-%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="nav-number">9.</span> <span class="nav-text">第九章 软件体系结构设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%BF%B0"><span class="nav-number">9.1.</span> <span class="nav-text">软件体系结构设计概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95"><span class="nav-number">9.2.</span> <span class="nav-text">软件体系结构模型的表示方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E8%BF%87%E7%A8%8B"><span class="nav-number">9.3.</span> <span class="nav-text">软件体系结构设计过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E5%88%9D%E6%AD%A5%E7%9A%84%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="nav-number">9.4.</span> <span class="nav-text">设计初步的软件体系结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E7%94%A8%E5%B7%B2%E6%9C%89%E8%BD%AF%E4%BB%B6%E8%B5%84%E6%BA%90"><span class="nav-number">9.5.</span> <span class="nav-text">重用已有软件资源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B2%BE%E5%8C%96%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="nav-number">9.6.</span> <span class="nav-text">精化软件体系结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E8%BD%AF%E4%BB%B6%E9%83%A8%E7%BD%B2%E6%A8%A1%E5%9E%8B"><span class="nav-number">9.7.</span> <span class="nav-text">设计软件部署模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%A1%A3%E5%8C%96%E5%92%8C%E8%AF%84%E5%AE%A1%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="nav-number">9.8.</span> <span class="nav-text">文档化和评审软件系统结构设计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%8D%81%E7%AB%A0-%E8%BD%AF%E4%BB%B6%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1"><span class="nav-number">10.</span> <span class="nav-text">第十章 软件用户界面设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%BF%B0"><span class="nav-number">10.1.</span> <span class="nav-text">用户界面设计概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E7%BB%84%E6%88%90%E5%8F%8A%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95"><span class="nav-number">10.2.</span> <span class="nav-text">用户界面组成及表示方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1%E7%9A%84%E8%BF%87%E7%A8%8B%E5%92%8C%E5%8E%9F%E5%88%99"><span class="nav-number">10.3.</span> <span class="nav-text">用户界面设计的过程和原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E7%9A%84%E5%88%9D%E6%AD%A5%E8%AE%BE%E8%AE%A1"><span class="nav-number">10.4.</span> <span class="nav-text">用户界面的初步设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E9%97%B4%E7%9A%84%E8%B7%B3%E8%BD%AC%E5%85%B3%E7%B3%BB"><span class="nav-number">10.5.</span> <span class="nav-text">建立用户界面间的跳转关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B2%BE%E5%8C%96%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1"><span class="nav-number">10.6.</span> <span class="nav-text">精化用户界面设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1%E7%9A%84%E8%BE%93%E5%87%BA"><span class="nav-number">10.7.</span> <span class="nav-text">用户界面设计的输出</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1%E7%9A%84%E8%BE%93%E5%87%BA%E5%88%B6%E5%93%81"><span class="nav-number">10.7.1.</span> <span class="nav-text">用户界面设计的输出制品</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1%E8%AF%84%E5%AE%A1"><span class="nav-number">10.7.2.</span> <span class="nav-text">用户界面设计评审</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%84%E5%AE%A1%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1"><span class="nav-number">10.8.</span> <span class="nav-text">评审用户界面设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E8%AF%84%E5%AE%A1"><span class="nav-number">10.8.1.</span> <span class="nav-text">软件体系结构设计评审</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0-%E8%BD%AF%E4%BB%B6%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1"><span class="nav-number">11.</span> <span class="nav-text">第十一章 软件详细设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%BF%B0%E5%92%8CUML%E5%BB%BA%E6%A8%A1"><span class="nav-number">11.1.</span> <span class="nav-text">软件详细设计概述和UML建模</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1"><span class="nav-number">11.1.1.</span> <span class="nav-text">软件详细设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E7%9A%84%E4%BB%BB%E5%8A%A1%E5%92%8C%E8%BF%87%E7%A8%8B"><span class="nav-number">11.1.2.</span> <span class="nav-text">软件详细设计的任务和过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E7%9A%84%E5%8E%9F%E5%88%99"><span class="nav-number">11.1.3.</span> <span class="nav-text">软件详细设计的原则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E7%9A%84%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95%E5%8F%8AUML%E6%B4%BB%E5%8A%A8%E5%9B%BE"><span class="nav-number">11.1.4.</span> <span class="nav-text">详细设计的表示方法及UML活动图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="nav-number">11.2.</span> <span class="nav-text">面向对象详细设计模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E4%BE%8B%E8%AE%BE%E8%AE%A1"><span class="nav-number">11.3.</span> <span class="nav-text">用例设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E8%AE%BE%E8%AE%A1"><span class="nav-number">11.4.</span> <span class="nav-text">类设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%AE%BE%E8%AE%A1"><span class="nav-number">11.5.</span> <span class="nav-text">数据设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%90%E7%B3%BB%E7%BB%9F%E5%92%8C%E8%BD%AF%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="nav-number">11.6.</span> <span class="nav-text">子系统和软结构设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%A1%A3%E5%8C%96%E5%92%8C%E8%AF%84%E5%AE%A1%E8%BD%AF%E4%BB%B6%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1"><span class="nav-number">11.7.</span> <span class="nav-text">文档化和评审软件详细设计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-%E8%BD%AF%E4%BB%B6%E5%AE%9E%E7%8E%B0%E5%9F%BA%E7%A1%80"><span class="nav-number">12.</span> <span class="nav-text">第十二章 软件实现基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%AE%9E%E7%8E%B0%E6%A6%82%E8%BF%B0"><span class="nav-number">12.1.</span> <span class="nav-text">软件实现概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80"><span class="nav-number">12.2.</span> <span class="nav-text">程序设计语言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AB%98%E8%B4%A8%E9%87%8F%E7%BC%96%E7%A0%81"><span class="nav-number">12.3.</span> <span class="nav-text">高质量编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%AF%E6%8C%81%E8%BD%AF%E4%BB%B6%E5%AE%9E%E7%8E%B0%E7%9A%84CASE%E5%B7%A5%E5%85%B7"><span class="nav-number">12.4.</span> <span class="nav-text">支持软件实现的CASE工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%AE%9E%E7%8E%B0%E7%9A%84%E8%BE%93%E5%87%BA"><span class="nav-number">12.5.</span> <span class="nav-text">软件实现的输出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0-%E7%BC%96%E5%86%99%E4%BB%A3%E7%A0%81"><span class="nav-number">13.</span> <span class="nav-text">第十三章 编写代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E4%BB%A3%E7%A0%81%E7%9A%84%E4%BB%BB%E5%8A%A1"><span class="nav-number">13.1.</span> <span class="nav-text">编写代码的任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E8%AE%BE%E8%AE%A1%E7%BC%96%E5%86%99%E4%BB%A3%E7%A0%81"><span class="nav-number">13.2.</span> <span class="nav-text">基于设计编写代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E9%87%8D%E7%94%A8"><span class="nav-number">13.3.</span> <span class="nav-text">代码片段重用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E7%BC%BA%E9%99%B7"><span class="nav-number">13.4.</span> <span class="nav-text">软件缺陷</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E8%B0%83%E8%AF%95"><span class="nav-number">13.5.</span> <span class="nav-text">程序调试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E7%BE%A4%E6%99%BA%E7%9F%A5%E8%AF%86%E6%9D%A5%E8%A7%A3%E5%86%B3%E7%BC%96%E7%A8%8B%E5%92%8C%E8%B0%83%E8%AF%95%E9%97%AE%E9%A2%98"><span class="nav-number">13.6.</span> <span class="nav-text">基于群智知识来解决编程和调试问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E4%BB%A3%E7%A0%81%E7%9A%84%E8%BE%93%E5%87%BA"><span class="nav-number">13.7.</span> <span class="nav-text">编写代码的输出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0-%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95"><span class="nav-number">14.</span> <span class="nav-text">第十四章 软件测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%A6%82%E8%BF%B0"><span class="nav-number">14.1.</span> <span class="nav-text">软件测试概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E7%9A%84%E8%BF%87%E7%A8%8B%E5%92%8C%E7%AD%96%E7%95%A5"><span class="nav-number">14.2.</span> <span class="nav-text">软件测试的过程和策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%8A%80%E6%9C%AF"><span class="nav-number">14.3.</span> <span class="nav-text">软件测试技术</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%99%BD%E7%9B%92%E6%B5%8B%E8%AF%95%E6%8A%80%E6%9C%AF"><span class="nav-number">14.3.1.</span> <span class="nav-text">白盒测试技术</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%BB%91%E7%9B%92%E6%B5%8B%E8%AF%95%E6%8A%80%E6%9C%AF"><span class="nav-number">14.3.2.</span> <span class="nav-text">黑盒测试技术</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E8%AE%A1%E5%88%92%E7%9A%84%E5%88%B6%E5%AE%9A"><span class="nav-number">14.4.</span> <span class="nav-text">软件测试计划的制定</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%8D%81%E4%BA%94%E7%AB%A0-%E8%BD%AF%E4%BB%B6%E9%83%A8%E7%BD%B2"><span class="nav-number">15.</span> <span class="nav-text">第十五章 软件部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%8F%8A%E5%85%B6%E7%8E%AF%E5%A2%83"><span class="nav-number">15.1.</span> <span class="nav-text">软件及其环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E9%83%A8%E7%BD%B2%E7%9A%84%E6%96%B9%E5%BC%8F%E5%92%8C%E6%96%B9%E6%B3%95"><span class="nav-number">15.2.</span> <span class="nav-text">软件部署的方式和方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%8D%81%E5%85%AD%E7%AB%A0-%E8%BD%AF%E4%BB%B6%E7%BB%B4%E6%8A%A4%E5%92%8C%E6%BC%94%E5%8C%96"><span class="nav-number">16.</span> <span class="nav-text">第十六章 软件维护和演化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E9%80%BB%E8%BE%91%E8%80%81%E5%8C%96"><span class="nav-number">16.1.</span> <span class="nav-text">软件逻辑老化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E7%BB%B4%E6%8A%A4%E6%8A%80%E6%9C%AF%E5%8F%8A%E8%BF%87%E7%A8%8B"><span class="nav-number">16.2.</span> <span class="nav-text">软件维护技术及过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%83%E7%AB%A0-%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86"><span class="nav-number">17.</span> <span class="nav-text">第十七章 软件项目管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E6%A6%82%E8%BF%B0"><span class="nav-number">17.1.</span> <span class="nav-text">软件项目管理概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E8%AE%A1%E5%88%92"><span class="nav-number">17.2.</span> <span class="nav-text">软件项目计划</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E8%B7%9F%E8%B8%AA"><span class="nav-number">17.3.</span> <span class="nav-text">软件项目跟踪</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86"><span class="nav-number">17.4.</span> <span class="nav-text">软件配置管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86"><span class="nav-number">17.5.</span> <span class="nav-text">软件风险管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E4%BF%9D%E8%AF%81"><span class="nav-number">17.6.</span> <span class="nav-text">软件质量保证</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="君不见"
+      src="/images/tsy.png">
+  <p class="site-author-name" itemprop="name">君不见</p>
+  <div class="site-description" itemprop="description">君不见，黄河之水天上来，奔流到海不复回。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/godx06" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godx06" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/3451246424@qq.com" title="E-Mail → 3451246424@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/7655616259/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;7655616259&#x2F;profile?rightmod&#x3D;1&amp;wvr&#x3D;6&amp;mod&#x3D;personinfo&amp;is_all&#x3D;1" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/m0_61465701?spm=1018.2226.3001.5343" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;m0_61465701?spm&#x3D;1018.2226.3001.5343" rel="noopener" target="_blank"><i class="fab fa-skype fa-fw"></i>CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://leetcode.cn/" title="https:&#x2F;&#x2F;leetcode.cn&#x2F;" rel="noopener" target="_blank">力扣</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.nowcoder.com/" title="https:&#x2F;&#x2F;www.nowcoder.com&#x2F;" rel="noopener" target="_blank">牛客</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+
+    
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">君不见</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  <script>
+  NexT.utils.loadComments(document.querySelector('#SOHUCS'), () => {
+    var appid = 'cyw4nNoc5';
+    var conf = '00d96ca2de6f5fc1a13903b7caf0a878';
+    var width = window.innerWidth || document.documentElement.clientWidth;
+    if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>');
+    } else {
+      var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})});
+    }
+  });
+  </script>
+  <script src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
