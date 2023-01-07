@@ -1138,7 +1138,7 @@ pre .javascript .function {
 }
 .sidebar-inner {
   color: #999;
-  padding: 18px 10px;
+  padding: 5px 10px;
   text-align: center;
 }
 .cc-license {
@@ -1195,7 +1195,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ff4e20;
+  background: #f6f;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2338,11 +2338,11 @@ ul.breadcrumb li + li:last-child {
   padding: 0;
   position: absolute;
   top: 0;
-  width: 240px;
+  width: 300px;
 }
 @media (min-width: 1200px) {
   .header-inner {
-    width: 240px;
+    width: 300px;
   }
 }
 @media (max-width: 991px) {
@@ -2369,7 +2369,7 @@ ul.breadcrumb li + li:last-child {
   box-shadow: initial;
   box-sizing: border-box;
   padding: 40px;
-  width: calc(100% - 252px);
+  width: calc(100% - 305px);
 }
 @media (max-width: 991px) {
   .content-wrap {
@@ -2500,7 +2500,7 @@ ul.breadcrumb li + li:last-child {
   box-shadow: none;
   margin-top: 100%;
   position: static;
-  width: 240px;
+  width: 300px;
 }
 @media (max-width: 991px) {
   .sidebar {
@@ -2516,12 +2516,12 @@ ul.breadcrumb li + li:last-child {
   box-shadow: initial;
   box-sizing: border-box;
   color: var(--text-color);
-  width: 240px;
+  width: 300px;
   opacity: 0;
 }
 .sidebar-inner.affix {
   position: fixed;
-  top: 12px;
+  top: 5px;
 }
 .sidebar-inner.affix-bottom {
   position: absolute;
