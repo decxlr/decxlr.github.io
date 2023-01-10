@@ -21,12 +21,13 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
   <link rel="stylesheet" href="/lib/pace/pace-theme-center-circle.min.css">
   <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"godx06.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":300,"display":"post","padding":5,"offset":5,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"godx06.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":300,"display":"post","padding":5,"offset":5,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="本文涉及3种类型的后端接口，Body型、Param型和File型发送请求的方法">
@@ -151,12 +152,12 @@
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">5</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">18</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">19</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -300,7 +301,7 @@
 <blockquote>
 <p><a target="_blank" rel="noopener" href="http://localhost:8080/user/addUser">http://localhost:8080/user/addUser</a> </p>
 </blockquote>
-<p><img src=" https://note.youdao.com/yws/api/personal/file/WEBb6f66c892ba59ddd3d6e3d2037a2ba95?method=download&shareKey=35d2a752187b4c3737ff08c0a34e2c8c" ></p>
+<p><img data-src=" https://note.youdao.com/yws/api/personal/file/WEBb6f66c892ba59ddd3d6e3d2037a2ba95?method=download&shareKey=35d2a752187b4c3737ff08c0a34e2c8c" ></p>
 
 <h3 id="Param类型"><a href="#Param类型" class="headerlink" title="Param类型"></a>Param类型</h3><p>Param类型的接口是类似于这种：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/queryLimit&quot;)</span></span><br><span class="line"><span class="keyword">public</span> List&lt;UserEntity&gt; <span class="title function_">queryLimit</span><span class="params">(<span class="meta">@RequestParam(&quot;currentPage&quot;)</span> Integer currentPage,<span class="meta">@RequestParam(&quot;pageSize&quot;)</span> Integer pageSize)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> userService.queryLimit(currentPage,pageSize);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -309,7 +310,7 @@
 <blockquote>
 <p><a target="_blank" rel="noopener" href="http://localhost:8080/user/queryLimit">http://localhost:8080/user/queryLimit</a> </p>
 </blockquote>
-<p><img src="https://note.youdao.com/yws/api/personal/file/WEB34c8d05c26c39ee88f45e516275c2038?method=download&shareKey=f82e28e53dff23233fbb75b989ce2d87" alt="1667283558631"></p>
+<p><img data-src="https://note.youdao.com/yws/api/personal/file/WEB34c8d05c26c39ee88f45e516275c2038?method=download&shareKey=f82e28e53dff23233fbb75b989ce2d87" alt="1667283558631"></p>
 <h3 id="File类型"><a href="#File类型" class="headerlink" title="File类型"></a>File类型</h3><p>File类型的接口是类似于这种：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(value = &quot;/upload&quot;,method = RequestMethod.POST)</span></span><br><span class="line"><span class="keyword">private</span> Resp&lt;String&gt; <span class="title function_">upload</span><span class="params">(<span class="meta">@RequestParam(&quot;file&quot;)</span>MultipartFile file)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> userService.upload(file);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -317,7 +318,7 @@
 <blockquote>
 <p><a target="_blank" rel="noopener" href="http://localhost:8080/user/upload">http://localhost:8080/user/upload</a> </p>
 </blockquote>
-<p><img src="https://note.youdao.com/yws/api/personal/file/WEBf1ce261a38255939b43d1707e11cd301?method=download&shareKey=089e67df5a56d2db43e323d6d7b902c6" alt="1667266319843"></p>
+<p><img data-src="https://note.youdao.com/yws/api/personal/file/WEBf1ce261a38255939b43d1707e11cd301?method=download&shareKey=089e67df5a56d2db43e323d6d7b902c6" alt="1667266319843"></p>
 <h2 id="前后端连接"><a href="#前后端连接" class="headerlink" title="前后端连接"></a>前后端连接</h2><blockquote>
 <p>首先要创建一个Thread，网络请求操作较慢，所以要在子线程里操作，在主线程里发送网络请求会造成堵塞，APP可能会崩溃。 其次是网络请求的操作要放在try语句里，毕竟网络通信不一定成功的。最后需要注意的是子线程不能直接更新UI，要在子线程里操作UI，需要借助runOnUiThread 。</p>
 </blockquote>
@@ -510,14 +511,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -528,10 +529,6 @@
       </div>
   </nav>
 </div>
-  <div class="sidebar-button motion-element"><i class="fa fa-comment"></i>
-    Chat
-  </a>
-  </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
         <a href="https://github.com/godx06" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godx06" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
@@ -639,6 +636,9 @@
   
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
@@ -756,6 +756,7 @@ window.addEventListener('pjax:success', () => {
 
 
 
+  <script src="//code.tidio.co/qkwnepnheqrn9usrfqkth95hu196bfin.js"></script>
 
 
 
