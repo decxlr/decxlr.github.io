@@ -21,13 +21,12 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
   <link rel="stylesheet" href="/lib/pace/pace-theme-center-circle.min.css">
   <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"godx06.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":300,"display":"post","padding":5,"offset":5,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"godx06.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":300,"display":"post","padding":5,"offset":5,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="蓝桥杯的一些练习题">
@@ -294,7 +293,7 @@
       
         <p>蓝桥杯的一些练习题</p>
 <h2 id="数字三角形-简单"><a href="#数字三角形-简单" class="headerlink" title="数字三角形(简单)"></a>数字三角形(简单)</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p><a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/505/learning/">数字三角形 - 蓝桥云课 (lanqiao.cn)</a> </p>
-<p><img data-src="https://note.youdao.com/yws/api/personal/file/WEB43f0822f4c09bb656e8fb993eb8c4d51?method=download&shareKey=c65f97994f618d17eaed559719c3329a" alt="图片描述"></p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/WEB43f0822f4c09bb656e8fb993eb8c4d51?method=download&shareKey=c65f97994f618d17eaed559719c3329a" alt="图片描述"></p>
 <p>上图给出了一个数字三角形。从三角形的顶部到底部有很多条不同的路径。对于每条路径，把路径上面的数加起来可以得到一个和，你的任务就是找到最大的和。</p>
 <p>路径上的每一步只能从一个数走到下一层和它最近的左边的那个数或者右 边的那个数。此外，向左下走的次数与向右下走的次数相差不能超过 1。</p>
 <h3 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h3><p>输入的第一行包含一个整数 N (1≤N≤100)，表示三角形的行数。</p>
@@ -342,7 +341,7 @@
 <p>##杨辉三角形(中等)</p>
 <h3 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h3><p><a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/1457/learning/">杨辉三角形 - 蓝桥云课 (lanqiao.cn)</a> </p>
 <p>下面的图形是著名的杨辉三角形：</p>
-<p><img data-src="https://note.youdao.com/yws/api/personal/file/WEB10001394df5976a0891b51ff0bbb9545?method=download&shareKey=2b18f242ed67fd3c0162877fa7e5c174" alt="image"></p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/WEB10001394df5976a0891b51ff0bbb9545?method=download&shareKey=2b18f242ed67fd3c0162877fa7e5c174" alt="image"></p>
 <p>如果我们按从上到下、从左到右的顺序把所有数排成一列，可以得到如下数列： 1,1,1,1,2,1,1,3,3,1,1,4,6,4,1,⋯</p>
 <p>给定一个正整数 NN，请你输出数列中第一次出现 NN 是在第几个数？</p>
 <h3 id="输入描述-1"><a href="#输入描述-1" class="headerlink" title="输入描述"></a>输入描述</h3><p>输入一个整数 NN。</p>
@@ -795,9 +794,6 @@
   
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/pjax/pjax.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
-  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

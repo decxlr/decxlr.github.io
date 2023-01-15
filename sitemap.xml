@@ -275,13 +275,6 @@
   </url>
   
   <url>
-    <loc>https://godx06.github.io/tags/HTML/</loc>
-    <lastmod>2023-01-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://godx06.github.io/tags/JDBC/</loc>
     <lastmod>2023-01-15</lastmod>
     <changefreq>weekly</changefreq>
@@ -289,7 +282,7 @@
   </url>
   
   <url>
-    <loc>https://godx06.github.io/tags/Maven/</loc>
+    <loc>https://godx06.github.io/tags/HTML/</loc>
     <lastmod>2023-01-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -297,6 +290,13 @@
   
   <url>
     <loc>https://godx06.github.io/tags/MyBatis/</loc>
+    <lastmod>2023-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://godx06.github.io/tags/Maven/</loc>
     <lastmod>2023-01-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
