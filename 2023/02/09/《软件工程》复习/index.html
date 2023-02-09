@@ -1,0 +1,2607 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <!--自定义看板娘-->
+  <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"/>
+
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/dragon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/dragon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="baidu-site-verification" content="6EMwG3w0uT">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-center-circle.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"godx06.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":300,"display":"post","padding":5,"offset":5,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="软件工程的一些概念">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《软件工程》复习">
+<meta property="og:url" content="https://godx06.github.io/2023/02/09/%E3%80%8A%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E3%80%8B%E5%A4%8D%E4%B9%A0/index.html">
+<meta property="og:site_name" content="君不见の博客">
+<meta property="og:description" content="软件工程的一些概念">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-02-09T02:52:46.000Z">
+<meta property="article:modified_time" content="2023-02-09T03:00:42.808Z">
+<meta property="article:author" content="君不见">
+<meta property="article:tag" content="Note">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://godx06.github.io/2023/02/09/%E3%80%8A%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E3%80%8B%E5%A4%8D%E4%B9%A0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>《软件工程》复习 | 君不见の博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  
+<link rel="alternate" href="/atom.xml" title="君不见の博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script type="text/javascript" src="/js/dytitle.js"></script>
+
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">君不见の博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录生活中的点点滴滴</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">10</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">7</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">27</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://godx06.github.io/2023/02/09/%E3%80%8A%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E3%80%8B%E5%A4%8D%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/tsy.png">
+      <meta itemprop="name" content="君不见">
+      <meta itemprop="description" content="君不见，黄河之水天上来，奔流到海不复回。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="君不见の博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          《软件工程》复习
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-02-09 10:52:46 / 修改时间：11:00:42" itemprop="dateCreated datePublished" datetime="2023-02-09T10:52:46+08:00">2023-02-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">软件工程</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2023/02/09/%E3%80%8A%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E3%80%8B%E5%A4%8D%E4%B9%A0/#SOHUCS" itemprop="discussionUrl">
+        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2023/02/09/《软件工程》复习/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>软件工程的一些概念</p>
+<h2 id="SE1-1-程序及质量保证方法"><a href="#SE1-1-程序及质量保证方法" class="headerlink" title="SE1.1 程序及质量保证方法"></a>SE1.1 程序及质量保证方法</h2><h3 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h3><p><strong>程序</strong>（Program）是由程序设计语言所描述的、能为计算机所理解和处理的一组语句序列 </p>
+<h3 id="外在-External-质量"><a href="#外在-External-质量" class="headerlink" title="外在(External)质量"></a>外在(External)质量</h3><ul>
+<li><strong>用户</strong>视点</li>
+<li>对外可展示，用户可直接感触到、所关心的</li>
+<li><strong>使用流畅性、响应速度、界面美观、操作简易性、运行可靠性等</strong></li>
+</ul>
+<h3 id="内在-Internal-质量"><a href="#内在-Internal-质量" class="headerlink" title="内在(Internal)质量"></a>内在(Internal)质量</h3><ul>
+<li><strong>程序员</strong>视点</li>
+<li>体现在程序的内在方面，程序员可以感触到的、所关心的</li>
+<li><strong>易于理解、结构清晰、易于修改、可重用好</strong></li>
+</ul>
+<h3 id="何为代码重用"><a href="#何为代码重用" class="headerlink" title="何为代码重用"></a>何为代码重用</h3><ul>
+<li>在编写代码过程中，充分利用已有和现成的代码，并将其集成到程序之中，从而来实现程序功能</li>
+</ul>
+<h3 id="代码重用有何好处"><a href="#代码重用有何好处" class="headerlink" title="代码重用有何好处"></a>代码重用有何好处</h3><ul>
+<li>由于被重用的代码经过多次反复的使用，代码质量得到充分检验，因而代码重用不仅可极大提高编程效率，而且还可有效提高程序质量</li>
+</ul>
+<h3 id="结对编程带来的好处"><a href="#结对编程带来的好处" class="headerlink" title="结对编程带来的好处"></a>结对编程带来的好处</h3><ul>
+<li>提高程序质量<ul>
+<li>提供更好的设计质量和代码质量</li>
+<li>合作解决问题能力强，1+1 &gt; 2</li>
+</ul>
+</li>
+<li>提升开发效率<ul>
+<li>开发人员更加信心</li>
+<li>有效地避免了闭门造车</li>
+<li>更易于发现问题和纠正问题</li>
+</ul>
+</li>
+<li>促进学习交流<ul>
+<li>有效的学习，做中学效果更好</li>
+<li>相互学习和分享经验</li>
+<li>更好应对人员流动，一个走了另一个人可以替换上</li>
+</ul>
+</li>
+</ul>
+<h3 id="自动化代码分析工具"><a href="#自动化代码分析工具" class="headerlink" title="自动化代码分析工具"></a><strong>自动化代码分析工具</strong></h3><ul>
+<li><p>SonarQube</p>
+<p>基于Web、用于管理程序代码质量的代码分析工具</p>
+<p><a target="_blank" rel="noopener" href="http://www.sonarqube.org/">www.sonarqube.org</a> </p>
+<p>能以插件的形式集成到众多的软件开发环境（如Eclipse）</p>
+</li>
+<li><p>CheckStyle</p>
+</li>
+<li><p>FindBugs，</p>
+</li>
+<li><p>PMD</p>
+</li>
+<li><p>Jtest</p>
+</li>
+<li><p>……</p>
+</li>
+</ul>
+<h3 id="SonarQube可分析的质量问题"><a href="#SonarQube可分析的质量问题" class="headerlink" title="SonarQube可分析的质量问题"></a>SonarQube可分析的质量问题</h3><ul>
+<li>是否违反编码规则</li>
+<li>是否存在静态常规缺陷</li>
+<li>模块、方法、类的复杂度是否过高</li>
+<li>是否存在重复的代码</li>
+<li>代码的注释是否恰当和充分</li>
+<li>统计和分析代码的单元测试覆盖率</li>
+<li>判断软件体系结构设计是否合理</li>
+</ul>
+<h2 id="SE1-2-软件及其特点"><a href="#SE1-2-软件及其特点" class="headerlink" title="SE1.2 软件及其特点"></a>SE1.2 软件及其特点</h2><h3 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h3><p><strong>软件</strong>是指在计算机系统的支持下，能够完成特定功能与性能的程序、数据和相关文档</p>
+<h3 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h3><p><strong>文档</strong>：记录软件开发活动和阶段性成果、软件配置及变更的阐述性资料</p>
+<h3 id="软件生命周期"><a href="#软件生命周期" class="headerlink" title="软件生命周期"></a><strong>软件生命周期</strong></h3><ul>
+<li><strong>软件从提出开发开始到最终灭亡所经历的时期</strong></li>
+<li>不同阶段具有不同的特征</li>
+</ul>
+<h3 id="软件特点"><a href="#软件特点" class="headerlink" title="软件特点"></a><strong>软件特点</strong></h3><ul>
+<li><p>逻辑性</p>
+</li>
+<li><p>设计开发</p>
+</li>
+<li><p>易变性</p>
+</li>
+<li><p>复杂性</p>
+</li>
+<li><p>缺陷的隐蔽性</p>
+</li>
+</ul>
+<h3 id="软件的分类"><a href="#软件的分类" class="headerlink" title="软件的分类"></a><strong>软件的分类</strong></h3><ul>
+<li><p>应用软件</p>
+<ul>
+<li><p>面向特定应用领域的专用软件。它们针对相关行业和领域的特定问题，为其提供基于计算的新颖解决方案。</p>
+</li>
+<li><p>示例：淘宝、12306、携程、微信、QQ等软件</p>
+</li>
+</ul>
+</li>
+<li><p>系统软件</p>
+<ul>
+<li>对计算机资源进行管理，为应用软件的运行提供基础设施和服务的一类软件。从计算服务的视角，系统软件介于计算机硬件和应用软件之间。</li>
+<li>示例：操作系统、数据库管理系统、编译软件、软件中间件等</li>
+</ul>
+</li>
+<li><p>支撑软件</p>
+<ul>
+<li>辅助软件开发和运维，帮助开发人员完成软件开发和维护工作的一类软件</li>
+<li>示例：SonarQube、Visual Studio、Eclipse等</li>
+</ul>
+</li>
+</ul>
+<h3 id="何为闭源软件"><a href="#何为闭源软件" class="headerlink" title="何为闭源软件"></a>何为<strong>闭源软件</strong></h3><ul>
+<li>软件代码不对用户开放的一类软件，购买软件时只提供可运行软件或服务，没有提供源代码</li>
+<li>以许可证（License）的方式授权用户使用软件</li>
+</ul>
+<h3 id="何为开源软件"><a href="#何为开源软件" class="headerlink" title="何为开源软件"></a>何为<strong>开源软件</strong></h3><ul>
+<li>一种源代码可以自由获取和传播的计算机软件，其拥有者通过开源许可证赋予被许可人对软件进行使用、修改和传播</li>
+</ul>
+<h3 id="开源软件的好处"><a href="#开源软件的好处" class="headerlink" title="开源软件的好处"></a>开源软件的好处</h3><ul>
+<li>源代码可自由传播</li>
+<li>激发创作者的热情</li>
+<li>免费使用降低成本</li>
+</ul>
+<h3 id="开源软件的优势"><a href="#开源软件的优势" class="headerlink" title="开源软件的优势"></a>开源软件的优势</h3><ul>
+<li>采购和开发的成本更低<ul>
+<li>开源软件通常是免费的，即使要付费，其费用也非常低廉</li>
+</ul>
+</li>
+<li>软件质量更高、更安全<ul>
+<li>核心代码都在公众的视野之中，代码问题（如缺陷、安全漏洞等）很容易被人发现</li>
+</ul>
+</li>
+<li>软件研制和交付的更快<ul>
+<li>基于开源软件的项目开发可以更为快速地给用户交付软件产品</li>
+</ul>
+</li>
+<li>软件功能更为强大<ul>
+<li>大量的软件开发者不仅参与软件开发，贡献他们的代码，而且还参与软件的创新，提出和构思软件需求，不断完善软件功能</li>
+</ul>
+</li>
+</ul>
+<h3 id="软件质量要素"><a href="#软件质量要素" class="headerlink" title="软件质量要素"></a>软件质量要素</h3><ul>
+<li><p>正确性（Correctness）</p>
+<ul>
+<li>软件满足规格说明和用户要求的程度，即在预定环境下能正确地完成预期功能和非功能需求的程度。</li>
+</ul>
+</li>
+<li><p>可靠性（Reliability）</p>
+<ul>
+<li>在规定条件下、限定时间范围内，软件系统完成预期功能、不引起系统故障的能力。</li>
+</ul>
+</li>
+<li><p>健壮性（Robustness）</p>
+<ul>
+<li>在计算环境发生故障、输入无效数据或操作错误等意外情况下，软件仍能做出适当响应的程度。</li>
+</ul>
+</li>
+<li><p>有效性（Efficiency）</p>
+<ul>
+<li>软件利用计算资源和存储资源以实现其功能的能力。</li>
+</ul>
+</li>
+<li><p>安全性</p>
+<ul>
+<li>包括系统安全（Safety）和信息安全（Security），系统安全是指软件能及时有效地避免给人员、设施、环境、经济等造成损害，信息安全是指软件能有效防控各类的非法获取、传播和使用</li>
+</ul>
+</li>
+<li><p>可维护性（Maintainability）</p>
+<ul>
+<li>是否易于对其进行修改以更正错误、增强功能、适应新运行环境</li>
+</ul>
+</li>
+<li><p>可移植性（Portability）</p>
+<ul>
+<li>把软件从一种运行环境转移到另一种运行环境下运行的难易程度</li>
+</ul>
+</li>
+<li><p>可重用性（Reusability）</p>
+<ul>
+<li>软件模块、构件、设计方案等在其他软件开发中被再次使用程度</li>
+</ul>
+</li>
+<li><p>可理解性（Comprehensibility）</p>
+<ul>
+<li>软件开发者或用户理解该软件系统的容易程度</li>
+</ul>
+</li>
+<li><p>可信性（Dependability）</p>
+<ul>
+<li>采取有效措施确认软件满足人们的要求和期望</li>
+</ul>
+</li>
+<li><p>持续性（Sustainability）</p>
+<ul>
+<li>面对各种突发异常事件，仍能提供令人满意的服务的能力</li>
+</ul>
+</li>
+<li><p>可用性（Usability）</p>
+<ul>
+<li>使用和操作软件系统难以程度</li>
+</ul>
+</li>
+<li><p>互操作性（Interoperability）</p>
+<ul>
+<li>软件系统与其他的系统进行交换信息、协同工作的能力</li>
+</ul>
+</li>
+</ul>
+<h2 id="SE2-软件工程概述"><a href="#SE2-软件工程概述" class="headerlink" title="SE2 软件工程概述"></a>SE2 软件工程概述</h2><h3 id="软件危机的出现"><a href="#软件危机的出现" class="headerlink" title="软件危机的出现"></a>软件危机的出现</h3><ul>
+<li>开发成本高</li>
+<li>进度难以控制</li>
+<li>质量难以保证</li>
+<li>软件维护困难</li>
+<li>失败风险很大</li>
+</ul>
+<h3 id="软件工程的诞生"><a href="#软件工程的诞生" class="headerlink" title="软件工程的诞生"></a>软件工程的诞生</h3><ul>
+<li>时间：1968年</li>
+<li>地点：西德南部小城</li>
+<li>事件：NATO科技委出资召开的会议</li>
+<li>人物： 11 个国家 50 位代表参加</li>
+<li>主题：如何解决软件危机</li>
+<li>成果：提出了软件工程</li>
+</ul>
+<h3 id="何为软件工程"><a href="#何为软件工程" class="headerlink" title="何为软件工程"></a>何为软件工程</h3><p>q将系统的、规范的、可量化的方法应用于软件的开发、运行和维护的过程；以及上述方法的研究 –  [IEEE 93] </p>
+<h3 id="软件工程的三要素"><a href="#软件工程的三要素" class="headerlink" title="软件工程的三要素"></a>软件工程的三要素</h3><ul>
+<li>过程</li>
+<li>方法学</li>
+<li>工具</li>
+</ul>
+<h3 id="软件开发的本质"><a href="#软件开发的本质" class="headerlink" title="软件开发的本质"></a>软件开发的本质</h3><p>软件开发 &#x3D; 软件创作 + 软件生产 </p>
+<p>软件创作：基于软件开发者的经验和技能，借助于智慧，进行自由创新，如软件设计、编码实现等 </p>
+<p>软件生产：基于工程化的手段，遵循约束和规范，开展软件生产，如遵循过程、按照标准、质量保证等</p>
+<h3 id="软件工程的目标"><a href="#软件工程的目标" class="headerlink" title="软件工程的目标"></a>软件工程的目标</h3><p>在成本、进度等约束下，指导软件开发和运维，开发出满足用户要求的足够好软件 </p>
+<h3 id="软件工程原则"><a href="#软件工程原则" class="headerlink" title="软件工程原则"></a>软件工程原则</h3><ul>
+<li>抽象和建模 </li>
+<li>模块化</li>
+<li>软件重用</li>
+<li>信息隐藏</li>
+<li>关注点分离</li>
+<li>分而治之</li>
+<li>双向追踪原则</li>
+<li>工具辅助</li>
+</ul>
+<h2 id="SE3-1-软件过程模型"><a href="#SE3-1-软件过程模型" class="headerlink" title="SE3.1 软件过程模型"></a>SE3.1 软件过程模型</h2><h3 id="软件开发的特点"><a href="#软件开发的特点" class="headerlink" title="软件开发的特点"></a>软件开发的特点</h3><ul>
+<li>基于智力的协作过程</li>
+<li>软件项目内在复杂性</li>
+<li>循序渐进的开发过程</li>
+</ul>
+<h3 id="软件过程"><a href="#软件过程" class="headerlink" title="软件过程"></a>软件过程</h3><ul>
+<li>过程(Process)<ul>
+<li>活动：明确要做哪些事情，包括具体的活动</li>
+<li>关系：活动间存在逻辑关系，如依赖和先后次序</li>
+<li>示例：考研的过程</li>
+</ul>
+</li>
+<li>软件过程(Software Process)<ul>
+<li>按照项目进度、成本和质量要求，遵循用户需求，开发和维护软件、管理软件项目的一系列有序软件开发活动</li>
+<li>软件开发活动：技术活动和管理活动</li>
+</ul>
+</li>
+</ul>
+<h3 id="软件过程模型"><a href="#软件过程模型" class="headerlink" title="软件过程模型"></a>软件过程模型</h3><ul>
+<li>软件过程模型(Software Process Model)<ul>
+<li>定义了软件开发的具体活动以及活动间的逻辑关系</li>
+</ul>
+</li>
+</ul>
+<h3 id="瀑布模型-Waterfall-Model"><a href="#瀑布模型-Waterfall-Model" class="headerlink" title="瀑布模型(Waterfall Model )"></a>瀑布模型(Waterfall Model )</h3><ul>
+<li>特点<ul>
+<li>与软件生命周期相互一致</li>
+<li>每个活动结束后需要评审</li>
+<li>相邻活动间存在因果关系</li>
+</ul>
+</li>
+<li>优点<ul>
+<li>简单，一目了然，易理解、掌握、应用和管理</li>
+</ul>
+</li>
+</ul>
+<p>适合于需求易于定义、不易变动的软件系统 </p>
+<h3 id="改进的瀑布模型：带反馈和回溯"><a href="#改进的瀑布模型：带反馈和回溯" class="headerlink" title="改进的瀑布模型：带反馈和回溯"></a>改进的瀑布模型：带反馈和回溯</h3><ul>
+<li>后期活动发现有问题后，可返回到前面活动加以解决</li>
+<li>提高了过程模型的灵活性</li>
+</ul>
+<p>不足</p>
+<ul>
+<li>软件开发处于动荡之中</li>
+<li>需等到所有功能实现后，才能得到可运行软件</li>
+</ul>
+<h3 id="增量模型-Incremental-Model"><a href="#增量模型-Incremental-Model" class="headerlink" title="增量模型(Incremental Model)"></a>增量模型(Incremental Model)</h3><ul>
+<li>渐进式、增量式地实现软件功能</li>
+<li>优点：渐进快速交付，并行开发，提高效率</li>
+<li>不足<ul>
+<li>软件需求可确定且不易于变化</li>
+</ul>
+</li>
+</ul>
+<h3 id="迭代模型-Iterative-Model"><a href="#迭代模型-Iterative-Model" class="headerlink" title="迭代模型(Iterative Model)"></a>迭代模型(Iterative Model)</h3><p>每次迭代完成部分可确定的软件需求</p>
+<ul>
+<li>每次迭代是一完整过程</li>
+<li>体现了小步快跑的开发理念</li>
+<li>适合需求难导出、不易确定且持续变动的软件</li>
+<li>不足<ul>
+<li>迭代多少次不确定</li>
+<li>管理较为复杂</li>
+</ul>
+</li>
+</ul>
+<h3 id="原型模型-Prototype-Model"><a href="#原型模型-Prototype-Model" class="headerlink" title="原型模型(Prototype Model)"></a>原型模型(Prototype Model)</h3><p>何为软件原型？</p>
+<ul>
+<li>用户界面</li>
+<li>执行流程</li>
+</ul>
+<p>特点</p>
+<ul>
+<li>软件原型作为交流载体和媒介</li>
+<li>支持用户参与到软件开发中</li>
+<li>持续、渐进地导出用户要求</li>
+</ul>
+<p>适合于需求难导出、不易确定且持续变动的软件</p>
+<h3 id="螺旋模型-Spiral-Model"><a href="#螺旋模型-Spiral-Model" class="headerlink" title="螺旋模型(Spiral Model)"></a>螺旋模型(Spiral Model)</h3><p>软件风险</p>
+<ul>
+<li>使软件开发受到影响和损失、甚至导致失败的、可能会发生的事件</li>
+</ul>
+<hr>
+<ul>
+<li>集成迭代模型和原型模型</li>
+<li>引入风险分析，风险驱动的过程模型</li>
+<li>每个迭代四个阶段，若干活动</li>
+<li>适合于需求不明确、开发风险高、开发过程中需求变更大的软件项目</li>
+<li>不足：管理复杂</li>
+</ul>
+<h3 id="不同软件过程模型的特点"><a href="#不同软件过程模型的特点" class="headerlink" title="不同软件过程模型的特点"></a>不同软件过程模型的特点</h3><table>
+<thead>
+<tr>
+<th>模型名称</th>
+<th>指导思想</th>
+<th>关注点</th>
+<th>适合软件</th>
+<th>管理难度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>瀑布模型</td>
+<td>提供系统性指导</td>
+<td>与软件生命周期相一致</td>
+<td>需求变动不大、较为明确、可预先定义的应用</td>
+<td>易</td>
+</tr>
+<tr>
+<td>原型模型</td>
+<td>以原型为媒介指导用户的需求导出和评价</td>
+<td>需获取、导出和确认</td>
+<td>理解需求难以表述清楚、不易导出和获取的应用</td>
+<td>易</td>
+</tr>
+<tr>
+<td>增量模型</td>
+<td>快速交付和并行开发</td>
+<td>软件详细设计、编码和测试的增量式完成</td>
+<td>需求变动不大、较为明确、可预先定义的应用</td>
+<td>易</td>
+</tr>
+<tr>
+<td>迭代模型</td>
+<td>多次迭代，每次仅针对部分明确软件需求</td>
+<td>分多次迭代来开发软件，每次仅关注部分需求</td>
+<td>需求变动大、难以一次性说清楚的应用</td>
+<td>中等</td>
+</tr>
+<tr>
+<td>螺旋模型</td>
+<td>集成迭代模型和原型模型，引入风险分析</td>
+<td>软件计划制定和实施，软件风险管理，基于原型的迭代式开发</td>
+<td>开发风险大，需求难以确定的应用</td>
+<td>难</td>
+</tr>
+</tbody></table>
+<h3 id="敏捷软件开发方法-Agile-Method"><a href="#敏捷软件开发方法-Agile-Method" class="headerlink" title="敏捷软件开发方法(Agile Method)"></a>敏捷软件开发方法(Agile Method)</h3><ul>
+<li>重视人和交互、重视可运行软件系统、重视客户合作、重视响应用户需求变化</li>
+<li>少写软件文档，以代码为中心，快速响应变化</li>
+</ul>
+<h2 id="SE3-2-敏捷开发方法"><a href="#SE3-2-敏捷开发方法" class="headerlink" title="SE3.2 敏捷开发方法"></a>SE3.2 敏捷开发方法</h2><h3 id="什么是敏捷（Agile）方法"><a href="#什么是敏捷（Agile）方法" class="headerlink" title="什么是敏捷（Agile）方法"></a>什么是敏捷（Agile）方法</h3><ul>
+<li>一种轻量级软件开发方法<ul>
+<li>相对于重量级的软件开发方法而言</li>
+</ul>
+</li>
+<li>主张软件开发要以代码为中心，快速、轻巧和主动应对需求变化，持续、及时交付可运行的软件系统<ul>
+<li>轻便、轻巧</li>
+</ul>
+</li>
+<li>提供了一组思想和策略，指导快速响应用户需求的变化，快速交付可运行的软件制品</li>
+</ul>
+<h3 id="敏捷开发方法的基本观点"><a href="#敏捷开发方法的基本观点" class="headerlink" title="敏捷开发方法的基本观点"></a>敏捷开发方法的基本观点</h3><ul>
+<li>较之于过程和工具，应更加重视人和交互的价值</li>
+<li>较之于面面俱到文档，应更加重视可运行软件系统的价值</li>
+<li>较之于合同谈判，应更加重视客户合作的价值</li>
+<li>较之于遵循计划，应更加重视响应用户需求变化的价值</li>
+</ul>
+<h3 id="敏捷准则"><a href="#敏捷准则" class="headerlink" title="敏捷准则"></a>敏捷准则</h3><ul>
+<li>尽早和持续地交付有价值的软件，以使用户满意</li>
+<li>即使到了软件开发后期，也欢迎用户需求的变化</li>
+<li>不断交付可运行的软件系统，交付周期可以从几周到几个月</li>
+<li>在整个软件项目开发期间，用户和开发人员最好能每天一起工作</li>
+<li>由积极主动的人来承担项目开发，给他们提供所需环境和支持，信任他们的能力</li>
+<li>团队内部最有效的信息传递方式是面对面的交谈</li>
+<li>将可运行软件作为衡量软件开发进度的首要标准</li>
+<li>可持续性的开发，出资方、开发方和用户方应当保持长期、恒定的开发速度</li>
+<li>关注优秀的技能和良好的设计会增强敏捷性</li>
+<li>简单化</li>
+<li>最好的架构、需求和设计出自于自组织的团队</li>
+<li>软件开发团队应定期就如何提高工作效率的问题进行反思，并进行相应的调整</li>
+</ul>
+<h3 id="极限编程的基本思想"><a href="#极限编程的基本思想" class="headerlink" title="极限编程的基本思想"></a>极限编程的基本思想</h3><ul>
+<li>由Kent Beck提出的一种特殊的敏捷软件开发方法</li>
+<li>四条核心思想<ul>
+<li>交流，强调基于口头（而非文档、报表和计划）的交流</li>
+<li>反馈，通过持续、明确反馈来获得软件状态</li>
+<li>简单，用最简单的技术来解决问题</li>
+<li>勇气，快速开发并在必要时具有重新进行开发的信心</li>
+</ul>
+</li>
+<li>将经过数十年检验的准则结合在一起，定义了五条指导性原则和十二条须遵循的核心准则</li>
+</ul>
+<h3 id="Scrum方法"><a href="#Scrum方法" class="headerlink" title="Scrum方法"></a>Scrum方法</h3><p>旨在通过增量或迭代的方式加强软件项目的管理</p>
+<h3 id="Scrum方法的大致流程"><a href="#Scrum方法的大致流程" class="headerlink" title="Scrum方法的大致流程"></a>Scrum方法的大致流程</h3><ul>
+<li>首先，产品拥有者需创建软件产品订单库即“Backblog”<ul>
+<li>描述软件产品需提供的功能需求以及它们的优先级排序</li>
+</ul>
+</li>
+<li>其次，筛选出最应该实现的软件需求，<ul>
+<li>Scrum主人基于“Backblog”中各项软件需求及其优先级，形成待实现的软件产品冲刺订单库，即“SprintLog”</li>
+</ul>
+</li>
+<li>然后，软件开发将进入冲刺“Sprint”周期<ul>
+<li>以实现选定软件订单，每个冲刺就是一次增量开发，一般持续1到4周</li>
+</ul>
+</li>
+<li>最后，共同开展Scrum评审<ul>
+<li>一次冲刺完成后，每个团队成员演示自己的开发成果，大家共同审查成果是否高质量地实现了既定功能，并就其中的问题进行反思，以指导和改进下一次冲刺</li>
+</ul>
+</li>
+</ul>
+<h3 id="敏捷方法的特点"><a href="#敏捷方法的特点" class="headerlink" title="敏捷方法的特点"></a>敏捷方法的特点</h3><ul>
+<li><p>小</p>
+<ul>
+<li>生成少量软件文档，每个文档规模要小</li>
+<li>每次迭代要实现软件功能的数量和规模要小，迭代周期要小</li>
+</ul>
+</li>
+<li><p>简</p>
+<ul>
+<li>技术、工具以及每次迭代要解决的问题尽可能简单</li>
+</ul>
+<p>ü只关注当前欲实现的功能需求，而不要考虑将来的问题</p>
+</li>
+<li><p>快</p>
+<ul>
+<li>快速响应变化、从用户处获得反馈，给用户提交有价值软件，对软件产品进行迭代和更新</li>
+</ul>
+</li>
+<li><p>变</p>
+<ul>
+<li>允许需求动态变化，要以变应变，开发团队应是自组织的</li>
+</ul>
+</li>
+</ul>
+<h2 id="SE3-3-群体化软件开发方法"><a href="#SE3-3-群体化软件开发方法" class="headerlink" title="SE3.3 群体化软件开发方法"></a>SE3.3 群体化软件开发方法</h2><h3 id="闭源软件"><a href="#闭源软件" class="headerlink" title="闭源软件"></a>闭源软件</h3><ul>
+<li>何为闭源软件<ul>
+<li>软件代码不对用户开放的一类软件，购买软件时只提供可运行软件或服务，没有提供源代码</li>
+<li>以使用许可证（License）的方式授权用户使用软件</li>
+</ul>
+</li>
+<li>闭源软件的特点<ul>
+<li>无法获得源代码（无渠道）</li>
+<li>无权使用源代码（合法性）</li>
+</ul>
+</li>
+<li>闭源软件带来的问题<ul>
+<li>无法掌握软件内部实现情况（如是否存在恶意代码），难可信；</li>
+<li>无法修改和完善软件，影响了开发者的创新自由</li>
+</ul>
+</li>
+</ul>
+<h3 id="开源软件-Open-Source-Software"><a href="#开源软件-Open-Source-Software" class="headerlink" title="开源软件(Open Source Software)"></a>开源软件(Open Source Software)</h3><ul>
+<li>何为开源软件<ul>
+<li>一种源代码可以自由获取和传播的计算机软件，其拥有者通过开源许可证赋予被许可人对软件进行使用、修改和传播</li>
+</ul>
+</li>
+<li>开源软件的特点<ul>
+<li>源程序代码对外开放</li>
+<li>自由使用、修改和传播</li>
+</ul>
+</li>
+<li>任何人都可获得开源软件的代码</li>
+</ul>
+<h3 id="何为群体化开发方法"><a href="#何为群体化开发方法" class="headerlink" title="何为群体化开发方法"></a>何为群体化开发方法</h3><ul>
+<li>依托互联网平台来吸引、汇聚、组织和管理互联网上的大规模软件开发人员，通过竞争、合作、协商等多种自主协同方式，让他们参与软件开发、分享软件开发知识和成果、贡献智慧和力量的一种新颖软件开发方法</li>
+</ul>
+<h3 id="群体化软件开发方法的特点"><a href="#群体化软件开发方法的特点" class="headerlink" title="群体化软件开发方法的特点"></a>群体化软件开发方法的特点</h3><ul>
+<li><p>软件开发边界开放</p>
+</li>
+<li><p>互联网大众自由参与</p>
+</li>
+<li><p>利用海量的大众资源</p>
+</li>
+<li><p>共享源程序代码</p>
+</li>
+<li><p>兼顾软件创作和生产</p>
+</li>
+<li><p>依托互联网平台</p>
+</li>
+</ul>
+<h3 id="基于P-x2F-R分布式协同开发技术的优势"><a href="#基于P-x2F-R分布式协同开发技术的优势" class="headerlink" title="基于P&#x2F;R分布式协同开发技术的优势"></a>基于P&#x2F;R分布式协同开发技术的优势</h3><ul>
+<li>简单<ul>
+<li>使用门槛低，开发人员可方便地贡献代码、评论他人贡献，极大提高了开发人员参与软件项目开发的积极性</li>
+</ul>
+</li>
+<li>规范<ul>
+<li>PR机制提供了规范化的协同开发流程，促进互联网上大众群体围绕代码贡献的交流与合作，并与大众评论、软件测试、代码审查等环节结合在一起，确保了软件开发质量</li>
+</ul>
+</li>
+<li>透明<ul>
+<li>所有软件开发历史信息和社交活动信息都会保留下来，在开发人员主页或软件项目主页中展现</li>
+</ul>
+</li>
+</ul>
+<h2 id="SE3-4-Git介绍及使用"><a href="#SE3-4-Git介绍及使用" class="headerlink" title="SE3.4 Git介绍及使用"></a>SE3.4 Git介绍及使用</h2><h3 id="什么是版本控制（Revision-Control）-？"><a href="#什么是版本控制（Revision-Control）-？" class="headerlink" title="什么是版本控制（Revision Control） ？"></a>什么是版本控制（Revision Control） ？</h3><ul>
+<li>版本控制是对计算机程序、文档、数据等的更改和管理，它是软件配置管理的重要组成部分<ul>
+<li>实现跨区域、多人的协同开发  </li>
+<li>记载和追踪一个或者多个文件的历史记录</li>
+<li>组织和保护软件制品：源代码和文档</li>
+<li>统计软件开发工作量</li>
+<li>跟踪记录软件开发过程</li>
+</ul>
+</li>
+</ul>
+<h3 id="集中式版本控制"><a href="#集中式版本控制" class="headerlink" title="集中式版本控制"></a>集中式版本控制</h3><ul>
+<li>版本库集中存放在中央服务器之中</li>
+<li>开发前先从中央服务器取得最新版本</li>
+<li>开发完再把自己的工作推送给中央服务器</li>
+<li>中央服务器就好比是一个图书馆，你要改一本书，必须先从图书馆借出来，然后回到家自己改，改完后再放回图书馆</li>
+</ul>
+<p>典型系统：CVS、SVN、ClearCase </p>
+<p>特点：高度依赖中央服务器、速度慢、难以有效支持协同开发 </p>
+<h3 id="分布式版本控制"><a href="#分布式版本控制" class="headerlink" title="分布式版本控制"></a>分布式版本控制</h3><ul>
+<li>有一个中央仓库</li>
+<li>开发前通过克隆在本机上拷贝一个完整的软件仓库</li>
+<li>开发完把自己工作提交到本地仓库中</li>
+<li>需要同步给协作者时再递交到中央仓库</li>
+<li>版本库分步存储于各协作者电脑中</li>
+</ul>
+<p>典型系统：Git </p>
+<p>优点：不依赖中央服务器、可在本地开发、有效支持协同开发</p>
+<h3 id="Git的基本工作原理"><a href="#Git的基本工作原理" class="headerlink" title="Git的基本工作原理"></a>Git的基本工作原理</h3><ul>
+<li>仓库（Repository）软件所有文件的完整修订历史</li>
+<li>版本（Revision）代码库的编号方案，如Tag 0.1</li>
+<li>分支（Branch）对代码库并行修改时的代码库副本<ul>
+<li>如master, develop, branch1,…</li>
+</ul>
+</li>
+<li>提交（Commit）对分支的一次修订</li>
+<li>下拉（Pull）将远程的一个分支读取并保存到本地分支</li>
+<li>推送（Push）将本地分支代码发送到远程某个分支</li>
+<li>合并（Merge）将对相同文件在不同分支的修改合并到一个分支中</li>
+<li>冲突（Conflict）当两个分支中存在对同一文件的不同修改，并试图合并这两个分支时，就会发生冲突</li>
+</ul>
+<h3 id="Git的操作"><a href="#Git的操作" class="headerlink" title="Git的操作"></a>Git的操作</h3><h4 id="创建本地版本库"><a href="#创建本地版本库" class="headerlink" title="创建本地版本库"></a>创建本地版本库</h4><p>命令：git init</p>
+<ul>
+<li>在执行完成 git init 命令后，Git 仓库会生成一个 .git 目录，该目录包含了资源的所有元数据</li>
+<li>使用当前目录作为git仓库，直接在当前目录进行初始化</li>
+<li>使用指定目录作为git仓库，在初始化命令之后加上指定目录路径，如 git init newrepo</li>
+</ul>
+<h4 id="克隆远程版本库"><a href="#克隆远程版本库" class="headerlink" title="克隆远程版本库"></a>克隆远程版本库</h4><p>git clone &lt;repo&gt; &lt;directory&gt;</p>
+<ul>
+<li>其中repo表示远程仓库目录，directory代表本地仓库目录</li>
+<li>将远程仓库中的代码拷贝项目到本地仓库</li>
+</ul>
+<h4 id="在暂存区添加-x2F-撤销文件"><a href="#在暂存区添加-x2F-撤销文件" class="headerlink" title="在暂存区添加&#x2F;撤销文件"></a>在暂存区添加&#x2F;撤销文件</h4><p>git add [file1][file2] … or [dir] </p>
+<ul>
+<li>将文件添加到暂存区</li>
+</ul>
+<p>git checkout [file1]</p>
+<ul>
+<li>撤销不需要的修改：</li>
+</ul>
+<h4 id="提交修改到本地仓库"><a href="#提交修改到本地仓库" class="headerlink" title="提交修改到本地仓库"></a>提交修改到本地仓库</h4><p>git commit -m [message] </p>
+<p>git commit [file1][file2] … -m [message]</p>
+<ul>
+<li>将暂存区内容添加到本地仓库中</li>
+</ul>
+<p>git log</p>
+<ul>
+<li>查看commit提交日志</li>
+</ul>
+<h4 id="添加远程版本库"><a href="#添加远程版本库" class="headerlink" title="添加远程版本库"></a>添加远程版本库</h4><p>git remote add “远程仓库名” “远程仓库地址”</p>
+<ul>
+<li>添加远程版本库</li>
+</ul>
+<h4 id="推送本地内容到远程仓库"><a href="#推送本地内容到远程仓库" class="headerlink" title=".推送本地内容到远程仓库"></a>.推送本地内容到远程仓库</h4><p>git push 远程仓库名 本地分支名 远程分支名</p>
+<ul>
+<li>将你的修改推送到远程仓库，便于测试或者和团队中其他人协作</li>
+<li>推送本地内容时，会将所有未推送至远程仓库的内容，都提交到远程仓库</li>
+</ul>
+<h4 id="拉取远程分支到本地"><a href="#拉取远程分支到本地" class="headerlink" title="拉取远程分支到本地"></a>拉取远程分支到本地</h4><p>git pull 远程主机名 远程分支名:本地分支名</p>
+<ul>
+<li>在团队协作中，如果别人对项目做了修改，而你需要将这些修改合并到你本地时，需要使用git pull命令</li>
+</ul>
+<p>git pull 远程主机名 远程分支名:本地分支名 -f</p>
+<ul>
+<li>如果远程分支和本地分支对同一内容做了修改，这将导致将远程分支修改合并到本地分支时会发生冲突</li>
+<li>可以选择直接强制拉取，使用远程分支的修改，覆盖本地分支的修改。强制拉取需要用到-f参数</li>
+</ul>
+<h2 id="SE4-软件需求分析基础"><a href="#SE4-软件需求分析基础" class="headerlink" title="SE4 软件需求分析基础"></a>SE4 软件需求分析基础</h2><h2 id="SE5-获取软件需求"><a href="#SE5-获取软件需求" class="headerlink" title="SE5 获取软件需求"></a>SE5 获取软件需求</h2><h2 id="SE6-分析软件需求"><a href="#SE6-分析软件需求" class="headerlink" title="SE6 分析软件需求"></a>SE6 分析软件需求</h2><h2 id="SE7-软件设计基础"><a href="#SE7-软件设计基础" class="headerlink" title="SE7 软件设计基础"></a>SE7 软件设计基础</h2><h3 id="何为软件设计？"><a href="#何为软件设计？" class="headerlink" title="何为软件设计？"></a>何为软件设计？</h3><ul>
+<li>软件设计<ul>
+<li>针对软件需求，综合考虑各种制约因素，探究软件实现的解决方案</li>
+</ul>
+</li>
+<li>设计前提：软件需求<ul>
+<li>定义了要做什么样的软件</li>
+</ul>
+</li>
+<li>设计考虑：制约因素<ul>
+<li>资源：时间、人力、财力、开发辅助工具</li>
+<li>技术：技术平台，如DBMS还是文件系统</li>
+</ul>
+</li>
+</ul>
+<h3 id="软件设计的质量要求"><a href="#软件设计的质量要求" class="headerlink" title="软件设计的质量要求"></a>软件设计的质量要求</h3><ul>
+<li>正确性<ul>
+<li>ü正确实现所有的软件需求项；设计元素间无逻辑冲突；在技术平台和软件项目的可用资源约束条件下，采用程序设计语言可完整地实现设计模型</li>
+</ul>
+</li>
+<li>充分性<ul>
+<li>所有的设计元素已充分细化，模型易于理解，编程人员勿需再面对影响软件功能和质量的技术抉择或权衡</li>
+</ul>
+</li>
+<li>优化性<ul>
+<li>以合理的、充分优化的方式实现软件需求模型，目标软件产品能够表现出良好的软件质量属性，尤其是正确性、有效性、可靠性和可修改性</li>
+</ul>
+</li>
+<li>简单性<ul>
+<li>模型中的模块的功能或职责尽可能简明易懂，模块间的关系简单直观，模型的结构尽可能自然地反映待解软件问题的结构</li>
+</ul>
+</li>
+</ul>
+<h3 id="软件设计元素"><a href="#软件设计元素" class="headerlink" title="软件设计元素"></a>软件设计元素</h3><ul>
+<li>设计类<ul>
+<li>类既是最基本的设计单元，也是最基本的模块单元</li>
+</ul>
+</li>
+<li>软构件<ul>
+<li>可分离、可独立部署和执行、可单独重用的一类设计元素</li>
+<li>如动态链接库（.DLL）、可运行的Java JAR包、微服务镜像等就属于软构件</li>
+</ul>
+</li>
+<li>子系统<ul>
+<li>完成特定功能、逻辑上相互关联的一组模块集合</li>
+<li>有助于管理软件系统的复杂度，简化软件设计和实现</li>
+</ul>
+</li>
+</ul>
+<h3 id="软件设计要考虑的因素"><a href="#软件设计要考虑的因素" class="headerlink" title="软件设计要考虑的因素"></a>软件设计要考虑的因素</h3><ul>
+<li>满足需求<ul>
+<li>正确、一致、可行、完整、无冗余</li>
+</ul>
+</li>
+<li>权衡抉择<ul>
+<li>多种设计方案，明确优缺点，综合考虑多方因素</li>
+<li>关注质量要求</li>
+</ul>
+</li>
+<li>应对变化<ul>
+<li>易于理解、扩展、高效</li>
+</ul>
+</li>
+</ul>
+<h3 id="软件设计基本原则"><a href="#软件设计基本原则" class="headerlink" title="软件设计基本原则"></a>软件设计基本原则</h3><p>①抽象与逐步求精</p>
+<p>②模块化，高内聚度、低耦合度</p>
+<p>③信息隐藏</p>
+<p>④多视点和关注点分离</p>
+<p>⑤软件重用</p>
+<p>⑥迭代设计</p>
+<p>⑦可追踪性</p>
+<h3 id="软件设计的CASE工具"><a href="#软件设计的CASE工具" class="headerlink" title="软件设计的CASE工具"></a>软件设计的CASE工具</h3><ul>
+<li>软件设计文档撰写工具<ul>
+<li>如借助于Microsoft Office、WPS等</li>
+</ul>
+</li>
+<li>软件设计建模工具<ul>
+<li>如Microsoft Visio、StarUML、Argo UML等工具</li>
+</ul>
+</li>
+<li>软件设计分析和转换工具<ul>
+<li>如IBM Rational Rose等软件工具</li>
+</ul>
+</li>
+<li>配置管理工具和平台<ul>
+<li>如Git、Github、Gitlab、PVCS、Microsoft SourceSafe等，支持软件需求制品（如模型、文档等）的配置、版本管理、变化跟踪等</li>
+</ul>
+</li>
+</ul>
+<h3 id="软件设计的输出"><a href="#软件设计的输出" class="headerlink" title="软件设计的输出"></a>软件设计的输出</h3><ul>
+<li>软件设计模型<ul>
+<li>它从多个不同的视角、不同的抽象层次描述了软件的设计信息，并采用诸如UML、模块图、层次图等图形化的方式来加以刻画</li>
+</ul>
+</li>
+<li>软件设计文档<ul>
+<li>它采用自然语言的形式，结合软件设计模型，详细描述软件系统的各项设计，包括体系结构设计、子系统和构件设计、用户界面设计、用例设计、数据设计等等</li>
+</ul>
+</li>
+</ul>
+<h3 id="软件设计文档的规范"><a href="#软件设计文档的规范" class="headerlink" title="软件设计文档的规范"></a>软件设计文档的规范</h3><ul>
+<li>文档概述</li>
+<li>系统概述</li>
+<li>设计目标和原则</li>
+<li>设计约束和现实限制</li>
+<li>体系结构设计</li>
+<li>用户界面设计</li>
+<li>子系统&#x2F;构件设计</li>
+<li>用例设计</li>
+<li>类设计</li>
+<li>数据设计</li>
+<li>接口设计</li>
+</ul>
+<h3 id="软件设计中的缺陷"><a href="#软件设计中的缺陷" class="headerlink" title="软件设计中的缺陷"></a>软件设计中的缺陷</h3><ul>
+<li>设计未能满足需求<ul>
+<li>对软件需求的理解存在偏差，未能正确地理解用户的软件需求，导致所设计的软件无法满足用户的需要</li>
+</ul>
+</li>
+<li>设计质量低下<ul>
+<li>设计过程中未能遵循设计原则、缺乏设计经验，导致软件设计质量低下，如设计的软件不易于维护和扩展</li>
+</ul>
+</li>
+<li>设计存在不一致<ul>
+<li>不同软件设计制品对同一个设计有不同的描述，或者存在不一致甚至相冲突的设计内容；多个不同软件设计要素之间存在不一致</li>
+</ul>
+</li>
+<li>设计不够详尽<ul>
+<li>未能提供设计细节性信息，导致程序员无法根据设计来开展编码工作</li>
+</ul>
+</li>
+</ul>
+<h3 id="软件设计的评审"><a href="#软件设计的评审" class="headerlink" title="软件设计的评审"></a>软件设计的评审</h3><ul>
+<li>谁参与评审<ul>
+<li>程序员、软件测试工程师、用户、质量保证人员、设计工程师等</li>
+</ul>
+</li>
+<li>评审什么内容<ul>
+<li>文档规范性，软件设计文档是否符合软件设计规格说明书</li>
+<li>设计制品的可理解性，是否简洁、易于理解</li>
+<li>设计内容的合法性，设计结果是否符合相关的标准、法律和法规</li>
+<li>设计的质量水平，软件设计是否遵循设计原则，质量如何</li>
+<li>设计是否满足需求，设计是否完整和正确地实现了软件需求</li>
+<li>设计优化性，软件设计是否还有待优化的内容</li>
+</ul>
+</li>
+</ul>
+<h3 id="软件设计的管理"><a href="#软件设计的管理" class="headerlink" title="软件设计的管理"></a>软件设计的管理</h3><ul>
+<li>软件设计的变更管理<ul>
+<li>明确哪些方面发生了变更、这些变化反应在软件设计模型和文档的哪些部分、导致软件设计模型和文档的版本发生了什么样变化</li>
+</ul>
+</li>
+<li>软件设计的追溯管理<ul>
+<li>搞清楚是什么原因导致了软件设计的变更，评估设计变更的影响域，评估设计变更对软件项目开发带来的影响</li>
+</ul>
+</li>
+<li>软件设计的基线管理<ul>
+<li>一旦软件设计模型和文档通过了评审，纳入到基线库中</li>
+</ul>
+</li>
+</ul>
+<h2 id="SE8-软件体系结构设计"><a href="#SE8-软件体系结构设计" class="headerlink" title="SE8 软件体系结构设计"></a>SE8 软件体系结构设计</h2><h3 id="软件体系结构的概念"><a href="#软件体系结构的概念" class="headerlink" title="软件体系结构的概念"></a>软件体系结构的概念</h3><ul>
+<li>软件体系结构(Software Architecture，SA)<ul>
+<li>也称软件架构，从高层抽象角度刻画组成软件系统的设计元素及它们之间的逻辑关联</li>
+</ul>
+</li>
+</ul>
+<h3 id="软件体系结构的设计元素"><a href="#软件体系结构的设计元素" class="headerlink" title="软件体系结构的设计元素"></a>软件体系结构的设计元素</h3><ul>
+<li>构件(Component)<ul>
+<li>构成体系结构的基本功能部件</li>
+</ul>
+</li>
+<li>连接件(Connector)<ul>
+<li>组件之间的连接和交互关系</li>
+</ul>
+</li>
+<li>约束(Constraint)<ul>
+<li>组件中的元素应满足的条件以及组件经由连接件组装成更大模块时应满足的条件</li>
+</ul>
+</li>
+</ul>
+<h3 id="UML图"><a href="#UML图" class="headerlink" title="UML图"></a>UML图</h3><table>
+<thead>
+<tr>
+<th>视点</th>
+<th>图（diagram）</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>结构</td>
+<td>包图（package diagram）</td>
+<td>从包层面描述系统的静态结构</td>
+</tr>
+<tr>
+<td></td>
+<td>类图（class diagram）</td>
+<td>从类层面描述系统的静态结构</td>
+</tr>
+<tr>
+<td></td>
+<td>对象图（object   diagram）</td>
+<td>从对象层面描述系统的静态结构</td>
+</tr>
+<tr>
+<td></td>
+<td>构件图(component   diagram)</td>
+<td>描述系统中构件及其依赖关系</td>
+</tr>
+<tr>
+<td>行为</td>
+<td>状态图(statechart diagram )</td>
+<td>描述状态的变迁</td>
+</tr>
+<tr>
+<td></td>
+<td>活动图(activity   diagram)</td>
+<td>描述系统活动的实施</td>
+</tr>
+<tr>
+<td></td>
+<td>通信图(communication diagram)</td>
+<td>描述对象间的消息传递与协作</td>
+</tr>
+<tr>
+<td></td>
+<td>顺序图(sequence diagram)</td>
+<td>描述对象间的消息传递与协作</td>
+</tr>
+<tr>
+<td>部署</td>
+<td>部署图（deployment   diagram）</td>
+<td>描述系统中工件在物理运行环境中的部署情况</td>
+</tr>
+<tr>
+<td>用例</td>
+<td>用例图（use   case diagram）</td>
+<td>从外部用户角度描述系统功能</td>
+</tr>
+</tbody></table>
+<h3 id="不同体系结构风格适合的应用"><a href="#不同体系结构风格适合的应用" class="headerlink" title="不同体系结构风格适合的应用"></a>不同体系结构风格适合的应用</h3><table>
+<thead>
+<tr>
+<th>类别</th>
+<th>特点</th>
+<th>典型应用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>管道&#x2F;过滤器风格</td>
+<td>数据驱动的分级处理，处理流程可灵活重组，过滤器可重用</td>
+<td>数据驱动的事务处理软件，如编译器、Web服务请求等</td>
+</tr>
+<tr>
+<td>层次风格</td>
+<td>分层抽象、层次间耦合度低、层次的功能可重用和可替换</td>
+<td>绝大部分的应用软件</td>
+</tr>
+<tr>
+<td>MVC风格</td>
+<td>模型、处理和显示的职责明确，构件间的关系局部化，各个软构件可重用</td>
+<td>单机软件系统，Web应用软件系统</td>
+</tr>
+<tr>
+<td>SOA风格</td>
+<td>以服务作为基本的构件，支持异构构件之间的互操作，服务的灵活重用和组装</td>
+<td>部署和运行在云平台上的软件系统</td>
+</tr>
+<tr>
+<td>消息总线风格</td>
+<td>提供统一的消息总线，支持异构构件之间的消息传递和处理</td>
+<td>异构构件之间消息通信密集型的软件系统</td>
+</tr>
+</tbody></table>
+<h3 id="撰写软件体系结构设计文档"><a href="#撰写软件体系结构设计文档" class="headerlink" title="撰写软件体系结构设计文档"></a>撰写软件体系结构设计文档</h3><p>1.文档概述</p>
+<p>2.系统概述</p>
+<p>3.设计目标和原则</p>
+<p>4.设计约束和现实限制</p>
+<p>5.逻辑视点的体系结构设计</p>
+<p>6.部署视点的体系结构设计</p>
+<p>7.开发视点的体系结构设计</p>
+<p>8.运行视点的体系结构设计</p>
+<h3 id="评审软件体系结构设计"><a href="#评审软件体系结构设计" class="headerlink" title="评审软件体系结构设计"></a>评审软件体系结构设计</h3><ul>
+<li>满足性<ul>
+<li>体系结构是否能够满足软件需求，体系结构怎样满足软件需求</li>
+</ul>
+</li>
+<li>优化性<ul>
+<li>体系结构是否以充分优化方式实现所有软件需求项</li>
+</ul>
+</li>
+<li>可扩展性<ul>
+<li>是否易于扩展，以应对软件需求的变化</li>
+</ul>
+</li>
+<li>可追踪性<ul>
+<li>软件体系结构中的所有设计元素是否有相对应的软件需求项</li>
+</ul>
+</li>
+<li>详尽程度<ul>
+<li>体系结构的详略程度是否恰当</li>
+</ul>
+</li>
+</ul>
+<h3 id="软件体系结构设计的输出"><a href="#软件体系结构设计的输出" class="headerlink" title="软件体系结构设计的输出"></a>软件体系结构设计的输出</h3><ul>
+<li>软件模型<ul>
+<li>用UML包图、部署图等描述的软件体系结构模型</li>
+</ul>
+</li>
+<li>软件文档<ul>
+<li>体系结构设计规格说明书文档</li>
+</ul>
+</li>
+</ul>
+<h2 id="SE9-用户界面设计"><a href="#SE9-用户界面设计" class="headerlink" title="SE9 用户界面设计"></a>SE9 用户界面设计</h2><h3 id="人机交互的常见方式"><a href="#人机交互的常见方式" class="headerlink" title="人机交互的常见方式"></a>人机交互的常见方式</h3><ul>
+<li>文本<ul>
+<li>通过文本方式进行输入和输出，如DOS、Linux下的文本命令，特点：须记忆命令、不友好</li>
+</ul>
+</li>
+<li>图形化界面<ul>
+<li>通过图形化界面进行输入和输出，如窗口、按钮、对话框，特点：直观、简洁、友好</li>
+</ul>
+</li>
+<li>语音<ul>
+<li>通过语音来进行输入和输出，如与机器人的交互、Siri、手机导航软件等，特点：将双手解放出来，需要麦克风</li>
+</ul>
+</li>
+<li>手势<ul>
+<li>通过姿势(gesture)来进行交互，如与无人机交互等，特点：准确性不高，需要视频传感器</li>
+</ul>
+</li>
+</ul>
+<h3 id="人机交互的关键"><a href="#人机交互的关键" class="headerlink" title="人机交互的关键"></a>人机交互的关键</h3><ul>
+<li>用户的满意度<ul>
+<li>用户通常将用户界面视为软件本身，用户界面是用户接触软件的主体要素</li>
+<li>用户界面设计的质量直接决定了用户对软件系统的评价，影响用户对软件系统的满意度</li>
+</ul>
+</li>
+<li>方便输入<ul>
+<li>快速、便捷、准确、友好的输入；鼠标、点击、选择等</li>
+</ul>
+</li>
+<li>直观输出<ul>
+<li>直观、显式、可理解、简洁的输出；所见即所得、图形展示等</li>
+</ul>
+</li>
+</ul>
+<h3 id="用户界面元素及实现方式"><a href="#用户界面元素及实现方式" class="headerlink" title="用户界面元素及实现方式"></a>用户界面元素及实现方式</h3><ul>
+<li>静态元素<ul>
+<li>与软件系统的运行状态无关，没有变化</li>
+<li>如文本、图标、图形、图像</li>
+</ul>
+</li>
+<li>动态元素<ul>
+<li>与软件运行状态和业务逻辑相关，不允许用户修改</li>
+<li>如不可编辑文本、表格、图标、图形等</li>
+</ul>
+</li>
+<li>用户输入元素<ul>
+<li>由用户填写或者选择</li>
+<li>如编辑文本、单选按钮、多选框等</li>
+</ul>
+</li>
+<li>用户命令元素<ul>
+<li>点击后激活后端的业务处理或者刷新界面</li>
+<li>如按钮、菜单、超链接等</li>
+</ul>
+</li>
+</ul>
+<h3 id="用户界面设计的任务"><a href="#用户界面设计的任务" class="headerlink" title="用户界面设计的任务"></a>用户界面设计的任务</h3><p>根据软件需求及其操作流程，为其设计出与用户进行交互的界面，支持用户对软件的操作和使用</p>
+<h3 id="用户界面设计原则"><a href="#用户界面设计原则" class="headerlink" title="用户界面设计原则"></a>用户界面设计原则</h3><ul>
+<li>直观性<ul>
+<li>界面元素贴近业务领域，具有简洁、明确、直观特性</li>
+<li>界面中屏幕间的跳转关系简单、自然</li>
+</ul>
+</li>
+<li>易操作性<ul>
+<li>简单、简洁、不繁琐</li>
+<li>尽量减少用户输入的次数和信息量</li>
+</ul>
+</li>
+<li>反应性<ul>
+<li>界面必须在合理时间内对用户操作做出响应</li>
+<li>对耗时较长的内部处理过程必须提供及时的进度反馈</li>
+</ul>
+</li>
+<li>一致性<ul>
+<li>保持一致的界面风格和操作方式</li>
+<li>与业界相关的用户界面规范和操作习惯相一致</li>
+</ul>
+</li>
+<li>容错性<ul>
+<li>界面设计应降低用户的误操作率、容忍用户的误操作</li>
+<li>对所有可能造成损害的动作，必须在用户确认后才进行</li>
+<li>允许用户对尽可能多的界面操作反悔（Undo）</li>
+</ul>
+</li>
+<li>人性化<ul>
+<li>在适当时机给用户提供需要的帮助或建议</li>
+<li>在任何情况用户均能理解软件系统的当前状态和响应信息</li>
+<li>界面的布局和色彩应使用户感觉舒适、自然</li>
+</ul>
+</li>
+</ul>
+<h3 id="用户界面设计过程"><a href="#用户界面设计过程" class="headerlink" title="用户界面设计过程"></a>用户界面设计过程</h3><p>用户界面设计以软件需求模型为依据，基于用例模型、用例交互模型等，采用自顶向下、逐步求精的设计原则</p>
+<p>用户界面初步设计 → 建立界面跳转关系 → 精化各个界面设计  → 评审界面设计</p>
+<h2 id="SE10-软件详细设计"><a href="#SE10-软件详细设计" class="headerlink" title="SE10 软件详细设计"></a>SE10 软件详细设计</h2><h3 id="详细设计的任务"><a href="#详细设计的任务" class="headerlink" title="详细设计的任务"></a>详细设计的任务</h3><ul>
+<li>输入：软件体系结构设计、用户界面设计、软件需求</li>
+<li>任务：对体系结构设计和用户界面设计成果进行细化和精化，获得高质量、面向实现的设计模型<ul>
+<li>面向实现：直接支持编码和程序设计</li>
+<li>精化和细化的具体对象：子系统、构件、关键设计类和界面类</li>
+</ul>
+</li>
+</ul>
+<h3 id="软件详细设计的活动"><a href="#软件详细设计的活动" class="headerlink" title="软件详细设计的活动"></a>软件详细设计的活动</h3><ul>
+<li>用例设计<ul>
+<li>给出用例的具体实现解决方案，描述用例是如何通过各个设计元素（包括子系统、软构件、设计类等）的交互和协作来完成的</li>
+</ul>
+</li>
+<li>类设计<ul>
+<li>给出每个设计类的具体实现细节，包括类的属性定义、方法的实现算法等，使得程序员能够基于类设计给出这些类的实现代码</li>
+</ul>
+</li>
+<li>数据设计<ul>
+<li>对软件所涉及的持久数据及其操作进行设计，明确持久数据的存储方式和格式，细化数据操作的实现细节</li>
+</ul>
+</li>
+<li>子系统&#x2F;软构件设计<ul>
+<li>针对粗粒度的子系统和软构件，给出其细粒度的设计元素，如子子系统、设计类等，明确这些设计元素之间的协作关系，使得它们能够实现子系统&#x2F;软构件接口所规定的相关功能和服务</li>
+</ul>
+</li>
+</ul>
+<h3 id="软件详细设计的要求和原则"><a href="#软件详细设计的要求和原则" class="headerlink" title="软件详细设计的要求和原则"></a>软件详细设计的要求和原则</h3><ul>
+<li>针对软件需求<ul>
+<li>从软件需求出发，确保每一项软件需求都有相应的详细设计元素加以实现</li>
+</ul>
+</li>
+<li>深入优化设计<ul>
+<li>精心设计，以充分优化软件系统的性能、效能等，提高软件系统的可靠性、可重用性和可维护性等</li>
+</ul>
+</li>
+<li>设计足够详细<ul>
+<li>得到详实程度足以支持程序员编码的软件设计模型</li>
+</ul>
+</li>
+<li>充分软件重用<ul>
+<li>从多个不同的维度和层次进行充分的软件重用，以提高软件开发的效率和质量，减低开发成本</li>
+</ul>
+</li>
+</ul>
+<h3 id="用例的实现方案"><a href="#用例的实现方案" class="headerlink" title="用例的实现方案"></a>用例的实现方案</h3><ul>
+<li>用例如何通过各个设计元素来实现的<ul>
+<li>子系统、构件、设计类、界面元素类等</li>
+</ul>
+</li>
+<li>这些设计元素之间在用例实现过程中的协同和交互<ul>
+<li>消息传递</li>
+</ul>
+</li>
+<li>精化各个设计元素的设计<ul>
+<li>如接口、实现细节等</li>
+</ul>
+</li>
+</ul>
+<h3 id="用例设计原则"><a href="#用例设计原则" class="headerlink" title="用例设计原则"></a>用例设计原则</h3><ul>
+<li>以软件需求为基础<ul>
+<li>以需求模型为前提，包括用例模型、交互模型、分析类模型等</li>
+<li>不能抛开软件需求来给出用例的实现方案</li>
+</ul>
+</li>
+<li>通过整合设计元素来实现用例<ul>
+<li>整合软件体系结构设计、用户界面设计等产生了一系列设计元素，包括：子系统、构件、关键设计类等等</li>
+<li>不能抛开前期设计工作成果</li>
+</ul>
+</li>
+<li>精化软件设计<ul>
+<li>用例设计不仅要给出用例实现的解决方案，也要依此为目的进一步精化软件设计，以获得更为详实的设计信息</li>
+<li>为后续的详细设计奠定基础</li>
+</ul>
+</li>
+</ul>
+<h3 id="类设计的任务"><a href="#类设计的任务" class="headerlink" title="类设计的任务"></a>类设计的任务</h3><ul>
+<li>任务<ul>
+<li>对界面类、关键设计类、设计类等进行设计优化和精化，</li>
+<li>明确设计类的内部实现细节</li>
+<li>精化到可以提交软件实现的程度</li>
+</ul>
+</li>
+<li>设计与建模<ul>
+<li>明确类的可见范围，类的操作和属性，类之间的关系等</li>
+<li>对类设计进行建模</li>
+</ul>
+</li>
+<li>结果<ul>
+<li>类图、状态图、活动图等</li>
+</ul>
+</li>
+</ul>
+<h3 id="类设计原则"><a href="#类设计原则" class="headerlink" title="类设计原则"></a>类设计原则</h3><ul>
+<li>准确化<ul>
+<li>对类的内部结构、行为等给予准确的表达，以支持程序员精准地理解类设计，进而编写出类的程序代码</li>
+</ul>
+</li>
+<li>细节化<ul>
+<li>对类的接口、属性、方法等方面给予足够详细的设计，以便程序员能够对类进行编程</li>
+</ul>
+</li>
+<li>一致性<ul>
+<li>要确保类的关系、属性、方法等的设计是相互一致的，类的内部属性、方法等设计与类的职责、关系等是相互一致的</li>
+</ul>
+</li>
+<li>遵循软件设计的基本原则<ul>
+<li>按照模块化、高内聚度、低耦合度、信息隐藏等基本原则来进行类设计，必要时需要基于这些原则对所设计的类进行必要的拆分和合并，以提高类设计的质量</li>
+</ul>
+</li>
+</ul>
+<h3 id="数据设计"><a href="#数据设计" class="headerlink" title="数据设计"></a>数据设计</h3><ul>
+<li>任务<ul>
+<li>设计需要持久保存的数据以及这些数据之间的关系</li>
+<li>数据组织方式（例如关系数据库中的表、关键字、外键等）之间进行映射</li>
+<li>为提高数据存储、操作性能而设计持久存储机制优化设施</li>
+</ul>
+</li>
+<li>设计与建模<ul>
+<li>设计数据的结构、存储、组织和访问</li>
+<li>对数据设计的结果进行建模</li>
+</ul>
+</li>
+</ul>
+<h3 id="数据设计的原则"><a href="#数据设计的原则" class="headerlink" title="数据设计的原则"></a>数据设计的原则</h3><ul>
+<li>可追踪<ul>
+<li>根据软件需求、体系结构设计、用例设计等模型开展数据设计</li>
+</ul>
+</li>
+<li>无冗余<ul>
+<li>尽可能不要产生一些冗余、不必要的数据设计。</li>
+</ul>
+</li>
+<li>考虑和权衡时空效率<ul>
+<li>反复折中数据的执行效率（如操作数据需要的时间）和存储效率（如存储数据所需的空间），以满足非功能性需求</li>
+</ul>
+</li>
+<li>贯穿整个软件设计阶段<ul>
+<li>针对关键性、全局性的数据条目建立最初的数据模型</li>
+<li>数据模型应该不断丰富、演进、完善，以满足用例、子系统、构件、类等设计元素对持久数据存储的需求</li>
+</ul>
+</li>
+<li>验证数据的完整性</li>
+</ul>
+<h3 id="子系统设计的任务"><a href="#子系统设计的任务" class="headerlink" title="子系统设计的任务"></a>子系统设计的任务</h3><ul>
+<li>确定子系统内部的结构<ul>
+<li>设计包含于其中的、粒度更小的子系统、构件和设计类</li>
+<li>设计它们之间的接口和协作关系</li>
+</ul>
+</li>
+<li>确保它们能够协同实现体系结构模型中该子系统的服务提供接口所规定的全部功能和行为</li>
+</ul>
+<h3 id="子系统设计的原则"><a href="#子系统设计的原则" class="headerlink" title="子系统设计的原则"></a>子系统设计的原则</h3><ul>
+<li>将分析模型中一个或一些较复杂、职责粒度较大的分析类抽象为一个子系统，并对此进行单独设计</li>
+<li>考虑软件非功能性需求，思考实现非功能需求的方法</li>
+<li>确保将子系统的职责分解到各个设计元素之中</li>
+<li>确保子系统设计元素能够完整地实现整个子系统职责</li>
+<li>不仅将注意力集中在子系统内部元素的设计上，还要思考所设计的子系统如何通过接口与其外部的设计元素（如构件、设计类、其他子系统等）进行交互和协作。</li>
+<li>结合已有软件资产、考虑实现约束等因素来进行子系统的设计，尽可能地通过重用开源软件、集成遗留系统</li>
+</ul>
+<h3 id="子系统内部设计的方法"><a href="#子系统内部设计的方法" class="headerlink" title="子系统内部设计的方法"></a>子系统内部设计的方法</h3><ul>
+<li>理解和分解子系统的职责<ul>
+<li>通过一系列交互图来进一步分析子系统的职责</li>
+</ul>
+</li>
+<li>采用自顶向下和自底向上相结合的方式<ul>
+<li>将子系统职责交由一组相对独立的设计元素（如设计类、构件等）来完成</li>
+</ul>
+</li>
+<li>重用已有的软件资产（如开源软件、遗留系统）<ul>
+<li>如果它们能够承担部分职责，那么将相关的软件资产作为构成子系统的成分之一</li>
+</ul>
+</li>
+<li>绘制一系列UML交互图<ul>
+<li>刻画子系统中软件元素如何通过交互来实现子系统的职责</li>
+</ul>
+</li>
+<li>选择合适的设计模式有助于重用和优化子系统设计<ul>
+<li>重用一些有效的问题求解和职责实现方式</li>
+</ul>
+</li>
+</ul>
+<h3 id="软件详细设计的输出"><a href="#软件详细设计的输出" class="headerlink" title="软件详细设计的输出"></a>软件详细设计的输出</h3><ul>
+<li>模型<ul>
+<li>用UML类图、构件图、包图、状态图、顺序图等描述的详细设计模型</li>
+</ul>
+</li>
+<li>文档<ul>
+<li>软件详细设计规格说明书</li>
+</ul>
+</li>
+</ul>
+<h2 id="SE11-软件实现基础"><a href="#SE11-软件实现基础" class="headerlink" title="SE11 软件实现基础"></a>SE11 软件实现基础</h2><h3 id="何为软件实现"><a href="#何为软件实现" class="headerlink" title="何为软件实现"></a>何为软件实现</h3><ul>
+<li>根据软件设计模型，编写出目标软件系统的程序代码，并对代码进行必要的测试，以发现和纠正代码存在中的缺陷，并将可运行的目标代码部署到目标计算机上运行</li>
+<li>软件实现不仅要编写出程序代码，还要确保代码的质量，因此软件实现涉及多方面的开发工作，如编码、测试、调试等</li>
+</ul>
+<h3 id="程序设计语言的类别"><a href="#程序设计语言的类别" class="headerlink" title="程序设计语言的类别"></a>程序设计语言的类别</h3><ul>
+<li>机器语言</li>
+<li>汇编语言</li>
+<li>结构化程序设计语言 <ul>
+<li>如C、Fortran、Pascal等 d)</li>
+</ul>
+</li>
+<li>面向对象程序设计语言<ul>
+<li>ü如Java、C++等</li>
+</ul>
+</li>
+<li>描述性程序设计语言<ul>
+<li>如Prolog、Lisp、ML</li>
+</ul>
+</li>
+</ul>
+<h3 id="编写代码的原则"><a href="#编写代码的原则" class="headerlink" title="编写代码的原则"></a>编写代码的原则</h3><ul>
+<li>易读，一看就懂</li>
+<li>易改，便于维护 </li>
+<li>降低代码的复杂度</li>
+<li>尽可能地开展软件重用和编写可重用的程序代码</li>
+<li>要有处理异常和提高代码的容错性</li>
+<li>代码要与模型和文档相一致</li>
+</ul>
+<h2 id="SE12-编写代码"><a href="#SE12-编写代码" class="headerlink" title="SE12 编写代码"></a>SE12 编写代码</h2><h3 id="编写代码的任务"><a href="#编写代码的任务" class="headerlink" title="编写代码的任务"></a>编写代码的任务</h3><ul>
+<li>根据软件设计信息，借助于程序设计语言，编写出目标软件系统的源程序代码，开展程序单元测试、代码审查等质量保证工作<ul>
+<li>编写代码既是一个生成代码的过程，也是对生成的代码进行质量保证的过程</li>
+</ul>
+</li>
+<li>兼具软件创作和软件生产的过程<ul>
+<li>自由地开展代码创作，编写出满足要求的程序代码，发挥其创新性和主观能动性，创作出算法精巧、运行高效的代码</li>
+<li>按照软件质量保证的规范和要求，生产出高质量的代码。程序员需要约束其编程行为，防止随意性、自由性的编程活动，确保其编程活动及其所产生的程序代码满足工程化开发的要求</li>
+</ul>
+</li>
+</ul>
+<h3 id="何为软件缺陷"><a href="#何为软件缺陷" class="headerlink" title="何为软件缺陷"></a>何为软件缺陷</h3><ul>
+<li>软件缺陷是指软件制品中存在不正确的软件描述和实现<ul>
+<li>存在缺陷的软件制品不仅包括程序代码，而且还包括需求和设计的模型和文档</li>
+<li>软件缺陷产生于软件开发全过程，只有有人介入的地方就有可能产生软件缺陷</li>
+<li>任何人都有可能在软件开发过程中犯错误，进而引入软件缺陷</li>
+<li>无论是高层的需求分析和软件架构缺陷还是底层的详细设计缺陷，它们最终都会反映在程序代码之中，导致程序代码存在缺陷</li>
+</ul>
+</li>
+</ul>
+<h3 id="软件缺陷的描述"><a href="#软件缺陷的描述" class="headerlink" title="软件缺陷的描述"></a>软件缺陷的描述</h3><ul>
+<li>标识符<ul>
+<li>每个软件缺陷都被给予一个唯一的标识符。</li>
+</ul>
+</li>
+<li>类型<ul>
+<li>说明软件缺陷的类型，如需求缺陷、设计缺陷、代码缺陷</li>
+<li>代码缺陷还可以进一步区分为是逻辑缺陷、计算缺陷、判断缺陷</li>
+</ul>
+</li>
+<li>严重程度<ul>
+<li>危急程度是指缺陷会影响软件的正常运行甚至危及用户安全</li>
+<li>严重程度的缺陷是指会导致软件丧失某些重要功能，或出现错误</li>
+<li>一般程度的缺陷是指缺陷会使得软件丧失某些次要的功能</li>
+<li>轻微程度是指缺陷会导致软件出现小毛病，但不影响正常运行</li>
+</ul>
+</li>
+<li>症状：软件缺陷所引发的程序错误是什么，有何运行表现</li>
+<li>修复优先级：缺陷应该被修复的优先程度，包括：非常紧迫、紧迫、一般和不紧迫等几种</li>
+<li>状态：描述缺陷处理的进展状态，如已经安排人员来处理、正在修复、修复已经完成等。</li>
+<li>发现者：谁发现了软件缺陷。</li>
+<li>发现时机：什么状况下发现的软件缺陷</li>
+<li>源头：软件缺陷源头在哪里，如软件文档的哪一个部分</li>
+<li>原因：说明导致软件缺陷的原因是什么</li>
+</ul>
+<h3 id="软件缺陷的应对方法"><a href="#软件缺陷的应对方法" class="headerlink" title="软件缺陷的应对方法"></a>软件缺陷的应对方法</h3><ul>
+<li>预防缺陷<ul>
+<li>通过运用各种软件工程技术、方法和管理手段，在软件开发过程中预防和避免软件缺陷，减少软件缺陷的数量，降低软件缺陷的严重程度</li>
+<li>采用结对编程、严格的过程管理、必要的技术培训、CASE工具的使用等手段，起到预防缺陷的目的</li>
+</ul>
+</li>
+<li>容忍缺陷<ul>
+<li>增强软件的缺陷容忍度，借助于软件容错机制和技术，允许软件出现错误，但是在出现错误时软件仍然能够正常的运行</li>
+<li>在高可靠软件系统的开发过程中，软件工程师通常需要提供容错模块和代码。显然这会增加软件开发的复杂度和冗余度</li>
+</ul>
+</li>
+<li>发现缺陷<ul>
+<li>通过有效的技术和管理手段来发现这些软件缺陷</li>
+<li>例如，制定和实施软件质量保证计划、开展软件文档和模型的评审、程序代码的走查、软件测试等工作。它们都可以帮助软件工程师找到潜藏在文档、模型和代码中的软件缺陷</li>
+</ul>
+</li>
+<li>修复缺陷<ul>
+<li>通过一系列的手段来修复缺陷</li>
+<li>采用程序调试等手段来找到缺陷的原因、定位缺陷的位置，进而修改存在缺陷的程序代码，将软件缺陷从软件制品中移除出去</li>
+</ul>
+</li>
+</ul>
+<h3 id="软件缺陷的状态"><a href="#软件缺陷的状态" class="headerlink" title="软件缺陷的状态"></a>软件缺陷的状态</h3><ul>
+<li>尚未确认（Unconfirmed）<ul>
+<li>有人汇报了软件缺陷，但是尚未确认该软件缺陷是否真实存在</li>
+</ul>
+</li>
+<li>有效（New）<ul>
+<li>经过确认，所汇报的软件缺陷真实存在，被正式视为是新缺陷，并等待进一步处理</li>
+</ul>
+</li>
+<li>无效（Invalid）<ul>
+<li>经过确认，所汇报的软件缺陷并不存在，是一个无效的软件缺陷汇报</li>
+</ul>
+</li>
+<li>重复（Duplicate）<ul>
+<li>该软件缺陷之前已经有人汇报过，属于重复性的软件缺陷</li>
+</ul>
+</li>
+<li>已分配（Assigned）<ul>
+<li>以安排人员负责修复缺陷</li>
+</ul>
+</li>
+<li>已修复（Fixed）<ul>
+<li>缺陷已经修复</li>
+</ul>
+</li>
+<li>信息不完整（Incomplete）<ul>
+<li>缺陷的描述信息不完整，导致无法准确和清晰地理解缺陷的内容</li>
+</ul>
+</li>
+<li>已解决（Resolved）<ul>
+<li>针对该缺陷的处理已经完成</li>
+</ul>
+</li>
+<li>已关闭（Closed）<ul>
+<li>关闭该缺陷，后续将不再针对该缺陷采用任何措施</li>
+</ul>
+</li>
+</ul>
+<h2 id="SE13-软件测试"><a href="#SE13-软件测试" class="headerlink" title="SE13 软件测试"></a>SE13 软件测试</h2><h3 id="何为软件测试？"><a href="#何为软件测试？" class="headerlink" title="何为软件测试？"></a>何为软件测试？</h3><ul>
+<li>运行软件或模拟软件的执行，发现软件缺陷的过程</li>
+<li>注意点<ul>
+<li>软件测试通过运行程序代码的方式来发现程序代码中潜藏的缺陷，这和代码走查、静态分析形成鲜明对比。</li>
+<li>软件测试的目的是为了发现软件中的缺陷。它只负责发现缺陷，不负责修复和纠正缺陷</li>
+</ul>
+</li>
+</ul>
+<h3 id="软件测试的步骤"><a href="#软件测试的步骤" class="headerlink" title="软件测试的步骤"></a>软件测试的步骤</h3><ol>
+<li>明确待测试对象<ul>
+<li>什么粒度的程序代码</li>
+</ul>
+</li>
+<li>设计测试用例<ul>
+<li>{&lt;Data, Result&gt;}</li>
+<li>可能有许多</li>
+</ul>
+</li>
+<li>运行代码和测试用例<ul>
+<li>输入和处理测试用例</li>
+</ul>
+</li>
+<li>分析运行结果<ul>
+<li>对比运行结果和预期结果，发现问题和缺陷</li>
+</ul>
+</li>
+</ol>
+<h3 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h3><ul>
+<li>测试对象<ul>
+<li>对软件基本模块单元进行测试</li>
+<li>过程、函数、方法、类</li>
+</ul>
+</li>
+<li>测试方法<ul>
+<li>大多采用白盒测试技术</li>
+</ul>
+</li>
+<li>测试的内容<ul>
+<li>模块接口测试</li>
+<li>模块局部数据结构测试</li>
+<li>模块独立执行路径测试</li>
+<li>模块错误处理通道测试</li>
+<li>模块边界条件测试</li>
+</ul>
+</li>
+</ul>
+<h3 id="集成测试"><a href="#集成测试" class="headerlink" title="集成测试"></a>集成测试</h3><ul>
+<li>测试对象<ul>
+<li>对软件模块之间的接口进行测试</li>
+<li>过程调用、函数调用、消息传递、远程过程调用</li>
+</ul>
+</li>
+<li>测试技术<ul>
+<li>采用黑盒测试技术</li>
+</ul>
+</li>
+<li>集成测试的内容<ul>
+<li>过程调用</li>
+<li>函数调用</li>
+<li>消息传递</li>
+<li>远程过程调用</li>
+<li>网络消息</li>
+</ul>
+</li>
+</ul>
+<h3 id="确认测试"><a href="#确认测试" class="headerlink" title="确认测试"></a>确认测试</h3><ul>
+<li>测试对象<ul>
+<li>对软件的功能和性能进行测试</li>
+<li>判断目标软件系统是否满足用户需求</li>
+</ul>
+</li>
+<li>依据和标准<ul>
+<li>软件需求规格说明书</li>
+</ul>
+</li>
+<li>测试技术<ul>
+<li>采用黑盒测试技术</li>
+</ul>
+</li>
+</ul>
+<h3 id="a测试和b测试"><a href="#a测试和b测试" class="headerlink" title="a测试和b测试"></a>a测试和b测试</h3><ul>
+<li>a测试<ul>
+<li>软件开发<strong>公司组织内部人员</strong>模拟各类用户行为对即将面市的软件产品（称为α版本、内部测试版）进行测试，发现错误并修正</li>
+<li>尽可能逼真地<strong>模拟实际运行环境和用户</strong>对软件产品的操作，并尽最大努力涵盖所有可能的用户操作方式</li>
+<li>经α测试并进行修改后的软件产品称为β版本（也称外部测试版）</li>
+</ul>
+</li>
+<li>b测试<ul>
+<li>软件开发公司组织各方面的<strong>典型用户</strong>在日常工作中实际使用β版本，或为对外进行宣传而将β版本免费赠送给典型用户（很多情况下，β版本可以通过Internet免费下载，也可以向软件公司索取），并要求用户报告异常情况、提出批评意见</li>
+<li>β测试是在与开发者无法控制的环境下进行的软件现场应用</li>
+</ul>
+</li>
+</ul>
+<h3 id="软件测试技术-白盒测试"><a href="#软件测试技术-白盒测试" class="headerlink" title="软件测试技术-白盒测试"></a>软件测试技术-白盒测试</h3><ul>
+<li>设计测试用例思想<ul>
+<li>根据程序单元内部工作流程来设计测试用例</li>
+</ul>
+</li>
+<li>发现程序单元缺陷<ul>
+<li>运行待测试的程序，检验程序是否按内部工作流程来运行的，如果不是则存在缺陷</li>
+</ul>
+</li>
+<li>特点<ul>
+<li>必须了解程序的内部工作流程才能设计测试用例</li>
+</ul>
+</li>
+</ul>
+<h3 id="黑盒测试"><a href="#黑盒测试" class="headerlink" title="黑盒测试"></a>黑盒测试</h3><ul>
+<li>思想<ul>
+<li>根据已知的程序功能和性能(而非内部细节)，设计测试用例并通过测试检验程序的每个功能和性能是否正常</li>
+</ul>
+</li>
+<li>依据<ul>
+<li>程序的功能和性能描述</li>
+</ul>
+</li>
+<li>特点<ul>
+<li>知道程序功能和性能，不必了解程序内部结构和处理细节</li>
+</ul>
+</li>
+</ul>
+<h2 id="SE14-软件部署"><a href="#SE14-软件部署" class="headerlink" title="SE14 软件部署"></a>SE14 软件部署</h2><h3 id="软件运行环境"><a href="#软件运行环境" class="headerlink" title="软件运行环境"></a>软件运行环境</h3><p>软件运行所依赖的上下文，它为软件系统的运行提供必要的基础服务和功能、必须的数据和基本的计算能力</p>
+<h3 id="何为软件部署"><a href="#何为软件部署" class="headerlink" title="何为软件部署"></a>何为软件部署</h3><ul>
+<li>软件部署是指将目标软件系统（包括软构件、配置文件、用户手册、帮助文档等）进行<strong>收集、打包、安装、配置和发布</strong>到<strong>运行环境</strong>的过程</li>
+<li>涉及二方面的工作<ul>
+<li>安装和配置运行环境</li>
+<li>安装和配置软件系统</li>
+</ul>
+</li>
+</ul>
+<h3 id="软件部署的原则"><a href="#软件部署的原则" class="headerlink" title="软件部署的原则"></a>软件部署的原则</h3><ul>
+<li>最小化原则<ul>
+<li>只需安装、部署和配置支撑软件运行和服务提供的最少软硬件要素，以提高软件系统和运行环境的精简性，提升目标软件系统的运行效率，减低运行和维护成本</li>
+</ul>
+</li>
+<li>相关性原则<ul>
+<li>部署的运行环境和软件系统要素均与系统建设相关联，剔除不想关的软硬件要素，防止将无关的软件要素部署到计算平台之中，以简化软件系统的部署和配置，降低软件运行和维护的复杂度</li>
+</ul>
+</li>
+<li>适应性原则<ul>
+<li>当软件系统的运行环境发生变化时，目标软件系统的部署也要随之发生变化，以确保目标软件系统部署的灵活性，提高目标软件系统的健壮性，提升软件部署和运维的自动化程度</li>
+</ul>
+</li>
+</ul>
+<h3 id="单机部署方式"><a href="#单机部署方式" class="headerlink" title="单机部署方式"></a>单机部署方式</h3><ul>
+<li>将软件的各个要素（如可运行软构件、数据、文档等）集中部署到某个单一的计算设备上<ul>
+<li>软件的运行环境只依赖于单一的计算设施</li>
+<li>不同软构件之间不存在网络通讯</li>
+<li>计算设施不仅仅是指各种计算机，如个人计算机、笔记本电脑或服务器等，还包括智能手机、智能手环等嵌入式计算设施</li>
+</ul>
+</li>
+<li>典型示例<ul>
+<li>小米便签、闹钟和时钟、光盘刻录软件、扫雷游戏软件</li>
+</ul>
+</li>
+</ul>
+<h3 id="分布式部署"><a href="#分布式部署" class="headerlink" title="分布式部署"></a>分布式部署</h3><ul>
+<li><p>将软件的各个要素（如可运行的软构件、数据和文档等）分散部署在多个计算设备上的部署方式</p>
+<ul>
+<li>基于C&#x2F;S的部署方式</li>
+<li>基于客户端-应用服务器-数据库服务器的部署方式</li>
+<li>基于互联网的软件部署方式</li>
+</ul>
+</li>
+<li><p>典型示例</p>
+<ul>
+<li>空巢老人看护、Google搜索引擎、淘宝和中国铁路“12306”</li>
+</ul>
+</li>
+</ul>
+<h2 id="SE15-软件维护与演化"><a href="#SE15-软件维护与演化" class="headerlink" title="SE15 软件维护与演化"></a>SE15 软件维护与演化</h2><h3 id="何为软件维护"><a href="#何为软件维护" class="headerlink" title="何为软件维护"></a>何为软件维护</h3><ul>
+<li>软件在交付使用后，由于应用需求和环境变化以及自身问题，对软件系统进行改造和调整的过程</li>
+</ul>
+<h3 id="软件维护的形式"><a href="#软件维护的形式" class="headerlink" title="软件维护的形式"></a>软件维护的形式</h3><ul>
+<li>纠正性维护<ul>
+<li>纠正软件中的缺陷和错误</li>
+<li>起因：用户在使用软件过程中一旦发现缺陷，他们会向开发人员提出纠正性维护的请求 </li>
+<li>目的：诊断和改正软件系统中潜藏的缺陷</li>
+</ul>
+</li>
+<li>完善性维护<ul>
+<li>对软件进行改造以便适应新的运行环境和平台 </li>
+<li>起因：软件运行于一定的环境(硬件、OS、网络等)之上，运行环境发展很快，出现了变化 </li>
+<li>目的：适应环境变化和发展而对软件进行维护</li>
+</ul>
+</li>
+<li>适应性维护<ul>
+<li>对软件进行改造以增加新的功能、修改已有的功能</li>
+<li>起因：在软件系统运行期间，用户可能要求增加新的功能、建议修改已有功能或提出其他改进意见 </li>
+<li>目的：满足用户日益增长的各种需求而对软件系统进行的改善和补充</li>
+</ul>
+</li>
+<li>预防性维护<ul>
+<li>对软件结构进行改造以便提高软件的可靠性和可维护性等 </li>
+<li>起因：ü为进一步改善软件系统的可维护性和可靠性，为以后的软件改进奠定基础的维护活动</li>
+<li>目的：ü获取软件结构，重新改善软件结构</li>
+</ul>
+</li>
+</ul>
+<h3 id="软件维护的特点"><a href="#软件维护的特点" class="headerlink" title="软件维护的特点"></a>软件维护的特点</h3><ul>
+<li>同步性<ul>
+<li>软件维护需要与软件使用同步进行</li>
+</ul>
+</li>
+<li>周期长<ul>
+<li>软件维护周期会更长，一些软件会服役十几年甚至几十年的时间</li>
+</ul>
+</li>
+<li>费用高<ul>
+<li>维护成本高达总成本80%以上，维护费用是开发费用的3倍以上</li>
+</ul>
+</li>
+<li>难度大<ul>
+<li>充分理解待维护软件的架构、设计和代码，这极困难。尤其是在软件设计文档缺失的情况下，这一问题更为突出</li>
+<li>%-90%的时间被消耗在理解程序上</li>
+</ul>
+</li>
+</ul>
+<h3 id="软件演化及其特点"><a href="#软件演化及其特点" class="headerlink" title="软件演化及其特点"></a>软件演化及其特点</h3><ul>
+<li>软件演化是指针对软件的大规模功能增强和结构调整，以实现变化的软件需求，或者提高软件系统的质量<ul>
+<li>功能增强粒度大，软件演化针对的是粗粒度需求变化及功能增强</li>
+<li>主动应对变更，基于对用户需求及其变化的理解，综合考虑软件各项功能实现的时间投入及开发成本，规划软件系统的整体演化，并以此开展功能增强等维护活动</li>
+<li>持续性，预先规划好软件演化的路线图，完成当前软件演化工作后，软件维护团队随后将连续性的进入到另一项软件演化工作</li>
+<li>引发版本变化，每一次演化结束后通常会产生一个新的软件版本</li>
+</ul>
+</li>
+</ul>
+<h3 id="软件演化法则"><a href="#软件演化法则" class="headerlink" title="软件演化法则"></a>软件演化法则</h3><ul>
+<li>大型闭源软件的演化特点和规律</li>
+<li>持续变化法则<ul>
+<li>除非系统持续不断地被修改以满足用户的需求，否则系统将变得越来越不实用</li>
+</ul>
+</li>
+<li>增加复杂性法则<ul>
+<li>除非有额外的工作来明显降低软件系统的复杂性，否则软件系统会变得越来越复杂</li>
+</ul>
+</li>
+<li>自我调节法则<ul>
+<li>在软件演化过程中，软件产品和过程的测量遵循正态分布，演化过程是自我可调节的</li>
+</ul>
+</li>
+<li>组织稳定性守恒法则<ul>
+<li>在整个生命周期中，产生一个新版本所需的平均额外工作量几乎是相同的</li>
+</ul>
+</li>
+<li>熟悉度守恒法则<ul>
+<li>在一个不断演化的系统中，平均增量增长几乎相同</li>
+</ul>
+</li>
+<li>功能持续增长法则<ul>
+<li>在软件的生命周期中，软件功能必须持续增加，否则用户的满意度会降低</li>
+</ul>
+</li>
+<li>质量衰减法则<ul>
+<li>软件的质量会随代码的不断变更而呈现出整体逐渐下降的趋势。如果没有严格的维护和适应性调整，使得软件适应运行环境的变化，软件的质量必然会随着软件演化而逐渐下降</li>
+</ul>
+</li>
+<li>反馈系统法则<ul>
+<li>系统的演化过程包括多回路的活动和多层次的反馈。软件工程师必须识别这些复杂的交互，以持续演化现有系统，提供更多的功能和更高的质量</li>
+</ul>
+</li>
+</ul>
+<h3 id="何为软件逻辑老化"><a href="#何为软件逻辑老化" class="headerlink" title="何为软件逻辑老化"></a>何为软件逻辑老化</h3><ul>
+<li>软件在维护和演化的过程中出现的用户满意度降低、质量逐渐下降、变更成本不断上升这样一种现象<ul>
+<li>这些现象发生在逻辑层面，而非发生在物理层面</li>
+</ul>
+</li>
+</ul>
+<h3 id="代码重组"><a href="#代码重组" class="headerlink" title="代码重组"></a>代码重组</h3><ul>
+<li>在不改变软件功能的前提下，对程序代码进行重新组织，使得重组后的代码具有更好的可维护性，能够有效支持对代码的变更</li>
+</ul>
+<h3 id="逆向工程"><a href="#逆向工程" class="headerlink" title="逆向工程"></a>逆向工程</h3><ul>
+<li>基于低抽象层次软件制品，通过对其进行理解和分析，产生高抽象层次的软件制品<ul>
+<li>通过对程序代码进行逆向的分析，产生与代码相一致的设计模型和文档</li>
+<li>基于对程序代码和设计模型的理解，逆向分析出软件系统的需求模型和文档</li>
+</ul>
+</li>
+<li>典型应用场景<ul>
+<li>分析已有程序，寻求比源代码更高层次的抽象形式（如设计甚至需求）</li>
+</ul>
+</li>
+</ul>
+<h3 id="设计重构"><a href="#设计重构" class="headerlink" title="设计重构"></a>设计重构</h3><ul>
+<li>如果一个软件的设计文档缺失，软件文档与程序代码不一致、或者软件设计的内容不详实，那么软件维护工程师可以采用设计重构的手段来获得软件设计方面的文档信息</li>
+<li>通过读入程序代码，理解和和分析代码中的变量使用、模块内部的封装、模块之间的调用或消息传递、程序的控制路径等方面的信息，产生用自然语言或图形化信息所描述的软件设计文档</li>
+<li>是逆向工程的一种具体表现形式</li>
+</ul>
+<h3 id="再工程"><a href="#再工程" class="headerlink" title="再工程"></a>再工程</h3><ul>
+<li>通过分析和变更软件的架构，实现更高质量的软件系统的过程</li>
+<li>再工程既包括逆向工程也包括正向工程</li>
+</ul>
+<h3 id="影响软件可维护性的因素"><a href="#影响软件可维护性的因素" class="headerlink" title="影响软件可维护性的因素"></a>影响软件可维护性的因素</h3><ul>
+<li>软件开发方法(结构化、OO)</li>
+<li>软件文档是否齐全</li>
+<li>文档结构是否标准化</li>
+<li>软件是否易于扩展</li>
+<li>软件结构是否清晰易于理解</li>
+<li>是否采用标准的程序设计语言</li>
+<li>程序代码是否易于理解</li>
+</ul>
+<h2 id="SE16-软件项目管理"><a href="#SE16-软件项目管理" class="headerlink" title="SE16 软件项目管理"></a>SE16 软件项目管理</h2><h3 id="何为项目-Project"><a href="#何为项目-Project" class="headerlink" title="何为项目 (Project)?"></a>何为项目 (Project)?</h3><ul>
+<li>项目概念<ul>
+<li>项目是指为创建一个唯一的产品或者提供唯一的服务而进行的努力 </li>
+<li>项目是基于既定资源与约束，为实现既定目标而实施的活动，它是一份临时工作，目的是创造独特产品、服务或者结果</li>
+</ul>
+</li>
+</ul>
+<h3 id="项目特点"><a href="#项目特点" class="headerlink" title="项目特点"></a>项目特点</h3><ul>
+<li>目标性: 获得预期的结果</li>
+<li>进度性: 在限定期间完成</li>
+<li>约束性: 具有有限的资源（如人员、经费、工具等）</li>
+<li>多方性: 涉及多个不同人与组织</li>
+<li>独立性: 项目间无重复性</li>
+<li>不确定性: 项目的实施及其结果不确定性</li>
+</ul>
+<h3 id="软件项目及其特点"><a href="#软件项目及其特点" class="headerlink" title="软件项目及其特点"></a>软件项目及其特点</h3><h4 id="何为软件项目"><a href="#何为软件项目" class="headerlink" title="何为软件项目"></a><strong>何为软件项目</strong></h4><ul>
+<li>针对软件这一特定产品和服务的项目努力开展“软件开发活动”</li>
+</ul>
+<h4 id="软件项目的特点"><a href="#软件项目的特点" class="headerlink" title="软件项目的特点"></a>软件项目的特点</h4><ul>
+<li>对象：作为逻辑产品的软件</li>
+<li>过程：不以制造为主，没有重复生产过程</li>
+<li>属性：实施要素难以度量和估算，如成本、进度、质量</li>
+<li>复杂性：作为逻辑产品的复杂性非常高</li>
+<li>易变性：软件需求通常难以确定且经常变化</li>
+</ul>
+<h3 id="软件项目的任务"><a href="#软件项目的任务" class="headerlink" title="软件项目的任务"></a>软件项目的任务</h3><ul>
+<li>按照预定的进度、成本和质量，开发出满足用户要求的软件产品<ul>
+<li>用户需求</li>
+<li>确保质量</li>
+<li>成本限制</li>
+<li>进度限制</li>
+</ul>
+</li>
+</ul>
+<h3 id="何为软件项目管理"><a href="#何为软件项目管理" class="headerlink" title="何为软件项目管理?"></a>何为软件项目管理?</h3><p>对软件项目所涉及的过程、人员、产品、成本和进度等要素进行度量、分析、规划、组织和控制的过程，以确保软件项目按照预定的成本、进度、质量要求顺利完成</p>
+<h3 id="软件项目管理的对象"><a href="#软件项目管理的对象" class="headerlink" title="软件项目管理的对象"></a>软件项目管理的对象</h3><ul>
+<li>过程管理<ul>
+<li>过程：怎么做(How)</li>
+</ul>
+</li>
+<li>人员管理<ul>
+<li>人员：谁来做(Who)</li>
+</ul>
+</li>
+<li>产品管理<ul>
+<li>产品：结果(What)</li>
+</ul>
+</li>
+</ul>
+<h3 id="软件项目的管理要素"><a href="#软件项目的管理要素" class="headerlink" title="软件项目的管理要素"></a>软件项目的管理要素</h3><ul>
+<li>管理软件过程<ul>
+<li>明确软件开发活动及过程：<strong>过程定义</strong></li>
+<li>估算软件项目工作量成本：<strong>软件度量</strong></li>
+<li><strong>制定计划、跟踪过程、风险控制等</strong></li>
+</ul>
+</li>
+<li>管理软件产品<ul>
+<li>明确有哪些产品，呈什么形式(规范文档)</li>
+<li><strong>质量保证、配置管理、需求管理，风险控制</strong></li>
+</ul>
+</li>
+<li>管理项目人员<ul>
+<li>组建开发团队、调动积极性和激情</li>
+<li><strong>团队建设与沟通、机制设计、风险控制</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="软件度量"><a href="#软件度量" class="headerlink" title="软件度量"></a>软件度量</h3><ul>
+<li>软件度量(Metrics)是指对软件产品、软件开发过程或者资源的简单属性的定量描述<ul>
+<li>产品：软件开发过程中所生成的各种文档和程序</li>
+<li>过程：与软件开发有关的各种活动，如软件设计等</li>
+<li>资源：软件开发过程中所需支持，如人员、费用等</li>
+</ul>
+</li>
+<li>注意点<ul>
+<li>定量描述而不是定性描述</li>
+<li>简单属性：无需参照其它属性便可直接获得定量描述</li>
+</ul>
+</li>
+<li>简单属性示例<ul>
+<li>例子：**软件系统的代码行数目为1132 KLOC</li>
+</ul>
+</li>
+</ul>
+<h3 id="软件测量"><a href="#软件测量" class="headerlink" title="软件测量"></a>软件测量</h3><ul>
+<li>软件测量(Measure)<ul>
+<li>对软件产品、软件开发过程和资源复杂属性的定量描述，它是简单属性度量值函数，用于事后或实时状态，如软件可靠性</li>
+</ul>
+</li>
+<li>注意点<ul>
+<li>定量描述而不是定性描述</li>
+<li>复杂属性-不可直接获得、需参照其它属性的度量值</li>
+<li>实时或者事后状态，用于对历史进行评估</li>
+</ul>
+</li>
+<li>复杂属性示例<ul>
+<li>软件质量、软件可靠性等等</li>
+<li>例子：软件可靠性为0.95</li>
+</ul>
+</li>
+</ul>
+<h3 id="估算"><a href="#估算" class="headerlink" title="估算"></a>估算</h3><ul>
+<li>估算(Estimation)<ul>
+<li>对软件产品、软件开发过程和资源复杂属性的定量描述，它是简单属性度量值的函数，软件估算用于事前</li>
+</ul>
+</li>
+<li>注意点<ul>
+<li>定量描述，而不是定性描述</li>
+<li>复杂属性，不可直接获得、需参照其它属性的度量值</li>
+<li>事前状态，可采用经验公式</li>
+</ul>
+</li>
+<li>示例<ul>
+<li>如某个软件的开发成本为125万元</li>
+</ul>
+</li>
+</ul>
+<h3 id="软件项目计划"><a href="#软件项目计划" class="headerlink" title="软件项目计划"></a>软件项目计划</h3><p>对软件项目实施所涉及的活动、人员的安排、任务的划分、开发进度、资源的分配和使用等方面作出的预先规划</p>
+<p>计划内容</p>
+<ul>
+<li>软件开发进度计划</li>
+<li>人员任务分工计划</li>
+<li>资源分配使用计划</li>
+<li>……</li>
+</ul>
+<h3 id="项目跟踪"><a href="#项目跟踪" class="headerlink" title="项目跟踪"></a>项目跟踪</h3><p>任务</p>
+<ul>
+<li>跟踪和及时调整软件项目开发计划，提供项目情况的可视性，保证计划的适时调整</li>
+</ul>
+<p>问题</p>
+<ul>
+<li>要对哪些方面进行跟踪？</li>
+<li>如何对软件项目进行跟踪？</li>
+<li>当无法按预定计划实施时如何调整计划？</li>
+<li>当跟踪发现问题时如何进行处理</li>
+<li>如何提供工具辅助对软件项目进行跟踪……</li>
+</ul>
+<h3 id="风险管理"><a href="#风险管理" class="headerlink" title="风险管理"></a>风险管理</h3><p>任务</p>
+<ul>
+<li>对软件开发过程中各种风险进行分析、预测、评估、监控的过程</li>
+</ul>
+<p>问题</p>
+<ul>
+<li>什么是软件开发风险？</li>
+<li>软件开发可能会有哪些风险？</li>
+<li>如何客观地预测风险？</li>
+<li>如何评估风险带来的影响？</li>
+<li>如何避免和消除风险？</li>
+<li>如何提供工具支持风险分析？……</li>
+</ul>
+<h3 id="何为软件风险"><a href="#何为软件风险" class="headerlink" title="何为软件风险"></a>何为软件风险</h3><p>软件风险</p>
+<ul>
+<li>使软件项目的实施受到影响和损失、甚至导致失败的、可能会发生的事件</li>
+<li>例如，人员的临时流失，计划过于乐观，设计的低劣</li>
+</ul>
+<p>软件风险特点</p>
+<ul>
+<li>事先难以确定</li>
+<li>带来损失，影响项目实施，甚至会导致项目失败</li>
+</ul>
+<h3 id="风险管理模式"><a href="#风险管理模式" class="headerlink" title="风险管理模式"></a>风险管理模式</h3><ul>
+<li>危机管理<ul>
+<li>类似于救火模式，听任软件风险的发生，及至造成麻烦后才着手进行处理</li>
+</ul>
+</li>
+<li>失败处理<ul>
+<li>听任软件风险的发生和演化，只是在风险发生之后才采取应对措施</li>
+</ul>
+</li>
+<li>风险缓解<ul>
+<li>识别软件风险，事先制定好风险发生后的补救措施，但不做任何防范措施</li>
+</ul>
+</li>
+<li>风险预防<ul>
+<li>预先识别和分析哪些不好事件可能会发生，制定好了万一发生的应对措施，同时采取措施防止它发生</li>
+</ul>
+</li>
+<li>消灭根源<ul>
+<li>不仅要识别出软件开发过程中各种潜在的软件风险，而且还要分析导致这些软件风险发生的主要因素，并采取积极的措施消除软件风险产生的根源</li>
+</ul>
+</li>
+</ul>
+<h3 id="软件质量保证"><a href="#软件质量保证" class="headerlink" title="软件质量保证"></a>软件质量保证</h3><ul>
+<li>任务<ul>
+<li>为软件产品的质量提供某种可视性，知道哪些地方有质量问题，便于改进方法和措施，提高软件产品的质量</li>
+</ul>
+</li>
+<li>问题<ul>
+<li>高质量的软件体现在哪些方面？</li>
+<li>如何发现和保证软件产品的质量？</li>
+<li>如何制定软件产品质量保证计划？</li>
+<li>如何有效落实和实施计划？</li>
+<li>如何提供工具支持软件质量保证？</li>
+</ul>
+</li>
+<li>什么是软件质量保证<ul>
+<li>为管理层提供为获知产品质量信息所需的数据，从而获得产品质量是否符合预定目标的认识和信息</li>
+</ul>
+</li>
+<li>软件质量保证的目的<ul>
+<li>为软件产品的质量提供可视性</li>
+<li>知道哪些地方有质量问题</li>
+<li>便于改进方法和措施</li>
+</ul>
+</li>
+<li>示例<ul>
+<li>对软件进行测试，发现有哪些错误</li>
+<li>掌握这些错误的性质(严重、一般)</li>
+</ul>
+</li>
+</ul>
+<h3 id="产品管理-–-软件配置管理"><a href="#产品管理-–-软件配置管理" class="headerlink" title="产品管理 – 软件配置管理"></a>产品管理 – 软件配置管理</h3><p>任务</p>
+<ul>
+<li>对软件产品进行标识、存储、更动和发放，记录和报告其状态，验证软件产品的正确性和一致性，并对上述工作的审计的过程</li>
+</ul>
+<p>问题</p>
+<ul>
+<li>如何标识和描述软件产品</li>
+<li>如何对其软件产品的版本进行控制？</li>
+<li>如何控制软件产品的变更？</li>
+<li>如何制定软件配置计划？</li>
+<li>如何利用工具支持软件配置活动……</li>
+</ul>
+<h3 id="软件需求管理"><a href="#软件需求管理" class="headerlink" title="软件需求管理"></a>软件需求管理</h3><p>任务</p>
+<ul>
+<li>获取、文档化和评审用户需求，对用户需求变更进行控制和管理</li>
+</ul>
+<p>问题</p>
+<ul>
+<li>如何获取需求？</li>
+<li>如何撰写软件需求规格说明书？</li>
+<li>如何对需求进行评审以发现问题？</li>
+<li>如何控制需求的变更？</li>
+<li>如何提供工具支持需求管理……</li>
+</ul>
+
+    </div>
+
+       <div>
+        
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------本文到这里结束了，感谢您的阅读------</div>
+    
+</div>
+
+        
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div><您的支持将是我继续创作的动力！></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechat.png" alt="君不见 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="君不见 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>君不见
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://godx06.github.io/2023/02/09/%E3%80%8A%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E3%80%8B%E5%A4%8D%E4%B9%A0/" title="《软件工程》复习">https://godx06.github.io/2023/02/09/《软件工程》复习/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+ 
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Note/" rel="tag"><i class="fa fa-tag"></i> Note</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/01/31/Web%E6%A0%B8%E5%BF%83-Http-Tomcat-Servlet/" rel="prev" title="Web核心-Http-Tomcat-Servlet">
+      <i class="fa fa-chevron-left"></i> Web核心-Http-Tomcat-Servlet
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E9%A2%98%E7%9B%AE/" rel="next" title="计算机网络-题目">
+      计算机网络-题目 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="SOHUCS"></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SE1-1-%E7%A8%8B%E5%BA%8F%E5%8F%8A%E8%B4%A8%E9%87%8F%E4%BF%9D%E8%AF%81%E6%96%B9%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">SE1.1 程序及质量保证方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F"><span class="nav-number">1.1.</span> <span class="nav-text">程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%96%E5%9C%A8-External-%E8%B4%A8%E9%87%8F"><span class="nav-number">1.2.</span> <span class="nav-text">外在(External)质量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%9C%A8-Internal-%E8%B4%A8%E9%87%8F"><span class="nav-number">1.3.</span> <span class="nav-text">内在(Internal)质量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%95%E4%B8%BA%E4%BB%A3%E7%A0%81%E9%87%8D%E7%94%A8"><span class="nav-number">1.4.</span> <span class="nav-text">何为代码重用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E9%87%8D%E7%94%A8%E6%9C%89%E4%BD%95%E5%A5%BD%E5%A4%84"><span class="nav-number">1.5.</span> <span class="nav-text">代码重用有何好处</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E5%AF%B9%E7%BC%96%E7%A8%8B%E5%B8%A6%E6%9D%A5%E7%9A%84%E5%A5%BD%E5%A4%84"><span class="nav-number">1.6.</span> <span class="nav-text">结对编程带来的好处</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E5%8C%96%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7"><span class="nav-number">1.7.</span> <span class="nav-text">自动化代码分析工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SonarQube%E5%8F%AF%E5%88%86%E6%9E%90%E7%9A%84%E8%B4%A8%E9%87%8F%E9%97%AE%E9%A2%98"><span class="nav-number">1.8.</span> <span class="nav-text">SonarQube可分析的质量问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SE1-2-%E8%BD%AF%E4%BB%B6%E5%8F%8A%E5%85%B6%E7%89%B9%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text">SE1.2 软件及其特点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6"><span class="nav-number">2.1.</span> <span class="nav-text">软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%A1%A3"><span class="nav-number">2.2.</span> <span class="nav-text">文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">2.3.</span> <span class="nav-text">软件生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E7%89%B9%E7%82%B9"><span class="nav-number">2.4.</span> <span class="nav-text">软件特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">2.5.</span> <span class="nav-text">软件的分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%95%E4%B8%BA%E9%97%AD%E6%BA%90%E8%BD%AF%E4%BB%B6"><span class="nav-number">2.6.</span> <span class="nav-text">何为闭源软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%95%E4%B8%BA%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6"><span class="nav-number">2.7.</span> <span class="nav-text">何为开源软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6%E7%9A%84%E5%A5%BD%E5%A4%84"><span class="nav-number">2.8.</span> <span class="nav-text">开源软件的好处</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="nav-number">2.9.</span> <span class="nav-text">开源软件的优势</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E8%A6%81%E7%B4%A0"><span class="nav-number">2.10.</span> <span class="nav-text">软件质量要素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SE2-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E6%A6%82%E8%BF%B0"><span class="nav-number">3.</span> <span class="nav-text">SE2 软件工程概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%8D%B1%E6%9C%BA%E7%9A%84%E5%87%BA%E7%8E%B0"><span class="nav-number">3.1.</span> <span class="nav-text">软件危机的出现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%9A%84%E8%AF%9E%E7%94%9F"><span class="nav-number">3.2.</span> <span class="nav-text">软件工程的诞生</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%95%E4%B8%BA%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B"><span class="nav-number">3.3.</span> <span class="nav-text">何为软件工程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%9A%84%E4%B8%89%E8%A6%81%E7%B4%A0"><span class="nav-number">3.4.</span> <span class="nav-text">软件工程的三要素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%9A%84%E6%9C%AC%E8%B4%A8"><span class="nav-number">3.5.</span> <span class="nav-text">软件开发的本质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%9A%84%E7%9B%AE%E6%A0%87"><span class="nav-number">3.6.</span> <span class="nav-text">软件工程的目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%8E%9F%E5%88%99"><span class="nav-number">3.7.</span> <span class="nav-text">软件工程原则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SE3-1-%E8%BD%AF%E4%BB%B6%E8%BF%87%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">SE3.1 软件过程模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%9A%84%E7%89%B9%E7%82%B9"><span class="nav-number">4.1.</span> <span class="nav-text">软件开发的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%BF%87%E7%A8%8B"><span class="nav-number">4.2.</span> <span class="nav-text">软件过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%BF%87%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.3.</span> <span class="nav-text">软件过程模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%80%91%E5%B8%83%E6%A8%A1%E5%9E%8B-Waterfall-Model"><span class="nav-number">4.4.</span> <span class="nav-text">瀑布模型(Waterfall Model )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B9%E8%BF%9B%E7%9A%84%E7%80%91%E5%B8%83%E6%A8%A1%E5%9E%8B%EF%BC%9A%E5%B8%A6%E5%8F%8D%E9%A6%88%E5%92%8C%E5%9B%9E%E6%BA%AF"><span class="nav-number">4.5.</span> <span class="nav-text">改进的瀑布模型：带反馈和回溯</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A2%9E%E9%87%8F%E6%A8%A1%E5%9E%8B-Incremental-Model"><span class="nav-number">4.6.</span> <span class="nav-text">增量模型(Incremental Model)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3%E6%A8%A1%E5%9E%8B-Iterative-Model"><span class="nav-number">4.7.</span> <span class="nav-text">迭代模型(Iterative Model)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%9E%8B-Prototype-Model"><span class="nav-number">4.8.</span> <span class="nav-text">原型模型(Prototype Model)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%9E%BA%E6%97%8B%E6%A8%A1%E5%9E%8B-Spiral-Model"><span class="nav-number">4.9.</span> <span class="nav-text">螺旋模型(Spiral Model)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E5%90%8C%E8%BD%AF%E4%BB%B6%E8%BF%87%E7%A8%8B%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%89%B9%E7%82%B9"><span class="nav-number">4.10.</span> <span class="nav-text">不同软件过程模型的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%8F%E6%8D%B7%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95-Agile-Method"><span class="nav-number">4.11.</span> <span class="nav-text">敏捷软件开发方法(Agile Method)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SE3-2-%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95"><span class="nav-number">5.</span> <span class="nav-text">SE3.2 敏捷开发方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%8F%E6%8D%B7%EF%BC%88Agile%EF%BC%89%E6%96%B9%E6%B3%95"><span class="nav-number">5.1.</span> <span class="nav-text">什么是敏捷（Agile）方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%A7%82%E7%82%B9"><span class="nav-number">5.2.</span> <span class="nav-text">敏捷开发方法的基本观点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%8F%E6%8D%B7%E5%87%86%E5%88%99"><span class="nav-number">5.3.</span> <span class="nav-text">敏捷准则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%81%E9%99%90%E7%BC%96%E7%A8%8B%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3"><span class="nav-number">5.4.</span> <span class="nav-text">极限编程的基本思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scrum%E6%96%B9%E6%B3%95"><span class="nav-number">5.5.</span> <span class="nav-text">Scrum方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scrum%E6%96%B9%E6%B3%95%E7%9A%84%E5%A4%A7%E8%87%B4%E6%B5%81%E7%A8%8B"><span class="nav-number">5.6.</span> <span class="nav-text">Scrum方法的大致流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%8F%E6%8D%B7%E6%96%B9%E6%B3%95%E7%9A%84%E7%89%B9%E7%82%B9"><span class="nav-number">5.7.</span> <span class="nav-text">敏捷方法的特点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SE3-3-%E7%BE%A4%E4%BD%93%E5%8C%96%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text">SE3.3 群体化软件开发方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AD%E6%BA%90%E8%BD%AF%E4%BB%B6"><span class="nav-number">6.1.</span> <span class="nav-text">闭源软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6-Open-Source-Software"><span class="nav-number">6.2.</span> <span class="nav-text">开源软件(Open Source Software)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%95%E4%B8%BA%E7%BE%A4%E4%BD%93%E5%8C%96%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95"><span class="nav-number">6.3.</span> <span class="nav-text">何为群体化开发方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BE%A4%E4%BD%93%E5%8C%96%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E7%9A%84%E7%89%B9%E7%82%B9"><span class="nav-number">6.4.</span> <span class="nav-text">群体化软件开发方法的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8EP-x2F-R%E5%88%86%E5%B8%83%E5%BC%8F%E5%8D%8F%E5%90%8C%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="nav-number">6.5.</span> <span class="nav-text">基于P&#x2F;R分布式协同开发技术的优势</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SE3-4-Git%E4%BB%8B%E7%BB%8D%E5%8F%8A%E4%BD%BF%E7%94%A8"><span class="nav-number">7.</span> <span class="nav-text">SE3.4 Git介绍及使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%EF%BC%88Revision-Control%EF%BC%89-%EF%BC%9F"><span class="nav-number">7.1.</span> <span class="nav-text">什么是版本控制（Revision Control） ？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9B%86%E4%B8%AD%E5%BC%8F%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6"><span class="nav-number">7.2.</span> <span class="nav-text">集中式版本控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6"><span class="nav-number">7.3.</span> <span class="nav-text">分布式版本控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">7.4.</span> <span class="nav-text">Git的基本工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="nav-number">7.5.</span> <span class="nav-text">Git的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%9C%AC%E5%9C%B0%E7%89%88%E6%9C%AC%E5%BA%93"><span class="nav-number">7.5.1.</span> <span class="nav-text">创建本地版本库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%8B%E9%9A%86%E8%BF%9C%E7%A8%8B%E7%89%88%E6%9C%AC%E5%BA%93"><span class="nav-number">7.5.2.</span> <span class="nav-text">克隆远程版本库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8%E6%9A%82%E5%AD%98%E5%8C%BA%E6%B7%BB%E5%8A%A0-x2F-%E6%92%A4%E9%94%80%E6%96%87%E4%BB%B6"><span class="nav-number">7.5.3.</span> <span class="nav-text">在暂存区添加&#x2F;撤销文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%90%E4%BA%A4%E4%BF%AE%E6%94%B9%E5%88%B0%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93"><span class="nav-number">7.5.4.</span> <span class="nav-text">提交修改到本地仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E8%BF%9C%E7%A8%8B%E7%89%88%E6%9C%AC%E5%BA%93"><span class="nav-number">7.5.5.</span> <span class="nav-text">添加远程版本库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%A8%E9%80%81%E6%9C%AC%E5%9C%B0%E5%86%85%E5%AE%B9%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="nav-number">7.5.6.</span> <span class="nav-text">.推送本地内容到远程仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8B%89%E5%8F%96%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF%E5%88%B0%E6%9C%AC%E5%9C%B0"><span class="nav-number">7.5.7.</span> <span class="nav-text">拉取远程分支到本地</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SE4-%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80"><span class="nav-number">8.</span> <span class="nav-text">SE4 软件需求分析基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SE5-%E8%8E%B7%E5%8F%96%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82"><span class="nav-number">9.</span> <span class="nav-text">SE5 获取软件需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SE6-%E5%88%86%E6%9E%90%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82"><span class="nav-number">10.</span> <span class="nav-text">SE6 分析软件需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SE7-%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80"><span class="nav-number">11.</span> <span class="nav-text">SE7 软件设计基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%95%E4%B8%BA%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%EF%BC%9F"><span class="nav-number">11.1.</span> <span class="nav-text">何为软件设计？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E7%9A%84%E8%B4%A8%E9%87%8F%E8%A6%81%E6%B1%82"><span class="nav-number">11.2.</span> <span class="nav-text">软件设计的质量要求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E5%85%83%E7%B4%A0"><span class="nav-number">11.3.</span> <span class="nav-text">软件设计元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E8%A6%81%E8%80%83%E8%99%91%E7%9A%84%E5%9B%A0%E7%B4%A0"><span class="nav-number">11.4.</span> <span class="nav-text">软件设计要考虑的因素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99"><span class="nav-number">11.5.</span> <span class="nav-text">软件设计基本原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E7%9A%84CASE%E5%B7%A5%E5%85%B7"><span class="nav-number">11.6.</span> <span class="nav-text">软件设计的CASE工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E7%9A%84%E8%BE%93%E5%87%BA"><span class="nav-number">11.7.</span> <span class="nav-text">软件设计的输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3%E7%9A%84%E8%A7%84%E8%8C%83"><span class="nav-number">11.8.</span> <span class="nav-text">软件设计文档的规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84%E7%BC%BA%E9%99%B7"><span class="nav-number">11.9.</span> <span class="nav-text">软件设计中的缺陷</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E7%9A%84%E8%AF%84%E5%AE%A1"><span class="nav-number">11.10.</span> <span class="nav-text">软件设计的评审</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E7%9A%84%E7%AE%A1%E7%90%86"><span class="nav-number">11.11.</span> <span class="nav-text">软件设计的管理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SE8-%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="nav-number">12.</span> <span class="nav-text">SE8 软件体系结构设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="nav-number">12.1.</span> <span class="nav-text">软件体系结构的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%85%83%E7%B4%A0"><span class="nav-number">12.2.</span> <span class="nav-text">软件体系结构的设计元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UML%E5%9B%BE"><span class="nav-number">12.3.</span> <span class="nav-text">UML图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E5%90%8C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E9%A3%8E%E6%A0%BC%E9%80%82%E5%90%88%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">12.4.</span> <span class="nav-text">不同体系结构风格适合的应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%92%B0%E5%86%99%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3"><span class="nav-number">12.5.</span> <span class="nav-text">撰写软件体系结构设计文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%84%E5%AE%A1%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="nav-number">12.6.</span> <span class="nav-text">评审软件体系结构设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E7%9A%84%E8%BE%93%E5%87%BA"><span class="nav-number">12.7.</span> <span class="nav-text">软件体系结构设计的输出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SE9-%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1"><span class="nav-number">13.</span> <span class="nav-text">SE9 用户界面设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%BA%E6%9C%BA%E4%BA%A4%E4%BA%92%E7%9A%84%E5%B8%B8%E8%A7%81%E6%96%B9%E5%BC%8F"><span class="nav-number">13.1.</span> <span class="nav-text">人机交互的常见方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%BA%E6%9C%BA%E4%BA%A4%E4%BA%92%E7%9A%84%E5%85%B3%E9%94%AE"><span class="nav-number">13.2.</span> <span class="nav-text">人机交互的关键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E5%85%83%E7%B4%A0%E5%8F%8A%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="nav-number">13.3.</span> <span class="nav-text">用户界面元素及实现方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1%E7%9A%84%E4%BB%BB%E5%8A%A1"><span class="nav-number">13.4.</span> <span class="nav-text">用户界面设计的任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99"><span class="nav-number">13.5.</span> <span class="nav-text">用户界面设计原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1%E8%BF%87%E7%A8%8B"><span class="nav-number">13.6.</span> <span class="nav-text">用户界面设计过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SE10-%E8%BD%AF%E4%BB%B6%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1"><span class="nav-number">14.</span> <span class="nav-text">SE10 软件详细设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E7%9A%84%E4%BB%BB%E5%8A%A1"><span class="nav-number">14.1.</span> <span class="nav-text">详细设计的任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%B4%BB%E5%8A%A8"><span class="nav-number">14.2.</span> <span class="nav-text">软件详细设计的活动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E7%9A%84%E8%A6%81%E6%B1%82%E5%92%8C%E5%8E%9F%E5%88%99"><span class="nav-number">14.3.</span> <span class="nav-text">软件详细设计的要求和原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E4%BE%8B%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88"><span class="nav-number">14.4.</span> <span class="nav-text">用例的实现方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E4%BE%8B%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99"><span class="nav-number">14.5.</span> <span class="nav-text">用例设计原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E8%AE%BE%E8%AE%A1%E7%9A%84%E4%BB%BB%E5%8A%A1"><span class="nav-number">14.6.</span> <span class="nav-text">类设计的任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99"><span class="nav-number">14.7.</span> <span class="nav-text">类设计原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%AE%BE%E8%AE%A1"><span class="nav-number">14.8.</span> <span class="nav-text">数据设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%AE%BE%E8%AE%A1%E7%9A%84%E5%8E%9F%E5%88%99"><span class="nav-number">14.9.</span> <span class="nav-text">数据设计的原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%90%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E7%9A%84%E4%BB%BB%E5%8A%A1"><span class="nav-number">14.10.</span> <span class="nav-text">子系统设计的任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%90%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E7%9A%84%E5%8E%9F%E5%88%99"><span class="nav-number">14.11.</span> <span class="nav-text">子系统设计的原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%90%E7%B3%BB%E7%BB%9F%E5%86%85%E9%83%A8%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">14.12.</span> <span class="nav-text">子系统内部设计的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E7%9A%84%E8%BE%93%E5%87%BA"><span class="nav-number">14.13.</span> <span class="nav-text">软件详细设计的输出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SE11-%E8%BD%AF%E4%BB%B6%E5%AE%9E%E7%8E%B0%E5%9F%BA%E7%A1%80"><span class="nav-number">15.</span> <span class="nav-text">SE11 软件实现基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%95%E4%B8%BA%E8%BD%AF%E4%BB%B6%E5%AE%9E%E7%8E%B0"><span class="nav-number">15.1.</span> <span class="nav-text">何为软件实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80%E7%9A%84%E7%B1%BB%E5%88%AB"><span class="nav-number">15.2.</span> <span class="nav-text">程序设计语言的类别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E4%BB%A3%E7%A0%81%E7%9A%84%E5%8E%9F%E5%88%99"><span class="nav-number">15.3.</span> <span class="nav-text">编写代码的原则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SE12-%E7%BC%96%E5%86%99%E4%BB%A3%E7%A0%81"><span class="nav-number">16.</span> <span class="nav-text">SE12 编写代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E4%BB%A3%E7%A0%81%E7%9A%84%E4%BB%BB%E5%8A%A1"><span class="nav-number">16.1.</span> <span class="nav-text">编写代码的任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%95%E4%B8%BA%E8%BD%AF%E4%BB%B6%E7%BC%BA%E9%99%B7"><span class="nav-number">16.2.</span> <span class="nav-text">何为软件缺陷</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E7%BC%BA%E9%99%B7%E7%9A%84%E6%8F%8F%E8%BF%B0"><span class="nav-number">16.3.</span> <span class="nav-text">软件缺陷的描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E7%BC%BA%E9%99%B7%E7%9A%84%E5%BA%94%E5%AF%B9%E6%96%B9%E6%B3%95"><span class="nav-number">16.4.</span> <span class="nav-text">软件缺陷的应对方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E7%BC%BA%E9%99%B7%E7%9A%84%E7%8A%B6%E6%80%81"><span class="nav-number">16.5.</span> <span class="nav-text">软件缺陷的状态</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SE13-%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95"><span class="nav-number">17.</span> <span class="nav-text">SE13 软件测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%95%E4%B8%BA%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%EF%BC%9F"><span class="nav-number">17.1.</span> <span class="nav-text">何为软件测试？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="nav-number">17.2.</span> <span class="nav-text">软件测试的步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95"><span class="nav-number">17.3.</span> <span class="nav-text">单元测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9B%86%E6%88%90%E6%B5%8B%E8%AF%95"><span class="nav-number">17.4.</span> <span class="nav-text">集成测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A1%AE%E8%AE%A4%E6%B5%8B%E8%AF%95"><span class="nav-number">17.5.</span> <span class="nav-text">确认测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#a%E6%B5%8B%E8%AF%95%E5%92%8Cb%E6%B5%8B%E8%AF%95"><span class="nav-number">17.6.</span> <span class="nav-text">a测试和b测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%8A%80%E6%9C%AF-%E7%99%BD%E7%9B%92%E6%B5%8B%E8%AF%95"><span class="nav-number">17.7.</span> <span class="nav-text">软件测试技术-白盒测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%BB%91%E7%9B%92%E6%B5%8B%E8%AF%95"><span class="nav-number">17.8.</span> <span class="nav-text">黑盒测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SE14-%E8%BD%AF%E4%BB%B6%E9%83%A8%E7%BD%B2"><span class="nav-number">18.</span> <span class="nav-text">SE14 软件部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83"><span class="nav-number">18.1.</span> <span class="nav-text">软件运行环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%95%E4%B8%BA%E8%BD%AF%E4%BB%B6%E9%83%A8%E7%BD%B2"><span class="nav-number">18.2.</span> <span class="nav-text">何为软件部署</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E9%83%A8%E7%BD%B2%E7%9A%84%E5%8E%9F%E5%88%99"><span class="nav-number">18.3.</span> <span class="nav-text">软件部署的原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E6%9C%BA%E9%83%A8%E7%BD%B2%E6%96%B9%E5%BC%8F"><span class="nav-number">18.4.</span> <span class="nav-text">单机部署方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E9%83%A8%E7%BD%B2"><span class="nav-number">18.5.</span> <span class="nav-text">分布式部署</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SE15-%E8%BD%AF%E4%BB%B6%E7%BB%B4%E6%8A%A4%E4%B8%8E%E6%BC%94%E5%8C%96"><span class="nav-number">19.</span> <span class="nav-text">SE15 软件维护与演化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%95%E4%B8%BA%E8%BD%AF%E4%BB%B6%E7%BB%B4%E6%8A%A4"><span class="nav-number">19.1.</span> <span class="nav-text">何为软件维护</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E7%BB%B4%E6%8A%A4%E7%9A%84%E5%BD%A2%E5%BC%8F"><span class="nav-number">19.2.</span> <span class="nav-text">软件维护的形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E7%BB%B4%E6%8A%A4%E7%9A%84%E7%89%B9%E7%82%B9"><span class="nav-number">19.3.</span> <span class="nav-text">软件维护的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E6%BC%94%E5%8C%96%E5%8F%8A%E5%85%B6%E7%89%B9%E7%82%B9"><span class="nav-number">19.4.</span> <span class="nav-text">软件演化及其特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E6%BC%94%E5%8C%96%E6%B3%95%E5%88%99"><span class="nav-number">19.5.</span> <span class="nav-text">软件演化法则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%95%E4%B8%BA%E8%BD%AF%E4%BB%B6%E9%80%BB%E8%BE%91%E8%80%81%E5%8C%96"><span class="nav-number">19.6.</span> <span class="nav-text">何为软件逻辑老化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E9%87%8D%E7%BB%84"><span class="nav-number">19.7.</span> <span class="nav-text">代码重组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B"><span class="nav-number">19.8.</span> <span class="nav-text">逆向工程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E9%87%8D%E6%9E%84"><span class="nav-number">19.9.</span> <span class="nav-text">设计重构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%8D%E5%B7%A5%E7%A8%8B"><span class="nav-number">19.10.</span> <span class="nav-text">再工程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%B1%E5%93%8D%E8%BD%AF%E4%BB%B6%E5%8F%AF%E7%BB%B4%E6%8A%A4%E6%80%A7%E7%9A%84%E5%9B%A0%E7%B4%A0"><span class="nav-number">19.11.</span> <span class="nav-text">影响软件可维护性的因素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SE16-%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86"><span class="nav-number">20.</span> <span class="nav-text">SE16 软件项目管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%95%E4%B8%BA%E9%A1%B9%E7%9B%AE-Project"><span class="nav-number">20.1.</span> <span class="nav-text">何为项目 (Project)?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%89%B9%E7%82%B9"><span class="nav-number">20.2.</span> <span class="nav-text">项目特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E5%8F%8A%E5%85%B6%E7%89%B9%E7%82%B9"><span class="nav-number">20.3.</span> <span class="nav-text">软件项目及其特点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%95%E4%B8%BA%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE"><span class="nav-number">20.3.1.</span> <span class="nav-text">何为软件项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%9A%84%E7%89%B9%E7%82%B9"><span class="nav-number">20.3.2.</span> <span class="nav-text">软件项目的特点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%BB%BB%E5%8A%A1"><span class="nav-number">20.4.</span> <span class="nav-text">软件项目的任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%95%E4%B8%BA%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86"><span class="nav-number">20.5.</span> <span class="nav-text">何为软件项目管理?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E7%9A%84%E5%AF%B9%E8%B1%A1"><span class="nav-number">20.6.</span> <span class="nav-text">软件项目管理的对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%9A%84%E7%AE%A1%E7%90%86%E8%A6%81%E7%B4%A0"><span class="nav-number">20.7.</span> <span class="nav-text">软件项目的管理要素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%BA%A6%E9%87%8F"><span class="nav-number">20.8.</span> <span class="nav-text">软件度量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E6%B5%8B%E9%87%8F"><span class="nav-number">20.9.</span> <span class="nav-text">软件测量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%B0%E7%AE%97"><span class="nav-number">20.10.</span> <span class="nav-text">估算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E8%AE%A1%E5%88%92"><span class="nav-number">20.11.</span> <span class="nav-text">软件项目计划</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E8%B7%9F%E8%B8%AA"><span class="nav-number">20.12.</span> <span class="nav-text">项目跟踪</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86"><span class="nav-number">20.13.</span> <span class="nav-text">风险管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%95%E4%B8%BA%E8%BD%AF%E4%BB%B6%E9%A3%8E%E9%99%A9"><span class="nav-number">20.14.</span> <span class="nav-text">何为软件风险</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F"><span class="nav-number">20.15.</span> <span class="nav-text">风险管理模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E4%BF%9D%E8%AF%81"><span class="nav-number">20.16.</span> <span class="nav-text">软件质量保证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A7%E5%93%81%E7%AE%A1%E7%90%86-%E2%80%93-%E8%BD%AF%E4%BB%B6%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86"><span class="nav-number">20.17.</span> <span class="nav-text">产品管理 – 软件配置管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82%E7%AE%A1%E7%90%86"><span class="nav-number">20.18.</span> <span class="nav-text">软件需求管理</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="君不见"
+      src="/images/tsy.png">
+  <p class="site-author-name" itemprop="name">君不见</p>
+  <div class="site-description" itemprop="description">君不见，黄河之水天上来，奔流到海不复回。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/godx06" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godx06" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/3451246424@qq.com" title="E-Mail → 3451246424@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/7655616259/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;7655616259&#x2F;profile?rightmod&#x3D;1&amp;wvr&#x3D;6&amp;mod&#x3D;personinfo&amp;is_all&#x3D;1" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/m0_61465701?spm=1018.2226.3001.5343" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;m0_61465701?spm&#x3D;1018.2226.3001.5343" rel="noopener" target="_blank"><i class="fab fa-skype fa-fw"></i>CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://leetcode.cn/" title="https:&#x2F;&#x2F;leetcode.cn&#x2F;" rel="noopener" target="_blank">力扣</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.nowcoder.com/" title="https:&#x2F;&#x2F;www.nowcoder.com&#x2F;" rel="noopener" target="_blank">牛客</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+      <div id="music163player">
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=8029840379&auto=0&height=430">
+        </iframe>
+      </div>
+      
+    </div>
+
+
+  </aside>
+
+    
+
+  <div id="sidebar-dimmer"></div>
+
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">君不见</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+  <script data-pjax>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  <script src="//code.tidio.co/qkwnepnheqrn9usrfqkth95hu196bfin.js"></script>
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+  <script>
+  NexT.utils.loadComments(document.querySelector('#SOHUCS'), () => {
+    var appid = 'cyw4nNoc5';
+    var conf = '00d96ca2de6f5fc1a13903b7caf0a878';
+    var width = window.innerWidth || document.documentElement.clientWidth;
+    if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>');
+    } else {
+      var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})});
+    }
+  });
+  </script>
+  <script src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+
+    </div>
+
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/fireworks.js"></script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <!--自定义看板娘-->
+  <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"/>
+
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/dragon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/dragon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="baidu-site-verification" content="6EMwG3w0uT">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-center-circle.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"godx06.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":300,"display":"post","padding":5,"offset":5,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="计算机网络的一些题目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络-题目">
+<meta property="og:url" content="https://godx06.github.io/2023/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E9%A2%98%E7%9B%AE/index.html">
+<meta property="og:site_name" content="君不见の博客">
+<meta property="og:description" content="计算机网络的一些题目">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEB206c5e9f18e751de972ed3335fd751ce?method=download&shareKey=6cf2f9ca94044f305a08bf969c4a3502">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEB533e5a698adda4ec8530e2c90cc37803?method=download&shareKey=66eaa8b07fe4fee2fd6b00f478bd7090">
+<meta property="article:published_time" content="2023-02-09T02:56:16.000Z">
+<meta property="article:modified_time" content="2023-02-09T03:00:24.600Z">
+<meta property="article:author" content="君不见">
+<meta property="article:tag" content="Note">
+<meta property="article:tag" content="Practices">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://note.youdao.com/yws/api/personal/file/WEB206c5e9f18e751de972ed3335fd751ce?method=download&shareKey=6cf2f9ca94044f305a08bf969c4a3502">
+
+<link rel="canonical" href="https://godx06.github.io/2023/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E9%A2%98%E7%9B%AE/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>计算机网络-题目 | 君不见の博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  
+<link rel="alternate" href="/atom.xml" title="君不见の博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script type="text/javascript" src="/js/dytitle.js"></script>
+
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">君不见の博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录生活中的点点滴滴</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">10</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">7</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">27</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://godx06.github.io/2023/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E9%A2%98%E7%9B%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/tsy.png">
+      <meta itemprop="name" content="君不见">
+      <meta itemprop="description" content="君不见，黄河之水天上来，奔流到海不复回。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="君不见の博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算机网络-题目
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-02-09 10:56:16 / 修改时间：11:00:24" itemprop="dateCreated datePublished" datetime="2023-02-09T10:56:16+08:00">2023-02-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2023/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E9%A2%98%E7%9B%AE/#SOHUCS" itemprop="discussionUrl">
+        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2023/02/09/计算机网络-题目/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>计算机网络的一些题目</p>
+<h4 id="在-TCP-x2F-IP-体系结构中，直接为-ICMP-提供服务的协议是-。"><a href="#在-TCP-x2F-IP-体系结构中，直接为-ICMP-提供服务的协议是-。" class="headerlink" title="在 TCP&#x2F;IP 体系结构中，直接为 ICMP 提供服务的协议是 。"></a>在 TCP&#x2F;IP 体系结构中，直接为 ICMP 提供服务的协议是 。</h4><p>A、PPP</p>
+<p><strong>B、IP</strong></p>
+<p>C、UDP</p>
+<p>D、TCP</p>
+<blockquote>
+<p>正确答案：B</p>
+<p>官方解析：</p>
+<p>ICMP 报文作为数据字段封装在 IP 分组中，因此， IP 协议直接为 ICMP 提供服务。 UDP 和 TCP 都是传输层协议，为应用层提供服务。 PPP 协议是链路层协议，为网络层提供服务。</p>
+</blockquote>
+<hr>
+<h4 id="常用的信道复用技术有（-）"><a href="#常用的信道复用技术有（-）" class="headerlink" title="常用的信道复用技术有（    ）"></a>常用的信道复用技术有（    ）</h4><p><strong>A、TDM</strong></p>
+<p><strong>B、CDM</strong></p>
+<p><strong>C、FDM</strong></p>
+<p><strong>D、WDM</strong></p>
+<blockquote>
+<p>正确答案：ABCD</p>
+<p>解析：</p>
+<p>频分复用FDM ( Frequency Division Multiplexing ) </p>
+<p>时分复用TDM ( Time Division Multiplexing) </p>
+<p>码分复用CDM ( Code Division Multiplexing) </p>
+<p>波分复用WDM ( Wavelength Division Multiplexing)</p>
+<p>传统的三种为：频分、时分、统计时分（STDM)</p>
+</blockquote>
+<hr>
+<h4 id="在常用的网络协议中，-是面向连接的、有重传功能的协议。"><a href="#在常用的网络协议中，-是面向连接的、有重传功能的协议。" class="headerlink" title="在常用的网络协议中，___是面向连接的、有重传功能的协议。"></a>在常用的网络协议中，___是面向连接的、有重传功能的协议。</h4><p>A、IP</p>
+<p><strong>B&#x2F;TCP</strong></p>
+<p>C、UDP</p>
+<p>D、DXP</p>
+<blockquote>
+<p> 正确答案：B</p>
+<p>官方解析：</p>
+<p>TCP协议为传输控制协议面向连接，IP为网际协议，UDP为用户数据报协议。</p>
+</blockquote>
+<hr>
+<h4 id="交换机、HDLC、PPP属于OSI模型的哪一层？"><a href="#交换机、HDLC、PPP属于OSI模型的哪一层？" class="headerlink" title="交换机、HDLC、PPP属于OSI模型的哪一层？"></a>交换机、HDLC、PPP属于OSI模型的哪一层？</h4><p>A、物理层</p>
+<p><strong>B、数据链路层</strong></p>
+<p>C、网络层</p>
+<p>D、传输层</p>
+<blockquote>
+<p>正确答案：B</p>
+</blockquote>
+<hr>
+<h4 id="以太网交换机中的-端口-x2F-MAC-地址映射表（）"><a href="#以太网交换机中的-端口-x2F-MAC-地址映射表（）" class="headerlink" title="以太网交换机中的 端口&#x2F;MAC 地址映射表（）"></a>以太网交换机中的 端口&#x2F;MAC 地址映射表（）</h4><p>A、是由交换机的生产厂商建立的</p>
+<p><strong>B、是交换机在数据转发过程中通过学习动态建立的</strong></p>
+<p>C、是由网络管理员建立的</p>
+<p>D、是由网络用户利用特殊的命令建立的</p>
+<blockquote>
+<p>正确答案：B</p>
+<p>解析：</p>
+<ol>
+<li>首先，以太网交换机(或第二层交换机)实际上就是一个多接口的网桥。</li>
+<li>是一种即插即用设备，其内部的帧转发表是通过自学习算法自动地逐渐建立起来的。</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/questionTerminal/e63dfc03119b44e0a43dad5649642c65">以太网交换机中的 端口&#x2F;MAC 地址映射表</a> </p>
+</blockquote>
+<hr>
+<h4 id="数据分段在OSI哪一层"><a href="#数据分段在OSI哪一层" class="headerlink" title="数据分段在OSI哪一层( )"></a>数据分段在OSI哪一层( )</h4><p>A、应用层</p>
+<p>B、表示层</p>
+<p><strong>C、传输层</strong></p>
+<p>D、网络层</p>
+<p>E、数据链路层</p>
+<p>F、会话层</p>
+<blockquote>
+<p>正确答案：C</p>
+<p>官方解析：</p>
+<p>数据分段是在传输层中完成的，传输层定义了一些传输数据的协议和端口号（WWW端口80等），如：TCP（传输控制协议，传输效率低，可靠性强，用于传输可靠性要求高，数据量大的数据），UDP（用户数据报协议，与TCP特性恰恰相反，用于传输可靠性要求不高，数据量小的数据，如QQ聊天数据就是通过这种方式传输的）。主要是将从下层接收的数据进行分段和传输，到达目的地址后再进行重组。常常把这一层数据叫做段。</p>
+</blockquote>
+<hr>
+<h4 id="在-Internet-中不需运行-IP-协议的设备是-（）"><a href="#在-Internet-中不需运行-IP-协议的设备是-（）" class="headerlink" title="在 Internet 中不需运行 IP 协议的设备是 （）"></a>在 Internet 中不需运行 IP 协议的设备是 （）</h4><p>A、路由器</p>
+<p><strong>B、集线器</strong></p>
+<p>C、服务器</p>
+<p>D、工作站</p>
+<blockquote>
+<p>正确答案：B</p>
+<p>路由器是网络层设备，需要运行IP协议；</p>
+<p>服务器和工作站的网络层也运行IP协议；</p>
+<p>集线器是物理层设备，不需要运行IP协议。</p>
+<p>需要使用IP协议的是数据链路层以上的,数据链路层级物理层不需要使用IP协议 </p>
+<p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/questionTerminal/c1ec9885e28f45fa9c3b6a19a7172ba7">在 Internet 中不需运行 IP 协议的设备是 </a> </p>
+</blockquote>
+<hr>
+<h4 id="在数据通信中，表示数据传输“数量”与“质量”的指标是（）"><a href="#在数据通信中，表示数据传输“数量”与“质量”的指标是（）" class="headerlink" title="在数据通信中，表示数据传输“数量”与“质量”的指标是（）"></a>在数据通信中，表示数据传输“数量”与“质量”的指标是（）</h4><p><strong>A、数据传输率和误码率</strong></p>
+<p>B、系统吞吐率和延迟</p>
+<p>C、误码率和数据传输率</p>
+<p>D、信道容量和带宽</p>
+<blockquote>
+<p>正确答案：A</p>
+<p>你的答案：B</p>
+<p>解析：</p>
+<p>数据传输率  每秒钟传输数据的byte数。 </p>
+<p>误码率  传输中的误码，占传输的总码数 </p>
+<p>吞吐率指的是 在单位时间内通过某信道或者某个节点成功交付的平均速率。 </p>
+<p>网络延迟指的是在进行网络传输的时候超额的网络流量导致设备反应缓慢，从而产生网络延迟。 </p>
+<p>信道容量  信道能无错误传输的最大信息率，单位byte&#x2F;s。 </p>
+<p>带宽  发送数据的速度一般单位是byte&#x2F;s。</p>
+<p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/questionTerminal/7a3e52d3547a48b4bc6c542aeaa4c638">在数据通信中，表示数据传输“数量”与“质量”的指标是</a> </p>
+</blockquote>
+<hr>
+<h4 id="OSI参考模型中的物理层负责下列哪一项功能？"><a href="#OSI参考模型中的物理层负责下列哪一项功能？" class="headerlink" title="OSI参考模型中的物理层负责下列哪一项功能？"></a>OSI参考模型中的物理层负责下列哪一项功能？</h4><p>A、格式化报文</p>
+<p>B、为数据选择通过网路的路由</p>
+<p><strong>C、定义连接到媒体的特征</strong></p>
+<p>D、提供远程访问文件的能力。</p>
+<blockquote>
+<p>正确答案：C</p>
+<p>解析：</p>
+<p>物理层是OSI参考模型的最低层，它利用传输介质为通信的主机之间建立，管理和释放物理连接，实现比特流的透明传输（传输单位是比特），保证比特流通过传输介质的正确传输。</p>
+</blockquote>
+<hr>
+<h4 id="internet骨干网中的路由器通过BGP协议传输数据-BGP协议使用传输层的协议与端口有（-）"><a href="#internet骨干网中的路由器通过BGP协议传输数据-BGP协议使用传输层的协议与端口有（-）" class="headerlink" title="internet骨干网中的路由器通过BGP协议传输数据,BGP协议使用传输层的协议与端口有（      ）"></a>internet骨干网中的路由器通过BGP协议传输数据,BGP协议使用传输层的协议与端口有（      ）</h4><p>A、udp协议</p>
+<p><strong>B、tcp协议</strong></p>
+<p><strong>C、端口179</strong></p>
+<p>D、端口169</p>
+<blockquote>
+<p>正确答案：BC</p>
+<p>解析：</p>
+<p>在BGP中，路由器对使用179端口的半永久TCP连接来交换选路信息。 </p>
+</blockquote>
+<hr>
+<h4 id="一个标准的-IP-地址-128-202-99-65，所属的网络为（-）"><a href="#一个标准的-IP-地址-128-202-99-65，所属的网络为（-）" class="headerlink" title="一个标准的 IP 地址 128.202.99.65，所属的网络为（ ）"></a>一个标准的 IP 地址 128.202.99.65，所属的网络为（ ）</h4><p>A、128.0.0.0</p>
+<p>B、128.202.0.0</p>
+<p>C、128.202.99.0</p>
+<p>D、128.202.99.65</p>
+<blockquote>
+<p>正确答案：B</p>
+<p>解析：</p>
+<p>首先，需要知道IP地址的划分，A类地址网络ID占了8位，最高位为0；B类地址网络ID占了16位，最高两位为1、0；C类地址网络ID占了24位，最高三位为1、1、0. </p>
+<p>根据题目可以得出该地址是一个B类地址（128转二进制为10000000），结合B类地址的定义，网络ID占16位，故前两个字节表示网络段，格式为X.X.0.0，因此选B</p>
+</blockquote>
+<hr>
+<h4 id="IP-数据报穿越-Internet-过程中有可能被分片。在-IP-数据报分片以后，下列哪个设备负责数据报的重组（-）？"><a href="#IP-数据报穿越-Internet-过程中有可能被分片。在-IP-数据报分片以后，下列哪个设备负责数据报的重组（-）？" class="headerlink" title="IP 数据报穿越 Internet 过程中有可能被分片。在 IP 数据报分片以后，下列哪个设备负责数据报的重组（ ）？"></a>IP 数据报穿越 Internet 过程中有可能被分片。在 IP 数据报分片以后，下列哪个设备负责数据报的重组（ ）？</h4><p>A、源主机</p>
+<p><strong>B、目的主机</strong></p>
+<p>C、分片途径的路由器</p>
+<p>D、分片途径路由器或目的主机</p>
+<blockquote>
+<p>正确答案：B</p>
+<p>解析：</p>
+<p>源主机和路由器都能分片，只有目的主机能重组。 </p>
+<p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/questionTerminal/3439b2194a754723bcc77fca542c61e0">IP 数据报穿越 Internet 过程中有可能被分片</a> </p>
+</blockquote>
+<hr>
+<h4 id="物理层的主要功能是？（-）"><a href="#物理层的主要功能是？（-）" class="headerlink" title="物理层的主要功能是？（    ）"></a>物理层的主要功能是？（    ）</h4><p>A、定义物理地址</p>
+<p>B、建立端到端连接</p>
+<p><strong>C、在终端设备间传送比特流</strong></p>
+<p>D、将数据从一个主机传送给另一个主机</p>
+<blockquote>
+<p>正确答案：C</p>
+<p>解析：</p>
+<p>A.数据链路层分为：逻辑链路控制子层（LLC）、媒体访问控制子层（MAC）。所以是数据链路层定义了物理地址（MAC地址）。 </p>
+<p>B.建立端到端的连接这是传输层的事 </p>
+</blockquote>
+<hr>
+<h4 id="若主机A需要知道主机B的MAC地址，则属于ARP的工作流程为（-）。"><a href="#若主机A需要知道主机B的MAC地址，则属于ARP的工作流程为（-）。" class="headerlink" title="若主机A需要知道主机B的MAC地址，则属于ARP的工作流程为（ ）。"></a>若主机A需要知道主机B的MAC地址，则属于ARP的工作流程为（ ）。</h4><p><strong>A、主机A在网络中广播ARP请求报文</strong></p>
+<p>B、主机A接收到请求报文后将自己的IP地址到MAC地址的映射发送给主机B</p>
+<p><strong>C、主机B收到请求报文后将主机A的IP地址和MAC地址映射存储到自己的CACHE中</strong></p>
+<p><strong>D、主机A缓存主机B的IP地址到MAC地址的映射</strong></p>
+<blockquote>
+<p>正确答案：ACD</p>
+<p>参考答案：ARP协议工作过程 当一个基于TCP&#x2F;IP的应用程序需要从一台主机发送数据给另一台主机时，它把信息分割并封装成包，附上目的主机的IP地址。然后，寻找IP地址到实际MAC地址的映射，这需要发送ARP广播消息。当ARP找到了目的主机MAC地址后，就可以形成待发送帧的完整以太网帧头。最后，协议栈将IP包封装到以太网帧中进行传送。 如图1所示，描述了ARP广播过程。 在图1中，当主机A要和主机B通信（如主机A Ping主机B）时。主机A会先检查其ARP缓存内是否有主机B的MAC地址。如果没有，主机A会发送一个ARP请求广播包，此包内包含着其欲与之通信的主机的IP地址，也就是主机B的IP地址。 当主机B收到此广播后，会将自己的MAC地址利用ARP协议响应包传给主机A，并更新自己的ARP缓存，也就是同时将主机A的IP地址&#x2F;MAC地址对保存起来，以供后面使用。主机A在得到主机B的MAC地址后，就可以与主机B通信了。同时，主机A也将主机B的IP地址&#x2F;MAC地址对保存在自己的ARP协议缓存内。</p>
+</blockquote>
+<hr>
+<h4 id="下面哪些是网络层的协议"><a href="#下面哪些是网络层的协议" class="headerlink" title="下面哪些是网络层的协议? __________"></a>下面哪些是网络层的协议? __________</h4><p>A、IP、TCP 和 UDP</p>
+<p>B、ARP、IP 和 UDP</p>
+<p>C、FTP、TELNET 和 SMTP</p>
+<p><strong>D、IP、ARP 和 ICMP</strong></p>
+<blockquote>
+<p>正确答案：D</p>
+<p>解析：</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/WEB206c5e9f18e751de972ed3335fd751ce?method=download&shareKey=6cf2f9ca94044f305a08bf969c4a3502" alt="img"></p>
+<p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/questionTerminal/6dcf897012094889af83f45a7768f761">下面哪些是网络层的协议? </a>  </p>
+</blockquote>
+<hr>
+<h4 id="在封装过程中，加入的地址信息是指（-）。"><a href="#在封装过程中，加入的地址信息是指（-）。" class="headerlink" title="在封装过程中，加入的地址信息是指（  ）。"></a>在封装过程中，加入的地址信息是指（  ）。</h4><p>A、物理地址</p>
+<p>B、IP地址</p>
+<p>C、网络服务访问点</p>
+<p><strong>D、根据具体协议而定</strong></p>
+<blockquote>
+<p>正确答案：D</p>
+<p>解析：</p>
+<p>封装过程中，地址信息可能是MAC，也可能是IP地址 </p>
+<p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/questionTerminal/2842c053ff574f78bfed2713f5f2e033">在封装过程中，加入的地址信息是指</a> </p>
+</blockquote>
+<hr>
+<h4 id="局域网体系结构中-（）-被划分成MAC和LLC两个子层。"><a href="#局域网体系结构中-（）-被划分成MAC和LLC两个子层。" class="headerlink" title="局域网体系结构中 （） 被划分成MAC和LLC两个子层。"></a>局域网体系结构中 （） 被划分成MAC和LLC两个子层。</h4><p>A、物理层</p>
+<p><strong>B、数据链路层</strong></p>
+<p>C、网络层</p>
+<p>D、运输层</p>
+<blockquote>
+<p>正确答案：B</p>
+<p>解析：</p>
+<p>逻辑链路控制  LLC<br>媒体接入控制  MAC</p>
+</blockquote>
+<hr>
+<h4 id="动态路由协议相比静态路由协议（多选）（-）"><a href="#动态路由协议相比静态路由协议（多选）（-）" class="headerlink" title="动态路由协议相比静态路由协议（多选）（ ）"></a>动态路由协议相比静态路由协议（多选）（ ）</h4><p>A、带宽占用少</p>
+<p>B、简单</p>
+<p><strong>C、路由器能自动发现网络变化</strong></p>
+<p><strong>D、路由器能自动计算新的路由</strong></p>
+<blockquote>
+<p>正确答案：CD</p>
+<p>参考答案：</p>
+<p>C D 静态路由需要人手工配置，是在路由器中设置的固定的路由表，不适应网络的变化更新； 动态路由它不需要手工配，是网络中的路由器之间相互通信，传递路由信息，利用收到的路由信息更新路由器表的过程，可以动态更新，能适应各种环境。当然，各种动态路由协议会不同程度地占用网络带宽和CPU资源。</p>
+</blockquote>
+<hr>
+<h4 id="计算机网络中，共享的资源主要是指（）"><a href="#计算机网络中，共享的资源主要是指（）" class="headerlink" title="计算机网络中，共享的资源主要是指（）"></a>计算机网络中，共享的资源主要是指（）</h4><p>A、主机、程序、通信信道和数据</p>
+<p>B、主机、外设、通信信道和数据</p>
+<p>C、软件、外设和数据</p>
+<p>D、软件、硬件、数据和通信信道</p>
+<blockquote>
+<p>正确答案：D</p>
+</blockquote>
+<hr>
+<h4 id="ICMP-的功能包括-。"><a href="#ICMP-的功能包括-。" class="headerlink" title="ICMP 的功能包括()。"></a>ICMP 的功能包括()。</h4><p>A、差错报告</p>
+<p>B、测试目的站是否可达</p>
+<p>C、消息询问</p>
+<p><strong>D、所有以上的</strong></p>
+<blockquote>
+<p>正确答案：D</p>
+<p>官方解析：</p>
+<p>ICMP其功能主要有：</p>
+<ul>
+<li>侦测远端主机是否存在</li>
+<li>建立及维护路由资料</li>
+<li>重导数据传送路径</li>
+<li>数据流量控制</li>
+</ul>
+</blockquote>
+<hr>
+<h4 id="一般来说，用户上网要通过因特网服务提供商，其英文缩写为"><a href="#一般来说，用户上网要通过因特网服务提供商，其英文缩写为" class="headerlink" title="一般来说，用户上网要通过因特网服务提供商，其英文缩写为(      )"></a>一般来说，用户上网要通过因特网服务提供商，其英文缩写为(      )</h4><p>A、IDC</p>
+<p>B、ICP</p>
+<p>C、ASP</p>
+<p><strong>D、ISP</strong></p>
+<blockquote>
+<p>正确答案：D</p>
+<p>官方解析：</p>
+<p>ISP(Internet Service Provider)，互联网服务提供商ICP（Internet Content Provider），互联网内容提供商IDC (Internet Data Center)，互联网数据中心ASP（Active Server Pages），动态服务器页面</p>
+</blockquote>
+<hr>
+<h4 id="为实现以-ADSL-方式接入-Internet-，至少需要在计算机中内置或外置的一个关键硬设备是（）。"><a href="#为实现以-ADSL-方式接入-Internet-，至少需要在计算机中内置或外置的一个关键硬设备是（）。" class="headerlink" title="为实现以 ADSL 方式接入 Internet ，至少需要在计算机中内置或外置的一个关键硬设备是（）。"></a>为实现以 ADSL 方式接入 Internet ，至少需要在计算机中内置或外置的一个关键硬设备是（）。</h4><p>A、网卡</p>
+<p>B、集线器</p>
+<p>C、服务器</p>
+<p><strong>D、调制解调器（Modem）</strong></p>
+<blockquote>
+<p>正确答案：D</p>
+<p>官方解析：</p>
+<p>ADSL （非对称数字用户线路）是目前用电话接入因特网的主流技术，采用这种方式接入因特网，需要使用调制解调器。这是 PC 通过电话接入网络的必备设备，具有调制和解调两种功能，并分为外置和内置两种。因此答案选择 D 。</p>
+</blockquote>
+<hr>
+<h4 id="数据链路层采用后退N帧（GBN）协议，发送方已经发送了编号为0-7的帧。当计时器超时时，若发送方只收到0-2-3号帧的确认，则发送方需要重发的帧数是？"><a href="#数据链路层采用后退N帧（GBN）协议，发送方已经发送了编号为0-7的帧。当计时器超时时，若发送方只收到0-2-3号帧的确认，则发送方需要重发的帧数是？" class="headerlink" title="数据链路层采用后退N帧（GBN）协议，发送方已经发送了编号为0~7的帧。当计时器超时时，若发送方只收到0.2.3号帧的确认，则发送方需要重发的帧数是？"></a>数据链路层采用后退N帧（GBN）协议，发送方已经发送了编号为0~7的帧。当计时器超时时，若发送方只收到0.2.3号帧的确认，则发送方需要重发的帧数是？</h4><p>A、4</p>
+<p>B、2</p>
+<p>C、3</p>
+<p>D、5</p>
+<blockquote>
+<p>正确答案：A</p>
+<p>参考答案：</p>
+<p>收到了3号帧的确认，说明接收方发送了3号帧的确认，从而说明接收方收到了3号及3号之前的帧。因此，发送方需要重发的4号之后的帧 </p>
+</blockquote>
+<hr>
+<h4 id="访问-https-www-mi-com-会经过哪些协议？（）"><a href="#访问-https-www-mi-com-会经过哪些协议？（）" class="headerlink" title="访问 https://www.mi.com/ 会经过哪些协议？（）"></a>访问 <a target="_blank" rel="noopener" href="https://www.mi.com/">https://www.mi.com/</a> 会经过哪些协议？（）</h4><p><strong>A、IP</strong></p>
+<p><strong>B、TCP</strong></p>
+<p><strong>C、SSL</strong></p>
+<p>D、FTP</p>
+<blockquote>
+<p>正确答案：ABC</p>
+<p>官方解析：暂无官方题目解析，去讨论区看看吧！</p>
+</blockquote>
+<hr>
+<h4 id="在下列传输介质中，哪种介质的典型传输率最高？"><a href="#在下列传输介质中，哪种介质的典型传输率最高？" class="headerlink" title="在下列传输介质中，哪种介质的典型传输率最高？"></a>在下列传输介质中，哪种介质的典型传输率最高？</h4><p>A、双绞线</p>
+<p>B、同轴电缆</p>
+<p><strong>C、光纤</strong></p>
+<p>D、无线介质</p>
+<blockquote>
+<p>正确答案：C</p>
+<p>官方解析：暂无官方题目解析，去讨论区看看吧！</p>
+</blockquote>
+<hr>
+<p>####（        ）因素在整个网络的设计、功能、可靠性和费用等方面有着重要影响。</p>
+<p>A、网络距离</p>
+<p><strong>B、拓扑结构</strong></p>
+<p>C、网络传输速率</p>
+<p>D、误码率</p>
+<blockquote>
+<p>正确答案：B</p>
+<p>官方解析：暂无官方题目解析，去讨论区看看吧！</p>
+<p>网络的<strong>拓扑结构</strong>可反映出网中各实体间的结构关系，是建设计算机网络的第一步，是实现各种网络协议的基础，它对网络的性能，系统的可靠性与通信费用都有重大影响。</p>
+</blockquote>
+<hr>
+<p>题目来源于王道论坛</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/WEB533e5a698adda4ec8530e2c90cc37803?method=download&shareKey=66eaa8b07fe4fee2fd6b00f478bd7090" alt="img"></p>
+<h4 id="假设H1与H2的默认网关和子网掩码均分别配置为192-168-3-1和255-255-255-128，H3和H4的默认网关和子网掩码均分别配置为192-168-3-254和255-255-255-128，则下列现象中可能发生的是-。"><a href="#假设H1与H2的默认网关和子网掩码均分别配置为192-168-3-1和255-255-255-128，H3和H4的默认网关和子网掩码均分别配置为192-168-3-254和255-255-255-128，则下列现象中可能发生的是-。" class="headerlink" title="假设H1与H2的默认网关和子网掩码均分别配置为192.168.3.1和255.255.255.128，H3和H4的默认网关和子网掩码均分别配置为192.168.3.254和255.255.255.128，则下列现象中可能发生的是 。"></a>假设H1与H2的默认网关和子网掩码均分别配置为192.168.3.1和255.255.255.128，H3和H4的默认网关和子网掩码均分别配置为192.168.3.254和255.255.255.128，则下列现象中可能发生的是 。</h4><p>A、H1不能与H2进行正常IP通信</p>
+<p>B、H2与H4均不能访问Internet</p>
+<p><strong>C、H1不能与H3进行正常IP通信</strong></p>
+<p>D、H3不能与H4进行正常IP通信</p>
+<blockquote>
+<p>正确答案：C</p>
+<p>官方解析：</p>
+<p>从子网掩码可知H1和H2处于同一网段，H3和H4处于同一网段，分别可以进行正常的IP通信，A和D错误。因为R2的E1接口的IP地址为192.168.3.254，而H2的默认网关为192.168.3.1，所以H2不能访问Internet，而H4的默认网关为192.168.3.254，所以H4可以正常访问Internet，B错误。由H1、H2、H3和H4的子网掩码可知H1、H2和H3、H4处于不同的网段，需通过路由器才能进行正常的IP通信，而这时H1和H2的默认网关为192.168.3.1，但R2的E1接口的IP地址为192.168.3.254，无法进行通信，从而H1不能与H3进行正常的IP通信。C正确。</p>
+</blockquote>
+<hr>
+<h4 id="下面哪个是-D-类地址的缺省网关"><a href="#下面哪个是-D-类地址的缺省网关" class="headerlink" title="下面哪个是 D 类地址的缺省网关 ? ______"></a>下面哪个是 D 类地址的缺省网关 ? ______</h4><p>A、255.0.0.0</p>
+<p>B、255.255.0.0</p>
+<p>C、255.255.255.0</p>
+<p><strong>D、None</strong></p>
+<p>正确答案：D</p>
+<blockquote>
+<p>官方解析：暂无官方题目解析，去讨论区看看吧！</p>
+<p>D类地址不分网络地址和主机地址，它的第1个字节的前四位固定为1110。这一类地址被用在多点广播（Multicast）中。</p>
+</blockquote>
+<hr>
+<h4 id="区分局域网（LAN）和广域网（WAN）的依据是-。"><a href="#区分局域网（LAN）和广域网（WAN）的依据是-。" class="headerlink" title="区分局域网（LAN）和广域网（WAN）的依据是______。"></a>区分局域网（LAN）和广域网（WAN）的依据是______。</h4><p>A、网络用户</p>
+<p>B、传输协议</p>
+<p>C、联网设备</p>
+<p>D、联网范围</p>
+<blockquote>
+<p>正确答案：B</p>
+<p>你的答案：D</p>
+<p>官方解析：暂无官方题目解析，去讨论区看看吧！</p>
+<p>不知道</p>
+</blockquote>
+<hr>
+<h4 id="计算机网络是-和计算机技术相结合的产物。"><a href="#计算机网络是-和计算机技术相结合的产物。" class="headerlink" title="计算机网络是___________和计算机技术相结合的产物。"></a>计算机网络是___________和计算机技术相结合的产物。</h4><p>A、网络技术</p>
+<p><strong>B、通信技术</strong></p>
+<p>C、人工智能技术</p>
+<p>D、管理技术</p>
+<blockquote>
+<p>正确答案：B</p>
+<p>官方解析：暂无官方题目解析，去讨论区看看吧！</p>
+<p>计算机技术是通信技术和计算机技术结合的产物 </p>
+</blockquote>
+<hr>
+<h4 id="一个简单的计算机网络-3-个主要组成部分是"><a href="#一个简单的计算机网络-3-个主要组成部分是" class="headerlink" title="一个简单的计算机网络 3 个主要组成部分是"></a>一个简单的计算机网络 3 个主要组成部分是</h4><p><strong>A、一个通信子网</strong></p>
+<p>B、大量终端</p>
+<p><strong>C、一系列通信协议</strong></p>
+<p>D、若干数据库</p>
+<p><strong>E、若干主机</strong></p>
+<blockquote>
+<p>正确答案：ACE</p>
+<p>官方解析：暂无官方题目解析，去讨论区看看吧</p>
+<p>计算机网络通常由三个部分组成，它们是资源子网、通信子网和通信协议.所谓通信子网就是计算机网络中负责数据通信的部分；资源子网是计算机网络中面向用户的部分，负责全网络面向应用的数据处理工作；而通信双方必须共同遵守的规则和约定就称为通信协议，它的存在与否是计算机网络与一般计算机互连系统的根本区别。 </p>
+</blockquote>
+<hr>
+<h4 id="使用客户-服务器方式的是-层-的协议。"><a href="#使用客户-服务器方式的是-层-的协议。" class="headerlink" title="使用客户-服务器方式的是_层 的协议。"></a>使用客户-服务器方式的是_层 的协议。</h4><p><strong>A、应用</strong></p>
+<p>B、网络</p>
+<p>C、数据链接</p>
+<p>D、物理</p>
+<blockquote>
+<p>正确答案：A</p>
+<p>官方解析：暂无官方题目解析，去讨论区看看吧！</p>
+</blockquote>
+<hr>
+<h4 id="IP-协议是一种无连接、可靠的数据报服务的协议。"><a href="#IP-协议是一种无连接、可靠的数据报服务的协议。" class="headerlink" title="IP 协议是一种无连接、可靠的数据报服务的协议。"></a>IP 协议是一种无连接、可靠的数据报服务的协议。</h4><p>A、正确</p>
+<p>B、错误</p>
+<blockquote>
+<p>正确答案：B</p>
+<p>官方解析：暂无官方题目解析，去讨论区看看吧！</p>
+<p>IP协议是无连接的、不可靠的数据报服务。 </p>
+</blockquote>
+<hr>
+<p>5.下列关于IP路由器功能的描述中，正确的是（）。</p>
+<p><strong>Ⅰ．运行路由协议，设置路由表</strong></p>
+<p><strong>Ⅱ．监测到拥塞时，合理丢弃IP分组</strong></p>
+<p>Ⅲ．对收到的IP分组头进行差错校验，确保传输的IP分组不丢失</p>
+<p><strong>Ⅳ．根据收到的IP分组的目的IP地址，将其转发到合适的输出线路上</strong></p>
+<p>A、仅Ⅲ、Ⅳ</p>
+<p>B、仅Ⅰ、Ⅱ、Ⅲ</p>
+<p><strong>C、仅Ⅰ、Ⅱ、Ⅳ</strong></p>
+<p>D、Ⅰ、Ⅱ、Ⅲ、Ⅳ</p>
+<blockquote>
+<p>正确答案：C</p>
+<p>官方解析：</p>
+<p>Ⅰ和Ⅳ显然是IP路由器的功能。对于Ⅱ，当路由器监测到拥塞时，可合理丢弃IP分组，并向发出该IP分组的源主机发送一个源点抑制的ICMP报文。对于Ⅲ，路由器对收到的IP分组首部进行差错检验，丢弃有差错首部的报文，但不保证IP分组不丢失。</p>
+</blockquote>
+<hr>
+<h4 id="企业-Intranet-要与-Internet-互联，必需的互联设备是（-）。"><a href="#企业-Intranet-要与-Internet-互联，必需的互联设备是（-）。" class="headerlink" title="企业 Intranet 要与 Internet 互联，必需的互联设备是（  ）。"></a>企业 Intranet 要与 Internet 互联，必需的互联设备是（  ）。</h4><p>A、中继器</p>
+<p>B、调制解调器</p>
+<p>C、交换器</p>
+<p><strong>D、路由器</strong></p>
+<blockquote>
+<p>正确答案：D</p>
+<p>官方解析：暂无官方题目解析，去讨论区看看吧！</p>
+<p>企业 Intranet 要与 Internet 互联，至少需要具有网络层的设备，上述只有路由器具有网络层。 </p>
+<p>中继器工作在物理层，通过对数据信号的重新发送或者转发，来扩大网络传输的距离。其他工作在物理层的还有集线器（多口中继器）。 </p>
+<p>  数据链路层工作的网络设备有：网卡、网桥、交换机，。 </p>
+<p>  网络层工作的网络设备有：路由器、三层交换机、防火墙。 </p>
+<p>  调制解调器分为调制器和解调器，也就是所说的猫。用于网络间不同介质网络信号转接，比如把ADSL、光纤、有线通等的网络信号转成标准的电脑网络信号。</p>
+</blockquote>
+<hr>
+<h4 id="在-OSI-分层模型中，把传输的比特流划分为帧，是哪一层的功能（-）"><a href="#在-OSI-分层模型中，把传输的比特流划分为帧，是哪一层的功能（-）" class="headerlink" title="在 OSI 分层模型中，把传输的比特流划分为帧，是哪一层的功能（ ）"></a>在 OSI 分层模型中，把传输的比特流划分为帧，是哪一层的功能（ ）</h4><p>A、物理层</p>
+<p>B、网络层</p>
+<p><strong>C、数据链路层</strong></p>
+<p>D、传输层</p>
+<blockquote>
+<p>正确答案：C</p>
+<p>官方解析：暂无官方题目解析，去讨论区看看吧！</p>
+</blockquote>
+<hr>
+<h4 id="广域网中的数据传输速率比其在局域网中的要快。（-）"><a href="#广域网中的数据传输速率比其在局域网中的要快。（-）" class="headerlink" title="广域网中的数据传输速率比其在局域网中的要快。（  ）"></a>广域网中的数据传输速率比其在局域网中的要快。（  ）</h4><p>A、正确</p>
+<p><strong>B、错误</strong></p>
+<blockquote>
+<p>正确答案：B</p>
+<p>官方解析：暂无官方题目解析，去讨论区看看吧！</p>
+<p>传输速率主要取决于传输介质。如果将传输速率换成<strong>吞吐量</strong>的话应该是<strong>广域网更大</strong>。 </p>
+</blockquote>
+<hr>
+<h4 id="以下关于信道传输速率的表述，正确的是（-）"><a href="#以下关于信道传输速率的表述，正确的是（-）" class="headerlink" title="以下关于信道传输速率的表述，正确的是（ ）"></a>以下关于信道传输速率的表述，正确的是（ ）</h4><p><strong>A、信道的码元传输速率是有上限的</strong></p>
+<p><strong>B、频带宽度越宽的信道，其信息传输速率越大</strong></p>
+<p><strong>C、信噪比越大的信道，其信息传输速率越大</strong></p>
+<p>D、在信道频带宽度和信噪比不变的情况下，可以通过调制方式提高码元极限传输速率</p>
+<blockquote>
+<p>正确答案：ABC</p>
+<p>参考答案：</p>
+<p>选A、B、C。信道传输速率：单位时间内信道上所能传输的数据量。 奈奎斯特的奈氏准则：在任何信道中，码元的传输速率是有上限的，否则就会出现码间串扰的问题，使接收端对码元的判决（即识别）称为不可能。所以A正确。 奈奎斯特定理：Cmax&#x3D;2×B×log2L（B是信道的带宽，L还是信号电平的个数），香农定理：Cmax&#x3D;B×log2（1+（S&#x2F;N））S&#x2F;N指的是信道的信噪比。可得出带宽B、信噪比S&#x2F;N与传输速率成正比，所以B、C正确。 码元传输速率简称传码率，又称符号速率等，在数字通信中，一个数字脉冲称为一个码元。它表示单位时间内传输码元的数目，单位是波特 （ Baud ），记为B。奈奎斯特推导出有限带宽无噪声信道的极限波特率，称为奈氏定理。若信道带宽为W，则奈氏定理的最大码元速率为：B&#x3D;2W（Baud）。奈氏定理指定的信道容量也称为奈氏极限，它由信道的物理特性决定。超过奈氏极限传送脉冲信号是不可能的。因此，要进一步提高波特率，就必须改善信道的带宽。所以D错误。</p>
+</blockquote>
+<hr>
+<h4 id="在-TCP-x2F-IP-体系结构中，直接为-ICMP-提供服务的协议是-。-1"><a href="#在-TCP-x2F-IP-体系结构中，直接为-ICMP-提供服务的协议是-。-1" class="headerlink" title="在 TCP&#x2F;IP 体系结构中，直接为 ICMP 提供服务的协议是 。"></a>在 TCP&#x2F;IP 体系结构中，直接为 ICMP 提供服务的协议是 。</h4><p>A、PPP</p>
+<p><strong>B、IP</strong></p>
+<p>C、UDP</p>
+<p>D、TCP</p>
+<blockquote>
+<p>正确答案：B</p>
+<p>官方解析：</p>
+<p>ICMP 报文作为数据字段封装在 IP 分组中，因此， IP 协议直接为 ICMP 提供服务。 UDP 和 TCP 都是传输层协议，为应用层提供服务。 PPP 协议是链路层协议，为网络层提供服务。</p>
+</blockquote>
+<hr>
+<h4 id="在虚拟局域网中的逻辑工作组各结点可以分布在同一物理网段上，但不能分布在不同的物理网络上。请问这句话的说法是正确的吗？"><a href="#在虚拟局域网中的逻辑工作组各结点可以分布在同一物理网段上，但不能分布在不同的物理网络上。请问这句话的说法是正确的吗？" class="headerlink" title="在虚拟局域网中的逻辑工作组各结点可以分布在同一物理网段上，但不能分布在不同的物理网络上。请问这句话的说法是正确的吗？"></a>在虚拟局域网中的逻辑工作组各结点可以分布在同一物理网段上，但不能分布在不同的物理网络上。请问这句话的说法是正确的吗？</h4><p>A、正确</p>
+<p><strong>B、错误</strong></p>
+<blockquote>
+<p>正确答案：B</p>
+<p>官方解析：暂无官方题目解析，去讨论区看看吧！</p>
+<p>虚拟网络中同一逻辑工作组的成员可以处于不同的物理网段，当一个结点从一个逻辑工作组转移到另一个逻辑工作组时，只需要通过软件设定，而不需要改变它在网络中的物理位置。同一个逻辑工作组的结点可以分布在不同的物理网段上，但它们之间的通信就像在同一个物理网段上一样。 </p>
+</blockquote>
+<hr>
+<h4 id="TCP协议使用三次握手建立连接，设双方发送初始序号分别为X-Y，甲方发送帧为SYN-x3D-1-Seq-x3D-X的报文给乙方，则乙方接受报文后，发送-给甲方，甲方发送一个确认报文给乙方后便建立连接。"><a href="#TCP协议使用三次握手建立连接，设双方发送初始序号分别为X-Y，甲方发送帧为SYN-x3D-1-Seq-x3D-X的报文给乙方，则乙方接受报文后，发送-给甲方，甲方发送一个确认报文给乙方后便建立连接。" class="headerlink" title="TCP协议使用三次握手建立连接，设双方发送初始序号分别为X,Y，甲方发送帧为SYN&#x3D;1, Seq&#x3D;X的报文给乙方，则乙方接受报文后，发送()给甲方，甲方发送一个确认报文给乙方后便建立连接。"></a>TCP协议使用三次握手建立连接，设双方发送初始序号分别为X,Y，甲方发送帧为SYN&#x3D;1, Seq&#x3D;X的报文给乙方，则乙方接受报文后，发送()给甲方，甲方发送一个确认报文给乙方后便建立连接。</h4><p>A、SYN&#x3D;0, Seq&#x3D;Y, AN&#x3D;X+1</p>
+<p>B、SYN&#x3D;0, Seq&#x3D;X+1, AN&#x3D;X+1</p>
+<p><strong>C、SYN&#x3D;1, Seq&#x3D;Y, AN&#x3D;X+1</strong></p>
+<p>D、SYN&#x3D;1, Seq&#x3D;X+1, AN&#x3D;Y</p>
+<blockquote>
+<p>正确答案：C</p>
+<p>官方解析：</p>
+<p>三次握手时，同步位 syn 为 1。seq为自身初始序号。AN为期望下次接收到的数据序号，应该为X+1。</p>
+</blockquote>
+<hr>
+
+    </div>
+
+       <div>
+        
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------本文到这里结束了，感谢您的阅读------</div>
+    
+</div>
+
+        
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div><您的支持将是我继续创作的动力！></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechat.png" alt="君不见 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="君不见 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>君不见
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://godx06.github.io/2023/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E9%A2%98%E7%9B%AE/" title="计算机网络-题目">https://godx06.github.io/2023/02/09/计算机网络-题目/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+ 
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Note/" rel="tag"><i class="fa fa-tag"></i> Note</a>
+              <a href="/tags/Practices/" rel="tag"><i class="fa fa-tag"></i> Practices</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/02/09/%E3%80%8A%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E3%80%8B%E5%A4%8D%E4%B9%A0/" rel="prev" title="《软件工程》复习">
+      <i class="fa fa-chevron-left"></i> 《软件工程》复习
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%BD%91%E7%BB%9C%E5%B1%82/" rel="next" title="计算机网络-网络层">
+      计算机网络-网络层 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="SOHUCS"></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8-TCP-x2F-IP-%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E4%B8%AD%EF%BC%8C%E7%9B%B4%E6%8E%A5%E4%B8%BA-ICMP-%E6%8F%90%E4%BE%9B%E6%9C%8D%E5%8A%A1%E7%9A%84%E5%8D%8F%E8%AE%AE%E6%98%AF-%E3%80%82"><span class="nav-number">1.</span> <span class="nav-text">在 TCP&#x2F;IP 体系结构中，直接为 ICMP 提供服务的协议是 。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E4%BF%A1%E9%81%93%E5%A4%8D%E7%94%A8%E6%8A%80%E6%9C%AF%E6%9C%89%EF%BC%88-%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">常用的信道复用技术有（    ）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8%E5%B8%B8%E7%94%A8%E7%9A%84%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%E4%B8%AD%EF%BC%8C-%E6%98%AF%E9%9D%A2%E5%90%91%E8%BF%9E%E6%8E%A5%E7%9A%84%E3%80%81%E6%9C%89%E9%87%8D%E4%BC%A0%E5%8A%9F%E8%83%BD%E7%9A%84%E5%8D%8F%E8%AE%AE%E3%80%82"><span class="nav-number">3.</span> <span class="nav-text">在常用的网络协议中，___是面向连接的、有重传功能的协议。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%A4%E6%8D%A2%E6%9C%BA%E3%80%81HDLC%E3%80%81PPP%E5%B1%9E%E4%BA%8EOSI%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%93%AA%E4%B8%80%E5%B1%82%EF%BC%9F"><span class="nav-number">4.</span> <span class="nav-text">交换机、HDLC、PPP属于OSI模型的哪一层？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A5%E5%A4%AA%E7%BD%91%E4%BA%A4%E6%8D%A2%E6%9C%BA%E4%B8%AD%E7%9A%84-%E7%AB%AF%E5%8F%A3-x2F-MAC-%E5%9C%B0%E5%9D%80%E6%98%A0%E5%B0%84%E8%A1%A8%EF%BC%88%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">以太网交换机中的 端口&#x2F;MAC 地址映射表（）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%88%86%E6%AE%B5%E5%9C%A8OSI%E5%93%AA%E4%B8%80%E5%B1%82"><span class="nav-number">6.</span> <span class="nav-text">数据分段在OSI哪一层( )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8-Internet-%E4%B8%AD%E4%B8%8D%E9%9C%80%E8%BF%90%E8%A1%8C-IP-%E5%8D%8F%E8%AE%AE%E7%9A%84%E8%AE%BE%E5%A4%87%E6%98%AF-%EF%BC%88%EF%BC%89"><span class="nav-number">7.</span> <span class="nav-text">在 Internet 中不需运行 IP 协议的设备是 （）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1%E4%B8%AD%EF%BC%8C%E8%A1%A8%E7%A4%BA%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E2%80%9C%E6%95%B0%E9%87%8F%E2%80%9D%E4%B8%8E%E2%80%9C%E8%B4%A8%E9%87%8F%E2%80%9D%E7%9A%84%E6%8C%87%E6%A0%87%E6%98%AF%EF%BC%88%EF%BC%89"><span class="nav-number">8.</span> <span class="nav-text">在数据通信中，表示数据传输“数量”与“质量”的指标是（）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OSI%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B%E4%B8%AD%E7%9A%84%E7%89%A9%E7%90%86%E5%B1%82%E8%B4%9F%E8%B4%A3%E4%B8%8B%E5%88%97%E5%93%AA%E4%B8%80%E9%A1%B9%E5%8A%9F%E8%83%BD%EF%BC%9F"><span class="nav-number">9.</span> <span class="nav-text">OSI参考模型中的物理层负责下列哪一项功能？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#internet%E9%AA%A8%E5%B9%B2%E7%BD%91%E4%B8%AD%E7%9A%84%E8%B7%AF%E7%94%B1%E5%99%A8%E9%80%9A%E8%BF%87BGP%E5%8D%8F%E8%AE%AE%E4%BC%A0%E8%BE%93%E6%95%B0%E6%8D%AE-BGP%E5%8D%8F%E8%AE%AE%E4%BD%BF%E7%94%A8%E4%BC%A0%E8%BE%93%E5%B1%82%E7%9A%84%E5%8D%8F%E8%AE%AE%E4%B8%8E%E7%AB%AF%E5%8F%A3%E6%9C%89%EF%BC%88-%EF%BC%89"><span class="nav-number">10.</span> <span class="nav-text">internet骨干网中的路由器通过BGP协议传输数据,BGP协议使用传输层的协议与端口有（      ）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E6%A0%87%E5%87%86%E7%9A%84-IP-%E5%9C%B0%E5%9D%80-128-202-99-65%EF%BC%8C%E6%89%80%E5%B1%9E%E7%9A%84%E7%BD%91%E7%BB%9C%E4%B8%BA%EF%BC%88-%EF%BC%89"><span class="nav-number">11.</span> <span class="nav-text">一个标准的 IP 地址 128.202.99.65，所属的网络为（ ）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IP-%E6%95%B0%E6%8D%AE%E6%8A%A5%E7%A9%BF%E8%B6%8A-Internet-%E8%BF%87%E7%A8%8B%E4%B8%AD%E6%9C%89%E5%8F%AF%E8%83%BD%E8%A2%AB%E5%88%86%E7%89%87%E3%80%82%E5%9C%A8-IP-%E6%95%B0%E6%8D%AE%E6%8A%A5%E5%88%86%E7%89%87%E4%BB%A5%E5%90%8E%EF%BC%8C%E4%B8%8B%E5%88%97%E5%93%AA%E4%B8%AA%E8%AE%BE%E5%A4%87%E8%B4%9F%E8%B4%A3%E6%95%B0%E6%8D%AE%E6%8A%A5%E7%9A%84%E9%87%8D%E7%BB%84%EF%BC%88-%EF%BC%89%EF%BC%9F"><span class="nav-number">12.</span> <span class="nav-text">IP 数据报穿越 Internet 过程中有可能被分片。在 IP 数据报分片以后，下列哪个设备负责数据报的重组（ ）？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%A9%E7%90%86%E5%B1%82%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD%E6%98%AF%EF%BC%9F%EF%BC%88-%EF%BC%89"><span class="nav-number">13.</span> <span class="nav-text">物理层的主要功能是？（    ）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8B%A5%E4%B8%BB%E6%9C%BAA%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E4%B8%BB%E6%9C%BAB%E7%9A%84MAC%E5%9C%B0%E5%9D%80%EF%BC%8C%E5%88%99%E5%B1%9E%E4%BA%8EARP%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E4%B8%BA%EF%BC%88-%EF%BC%89%E3%80%82"><span class="nav-number">14.</span> <span class="nav-text">若主机A需要知道主机B的MAC地址，则属于ARP的工作流程为（ ）。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E9%9D%A2%E5%93%AA%E4%BA%9B%E6%98%AF%E7%BD%91%E7%BB%9C%E5%B1%82%E7%9A%84%E5%8D%8F%E8%AE%AE"><span class="nav-number">15.</span> <span class="nav-text">下面哪些是网络层的协议? __________</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8%E5%B0%81%E8%A3%85%E8%BF%87%E7%A8%8B%E4%B8%AD%EF%BC%8C%E5%8A%A0%E5%85%A5%E7%9A%84%E5%9C%B0%E5%9D%80%E4%BF%A1%E6%81%AF%E6%98%AF%E6%8C%87%EF%BC%88-%EF%BC%89%E3%80%82"><span class="nav-number">16.</span> <span class="nav-text">在封装过程中，加入的地址信息是指（  ）。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B1%80%E5%9F%9F%E7%BD%91%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E4%B8%AD-%EF%BC%88%EF%BC%89-%E8%A2%AB%E5%88%92%E5%88%86%E6%88%90MAC%E5%92%8CLLC%E4%B8%A4%E4%B8%AA%E5%AD%90%E5%B1%82%E3%80%82"><span class="nav-number">17.</span> <span class="nav-text">局域网体系结构中 （） 被划分成MAC和LLC两个子层。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E7%9B%B8%E6%AF%94%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%EF%BC%88%E5%A4%9A%E9%80%89%EF%BC%89%EF%BC%88-%EF%BC%89"><span class="nav-number">18.</span> <span class="nav-text">动态路由协议相比静态路由协议（多选）（ ）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B8%AD%EF%BC%8C%E5%85%B1%E4%BA%AB%E7%9A%84%E8%B5%84%E6%BA%90%E4%B8%BB%E8%A6%81%E6%98%AF%E6%8C%87%EF%BC%88%EF%BC%89"><span class="nav-number">19.</span> <span class="nav-text">计算机网络中，共享的资源主要是指（）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ICMP-%E7%9A%84%E5%8A%9F%E8%83%BD%E5%8C%85%E6%8B%AC-%E3%80%82"><span class="nav-number">20.</span> <span class="nav-text">ICMP 的功能包括()。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E8%88%AC%E6%9D%A5%E8%AF%B4%EF%BC%8C%E7%94%A8%E6%88%B7%E4%B8%8A%E7%BD%91%E8%A6%81%E9%80%9A%E8%BF%87%E5%9B%A0%E7%89%B9%E7%BD%91%E6%9C%8D%E5%8A%A1%E6%8F%90%E4%BE%9B%E5%95%86%EF%BC%8C%E5%85%B6%E8%8B%B1%E6%96%87%E7%BC%A9%E5%86%99%E4%B8%BA"><span class="nav-number">21.</span> <span class="nav-text">一般来说，用户上网要通过因特网服务提供商，其英文缩写为(      )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BA%E5%AE%9E%E7%8E%B0%E4%BB%A5-ADSL-%E6%96%B9%E5%BC%8F%E6%8E%A5%E5%85%A5-Internet-%EF%BC%8C%E8%87%B3%E5%B0%91%E9%9C%80%E8%A6%81%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E5%86%85%E7%BD%AE%E6%88%96%E5%A4%96%E7%BD%AE%E7%9A%84%E4%B8%80%E4%B8%AA%E5%85%B3%E9%94%AE%E7%A1%AC%E8%AE%BE%E5%A4%87%E6%98%AF%EF%BC%88%EF%BC%89%E3%80%82"><span class="nav-number">22.</span> <span class="nav-text">为实现以 ADSL 方式接入 Internet ，至少需要在计算机中内置或外置的一个关键硬设备是（）。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E9%87%87%E7%94%A8%E5%90%8E%E9%80%80N%E5%B8%A7%EF%BC%88GBN%EF%BC%89%E5%8D%8F%E8%AE%AE%EF%BC%8C%E5%8F%91%E9%80%81%E6%96%B9%E5%B7%B2%E7%BB%8F%E5%8F%91%E9%80%81%E4%BA%86%E7%BC%96%E5%8F%B7%E4%B8%BA0-7%E7%9A%84%E5%B8%A7%E3%80%82%E5%BD%93%E8%AE%A1%E6%97%B6%E5%99%A8%E8%B6%85%E6%97%B6%E6%97%B6%EF%BC%8C%E8%8B%A5%E5%8F%91%E9%80%81%E6%96%B9%E5%8F%AA%E6%94%B6%E5%88%B00-2-3%E5%8F%B7%E5%B8%A7%E7%9A%84%E7%A1%AE%E8%AE%A4%EF%BC%8C%E5%88%99%E5%8F%91%E9%80%81%E6%96%B9%E9%9C%80%E8%A6%81%E9%87%8D%E5%8F%91%E7%9A%84%E5%B8%A7%E6%95%B0%E6%98%AF%EF%BC%9F"><span class="nav-number">23.</span> <span class="nav-text">数据链路层采用后退N帧（GBN）协议，发送方已经发送了编号为0~7的帧。当计时器超时时，若发送方只收到0.2.3号帧的确认，则发送方需要重发的帧数是？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE-https-www-mi-com-%E4%BC%9A%E7%BB%8F%E8%BF%87%E5%93%AA%E4%BA%9B%E5%8D%8F%E8%AE%AE%EF%BC%9F%EF%BC%88%EF%BC%89"><span class="nav-number">24.</span> <span class="nav-text">访问 https:&#x2F;&#x2F;www.mi.com&#x2F; 会经过哪些协议？（）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8%E4%B8%8B%E5%88%97%E4%BC%A0%E8%BE%93%E4%BB%8B%E8%B4%A8%E4%B8%AD%EF%BC%8C%E5%93%AA%E7%A7%8D%E4%BB%8B%E8%B4%A8%E7%9A%84%E5%85%B8%E5%9E%8B%E4%BC%A0%E8%BE%93%E7%8E%87%E6%9C%80%E9%AB%98%EF%BC%9F"><span class="nav-number">25.</span> <span class="nav-text">在下列传输介质中，哪种介质的典型传输率最高？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%81%87%E8%AE%BEH1%E4%B8%8EH2%E7%9A%84%E9%BB%98%E8%AE%A4%E7%BD%91%E5%85%B3%E5%92%8C%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81%E5%9D%87%E5%88%86%E5%88%AB%E9%85%8D%E7%BD%AE%E4%B8%BA192-168-3-1%E5%92%8C255-255-255-128%EF%BC%8CH3%E5%92%8CH4%E7%9A%84%E9%BB%98%E8%AE%A4%E7%BD%91%E5%85%B3%E5%92%8C%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81%E5%9D%87%E5%88%86%E5%88%AB%E9%85%8D%E7%BD%AE%E4%B8%BA192-168-3-254%E5%92%8C255-255-255-128%EF%BC%8C%E5%88%99%E4%B8%8B%E5%88%97%E7%8E%B0%E8%B1%A1%E4%B8%AD%E5%8F%AF%E8%83%BD%E5%8F%91%E7%94%9F%E7%9A%84%E6%98%AF-%E3%80%82"><span class="nav-number">26.</span> <span class="nav-text">假设H1与H2的默认网关和子网掩码均分别配置为192.168.3.1和255.255.255.128，H3和H4的默认网关和子网掩码均分别配置为192.168.3.254和255.255.255.128，则下列现象中可能发生的是 。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E9%9D%A2%E5%93%AA%E4%B8%AA%E6%98%AF-D-%E7%B1%BB%E5%9C%B0%E5%9D%80%E7%9A%84%E7%BC%BA%E7%9C%81%E7%BD%91%E5%85%B3"><span class="nav-number">27.</span> <span class="nav-text">下面哪个是 D 类地址的缺省网关 ? ______</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%BA%E5%88%86%E5%B1%80%E5%9F%9F%E7%BD%91%EF%BC%88LAN%EF%BC%89%E5%92%8C%E5%B9%BF%E5%9F%9F%E7%BD%91%EF%BC%88WAN%EF%BC%89%E7%9A%84%E4%BE%9D%E6%8D%AE%E6%98%AF-%E3%80%82"><span class="nav-number">28.</span> <span class="nav-text">区分局域网（LAN）和广域网（WAN）的依据是______。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%98%AF-%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF%E7%9B%B8%E7%BB%93%E5%90%88%E7%9A%84%E4%BA%A7%E7%89%A9%E3%80%82"><span class="nav-number">29.</span> <span class="nav-text">计算机网络是___________和计算机技术相结合的产物。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-3-%E4%B8%AA%E4%B8%BB%E8%A6%81%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86%E6%98%AF"><span class="nav-number">30.</span> <span class="nav-text">一个简单的计算机网络 3 个主要组成部分是</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%AE%A2%E6%88%B7-%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%B9%E5%BC%8F%E7%9A%84%E6%98%AF-%E5%B1%82-%E7%9A%84%E5%8D%8F%E8%AE%AE%E3%80%82"><span class="nav-number">31.</span> <span class="nav-text">使用客户-服务器方式的是_层 的协议。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IP-%E5%8D%8F%E8%AE%AE%E6%98%AF%E4%B8%80%E7%A7%8D%E6%97%A0%E8%BF%9E%E6%8E%A5%E3%80%81%E5%8F%AF%E9%9D%A0%E7%9A%84%E6%95%B0%E6%8D%AE%E6%8A%A5%E6%9C%8D%E5%8A%A1%E7%9A%84%E5%8D%8F%E8%AE%AE%E3%80%82"><span class="nav-number">32.</span> <span class="nav-text">IP 协议是一种无连接、可靠的数据报服务的协议。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%81%E4%B8%9A-Intranet-%E8%A6%81%E4%B8%8E-Internet-%E4%BA%92%E8%81%94%EF%BC%8C%E5%BF%85%E9%9C%80%E7%9A%84%E4%BA%92%E8%81%94%E8%AE%BE%E5%A4%87%E6%98%AF%EF%BC%88-%EF%BC%89%E3%80%82"><span class="nav-number">33.</span> <span class="nav-text">企业 Intranet 要与 Internet 互联，必需的互联设备是（  ）。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8-OSI-%E5%88%86%E5%B1%82%E6%A8%A1%E5%9E%8B%E4%B8%AD%EF%BC%8C%E6%8A%8A%E4%BC%A0%E8%BE%93%E7%9A%84%E6%AF%94%E7%89%B9%E6%B5%81%E5%88%92%E5%88%86%E4%B8%BA%E5%B8%A7%EF%BC%8C%E6%98%AF%E5%93%AA%E4%B8%80%E5%B1%82%E7%9A%84%E5%8A%9F%E8%83%BD%EF%BC%88-%EF%BC%89"><span class="nav-number">34.</span> <span class="nav-text">在 OSI 分层模型中，把传输的比特流划分为帧，是哪一层的功能（ ）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B9%BF%E5%9F%9F%E7%BD%91%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E9%80%9F%E7%8E%87%E6%AF%94%E5%85%B6%E5%9C%A8%E5%B1%80%E5%9F%9F%E7%BD%91%E4%B8%AD%E7%9A%84%E8%A6%81%E5%BF%AB%E3%80%82%EF%BC%88-%EF%BC%89"><span class="nav-number">35.</span> <span class="nav-text">广域网中的数据传输速率比其在局域网中的要快。（  ）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A5%E4%B8%8B%E5%85%B3%E4%BA%8E%E4%BF%A1%E9%81%93%E4%BC%A0%E8%BE%93%E9%80%9F%E7%8E%87%E7%9A%84%E8%A1%A8%E8%BF%B0%EF%BC%8C%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%98%AF%EF%BC%88-%EF%BC%89"><span class="nav-number">36.</span> <span class="nav-text">以下关于信道传输速率的表述，正确的是（ ）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8-TCP-x2F-IP-%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E4%B8%AD%EF%BC%8C%E7%9B%B4%E6%8E%A5%E4%B8%BA-ICMP-%E6%8F%90%E4%BE%9B%E6%9C%8D%E5%8A%A1%E7%9A%84%E5%8D%8F%E8%AE%AE%E6%98%AF-%E3%80%82-1"><span class="nav-number">37.</span> <span class="nav-text">在 TCP&#x2F;IP 体系结构中，直接为 ICMP 提供服务的协议是 。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8%E8%99%9A%E6%8B%9F%E5%B1%80%E5%9F%9F%E7%BD%91%E4%B8%AD%E7%9A%84%E9%80%BB%E8%BE%91%E5%B7%A5%E4%BD%9C%E7%BB%84%E5%90%84%E7%BB%93%E7%82%B9%E5%8F%AF%E4%BB%A5%E5%88%86%E5%B8%83%E5%9C%A8%E5%90%8C%E4%B8%80%E7%89%A9%E7%90%86%E7%BD%91%E6%AE%B5%E4%B8%8A%EF%BC%8C%E4%BD%86%E4%B8%8D%E8%83%BD%E5%88%86%E5%B8%83%E5%9C%A8%E4%B8%8D%E5%90%8C%E7%9A%84%E7%89%A9%E7%90%86%E7%BD%91%E7%BB%9C%E4%B8%8A%E3%80%82%E8%AF%B7%E9%97%AE%E8%BF%99%E5%8F%A5%E8%AF%9D%E7%9A%84%E8%AF%B4%E6%B3%95%E6%98%AF%E6%AD%A3%E7%A1%AE%E7%9A%84%E5%90%97%EF%BC%9F"><span class="nav-number">38.</span> <span class="nav-text">在虚拟局域网中的逻辑工作组各结点可以分布在同一物理网段上，但不能分布在不同的物理网络上。请问这句话的说法是正确的吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP%E5%8D%8F%E8%AE%AE%E4%BD%BF%E7%94%A8%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%EF%BC%8C%E8%AE%BE%E5%8F%8C%E6%96%B9%E5%8F%91%E9%80%81%E5%88%9D%E5%A7%8B%E5%BA%8F%E5%8F%B7%E5%88%86%E5%88%AB%E4%B8%BAX-Y%EF%BC%8C%E7%94%B2%E6%96%B9%E5%8F%91%E9%80%81%E5%B8%A7%E4%B8%BASYN-x3D-1-Seq-x3D-X%E7%9A%84%E6%8A%A5%E6%96%87%E7%BB%99%E4%B9%99%E6%96%B9%EF%BC%8C%E5%88%99%E4%B9%99%E6%96%B9%E6%8E%A5%E5%8F%97%E6%8A%A5%E6%96%87%E5%90%8E%EF%BC%8C%E5%8F%91%E9%80%81-%E7%BB%99%E7%94%B2%E6%96%B9%EF%BC%8C%E7%94%B2%E6%96%B9%E5%8F%91%E9%80%81%E4%B8%80%E4%B8%AA%E7%A1%AE%E8%AE%A4%E6%8A%A5%E6%96%87%E7%BB%99%E4%B9%99%E6%96%B9%E5%90%8E%E4%BE%BF%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%E3%80%82"><span class="nav-number">39.</span> <span class="nav-text">TCP协议使用三次握手建立连接，设双方发送初始序号分别为X,Y，甲方发送帧为SYN&#x3D;1, Seq&#x3D;X的报文给乙方，则乙方接受报文后，发送()给甲方，甲方发送一个确认报文给乙方后便建立连接。</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="君不见"
+      src="/images/tsy.png">
+  <p class="site-author-name" itemprop="name">君不见</p>
+  <div class="site-description" itemprop="description">君不见，黄河之水天上来，奔流到海不复回。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/godx06" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godx06" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/3451246424@qq.com" title="E-Mail → 3451246424@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/7655616259/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;7655616259&#x2F;profile?rightmod&#x3D;1&amp;wvr&#x3D;6&amp;mod&#x3D;personinfo&amp;is_all&#x3D;1" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/m0_61465701?spm=1018.2226.3001.5343" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;m0_61465701?spm&#x3D;1018.2226.3001.5343" rel="noopener" target="_blank"><i class="fab fa-skype fa-fw"></i>CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://leetcode.cn/" title="https:&#x2F;&#x2F;leetcode.cn&#x2F;" rel="noopener" target="_blank">力扣</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.nowcoder.com/" title="https:&#x2F;&#x2F;www.nowcoder.com&#x2F;" rel="noopener" target="_blank">牛客</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+      <div id="music163player">
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=8029840379&auto=0&height=430">
+        </iframe>
+      </div>
+      
+    </div>
+
+
+  </aside>
+
+    
+
+  <div id="sidebar-dimmer"></div>
+
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">君不见</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+  <script data-pjax>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  <script src="//code.tidio.co/qkwnepnheqrn9usrfqkth95hu196bfin.js"></script>
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+  <script>
+  NexT.utils.loadComments(document.querySelector('#SOHUCS'), () => {
+    var appid = 'cyw4nNoc5';
+    var conf = '00d96ca2de6f5fc1a13903b7caf0a878';
+    var width = window.innerWidth || document.documentElement.clientWidth;
+    if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>');
+    } else {
+      var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})});
+    }
+  });
+  </script>
+  <script src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+
+    </div>
+
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/fireworks.js"></script>
+
+
+
+</body>
+</html>
