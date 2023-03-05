@@ -3,11 +3,11 @@
   <title>君不见の博客</title>
   
   <subtitle>记录生活中的点点滴滴</subtitle>
-  <link href="https://godx06.github.io/atom.xml" rel="self"/>
+  <link href="https://decxlr.github.io/atom.xml" rel="self"/>
   
-  <link href="https://godx06.github.io/"/>
+  <link href="https://decxlr.github.io/"/>
   <updated>2023-02-19T13:24:40.824Z</updated>
-  <id>https://godx06.github.io/</id>
+  <id>https://decxlr.github.io/</id>
   
   <author>
     <name>君不见</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Flask框架学习</title>
-    <link href="https://godx06.github.io/2023/02/19/Flask%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/"/>
-    <id>https://godx06.github.io/2023/02/19/Flask%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/</id>
+    <link href="https://decxlr.github.io/2023/02/19/Flask%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://decxlr.github.io/2023/02/19/Flask%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/</id>
     <published>2023-02-19T13:12:53.000Z</published>
     <updated>2023-02-19T13:24:40.824Z</updated>
     
@@ -30,19 +30,19 @@
     
     
     
-    <category term="Python" scheme="https://godx06.github.io/categories/Python/"/>
+    <category term="Python" scheme="https://decxlr.github.io/categories/Python/"/>
     
     
-    <category term="Note" scheme="https://godx06.github.io/tags/Note/"/>
+    <category term="Note" scheme="https://decxlr.github.io/tags/Note/"/>
     
-    <category term="Flask" scheme="https://godx06.github.io/tags/Flask/"/>
+    <category term="Flask" scheme="https://decxlr.github.io/tags/Flask/"/>
     
   </entry>
   
   <entry>
     <title>计算机网络-网络层</title>
-    <link href="https://godx06.github.io/2023/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%BD%91%E7%BB%9C%E5%B1%82/"/>
-    <id>https://godx06.github.io/2023/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%BD%91%E7%BB%9C%E5%B1%82/</id>
+    <link href="https://decxlr.github.io/2023/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%BD%91%E7%BB%9C%E5%B1%82/"/>
+    <id>https://decxlr.github.io/2023/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%BD%91%E7%BB%9C%E5%B1%82/</id>
     <published>2023-02-09T02:58:07.000Z</published>
     <updated>2023-02-09T03:00:08.716Z</updated>
     
@@ -53,17 +53,17 @@
     
     
     
-    <category term="计算机网络" scheme="https://godx06.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    <category term="计算机网络" scheme="https://decxlr.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
     
     
-    <category term="Note" scheme="https://godx06.github.io/tags/Note/"/>
+    <category term="Note" scheme="https://decxlr.github.io/tags/Note/"/>
     
   </entry>
   
   <entry>
     <title>计算机网络-题目</title>
-    <link href="https://godx06.github.io/2023/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E9%A2%98%E7%9B%AE/"/>
-    <id>https://godx06.github.io/2023/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E9%A2%98%E7%9B%AE/</id>
+    <link href="https://decxlr.github.io/2023/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E9%A2%98%E7%9B%AE/"/>
+    <id>https://decxlr.github.io/2023/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E9%A2%98%E7%9B%AE/</id>
     <published>2023-02-09T02:56:16.000Z</published>
     <updated>2023-02-13T12:56:08.019Z</updated>
     
@@ -74,19 +74,19 @@
     
     
     
-    <category term="计算机网络" scheme="https://godx06.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    <category term="计算机网络" scheme="https://decxlr.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
     
     
-    <category term="Note" scheme="https://godx06.github.io/tags/Note/"/>
+    <category term="Note" scheme="https://decxlr.github.io/tags/Note/"/>
     
-    <category term="Practices" scheme="https://godx06.github.io/tags/Practices/"/>
+    <category term="Practices" scheme="https://decxlr.github.io/tags/Practices/"/>
     
   </entry>
   
   <entry>
     <title>《软件工程》复习</title>
-    <link href="https://godx06.github.io/2023/02/09/%E3%80%8A%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E3%80%8B%E5%A4%8D%E4%B9%A0/"/>
-    <id>https://godx06.github.io/2023/02/09/%E3%80%8A%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E3%80%8B%E5%A4%8D%E4%B9%A0/</id>
+    <link href="https://decxlr.github.io/2023/02/09/%E3%80%8A%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E3%80%8B%E5%A4%8D%E4%B9%A0/"/>
+    <id>https://decxlr.github.io/2023/02/09/%E3%80%8A%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E3%80%8B%E5%A4%8D%E4%B9%A0/</id>
     <published>2023-02-09T02:52:46.000Z</published>
     <updated>2023-02-13T14:42:13.177Z</updated>
     
@@ -97,17 +97,17 @@
     
     
     
-    <category term="软件工程" scheme="https://godx06.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"/>
+    <category term="软件工程" scheme="https://decxlr.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"/>
     
     
-    <category term="Note" scheme="https://godx06.github.io/tags/Note/"/>
+    <category term="Note" scheme="https://decxlr.github.io/tags/Note/"/>
     
   </entry>
   
   <entry>
     <title>Web核心-Http-Tomcat-Servlet</title>
-    <link href="https://godx06.github.io/2023/01/31/Web%E6%A0%B8%E5%BF%83-Http-Tomcat-Servlet/"/>
-    <id>https://godx06.github.io/2023/01/31/Web%E6%A0%B8%E5%BF%83-Http-Tomcat-Servlet/</id>
+    <link href="https://decxlr.github.io/2023/01/31/Web%E6%A0%B8%E5%BF%83-Http-Tomcat-Servlet/"/>
+    <id>https://decxlr.github.io/2023/01/31/Web%E6%A0%B8%E5%BF%83-Http-Tomcat-Servlet/</id>
     <published>2023-01-31T02:41:12.000Z</published>
     <updated>2023-01-31T02:42:35.438Z</updated>
     
@@ -118,17 +118,17 @@
     
     
     
-    <category term="Java Web" scheme="https://godx06.github.io/categories/Java-Web/"/>
+    <category term="Java Web" scheme="https://decxlr.github.io/categories/Java-Web/"/>
     
     
-    <category term="Note" scheme="https://godx06.github.io/tags/Note/"/>
+    <category term="Note" scheme="https://decxlr.github.io/tags/Note/"/>
     
   </entry>
   
   <entry>
     <title>JavaScript学习</title>
-    <link href="https://godx06.github.io/2023/01/21/JavaScript%E5%AD%A6%E4%B9%A0/"/>
-    <id>https://godx06.github.io/2023/01/21/JavaScript%E5%AD%A6%E4%B9%A0/</id>
+    <link href="https://decxlr.github.io/2023/01/21/JavaScript%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://decxlr.github.io/2023/01/21/JavaScript%E5%AD%A6%E4%B9%A0/</id>
     <published>2023-01-21T02:44:26.000Z</published>
     <updated>2023-01-21T02:47:27.454Z</updated>
     
@@ -139,17 +139,17 @@
     
     
     
-    <category term="Java Web" scheme="https://godx06.github.io/categories/Java-Web/"/>
+    <category term="Java Web" scheme="https://decxlr.github.io/categories/Java-Web/"/>
     
     
-    <category term="JavaScript" scheme="https://godx06.github.io/tags/JavaScript/"/>
+    <category term="JavaScript" scheme="https://decxlr.github.io/tags/JavaScript/"/>
     
   </entry>
   
   <entry>
     <title>CSS学习</title>
-    <link href="https://godx06.github.io/2023/01/15/CSS%E5%AD%A6%E4%B9%A0/"/>
-    <id>https://godx06.github.io/2023/01/15/CSS%E5%AD%A6%E4%B9%A0/</id>
+    <link href="https://decxlr.github.io/2023/01/15/CSS%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://decxlr.github.io/2023/01/15/CSS%E5%AD%A6%E4%B9%A0/</id>
     <published>2023-01-15T03:33:04.000Z</published>
     <updated>2023-01-15T03:35:58.785Z</updated>
     
@@ -160,19 +160,19 @@
     
     
     
-    <category term="Java Web" scheme="https://godx06.github.io/categories/Java-Web/"/>
+    <category term="Java Web" scheme="https://decxlr.github.io/categories/Java-Web/"/>
     
     
-    <category term="Note" scheme="https://godx06.github.io/tags/Note/"/>
+    <category term="Note" scheme="https://decxlr.github.io/tags/Note/"/>
     
-    <category term="CSS" scheme="https://godx06.github.io/tags/CSS/"/>
+    <category term="CSS" scheme="https://decxlr.github.io/tags/CSS/"/>
     
   </entry>
   
   <entry>
     <title>HTML学习</title>
-    <link href="https://godx06.github.io/2023/01/15/HTLML%E5%AD%A6%E4%B9%A0/"/>
-    <id>https://godx06.github.io/2023/01/15/HTLML%E5%AD%A6%E4%B9%A0/</id>
+    <link href="https://decxlr.github.io/2023/01/15/HTLML%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://decxlr.github.io/2023/01/15/HTLML%E5%AD%A6%E4%B9%A0/</id>
     <published>2023-01-15T03:30:29.000Z</published>
     <updated>2023-01-15T04:12:50.779Z</updated>
     
@@ -183,19 +183,19 @@
     
     
     
-    <category term="Java Web" scheme="https://godx06.github.io/categories/Java-Web/"/>
+    <category term="Java Web" scheme="https://decxlr.github.io/categories/Java-Web/"/>
     
     
-    <category term="Note" scheme="https://godx06.github.io/tags/Note/"/>
+    <category term="Note" scheme="https://decxlr.github.io/tags/Note/"/>
     
-    <category term="HTML" scheme="https://godx06.github.io/tags/HTML/"/>
+    <category term="HTML" scheme="https://decxlr.github.io/tags/HTML/"/>
     
   </entry>
   
   <entry>
     <title>MyBatis学习</title>
-    <link href="https://godx06.github.io/2023/01/15/MyBatis%E5%AD%A6%E4%B9%A0/"/>
-    <id>https://godx06.github.io/2023/01/15/MyBatis%E5%AD%A6%E4%B9%A0/</id>
+    <link href="https://decxlr.github.io/2023/01/15/MyBatis%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://decxlr.github.io/2023/01/15/MyBatis%E5%AD%A6%E4%B9%A0/</id>
     <published>2023-01-15T03:28:44.000Z</published>
     <updated>2023-02-03T12:36:16.643Z</updated>
     
@@ -206,19 +206,19 @@
     
     
     
-    <category term="Java Web" scheme="https://godx06.github.io/categories/Java-Web/"/>
+    <category term="Java Web" scheme="https://decxlr.github.io/categories/Java-Web/"/>
     
     
-    <category term="Note" scheme="https://godx06.github.io/tags/Note/"/>
+    <category term="Note" scheme="https://decxlr.github.io/tags/Note/"/>
     
-    <category term="MyBatis" scheme="https://godx06.github.io/tags/MyBatis/"/>
+    <category term="MyBatis" scheme="https://decxlr.github.io/tags/MyBatis/"/>
     
   </entry>
   
   <entry>
     <title>软件需求工程作业</title>
-    <link href="https://godx06.github.io/2023/01/10/%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E4%BD%9C%E4%B8%9A/"/>
-    <id>https://godx06.github.io/2023/01/10/%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E4%BD%9C%E4%B8%9A/</id>
+    <link href="https://decxlr.github.io/2023/01/10/%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E4%BD%9C%E4%B8%9A/"/>
+    <id>https://decxlr.github.io/2023/01/10/%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E4%BD%9C%E4%B8%9A/</id>
     <published>2023-01-10T08:34:43.000Z</published>
     <updated>2023-01-20T15:25:29.028Z</updated>
     
@@ -229,17 +229,17 @@
     
     
     
-    <category term="需求工程" scheme="https://godx06.github.io/categories/%E9%9C%80%E6%B1%82%E5%B7%A5%E7%A8%8B/"/>
+    <category term="需求工程" scheme="https://decxlr.github.io/categories/%E9%9C%80%E6%B1%82%E5%B7%A5%E7%A8%8B/"/>
     
     
-    <category term="Practices" scheme="https://godx06.github.io/tags/Practices/"/>
+    <category term="Practices" scheme="https://decxlr.github.io/tags/Practices/"/>
     
   </entry>
   
   <entry>
     <title>Maven基础</title>
-    <link href="https://godx06.github.io/2023/01/07/Maven%E5%9F%BA%E7%A1%80/"/>
-    <id>https://godx06.github.io/2023/01/07/Maven%E5%9F%BA%E7%A1%80/</id>
+    <link href="https://decxlr.github.io/2023/01/07/Maven%E5%9F%BA%E7%A1%80/"/>
+    <id>https://decxlr.github.io/2023/01/07/Maven%E5%9F%BA%E7%A1%80/</id>
     <published>2023-01-07T09:48:46.000Z</published>
     <updated>2023-01-07T14:33:49.191Z</updated>
     
@@ -250,19 +250,19 @@
     
     
     
-    <category term="Java Web" scheme="https://godx06.github.io/categories/Java-Web/"/>
+    <category term="Java Web" scheme="https://decxlr.github.io/categories/Java-Web/"/>
     
     
-    <category term="Note" scheme="https://godx06.github.io/tags/Note/"/>
+    <category term="Note" scheme="https://decxlr.github.io/tags/Note/"/>
     
-    <category term="Maven" scheme="https://godx06.github.io/tags/Maven/"/>
+    <category term="Maven" scheme="https://decxlr.github.io/tags/Maven/"/>
     
   </entry>
   
   <entry>
     <title>蓝桥杯部分题目</title>
-    <link href="https://godx06.github.io/2023/01/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E9%83%A8%E5%88%86%E9%A2%98%E7%9B%AE/"/>
-    <id>https://godx06.github.io/2023/01/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E9%83%A8%E5%88%86%E9%A2%98%E7%9B%AE/</id>
+    <link href="https://decxlr.github.io/2023/01/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E9%83%A8%E5%88%86%E9%A2%98%E7%9B%AE/"/>
+    <id>https://decxlr.github.io/2023/01/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E9%83%A8%E5%88%86%E9%A2%98%E7%9B%AE/</id>
     <published>2023-01-06T12:05:12.000Z</published>
     <updated>2023-02-16T08:19:33.973Z</updated>
     
@@ -273,19 +273,19 @@
     
     
     
-    <category term="algorithm" scheme="https://godx06.github.io/categories/algorithm/"/>
+    <category term="algorithm" scheme="https://decxlr.github.io/categories/algorithm/"/>
     
     
-    <category term="Note" scheme="https://godx06.github.io/tags/Note/"/>
+    <category term="Note" scheme="https://decxlr.github.io/tags/Note/"/>
     
-    <category term="Practices" scheme="https://godx06.github.io/tags/Practices/"/>
+    <category term="Practices" scheme="https://decxlr.github.io/tags/Practices/"/>
     
   </entry>
   
   <entry>
     <title>软件工程练习题(复习)</title>
-    <link href="https://godx06.github.io/2023/01/06/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%BB%83%E4%B9%A0%E9%A2%98-%E5%A4%8D%E4%B9%A0/"/>
-    <id>https://godx06.github.io/2023/01/06/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%BB%83%E4%B9%A0%E9%A2%98-%E5%A4%8D%E4%B9%A0/</id>
+    <link href="https://decxlr.github.io/2023/01/06/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%BB%83%E4%B9%A0%E9%A2%98-%E5%A4%8D%E4%B9%A0/"/>
+    <id>https://decxlr.github.io/2023/01/06/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%BB%83%E4%B9%A0%E9%A2%98-%E5%A4%8D%E4%B9%A0/</id>
     <published>2023-01-06T11:53:44.000Z</published>
     <updated>2023-01-31T02:38:11.543Z</updated>
     
@@ -296,17 +296,17 @@
     
     
     
-    <category term="软件工程" scheme="https://godx06.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"/>
+    <category term="软件工程" scheme="https://decxlr.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"/>
     
     
-    <category term="Practices" scheme="https://godx06.github.io/tags/Practices/"/>
+    <category term="Practices" scheme="https://decxlr.github.io/tags/Practices/"/>
     
   </entry>
   
   <entry>
     <title>JDBC学习</title>
-    <link href="https://godx06.github.io/2023/01/06/JDBC%E5%AD%A6%E4%B9%A0/"/>
-    <id>https://godx06.github.io/2023/01/06/JDBC%E5%AD%A6%E4%B9%A0/</id>
+    <link href="https://decxlr.github.io/2023/01/06/JDBC%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://decxlr.github.io/2023/01/06/JDBC%E5%AD%A6%E4%B9%A0/</id>
     <published>2023-01-06T11:47:57.000Z</published>
     <updated>2023-01-06T11:50:52.045Z</updated>
     
@@ -317,19 +317,19 @@
     
     
     
-    <category term="Java Web" scheme="https://godx06.github.io/categories/Java-Web/"/>
+    <category term="Java Web" scheme="https://decxlr.github.io/categories/Java-Web/"/>
     
     
-    <category term="Note" scheme="https://godx06.github.io/tags/Note/"/>
+    <category term="Note" scheme="https://decxlr.github.io/tags/Note/"/>
     
-    <category term="JDBC" scheme="https://godx06.github.io/tags/JDBC/"/>
+    <category term="JDBC" scheme="https://decxlr.github.io/tags/JDBC/"/>
     
   </entry>
   
   <entry>
     <title>Spring学习（1）</title>
-    <link href="https://godx06.github.io/2022/11/16/Spring%E5%AD%A6%E4%B9%A0%EF%BC%881%EF%BC%89/"/>
-    <id>https://godx06.github.io/2022/11/16/Spring%E5%AD%A6%E4%B9%A0%EF%BC%881%EF%BC%89/</id>
+    <link href="https://decxlr.github.io/2022/11/16/Spring%E5%AD%A6%E4%B9%A0%EF%BC%881%EF%BC%89/"/>
+    <id>https://decxlr.github.io/2022/11/16/Spring%E5%AD%A6%E4%B9%A0%EF%BC%881%EF%BC%89/</id>
     <published>2022-11-16T10:46:07.000Z</published>
     <updated>2022-11-16T10:49:12.321Z</updated>
     
@@ -340,19 +340,19 @@
     
     
     
-    <category term="Spring" scheme="https://godx06.github.io/categories/Spring/"/>
+    <category term="Spring" scheme="https://decxlr.github.io/categories/Spring/"/>
     
     
-    <category term="Note" scheme="https://godx06.github.io/tags/Note/"/>
+    <category term="Note" scheme="https://decxlr.github.io/tags/Note/"/>
     
-    <category term="Spring" scheme="https://godx06.github.io/tags/Spring/"/>
+    <category term="Spring" scheme="https://decxlr.github.io/tags/Spring/"/>
     
   </entry>
   
   <entry>
     <title>Android多线程编程与服务</title>
-    <link href="https://godx06.github.io/2022/11/09/Android%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B%E4%B8%8E%E6%9C%8D%E5%8A%A1/"/>
-    <id>https://godx06.github.io/2022/11/09/Android%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B%E4%B8%8E%E6%9C%8D%E5%8A%A1/</id>
+    <link href="https://decxlr.github.io/2022/11/09/Android%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B%E4%B8%8E%E6%9C%8D%E5%8A%A1/"/>
+    <id>https://decxlr.github.io/2022/11/09/Android%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B%E4%B8%8E%E6%9C%8D%E5%8A%A1/</id>
     <published>2022-11-09T06:54:33.000Z</published>
     <updated>2022-11-09T06:57:35.001Z</updated>
     
@@ -363,19 +363,19 @@
     
     
     
-    <category term="Android" scheme="https://godx06.github.io/categories/Android/"/>
+    <category term="Android" scheme="https://decxlr.github.io/categories/Android/"/>
     
     
-    <category term="Android" scheme="https://godx06.github.io/tags/Android/"/>
+    <category term="Android" scheme="https://decxlr.github.io/tags/Android/"/>
     
-    <category term="Note" scheme="https://godx06.github.io/tags/Note/"/>
+    <category term="Note" scheme="https://decxlr.github.io/tags/Note/"/>
     
   </entry>
   
   <entry>
     <title>Android前后端交互</title>
-    <link href="https://godx06.github.io/2022/11/01/Android%E5%89%8D%E5%90%8E%E7%AB%AF%E4%BA%A4%E4%BA%92/"/>
-    <id>https://godx06.github.io/2022/11/01/Android%E5%89%8D%E5%90%8E%E7%AB%AF%E4%BA%A4%E4%BA%92/</id>
+    <link href="https://decxlr.github.io/2022/11/01/Android%E5%89%8D%E5%90%8E%E7%AB%AF%E4%BA%A4%E4%BA%92/"/>
+    <id>https://decxlr.github.io/2022/11/01/Android%E5%89%8D%E5%90%8E%E7%AB%AF%E4%BA%A4%E4%BA%92/</id>
     <published>2022-11-01T06:21:00.000Z</published>
     <updated>2022-11-01T06:33:40.192Z</updated>
     
@@ -386,19 +386,19 @@
     
     
     
-    <category term="Android" scheme="https://godx06.github.io/categories/Android/"/>
+    <category term="Android" scheme="https://decxlr.github.io/categories/Android/"/>
     
     
-    <category term="Android" scheme="https://godx06.github.io/tags/Android/"/>
+    <category term="Android" scheme="https://decxlr.github.io/tags/Android/"/>
     
-    <category term="Note" scheme="https://godx06.github.io/tags/Note/"/>
+    <category term="Note" scheme="https://decxlr.github.io/tags/Note/"/>
     
   </entry>
   
   <entry>
     <title>Android使用网络技术</title>
-    <link href="https://godx06.github.io/2022/10/26/Android%E4%BD%BF%E7%94%A8%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/"/>
-    <id>https://godx06.github.io/2022/10/26/Android%E4%BD%BF%E7%94%A8%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/</id>
+    <link href="https://decxlr.github.io/2022/10/26/Android%E4%BD%BF%E7%94%A8%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/"/>
+    <id>https://decxlr.github.io/2022/10/26/Android%E4%BD%BF%E7%94%A8%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/</id>
     <published>2022-10-26T03:00:21.000Z</published>
     <updated>2022-10-26T03:18:24.220Z</updated>
     
@@ -409,19 +409,19 @@
     
     
     
-    <category term="Android" scheme="https://godx06.github.io/categories/Android/"/>
+    <category term="Android" scheme="https://decxlr.github.io/categories/Android/"/>
     
     
-    <category term="Android" scheme="https://godx06.github.io/tags/Android/"/>
+    <category term="Android" scheme="https://decxlr.github.io/tags/Android/"/>
     
-    <category term="Note" scheme="https://godx06.github.io/tags/Note/"/>
+    <category term="Note" scheme="https://decxlr.github.io/tags/Note/"/>
     
   </entry>
   
   <entry>
     <title>Android使用Scan Kit 华为统一扫码服务</title>
-    <link href="https://godx06.github.io/2022/10/03/Android%E4%BD%BF%E7%94%A8Scan-Kit-%E5%8D%8E%E4%B8%BA%E7%BB%9F%E4%B8%80%E6%89%AB%E7%A0%81%E6%9C%8D%E5%8A%A1/"/>
-    <id>https://godx06.github.io/2022/10/03/Android%E4%BD%BF%E7%94%A8Scan-Kit-%E5%8D%8E%E4%B8%BA%E7%BB%9F%E4%B8%80%E6%89%AB%E7%A0%81%E6%9C%8D%E5%8A%A1/</id>
+    <link href="https://decxlr.github.io/2022/10/03/Android%E4%BD%BF%E7%94%A8Scan-Kit-%E5%8D%8E%E4%B8%BA%E7%BB%9F%E4%B8%80%E6%89%AB%E7%A0%81%E6%9C%8D%E5%8A%A1/"/>
+    <id>https://decxlr.github.io/2022/10/03/Android%E4%BD%BF%E7%94%A8Scan-Kit-%E5%8D%8E%E4%B8%BA%E7%BB%9F%E4%B8%80%E6%89%AB%E7%A0%81%E6%9C%8D%E5%8A%A1/</id>
     <published>2022-10-03T11:12:21.000Z</published>
     <updated>2022-10-03T11:13:35.477Z</updated>
     
@@ -432,19 +432,19 @@
     
     
     
-    <category term="Android" scheme="https://godx06.github.io/categories/Android/"/>
+    <category term="Android" scheme="https://decxlr.github.io/categories/Android/"/>
     
     
-    <category term="Android" scheme="https://godx06.github.io/tags/Android/"/>
+    <category term="Android" scheme="https://decxlr.github.io/tags/Android/"/>
     
-    <category term="Note" scheme="https://godx06.github.io/tags/Note/"/>
+    <category term="Note" scheme="https://decxlr.github.io/tags/Note/"/>
     
   </entry>
   
   <entry>
     <title>Android数据存储</title>
-    <link href="https://godx06.github.io/2022/08/19/Android%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/"/>
-    <id>https://godx06.github.io/2022/08/19/Android%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/</id>
+    <link href="https://decxlr.github.io/2022/08/19/Android%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/"/>
+    <id>https://decxlr.github.io/2022/08/19/Android%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/</id>
     <published>2022-08-19T01:50:22.000Z</published>
     <updated>2022-08-19T09:26:35.175Z</updated>
     
@@ -455,12 +455,12 @@
     
     
     
-    <category term="Android" scheme="https://godx06.github.io/categories/Android/"/>
+    <category term="Android" scheme="https://decxlr.github.io/categories/Android/"/>
     
     
-    <category term="Android" scheme="https://godx06.github.io/tags/Android/"/>
+    <category term="Android" scheme="https://decxlr.github.io/tags/Android/"/>
     
-    <category term="Note" scheme="https://godx06.github.io/tags/Note/"/>
+    <category term="Note" scheme="https://decxlr.github.io/tags/Note/"/>
     
   </entry>
   
