@@ -393,13 +393,6 @@
   </url>
   
   <url>
-    <loc>https://decxlr.github.io/tags/Maven/</loc>
-    <lastmod>2023-05-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://decxlr.github.io/tags/MyBatis/</loc>
     <lastmod>2023-05-08</lastmod>
     <changefreq>weekly</changefreq>
@@ -408,6 +401,13 @@
   
   <url>
     <loc>https://decxlr.github.io/tags/Spring/</loc>
+    <lastmod>2023-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://decxlr.github.io/tags/Maven/</loc>
     <lastmod>2023-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -458,14 +458,14 @@
   </url>
   
   <url>
-    <loc>https://decxlr.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
+    <loc>https://decxlr.github.io/categories/algorithm/</loc>
     <lastmod>2023-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://decxlr.github.io/categories/algorithm/</loc>
+    <loc>https://decxlr.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2023-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
