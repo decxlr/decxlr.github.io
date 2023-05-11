@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <!--自定义看板娘-->
+  <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"/>
+
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/dragon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/dragon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="baidu-site-verification" content="6EMwG3w0uT">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-center-circle.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"decxlr.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":300,"display":"post","padding":5,"offset":5,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="JSP（全称：Java Server Pages）：Java 服务端页面。是一种动态的网页技术，其中既可以定义 HTML、JS、CSS等静态内容，还可以定义 Java代码的动态内容，也就是 JSP &#x3D; HTML + Java。如下：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JSP学习">
+<meta property="og:url" content="https://decxlr.github.io/2023/05/11/JSP%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="君不见の博客">
+<meta property="og:description" content="JSP（全称：Java Server Pages）：Java 服务端页面。是一种动态的网页技术，其中既可以定义 HTML、JS、CSS等静态内容，还可以定义 Java代码的动态内容，也就是 JSP &#x3D; HTML + Java。如下：">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-05-11T01:26:49.000Z">
+<meta property="article:modified_time" content="2023-05-11T01:28:51.689Z">
+<meta property="article:author" content="君不见">
+<meta property="article:tag" content="Note">
+<meta property="article:tag" content="JSP">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://decxlr.github.io/2023/05/11/JSP%E5%AD%A6%E4%B9%A0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>JSP学习 | 君不见の博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  
+<link rel="alternate" href="/atom.xml" title="君不见の博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script type="text/javascript" src="/js/dytitle.js"></script>
+
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">君不见の博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录生活中的点点滴滴</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">12</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">9</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">33</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://decxlr.github.io/2023/05/11/JSP%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/tsy.png">
+      <meta itemprop="name" content="君不见">
+      <meta itemprop="description" content="君不见，黄河之水天上来，奔流到海不复回。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="君不见の博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JSP学习
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-05-11 09:26:49 / 修改时间：09:28:51" itemprop="dateCreated datePublished" datetime="2023-05-11T09:26:49+08:00">2023-05-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java-Web/" itemprop="url" rel="index"><span itemprop="name">Java Web</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2023/05/11/JSP%E5%AD%A6%E4%B9%A0/#SOHUCS" itemprop="discussionUrl">
+        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2023/05/11/JSP学习/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>JSP（全称：Java Server Pages）：Java 服务端页面。是一种动态的网页技术，其中既可以定义 HTML、JS、CSS等静态内容，还可以定义 Java代码的动态内容，也就是 <code>JSP = HTML + Java</code>。如下：</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;h1&gt;JSP,Hello World&lt;/h1&gt;</span><br><span class="line">        &lt;%</span><br><span class="line">        	System.out.println(<span class="string">&quot;hello,jsp~&quot;</span>);</span><br><span class="line">        %&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>JSP 作用：简化开发，避免了在Servlet中直接输出HTML标签。</p>
+<h2 id="JSP快速入门"><a href="#JSP快速入门" class="headerlink" title="JSP快速入门"></a>JSP快速入门</h2><ol>
+<li>导入JSP坐标</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.servlet.jsp<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jsp-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span><span class="comment">&lt;!--要注意--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>创建JSP文件</li>
+</ol>
+<p>在webapp下新建一个jsp文件。</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=<span class="string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="string">&quot;java&quot;</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>编写HTML标签和Java代码</li>
+</ol>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=<span class="string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="string">&quot;java&quot;</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">    &lt;h1&gt;Hello JSP&lt;/h1&gt;</span><br><span class="line"></span><br><span class="line">    &lt;%</span><br><span class="line">        System.out.println(<span class="string">&quot;Hello JSP!&quot;</span>);</span><br><span class="line">    %&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>运行项目后访问</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:8030/web-demo/test.jsp</span><br></pre></td></tr></table></figure>
+
+<p>可以看到网页上显示的内容是<code>Hello JSP</code></p>
+<p>控制台输出：<code>Hello JSP!</code></p>
+<h2 id="JSP原理"><a href="#JSP原理" class="headerlink" title="JSP原理"></a>JSP原理</h2><ul>
+<li>概念:Java Server Pages，Java服务端页面</li>
+<li>JSP &#x3D; HTML + Java，用于简化开发的JSP</li>
+<li>本质上就是一个Servlet</li>
+</ul>
+<ol>
+<li>浏览器第一次访问<code> test.jsp</code> 页面</li>
+<li><code>tomcat</code> 会将 test.jsp<code>转换为名为</code>test_jsp.java<code>的一个</code>Servlet&#96;</li>
+<li><code>tomcat</code> 再将转换的 <code>servlet</code> 编译成字节码文件 <code>test_jsp.class</code></li>
+<li><code>tomcat</code> 会执行该字节码文件，向外提供服务</li>
+</ol>
+<p>我们可以到项目所在磁盘目录下找</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">target\tomcat\work\Tomcat\localhost\web-demo\org\apache\jsp</span><br></pre></td></tr></table></figure>
+
+<p> 目录，而这个目录下就能看到转换后的 <code>servlet</code></p>
+<p>test_jsp.java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Generated by the Jasper component of Apache Tomcat</span></span><br><span class="line"><span class="comment"> * Version: Apache Tomcat/7.0.47</span></span><br><span class="line"><span class="comment"> * Generated at: 2023-05-10 12:35:45 UTC</span></span><br><span class="line"><span class="comment"> * Note: The last modified time of this file was set to</span></span><br><span class="line"><span class="comment"> *       the last modified time of the source file after</span></span><br><span class="line"><span class="comment"> *       generation to assist with modification tracking.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">package</span> org.apache.jsp;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.*;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.*;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.jsp.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">class</span> <span class="title class_">test_jsp</span> <span class="keyword">extends</span> <span class="title class_">org</span>.apache.jasper.runtime.HttpJspBase</span><br><span class="line">    <span class="keyword">implements</span> <span class="title class_">org</span>.apache.jasper.runtime.JspSourceDependent &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> javax.servlet.jsp.<span class="type">JspFactory</span> <span class="variable">_jspxFactory</span> <span class="operator">=</span></span><br><span class="line">          javax.servlet.jsp.JspFactory.getDefaultFactory();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> java.util.Map&lt;java.lang.String,java.lang.Long&gt; _jspx_dependants;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> javax.el.ExpressionFactory _el_expressionfactory;</span><br><span class="line">  <span class="keyword">private</span> org.apache.tomcat.InstanceManager _jsp_instancemanager;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> java.util.Map&lt;java.lang.String,java.lang.Long&gt; getDependants() &#123;</span><br><span class="line">    <span class="keyword">return</span> _jspx_dependants;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">_jspInit</span><span class="params">()</span> &#123;</span><br><span class="line">    _el_expressionfactory = _jspxFactory.getJspApplicationContext(getServletConfig().getServletContext()).getExpressionFactory();</span><br><span class="line">    _jsp_instancemanager = org.apache.jasper.runtime.InstanceManagerFactory.getInstanceManager(getServletConfig());</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">_jspDestroy</span><span class="params">()</span> &#123;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">_jspService</span><span class="params">(<span class="keyword">final</span> javax.servlet.http.HttpServletRequest request, <span class="keyword">final</span> javax.servlet.http.HttpServletResponse response)</span></span><br><span class="line">        <span class="keyword">throws</span> java.io.IOException, javax.servlet.ServletException &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">final</span> javax.servlet.jsp.PageContext pageContext;</span><br><span class="line">    javax.servlet.http.<span class="type">HttpSession</span> <span class="variable">session</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">final</span> javax.servlet.ServletContext application;</span><br><span class="line">    <span class="keyword">final</span> javax.servlet.ServletConfig config;</span><br><span class="line">    javax.servlet.jsp.<span class="type">JspWriter</span> <span class="variable">out</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">final</span> java.lang.<span class="type">Object</span> <span class="variable">page</span> <span class="operator">=</span> <span class="built_in">this</span>;</span><br><span class="line">    javax.servlet.jsp.<span class="type">JspWriter</span> <span class="variable">_jspx_out</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    javax.servlet.jsp.<span class="type">PageContext</span> <span class="variable">_jspx_page_context</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      response.setContentType(<span class="string">&quot;text/html;charset=UTF-8&quot;</span>);</span><br><span class="line">      pageContext = _jspxFactory.getPageContext(<span class="built_in">this</span>, request, response,</span><br><span class="line">      			<span class="literal">null</span>, <span class="literal">true</span>, <span class="number">8192</span>, <span class="literal">true</span>);</span><br><span class="line">      _jspx_page_context = pageContext;</span><br><span class="line">      application = pageContext.getServletContext();</span><br><span class="line">      config = pageContext.getServletConfig();</span><br><span class="line">      session = pageContext.getSession();</span><br><span class="line">      out = pageContext.getOut();</span><br><span class="line">      _jspx_out = out;</span><br><span class="line"></span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;&lt;html&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;&lt;head&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;    &lt;title&gt;Title&lt;/title&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;&lt;/head&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;&lt;body&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;    &lt;h1&gt;Hello JSP&lt;/h1&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;    &quot;</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;Hello JSP!&quot;</span>);</span><br><span class="line">    </span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;&lt;/body&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;&lt;/html&gt;\r\n&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (java.lang.Throwable t) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!(t <span class="keyword">instanceof</span> javax.servlet.jsp.SkipPageException))&#123;</span><br><span class="line">        out = _jspx_out;</span><br><span class="line">        <span class="keyword">if</span> (out != <span class="literal">null</span> &amp;&amp; out.getBufferSize() != <span class="number">0</span>)</span><br><span class="line">          <span class="keyword">try</span> &#123; out.clearBuffer(); &#125; <span class="keyword">catch</span> (java.io.IOException e) &#123;&#125;</span><br><span class="line">        <span class="keyword">if</span> (_jspx_page_context != <span class="literal">null</span>) _jspx_page_context.handlePageException(t);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">ServletException</span>(t);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">      _jspxFactory.releasePageContext(_jspx_page_context);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="JSP脚本"><a href="#JSP脚本" class="headerlink" title="JSP脚本"></a>JSP脚本</h2><ul>
+<li>JSP脚本用于在JSP页面内定义Java代码</li>
+<li>JSP脚本分类：<ul>
+<li>&lt;%…%&gt;：内容会直接放到_jspService()方法之中</li>
+<li>&lt;%&#x3D;…%&gt;：内容会放到out.print()中，作为out.print()的参数</li>
+<li>&lt;%!…%&gt;：内容会放到_jspService()方法之外，被类直接包含</li>
+</ul>
+</li>
+</ul>
+<p>修改test.jsp的代码：</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=<span class="string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="string">&quot;java&quot;</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">    &lt;h1&gt;Hello JSP&lt;/h1&gt;</span><br><span class="line"></span><br><span class="line">    &lt;%</span><br><span class="line">        System.out.println(<span class="string">&quot;Hello JSP!&quot;</span>);</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">555</span>;</span><br><span class="line">    %&gt;</span><br><span class="line"></span><br><span class="line">    &lt;%=<span class="string">&quot;Hello&quot;</span>%&gt;</span><br><span class="line">    &lt;%=<span class="string">&quot;World&quot;</span>%&gt;</span><br><span class="line">    &lt;%=i%&gt;</span><br><span class="line"></span><br><span class="line">    &lt;%!</span><br><span class="line">        <span class="keyword">void</span> <span class="title function_">show</span><span class="params">()</span>&#123;&#125;</span><br><span class="line">        <span class="type">String</span> <span class="variable">t</span> <span class="operator">=</span> <span class="string">&quot;jsp&quot;</span>;</span><br><span class="line">    %&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>运行后访问对应网站可以看到网页显示结果为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Hello JSP</span><br><span class="line">Hello World 555</span><br></pre></td></tr></table></figure>
+
+<p>同时test_jsp.java代码变为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Generated by the Jasper component of Apache Tomcat</span></span><br><span class="line"><span class="comment"> * Version: Apache Tomcat/7.0.47</span></span><br><span class="line"><span class="comment"> * Generated at: 2023-05-10 12:55:07 UTC</span></span><br><span class="line"><span class="comment"> * Note: The last modified time of this file was set to</span></span><br><span class="line"><span class="comment"> *       the last modified time of the source file after</span></span><br><span class="line"><span class="comment"> *       generation to assist with modification tracking.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">package</span> org.apache.jsp;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.*;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.*;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.jsp.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">class</span> <span class="title class_">test_jsp</span> <span class="keyword">extends</span> <span class="title class_">org</span>.apache.jasper.runtime.HttpJspBase</span><br><span class="line">    <span class="keyword">implements</span> <span class="title class_">org</span>.apache.jasper.runtime.JspSourceDependent &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">void</span> <span class="title function_">show</span><span class="params">()</span>&#123;&#125;  <span class="comment">//这里</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">t</span> <span class="operator">=</span> <span class="string">&quot;jsp&quot;</span>;  <span class="comment">//这里</span></span><br><span class="line">    </span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> javax.servlet.jsp.<span class="type">JspFactory</span> <span class="variable">_jspxFactory</span> <span class="operator">=</span></span><br><span class="line">          javax.servlet.jsp.JspFactory.getDefaultFactory();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> java.util.Map&lt;java.lang.String,java.lang.Long&gt; _jspx_dependants;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> javax.el.ExpressionFactory _el_expressionfactory;</span><br><span class="line">  <span class="keyword">private</span> org.apache.tomcat.InstanceManager _jsp_instancemanager;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> java.util.Map&lt;java.lang.String,java.lang.Long&gt; getDependants() &#123;</span><br><span class="line">    <span class="keyword">return</span> _jspx_dependants;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">_jspInit</span><span class="params">()</span> &#123;</span><br><span class="line">    _el_expressionfactory = _jspxFactory.getJspApplicationContext(getServletConfig().getServletContext()).getExpressionFactory();</span><br><span class="line">    _jsp_instancemanager = org.apache.jasper.runtime.InstanceManagerFactory.getInstanceManager(getServletConfig());</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">_jspDestroy</span><span class="params">()</span> &#123;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">_jspService</span><span class="params">(<span class="keyword">final</span> javax.servlet.http.HttpServletRequest request, <span class="keyword">final</span> javax.servlet.http.HttpServletResponse response)</span></span><br><span class="line">        <span class="keyword">throws</span> java.io.IOException, javax.servlet.ServletException &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">final</span> javax.servlet.jsp.PageContext pageContext;</span><br><span class="line">    javax.servlet.http.<span class="type">HttpSession</span> <span class="variable">session</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">final</span> javax.servlet.ServletContext application;</span><br><span class="line">    <span class="keyword">final</span> javax.servlet.ServletConfig config;</span><br><span class="line">    javax.servlet.jsp.<span class="type">JspWriter</span> <span class="variable">out</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">final</span> java.lang.<span class="type">Object</span> <span class="variable">page</span> <span class="operator">=</span> <span class="built_in">this</span>;</span><br><span class="line">    javax.servlet.jsp.<span class="type">JspWriter</span> <span class="variable">_jspx_out</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    javax.servlet.jsp.<span class="type">PageContext</span> <span class="variable">_jspx_page_context</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      response.setContentType(<span class="string">&quot;text/html;charset=UTF-8&quot;</span>);</span><br><span class="line">      pageContext = _jspxFactory.getPageContext(<span class="built_in">this</span>, request, response,</span><br><span class="line">      			<span class="literal">null</span>, <span class="literal">true</span>, <span class="number">8192</span>, <span class="literal">true</span>);</span><br><span class="line">      _jspx_page_context = pageContext;</span><br><span class="line">      application = pageContext.getServletContext();</span><br><span class="line">      config = pageContext.getServletConfig();</span><br><span class="line">      session = pageContext.getSession();</span><br><span class="line">      out = pageContext.getOut();</span><br><span class="line">      _jspx_out = out;</span><br><span class="line"></span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;&lt;html&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;&lt;head&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;    &lt;title&gt;Title&lt;/title&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;&lt;/head&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;&lt;body&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;    &lt;h1&gt;Hello JSP&lt;/h1&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;    &quot;</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;Hello JSP!&quot;</span>);</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">555</span>;  <span class="comment">//这里</span></span><br><span class="line">    </span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;    &quot;</span>);</span><br><span class="line">      out.print(<span class="string">&quot;Hello&quot;</span>);  <span class="comment">//这里</span></span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;    &quot;</span>);</span><br><span class="line">      out.print(<span class="string">&quot;World&quot;</span>);  <span class="comment">//这里</span></span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;    &quot;</span>);</span><br><span class="line">      out.print(i);  <span class="comment">//这里</span></span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;    &quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;&lt;/body&gt;\r\n&quot;</span>);</span><br><span class="line">      out.write(<span class="string">&quot;&lt;/html&gt;\r\n&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (java.lang.Throwable t) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!(t <span class="keyword">instanceof</span> javax.servlet.jsp.SkipPageException))&#123;</span><br><span class="line">        out = _jspx_out;</span><br><span class="line">        <span class="keyword">if</span> (out != <span class="literal">null</span> &amp;&amp; out.getBufferSize() != <span class="number">0</span>)</span><br><span class="line">          <span class="keyword">try</span> &#123; out.clearBuffer(); &#125; <span class="keyword">catch</span> (java.io.IOException e) &#123;&#125;</span><br><span class="line">        <span class="keyword">if</span> (_jspx_page_context != <span class="literal">null</span>) _jspx_page_context.handlePageException(t);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">ServletException</span>(t);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">      _jspxFactory.releasePageContext(_jspx_page_context);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="EL表达式"><a href="#EL表达式" class="headerlink" title="EL表达式"></a>EL表达式</h2><ul>
+<li><p>EL（全称Expression Language ）表达式语言，用于简化 JSP 页面内的 Java 代码。</p>
+</li>
+<li><p>主要功能：获取数据</p>
+</li>
+<li><p>语法：<code>$&#123;expression&#125;</code></p>
+<p><code>$&#123;brands&#125;</code> 就是获取域中存储的 key 为 brands 的数据。</p>
+</li>
+</ul>
+<p>新建JSPServlet1.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xlr.web;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.xlr.pojo.Brand;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="meta">@WebServlet(&quot;/jsp1&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JSPServlet1</span> <span class="keyword">extends</span> <span class="title class_">HttpServlet</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line">        <span class="comment">// 1.准备数据</span></span><br><span class="line">        List&lt;Brand&gt; brands = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;Brand&gt;();</span><br><span class="line">        brands.add(<span class="keyword">new</span> <span class="title class_">Brand</span>(<span class="number">1</span>, <span class="string">&quot;三只松鼠&quot;</span>, <span class="string">&quot;三只松鼠&quot;</span>, <span class="number">100</span>, <span class="string">&quot;三只松鼠，好吃不上火&quot;</span>, <span class="number">1</span>));</span><br><span class="line">        brands.add(<span class="keyword">new</span> <span class="title class_">Brand</span>(<span class="number">2</span>, <span class="string">&quot;优衣库&quot;</span>, <span class="string">&quot;优衣库&quot;</span>, <span class="number">200</span>, <span class="string">&quot;优衣库，服适人生&quot;</span>, <span class="number">0</span>));</span><br><span class="line">        brands.add(<span class="keyword">new</span> <span class="title class_">Brand</span>(<span class="number">3</span>, <span class="string">&quot;小米&quot;</span>, <span class="string">&quot;小米科技有限公司&quot;</span>, <span class="number">1000</span>, <span class="string">&quot;为发烧而生&quot;</span>, <span class="number">1</span>));</span><br><span class="line">        System.out.println(brands);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2.存储到request中</span></span><br><span class="line">        req.setAttribute(<span class="string">&quot;brands&quot;</span>, brands);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3.转发到el-demo.jsp</span></span><br><span class="line">        req.getRequestDispatcher(<span class="string">&quot;/el-demo.jsp&quot;</span>).forward(req,resp);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line">        <span class="built_in">this</span>.doGet(req,resp);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>新建el-demo.jsp</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=<span class="string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="string">&quot;java&quot;</span> isELIgnored=<span class="string">&quot;false&quot;</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">    $&#123;brands&#125;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>注意</strong>:此处需要用转发，因为转发才可以使用 request 对象作为域对象进行数据共享</p>
+</blockquote>
+<p>运行后访问对应网址可以看到网页显示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Brand&#123;id=1, brandName=&#x27;三只松鼠&#x27;, companyName=&#x27;三只松鼠&#x27;, ordered=100, description=&#x27;三只松鼠，好吃不上火&#x27;, status=1&#125;, Brand&#123;id=2, brandName=&#x27;优衣库&#x27;, companyName=&#x27;优衣库&#x27;, ordered=200, description=&#x27;优衣库，服适人生&#x27;, status=0&#125;, Brand&#123;id=3, brandName=&#x27;小米&#x27;, companyName=&#x27;小米科技有限公司&#x27;, ordered=1000, description=&#x27;为发烧而生&#x27;, status=1&#125;]</span><br></pre></td></tr></table></figure>
+
+<p>JavaWeb中有四大域对象，分别是：</p>
+<ul>
+<li>page：当前页面有效</li>
+<li>request：当前请求有效</li>
+<li>session：当前会话有效</li>
+<li>application：当前应用有效</li>
+</ul>
+<p>范围递增，下包括上。</p>
+<p>el 表达式获取数据，会依次从这4个域中寻找，直到找到为止。</p>
+<h2 id="JSTL标签"><a href="#JSTL标签" class="headerlink" title="JSTL标签"></a>JSTL标签</h2><p>JSP标准标签库(Jsp Standarded Tag Library) ，使用标签取代JSP页面上的Java代码。如下</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:<span class="keyword">if</span> test=<span class="string">&quot;$&#123;flag == 1&#125;&quot;</span>&gt;</span><br><span class="line">    <span class="number">1</span></span><br><span class="line">&lt;/c:<span class="keyword">if</span>&gt;</span><br><span class="line">&lt;c:<span class="keyword">if</span> test=<span class="string">&quot;$&#123;flag == 2&#125;&quot;</span>&gt;</span><br><span class="line">    <span class="number">2</span></span><br><span class="line">&lt;/c:<span class="keyword">if</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这里只对两个最常用的标签进行讲解，<code>&lt;c:forEach&gt;</code> 标签和 <code>&lt;c:if&gt;</code> 标签。</p>
+<ul>
+<li><p>导入坐标</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--jstl--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.servlet<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jstl<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">  </span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>taglibs<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>standard<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在JSP页面上引入JSTL标签库</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ taglib prefix=<span class="string">&quot;c&quot;</span> uri=<span class="string">&quot;http://java.sun.com/jsp/jstl/core&quot;</span>%&gt;&lt;%--引入--%&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用标签</p>
+</li>
+</ul>
+<h3 id="if标签"><a href="#if标签" class="headerlink" title="if标签"></a>if标签</h3><p><code>&lt;c:if&gt;</code>：相当于 if 判断</p>
+<ul>
+<li>属性：test，用于定义条件表达式</li>
+</ul>
+<p>修改JSPServlet1：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xlr.web;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.xlr.pojo.Brand;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="meta">@WebServlet(&quot;/jsp1&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JSPServlet1</span> <span class="keyword">extends</span> <span class="title class_">HttpServlet</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line">        <span class="comment">// 1.准备数据</span></span><br><span class="line">        List&lt;Brand&gt; brands = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;Brand&gt;();</span><br><span class="line">        brands.add(<span class="keyword">new</span> <span class="title class_">Brand</span>(<span class="number">1</span>, <span class="string">&quot;三只松鼠&quot;</span>, <span class="string">&quot;三只松鼠&quot;</span>, <span class="number">100</span>, <span class="string">&quot;三只松鼠，好吃不上火&quot;</span>, <span class="number">1</span>));</span><br><span class="line">        brands.add(<span class="keyword">new</span> <span class="title class_">Brand</span>(<span class="number">2</span>, <span class="string">&quot;优衣库&quot;</span>, <span class="string">&quot;优衣库&quot;</span>, <span class="number">200</span>, <span class="string">&quot;优衣库，服适人生&quot;</span>, <span class="number">0</span>));</span><br><span class="line">        brands.add(<span class="keyword">new</span> <span class="title class_">Brand</span>(<span class="number">3</span>, <span class="string">&quot;小米&quot;</span>, <span class="string">&quot;小米科技有限公司&quot;</span>, <span class="number">1000</span>, <span class="string">&quot;为发烧而生&quot;</span>, <span class="number">1</span>));</span><br><span class="line">        System.out.println(brands);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2.存储到request中</span></span><br><span class="line">        req.setAttribute(<span class="string">&quot;brands&quot;</span>, brands);</span><br><span class="line">        req.setAttribute(<span class="string">&quot;status&quot;</span>,<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3.转发到el-demo.jsp</span></span><br><span class="line"><span class="comment">//        req.getRequestDispatcher(&quot;/el-demo.jsp&quot;).forward(req,resp);</span></span><br><span class="line">        req.getRequestDispatcher(<span class="string">&quot;/jstl-if.jsp&quot;</span>).forward(req,resp);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line">        <span class="built_in">this</span>.doGet(req,resp);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>新建jstl-if.jsp:</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=<span class="string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="string">&quot;java&quot;</span> isELIgnored=<span class="string">&quot;false&quot;</span> %&gt;</span><br><span class="line">&lt;%@ taglib prefix=<span class="string">&quot;c&quot;</span> uri=<span class="string">&quot;http://java.sun.com/jsp/jstl/core&quot;</span>%&gt;&lt;%--引入--%&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;%--</span><br><span class="line">    c:<span class="keyword">if</span>：来完成逻辑判断，替换java  <span class="keyword">if</span> <span class="keyword">else</span></span><br><span class="line">    --%&gt;</span><br><span class="line">    &lt;%--&lt;h1&gt;jstl-<span class="keyword">if</span>&lt;/h1&gt;--%&gt;</span><br><span class="line"></span><br><span class="line">    &lt;c:<span class="keyword">if</span> test=<span class="string">&quot;$&#123;status == 1&#125;&quot;</span>&gt;</span><br><span class="line">        &lt;h1&gt;<span class="number">1</span>&lt;/h1&gt;</span><br><span class="line">    &lt;/c:<span class="keyword">if</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;c:<span class="keyword">if</span> test=<span class="string">&quot;$&#123;status == 0&#125;&quot;</span>&gt;</span><br><span class="line">        &lt;h1&gt;<span class="number">0</span>&lt;/h1&gt;</span><br><span class="line">    &lt;/c:<span class="keyword">if</span>&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="forEach标签"><a href="#forEach标签" class="headerlink" title="forEach标签"></a>forEach标签</h3><p><code>&lt;c:forEach&gt;</code>：相当于 for 循环。</p>
+<p>java中有增强for循环和普通for循环，JSTL 中的 <code>&lt;c:forEach&gt;</code> 也有两种用法</p>
+<p>用法一：</p>
+<p>类似于 Java 中的增强for循环。涉及到的 <code>&lt;c:forEach&gt;</code> 中的属性如下</p>
+<ul>
+<li>items：被遍历的容器</li>
+<li>var：遍历产生的临时变量</li>
+<li>varStatus：遍历状态对象</li>
+</ul>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=<span class="string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="string">&quot;java&quot;</span> isELIgnored=<span class="string">&quot;false&quot;</span> %&gt;</span><br><span class="line">&lt;%@ taglib prefix=<span class="string">&quot;c&quot;</span> uri=<span class="string">&quot;http://java.sun.com/jsp/jstl/core&quot;</span>%&gt;&lt;%--引入--%&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">    &lt;c:forEach items=<span class="string">&quot;$&#123;brands&#125;&quot;</span> <span class="keyword">var</span>=<span class="string">&quot;brand&quot;</span>&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;$&#123;brand.id&#125;&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;$&#123;brand.brandName&#125;&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;$&#123;brand.companyName&#125;&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;$&#123;brand.description&#125;&lt;/td&gt;</span><br><span class="line">            &lt;br&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">    &lt;/c:forEach&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>用法二：</p>
+<p>类似于 Java 中的普通for循环。涉及到的 <code>&lt;c:forEach&gt;</code> 中的属性如下</p>
+<ul>
+<li>begin：开始数</li>
+<li>end：结束数</li>
+<li>step：步长</li>
+</ul>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=<span class="string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="string">&quot;java&quot;</span> isELIgnored=<span class="string">&quot;false&quot;</span> %&gt;</span><br><span class="line">&lt;%@ taglib prefix=<span class="string">&quot;c&quot;</span> uri=<span class="string">&quot;http://java.sun.com/jsp/jstl/core&quot;</span>%&gt;&lt;%--引入--%&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">    &lt;c:forEach begin=<span class="string">&quot;0&quot;</span> end=<span class="string">&quot;10&quot;</span> step=<span class="string">&quot;1&quot;</span> <span class="keyword">var</span>=<span class="string">&quot;i&quot;</span>&gt;</span><br><span class="line">        $&#123;i&#125;</span><br><span class="line">    &lt;/c:forEach&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="MVC模式和三层架构"><a href="#MVC模式和三层架构" class="headerlink" title="MVC模式和三层架构"></a>MVC模式和三层架构</h2><h3 id="MVC模式"><a href="#MVC模式" class="headerlink" title="MVC模式"></a>MVC模式</h3><p>MVC 是一种分层开发的模式，其中：</p>
+<ul>
+<li>M：Model，业务模型，处理业务</li>
+<li>V：View，视图，界面展示</li>
+<li>C：Controller，控制器，处理请求，调用模型和视图</li>
+</ul>
+<p>控制器（serlvlet）用来接收浏览器发送过来的请求，控制器调用模型（JavaBean）来获取数据，比如从数据库查询数据；控制器获取到数据后再交由视图（JSP）进行数据展示。</p>
+<p><strong>MVC 好处：</strong></p>
+<ul>
+<li>职责单一，互不影响。每个角色做它自己的事，各司其职。</li>
+<li>有利于分工协作。</li>
+<li>有利于组件重用</li>
+</ul>
+<h3 id="三层架构"><a href="#三层架构" class="headerlink" title="三层架构"></a>三层架构</h3><p>三层架构是将我们的项目分成了三个层面，分别是 <code>表现层</code>、<code>业务逻辑层</code>、<code>数据访问层</code>。</p>
+<ul>
+<li>数据访问层：对数据库的CRUD基本操作</li>
+<li>业务逻辑层：对业务逻辑进行封装，组合数据访问层层中基本功能，形成复杂的业务逻辑功能。例如 <code>注册业务功能</code> ，我们会先调用 <code>数据访问层</code> 的 <code>selectByName()</code> 方法判断该用户名是否存在，如果不存在再调用 <code>数据访问层</code> 的 <code>insert()</code> 方法进行数据的添加操作</li>
+<li>表现层：接收请求，封装数据，调用业务逻辑层，响应数据</li>
+</ul>
+<p>而整个流程是，浏览器发送请求，表现层的Servlet接收请求并调用业务逻辑层的方法进行业务逻辑处理，而业务逻辑层方法调用数据访问层方法进行数据的操作，依次返回到serlvet，然后servlet将数据交由 JSP 进行展示。</p>
+<p>三层架构的每一层都有特有的包名称：</p>
+<ul>
+<li>表现层： <code>com.example.controller</code> 或者 <code>com.example.web</code></li>
+<li>业务逻辑层：<code>com.example.service</code></li>
+<li>数据访问层：<code>com.example.dao</code> 或者 <code>com.example.mapper</code></li>
+</ul>
+<h3 id="MVC模式和三层架构-1"><a href="#MVC模式和三层架构-1" class="headerlink" title="MVC模式和三层架构"></a>MVC模式和三层架构</h3><p> <code>MVC 模式</code> 中的 C（控制器）和 V（视图）就是 <code>三层架构</code> 中的表现层，而 <code>MVC 模式</code> 中的 M（模型）就是 <code>三层架构</code> 中的 业务逻辑层 和 数据访问层。</p>
+<p>可以将 <code>MVC 模式</code> 理解成是一个大的概念，而 <code>三层架构</code> 是对 <code>MVC 模式</code> 实现架构的思想。 那么我们以后按照要求将不同层的代码写在不同的包下，每一层里功能职责做到单一，将来如果将表现层的技术换掉，而业务逻辑层和数据访问层的代码不需要发生变化。</p>
+
+    </div>
+
+       <div>
+        
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------本文到这里结束了，感谢您的阅读------</div>
+    
+</div>
+
+        
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div><您的支持将是我继续创作的动力！></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechat.png" alt="君不见 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="君不见 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>君不见
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://decxlr.github.io/2023/05/11/JSP%E5%AD%A6%E4%B9%A0/" title="JSP学习">https://decxlr.github.io/2023/05/11/JSP学习/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+ 
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Note/" rel="tag"><i class="fa fa-tag"></i> Note</a>
+              <a href="/tags/JSP/" rel="tag"><i class="fa fa-tag"></i> JSP</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/05/02/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%A4%8D%E4%B9%A0/" rel="prev" title="机器学习复习">
+      <i class="fa fa-chevron-left"></i> 机器学习复习
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="SOHUCS"></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="nav-number">1.</span> <span class="nav-text">JSP快速入门</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP%E5%8E%9F%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">JSP原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP%E8%84%9A%E6%9C%AC"><span class="nav-number">3.</span> <span class="nav-text">JSP脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EL%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">4.</span> <span class="nav-text">EL表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSTL%E6%A0%87%E7%AD%BE"><span class="nav-number">5.</span> <span class="nav-text">JSTL标签</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#if%E6%A0%87%E7%AD%BE"><span class="nav-number">5.1.</span> <span class="nav-text">if标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#forEach%E6%A0%87%E7%AD%BE"><span class="nav-number">5.2.</span> <span class="nav-text">forEach标签</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MVC%E6%A8%A1%E5%BC%8F%E5%92%8C%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84"><span class="nav-number">6.</span> <span class="nav-text">MVC模式和三层架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MVC%E6%A8%A1%E5%BC%8F"><span class="nav-number">6.1.</span> <span class="nav-text">MVC模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84"><span class="nav-number">6.2.</span> <span class="nav-text">三层架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MVC%E6%A8%A1%E5%BC%8F%E5%92%8C%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84-1"><span class="nav-number">6.3.</span> <span class="nav-text">MVC模式和三层架构</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="君不见"
+      src="/images/tsy.png">
+  <p class="site-author-name" itemprop="name">君不见</p>
+  <div class="site-description" itemprop="description">君不见，黄河之水天上来，奔流到海不复回。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/godx06" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godx06" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/3451246424@qq.com" title="E-Mail → 3451246424@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/7655616259/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;7655616259&#x2F;profile?rightmod&#x3D;1&amp;wvr&#x3D;6&amp;mod&#x3D;personinfo&amp;is_all&#x3D;1" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/m0_61465701?spm=1018.2226.3001.5343" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;m0_61465701?spm&#x3D;1018.2226.3001.5343" rel="noopener" target="_blank"><i class="fab fa-skype fa-fw"></i>CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://leetcode.cn/" title="https:&#x2F;&#x2F;leetcode.cn&#x2F;" rel="noopener" target="_blank">力扣</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.nowcoder.com/" title="https:&#x2F;&#x2F;www.nowcoder.com&#x2F;" rel="noopener" target="_blank">牛客</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+      <div id="music163player">
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=8029840379&auto=0&height=430">
+        </iframe>
+      </div>
+      
+    </div>
+
+
+  </aside>
+
+    
+
+  <div id="sidebar-dimmer"></div>
+
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">君不见</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+  <script data-pjax>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  <script src="//code.tidio.co/qkwnepnheqrn9usrfqkth95hu196bfin.js"></script>
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+  <script>
+  NexT.utils.loadComments(document.querySelector('#SOHUCS'), () => {
+    var appid = 'cyw4nNoc5';
+    var conf = '00d96ca2de6f5fc1a13903b7caf0a878';
+    var width = window.innerWidth || document.documentElement.clientWidth;
+    if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>');
+    } else {
+      var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})});
+    }
+  });
+  </script>
+  <script src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+
+    </div>
+
+
+
+
+</body>
+</html>
