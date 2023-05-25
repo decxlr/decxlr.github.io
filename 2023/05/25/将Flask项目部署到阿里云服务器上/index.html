@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <!--自定义看板娘-->
+  <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"/>
+
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/dragon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/dragon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="baidu-site-verification" content="6EMwG3w0uT">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-center-circle.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"decxlr.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":300,"display":"post","padding":5,"offset":5,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="记录我的一次将flask项目部署到阿里云服务器上的经历，我的阿里云服务器操作系统是Ubuntu 20.04 64位">
+<meta property="og:type" content="article">
+<meta property="og:title" content="将Flask项目部署到阿里云服务器上">
+<meta property="og:url" content="https://decxlr.github.io/2023/05/25/%E5%B0%86Flask%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A/index.html">
+<meta property="og:site_name" content="君不见の博客">
+<meta property="og:description" content="记录我的一次将flask项目部署到阿里云服务器上的经历，我的阿里云服务器操作系统是Ubuntu 20.04 64位">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-05-25T05:39:26.000Z">
+<meta property="article:modified_time" content="2023-05-25T05:44:59.478Z">
+<meta property="article:author" content="君不见">
+<meta property="article:tag" content="Flask">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://decxlr.github.io/2023/05/25/%E5%B0%86Flask%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>将Flask项目部署到阿里云服务器上 | 君不见の博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  
+<link rel="alternate" href="/atom.xml" title="君不见の博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script type="text/javascript" src="/js/dytitle.js"></script>
+
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">君不见の博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录生活中的点点滴滴</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">18</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">9</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">37</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://decxlr.github.io/2023/05/25/%E5%B0%86Flask%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/tsy.png">
+      <meta itemprop="name" content="君不见">
+      <meta itemprop="description" content="君不见，黄河之水天上来，奔流到海不复回。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="君不见の博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          将Flask项目部署到阿里云服务器上
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-05-25 13:39:26 / 修改时间：13:44:59" itemprop="dateCreated datePublished" datetime="2023-05-25T13:39:26+08:00">2023-05-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2023/05/25/%E5%B0%86Flask%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A/#SOHUCS" itemprop="discussionUrl">
+        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2023/05/25/将Flask项目部署到阿里云服务器上/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>记录我的一次将flask项目部署到阿里云服务器上的经历，我的阿里云服务器操作系统是<strong>Ubuntu 20.04 64位</strong> </p>
+<h2 id="将本地项目部署到远程仓库"><a href="#将本地项目部署到远程仓库" class="headerlink" title="将本地项目部署到远程仓库"></a>将本地项目部署到远程仓库</h2><p>首先将自己的本地项目部署到远程仓库，如：gitee、github，便于从服务器上获取项目。</p>
+<p>我的start.py:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"># 从flask这个包中导入Flask类</span><br><span class="line">import pandas as pd</span><br><span class="line">from flask import Flask, render_template, request, jsonify</span><br><span class="line"></span><br><span class="line"># from predict import main</span><br><span class="line"></span><br><span class="line"># 使用Flask类创建一个app对象</span><br><span class="line"># __name__:代表当前app.py这个模块</span><br><span class="line"># 1.以后出现bug，可以帮助快速定位</span><br><span class="line"># 2.对于寻找模板文件，有一个相对路径</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"># 创建一个路由和视图函数的映射</span><br><span class="line">@app.route(&#x27;/&#x27;, methods=[&#x27;GET&#x27;, &#x27;POST&#x27;])</span><br><span class="line">def main_page():</span><br><span class="line"></span><br><span class="line">    return render_template(&quot;Hello&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@app.route(&#x27;/getdata&#x27;, methods=[&#x27;GET&#x27;, &#x27;POST&#x27;])</span><br><span class="line">def getdata():</span><br><span class="line">    # alldatas = main()</span><br><span class="line">    option = &quot;&quot;</span><br><span class="line">    alldatas = [&#123;&#125;]</span><br><span class="line"></span><br><span class="line">    for i in range(1, 11):</span><br><span class="line">        data = &#123;</span><br><span class="line">            &quot;calories&quot;: [i, &quot;python&quot;, i],</span><br><span class="line">            &quot;duration&quot;: [&quot;ajax&quot;, i, &quot;java&quot;]</span><br><span class="line">        &#125;</span><br><span class="line">        alldatas.append(data)</span><br><span class="line"></span><br><span class="line">    if request.method == &#x27;POST&#x27;:</span><br><span class="line">        option = request.form.get(&#x27;options&#x27;)</span><br><span class="line">    print(&quot;getdata,option:&quot;, option)</span><br><span class="line"></span><br><span class="line">    return render_template(html,alldata=alldatas[0])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    app.run(debug=True,host=&quot;0.0.0.0&quot;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意配置host&#x3D;”0.0.0.0”</strong></p>
+<h2 id="更换操作系统"><a href="#更换操作系统" class="headerlink" title="更换操作系统"></a>更换操作系统</h2><ol>
+<li>进入ECS实例列表页面。<ol>
+<li>登录<a target="_blank" rel="noopener" href="https://ecs.console.aliyun.com/">ECS管理控制台</a>。</li>
+<li>在左侧导航栏，选择实例与镜像 &gt; 实例。</li>
+<li>在顶部菜单栏处，选择目标ECS实例所在地域。</li>
+</ol>
+</li>
+<li>找到目标实例，在操作列找到 更换操作系统。</li>
+<li>在更换操作系统对话框，选中更换系统盘。</li>
+<li>仔细阅读更换操作系统注意事项并选中我已知晓以上风险，然后单击继续更换操作系统。</li>
+<li>在更换操作系统页面，配置新操作系统的相关设置。</li>
+</ol>
+<p>在配置新操作系统的时候选择自定义密码，设置好自己的密码。</p>
+<h2 id="添加安全组"><a href="#添加安全组" class="headerlink" title="添加安全组"></a>添加安全组</h2><p>添加5000端口，添加80端口，有的默认已经添加80，但是没添加的要添加。</p>
+<p>进入ECS实例列表页面。</p>
+<ol>
+<li><p>登录<a target="_blank" rel="noopener" href="https://ecs.console.aliyun.com/">ECS管理控制台</a>。</p>
+</li>
+<li><p>在左侧导航栏，选择网络与安全 &gt; 安全组。</p>
+</li>
+<li><p>在操作中选择配置规则。</p>
+</li>
+<li><p>添加入方向访问规则</p>
+<table>
+<thead>
+<tr>
+<th>授权策略</th>
+<th>优先级</th>
+<th>协议类型</th>
+<th>端口范围</th>
+<th>授权对象</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>允许</td>
+<td>1</td>
+<td>自定义 TCP</td>
+<td>目的:80&#x2F;80</td>
+<td>源:0.0.0.0&#x2F;0</td>
+</tr>
+<tr>
+<td>允许</td>
+<td>1</td>
+<td>自定义 TCP</td>
+<td>目的:5000&#x2F;5000</td>
+<td>源:0.0.0.0&#x2F;0</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<h2 id="通过PuTTY远程连接云服务器"><a href="#通过PuTTY远程连接云服务器" class="headerlink" title="通过PuTTY远程连接云服务器"></a>通过PuTTY远程连接云服务器</h2><p><a target="_blank" rel="noopener" href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">puTTY下载地址</a> </p>
+<ol>
+<li><p>在Host Name中输入自己服务器的公网IP地址，Port输入22</p>
+</li>
+<li><p>Connection type选择SSH</p>
+</li>
+<li><p>可以在Saved Sessions下输入名称然后点击Save保存会话，便于以后连接</p>
+</li>
+<li><p>点击Open进行连接</p>
+<p>首次连接时会出现PuTTY Security Alert警告，表示PuTTY无法确认远程服务器的真实性，只能提供服务器的公钥指纹，选择accept。</p>
+</li>
+<li><p>输入创建实例时选择的用户名（root或ecs-user），然后按回车键。</p>
+</li>
+<li><p>输入自己设置的密码（登录Linux实例时界面不会显示密码的输入过程 ）</p>
+</li>
+</ol>
+<p>如果无法使用密码登录，看下面</p>
+<h2 id="使用密码无法登录Linux云服务器ECS处理"><a href="#使用密码无法登录Linux云服务器ECS处理" class="headerlink" title="使用密码无法登录Linux云服务器ECS处理"></a>使用密码无法登录Linux云服务器ECS处理</h2><p>该问题是由于SSH服务对应配置文件<code>/etc/ssh/sshd_config</code>中的参数<code>PasswordAuthentication</code>被设置为<code>no</code>，表示禁止以密码方式登录ECS实例，修改为<code>yes</code>即可。</p>
+<ol>
+<li><p>以VNC方式登录ECS实例。 </p>
+<p>在实例中选择远程连接，展开其他登录方式，选择通过VNC远程连接，点击立即登录。</p>
+<blockquote>
+<p>如果您是第一次远程连接该实例或忘记密码，请使用‘重置VNC密码’来设置新密码。 </p>
+</blockquote>
+</li>
+<li><p>查看<code>/etc/ssh/sshd_config</code>的参数<code>PasswordAuthentication</code>配置 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
+
+<p><code>PasswordAuthentication</code>参数设置为<code>no</code>，表示禁止以密码方式登录，需要修改为<code>yes</code> </p>
+</li>
+<li><p>修改<code>PasswordAuthentication</code>的参数为<code>yes</code> </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
+
+<p>按<code>i</code>键开始修改。</p>
+<p>修改完成后，按<code>ESC</code>键退出，输入<code>:wq</code>保存此修改。</p>
+</li>
+<li><p>重启SSHD服务 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service sshd restart</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="Flask项目部署"><a href="#Flask项目部署" class="headerlink" title="Flask项目部署"></a>Flask项目部署</h2><p>更新安装源</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h3><p>我部署时没有用到。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install nginx</span><br></pre></td></tr></table></figure>
+
+<h3 id="更新pip"><a href="#更新pip" class="headerlink" title="更新pip"></a>更新pip</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install --upgrade pip</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建虚拟环境"><a href="#创建虚拟环境" class="headerlink" title="创建虚拟环境"></a>创建虚拟环境</h3><p><strong>安装虚拟环境管理包</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install virtualenvwrapper</span><br></pre></td></tr></table></figure>
+
+<p>我安装时出现了问题：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">Looking in indexes: http://mirrors.cloud.aliyuncs.com/pypi/simple/</span><br><span class="line">Collecting virtualenvwrapper</span><br><span class="line">  Downloading http://mirrors.cloud.aliyuncs.com/pypi/packages/c1/6b/2f05d73b2d2f2410b48b90d3783a0034c26afa534a4a95ad5f1178d61191/virtualenvwrapper-4.8.4.tar.gz (334 kB)</span><br><span class="line">     |████████████████████████████████| 334 kB 63.2 MB/s</span><br><span class="line">    ERROR: Command errored out with exit status 1:</span><br><span class="line">     command: /usr/bin/python3 -c &#x27;import sys, setuptools, tokenize; sys.argv[0] = &#x27;&quot;&#x27;&quot;&#x27;/tmp/pip-install-wzn8c2tb/virtualenvwrapper/setup.py&#x27;&quot;&#x27;&quot;&#x27;; __file__=&#x27;&quot;&#x27;&quot;&#x27;/tmp/pip-install-wzn8c2tb/virtualenvwrapper/setup.py&#x27;&quot;&#x27;&quot;&#x27;;f=getattr(tokenize, &#x27;&quot;&#x27;&quot;&#x27;open&#x27;&quot;&#x27;&quot;&#x27;, open)(__file__);code=f.read().replace(&#x27;&quot;&#x27;&quot;&#x27;\r\n&#x27;&quot;&#x27;&quot;&#x27;, &#x27;&quot;&#x27;&quot;&#x27;\n&#x27;&quot;&#x27;&quot;&#x27;);f.close();exec(compile(code, __file__, &#x27;&quot;&#x27;&quot;&#x27;exec&#x27;&quot;&#x27;&quot;&#x27;))&#x27; egg_info --egg-base /tmp/pip-install-wzn8c2tb/virtualenvwrapper/pip-egg-info</span><br><span class="line">         cwd: /tmp/pip-install-wzn8c2tb/virtualenvwrapper/</span><br><span class="line">    Complete output (33 lines):</span><br><span class="line">    WARNING: The repository located at mirrors.cloud.aliyuncs.com is not a trusted or secure host and is being ignored. If this repository is available via HTTPS we recommend you use HTTPS instead, otherwise you may silence this warning and allow it anyway with &#x27;--trusted-host mirrors.cloud.aliyuncs.com&#x27;.</span><br><span class="line">    ERROR: Could not find a version that satisfies the requirement pbr (from versions: none)</span><br><span class="line">    ERROR: No matching distribution found for pbr</span><br><span class="line">    Traceback (most recent call last):</span><br><span class="line">      File &quot;/usr/lib/python3/dist-packages/setuptools/installer.py&quot;, line 128, in fetch_build_egg</span><br><span class="line">        subprocess.check_call(cmd)</span><br><span class="line">      File &quot;/usr/lib/python3.8/subprocess.py&quot;, line 364, in check_call</span><br><span class="line">        raise CalledProcessError(retcode, cmd)</span><br><span class="line">    subprocess.CalledProcessError: Command &#x27;[&#x27;/usr/bin/python3&#x27;, &#x27;-m&#x27;, &#x27;pip&#x27;, &#x27;--disable-pip-version-check&#x27;, &#x27;wheel&#x27;, &#x27;--no-deps&#x27;, &#x27;-w&#x27;, &#x27;/tmp/tmpp94qw9cj&#x27;, &#x27;--quiet&#x27;, &#x27;--index-url&#x27;, &#x27;http://mirrors.cloud.aliyuncs.com/pypi/simple/&#x27;, &#x27;pbr&#x27;]&#x27; returned non-zero exit status 1.</span><br><span class="line"></span><br><span class="line">    During handling of the above exception, another exception occurred:</span><br><span class="line"></span><br><span class="line">    Traceback (most recent call last):</span><br><span class="line">      File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">      File &quot;/tmp/pip-install-wzn8c2tb/virtualenvwrapper/setup.py&quot;, line 5, in &lt;module&gt;</span><br><span class="line">        setup(</span><br><span class="line">      File &quot;/usr/lib/python3/dist-packages/setuptools/__init__.py&quot;, line 143, in setup</span><br><span class="line">        _install_setup_requires(attrs)</span><br><span class="line">      File &quot;/usr/lib/python3/dist-packages/setuptools/__init__.py&quot;, line 138, in _install_setup_requires</span><br><span class="line">        dist.fetch_build_eggs(dist.setup_requires)</span><br><span class="line">      File &quot;/usr/lib/python3/dist-packages/setuptools/dist.py&quot;, line 718, in fetch_build_eggs</span><br><span class="line">        resolved_dists = pkg_resources.working_set.resolve(</span><br><span class="line">      File &quot;/usr/lib/python3/dist-packages/pkg_resources/__init__.py&quot;, line 781, in resolve</span><br><span class="line">        dist = best[req.key] = env.best_match(</span><br><span class="line">      File &quot;/usr/lib/python3/dist-packages/pkg_resources/__init__.py&quot;, line 1066, in best_match</span><br><span class="line">        return self.obtain(req, installer)</span><br><span class="line">      File &quot;/usr/lib/python3/dist-packages/pkg_resources/__init__.py&quot;, line 1078, in obtain</span><br><span class="line">        return installer(requirement)</span><br><span class="line">      File &quot;/usr/lib/python3/dist-packages/setuptools/dist.py&quot;, line 777, in fetch_build_egg</span><br><span class="line">        return fetch_build_egg(self, req)</span><br><span class="line">      File &quot;/usr/lib/python3/dist-packages/setuptools/installer.py&quot;, line 130, in fetch_build_egg</span><br><span class="line">        raise DistutilsError(str(e))</span><br><span class="line">    distutils.errors.DistutilsError: Command &#x27;[&#x27;/usr/bin/python3&#x27;, &#x27;-m&#x27;, &#x27;pip&#x27;, &#x27;--disable-pip-version-check&#x27;, &#x27;wheel&#x27;, &#x27;--no-deps&#x27;, &#x27;-w&#x27;, &#x27;/tmp/tmpp94qw9cj&#x27;, &#x27;--quiet&#x27;, &#x27;--index-url&#x27;, &#x27;http://mirrors.cloud.aliyuncs.com/pypi/simple/&#x27;, &#x27;pbr&#x27;]&#x27; returned non-zero exit status 1.</span><br><span class="line">    ----------------------------------------</span><br><span class="line">ERROR: Command errored out with exit status 1: python setup.py egg_info Check the logs for full command output.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>然后输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pbr</span><br></pre></td></tr></table></figure>
+
+<p>之后就能正常安装了。</p>
+<p><strong>虚拟环境配置</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export WORKON_HOME=$HOME/.virtualenvs</span><br><span class="line">VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3</span><br><span class="line">source /usr/local/bin/virtualenvwrapper.sh</span><br></pre></td></tr></table></figure>
+
+<p>执行命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<p><strong>创建虚拟环境</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkvirtualenv --python=/usr/bin/python3 test_env</span><br></pre></td></tr></table></figure>
+
+<p><code>test_env</code>为环境名称。</p>
+<p>可以通过</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">workon test_env</span><br></pre></td></tr></table></figure>
+
+<p>进入虚拟环境。</p>
+<h3 id="将远程仓库项目拉取到服务器"><a href="#将远程仓库项目拉取到服务器" class="headerlink" title="将远程仓库项目拉取到服务器"></a>将远程仓库项目拉取到服务器</h3><p><strong>安装git</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install git</span><br></pre></td></tr></table></figure>
+
+<p>在srv目录下创建项目文件夹</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /srv</span><br><span class="line">ls -al // 查看目录</span><br><span class="line">mkdir test // 创建文件夹</span><br><span class="line">cd test  // 进入文件夹</span><br></pre></td></tr></table></figure>
+
+<p><strong>拉取项目</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git init  // 初始化为仓库</span><br><span class="line">git remote add origin [远程仓库地址，如：https://gitee.com/xxx/xxx.git]</span><br><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
+
+<p>然后输入用户名，输入密码</p>
+<p>然后安装好相应的库，如flask等。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install flask</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装uwsgi"><a href="#安装uwsgi" class="headerlink" title="安装uwsgi"></a>安装uwsgi</h3><p>安装uwsgi</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install uwsgi</span><br></pre></td></tr></table></figure>
+
+<p>配置uwsgi </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi uwsgi.ini</span><br></pre></td></tr></table></figure>
+
+<p>添加内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">[uwsgi]</span><br><span class="line">  </span><br><span class="line"># 项目的路径</span><br><span class="line">chdir           = /srv/test/</span><br><span class="line"># Flask的uwsgi文件</span><br><span class="line">wsgi-file       = /srv/test/start.py</span><br><span class="line"># 回调的app对象</span><br><span class="line">callable        = app</span><br><span class="line"># Python虚拟环境的路径</span><br><span class="line">home            = /root/.virtualenvs/test_env</span><br><span class="line"></span><br><span class="line"># 进程相关的设置</span><br><span class="line"># 主进程</span><br><span class="line">master          = true</span><br><span class="line"># 最大数量的工作进程</span><br><span class="line">processes       = 10</span><br><span class="line"></span><br><span class="line">http            = :5000 监听5000端口（或监听socket文件，与nginx配合）</span><br><span class="line"></span><br><span class="line"># socket          = /srv/test/test.sock</span><br><span class="line"></span><br><span class="line"># 设置socket的权限</span><br><span class="line"># chmod-socket    = 666</span><br><span class="line"># 退出的时候是否清理环境</span><br><span class="line"># vacuum          = true</span><br></pre></td></tr></table></figure>
+
+<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><p>输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uwsgi --ini uwsgi.ini</span><br></pre></td></tr></table></figure>
+
+<p>回车，看到以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">[uWSGI] getting INI configuration from uwsgi.ini</span><br><span class="line">*** Starting uWSGI 2.0.21 (64bit) on [Thu May 25 12:21:54 2023] ***</span><br><span class="line">compiled with version: 9.4.0 on 25 May 2023 02:50:57</span><br><span class="line">os: Linux-5.4.0-147-generic #164-Ubuntu SMP Tue Mar 21 14:23:17 UTC 2023</span><br><span class="line">nodename: iZf8zejhe9y0gfgh05lo35Z</span><br><span class="line">machine: x86_64</span><br><span class="line">clock source: unix</span><br><span class="line">detected number of CPU cores: 2</span><br><span class="line">current working directory: /srv/test</span><br><span class="line">detected binary path: /root/.virtualenvs/test_env/bin/uwsgi</span><br><span class="line">!!! no internal routing support, rebuild with pcre support !!!</span><br><span class="line">uWSGI running as root, you can use --uid/--gid/--chroot options</span><br><span class="line">*** WARNING: you are running uWSGI as root !!! (use the --uid flag) ***</span><br><span class="line">chdir() to /srv/test/</span><br><span class="line">your processes number limit is 7280</span><br><span class="line">your memory page size is 4096 bytes</span><br><span class="line">detected max file descriptor number: 65535</span><br><span class="line">lock engine: pthread robust mutexes</span><br><span class="line">thunder lock: disabled (you can enable it with --thunder-lock)</span><br><span class="line">uWSGI http bound on :5000 监听5000端口（或监听socket文件，与nginx配合） fd 4</span><br><span class="line">uwsgi socket 0 bound to TCP address 127.0.0.1:41227 (port auto-assigned) fd 3</span><br><span class="line">uWSGI running as root, you can use --uid/--gid/--chroot options</span><br><span class="line">*** WARNING: you are running uWSGI as root !!! (use the --uid flag) ***</span><br><span class="line">Python version: 3.8.10 (default, Mar 13 2023, 10:26:41)  [GCC 9.4.0]</span><br><span class="line">PEP 405 virtualenv detected: /root/.virtualenvs/test_env</span><br><span class="line">Set PythonHome to /root/.virtualenvs/test_env</span><br><span class="line">*** Python threads support is disabled. You can enable it with --enable-threads ***</span><br><span class="line">Python main interpreter initialized at 0x560e2ae5b770</span><br><span class="line">uWSGI running as root, you can use --uid/--gid/--chroot options</span><br><span class="line">*** WARNING: you are running uWSGI as root !!! (use the --uid flag) ***</span><br><span class="line">your server socket listen backlog is limited to 100 connections</span><br><span class="line">your mercy for graceful operations on workers is 60 seconds</span><br><span class="line">mapped 801944 bytes (783 KB) for 10 cores</span><br><span class="line">*** Operational MODE: preforking ***</span><br><span class="line">WSGI app 0 (mountpoint=&#x27;&#x27;) ready in 0 seconds on interpreter 0x560e2ae5b770 pid: 4801 (default app)</span><br><span class="line">uWSGI running as root, you can use --uid/--gid/--chroot options</span><br><span class="line">*** WARNING: you are running uWSGI as root !!! (use the --uid flag) ***</span><br><span class="line">*** uWSGI is running in multiple interpreter mode ***</span><br><span class="line">spawned uWSGI master process (pid: 4801)</span><br><span class="line">spawned uWSGI worker 1 (pid: 4805, cores: 1)</span><br><span class="line">spawned uWSGI worker 2 (pid: 4806, cores: 1)</span><br><span class="line">spawned uWSGI worker 3 (pid: 4807, cores: 1)</span><br><span class="line">spawned uWSGI worker 4 (pid: 4808, cores: 1)</span><br><span class="line">spawned uWSGI worker 5 (pid: 4809, cores: 1)</span><br><span class="line">spawned uWSGI worker 6 (pid: 4810, cores: 1)</span><br><span class="line">spawned uWSGI worker 7 (pid: 4811, cores: 1)</span><br><span class="line">spawned uWSGI worker 8 (pid: 4812, cores: 1)</span><br><span class="line">spawned uWSGI worker 9 (pid: 4813, cores: 1)</span><br><span class="line">spawned uWSGI worker 10 (pid: 4814, cores: 1)</span><br><span class="line">spawned uWSGI http 1 (pid: 4815)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>访问网址</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://[公网地址]:5000</span><br></pre></td></tr></table></figure>
+
+<p>即可看到我的网页了。</p>
+<h2 id="用到了nginx部署-没成功"><a href="#用到了nginx部署-没成功" class="headerlink" title="用到了nginx部署(没成功)"></a>用到了nginx部署(没成功)</h2><h3 id="配置uwsgi"><a href="#配置uwsgi" class="headerlink" title="配置uwsgi"></a>配置uwsgi</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi uwsgi</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">[uwsgi]</span><br><span class="line">  </span><br><span class="line"># 项目的路径</span><br><span class="line">chdir           = /srv/test/</span><br><span class="line"># Flask的uwsgi文件</span><br><span class="line">wsgi-file       = /srv/test/start.py</span><br><span class="line"># 回调的app对象</span><br><span class="line">callable        = app</span><br><span class="line"># Python虚拟环境的路径</span><br><span class="line">home            = /root/.virtualenvs/test_env</span><br><span class="line"></span><br><span class="line"># 进程相关的设置</span><br><span class="line"># 主进程</span><br><span class="line">master          = true</span><br><span class="line"># 最大数量的工作进程</span><br><span class="line">processes       = 10</span><br><span class="line"></span><br><span class="line"># http            = :5000 监听5000端口（或监听socket文件，与nginx配合）</span><br><span class="line"></span><br><span class="line">socket          = /srv/test/test.sock</span><br><span class="line"></span><br><span class="line"># 设置socket的权限</span><br><span class="line">chmod-socket    = 666</span><br><span class="line"># 退出的时候是否清理环境</span><br><span class="line">vacuum          = true</span><br></pre></td></tr></table></figure>
+
+<h3 id="nginx配置"><a href="#nginx配置" class="headerlink" title="nginx配置"></a>nginx配置</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/nginx/sites-available/default</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">upstream test&#123;</span><br><span class="line">    server unix:///srv/test/test.sock;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 配置服务器</span><br><span class="line">server &#123;</span><br><span class="line">    # 监听的端口号</span><br><span class="line">    listen      80;</span><br><span class="line">    # 域名</span><br><span class="line">    server_name 47.120.41.194;</span><br><span class="line">    charset     utf-8;</span><br><span class="line"></span><br><span class="line">    # 最大的文件上传尺寸</span><br><span class="line">    client_max_body_size 75M;</span><br><span class="line"></span><br><span class="line">    # 静态文件访问的url</span><br><span class="line">    location /static &#123;</span><br><span class="line">        # 静态文件地址</span><br><span class="line">        alias /srv/test/static; </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    # 最后，发送所有非静态文件请求到uwsgi服务器</span><br><span class="line">    location / &#123;</span><br><span class="line">        uwsgi_pass  test;</span><br><span class="line">        # uwsgi_params文件地址</span><br><span class="line">        include     /etc/nginx/uwsgi_params;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">upstream [项目名称]&#123;</span><br><span class="line">    server unix:///srv/[项目名称]/[项目名称].sock;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 配置服务器</span><br><span class="line">server &#123;</span><br><span class="line">    # 监听的端口号</span><br><span class="line">    listen      80;</span><br><span class="line">    # 域名</span><br><span class="line">    server_name 47.117.122.52;</span><br><span class="line">    charset     utf-8;</span><br><span class="line"></span><br><span class="line">    # 最大的文件上传尺寸</span><br><span class="line">    client_max_body_size 75M;</span><br><span class="line"></span><br><span class="line">    # 静态文件访问的url</span><br><span class="line">    location /static &#123;</span><br><span class="line">        # 静态文件地址</span><br><span class="line">        alias /srv/[项目名称]/static; </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    # 最后，发送所有非静态文件请求到uwsgi服务器</span><br><span class="line">    location / &#123;</span><br><span class="line">        uwsgi_pass  [项目名称];</span><br><span class="line">        # uwsgi_params文件地址</span><br><span class="line">        include     /etc/nginx/uwsgi_params;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试nginx</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service nginx configtest</span><br></pre></td></tr></table></figure>
+
+<p>重启nginx</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service nginx restart</span><br></pre></td></tr></table></figure>
+
+<p>nginx 常用命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">启动：service nginx start</span><br><span class="line">关闭：service nginx stop</span><br><span class="line">重启：service nginx restart</span><br><span class="line">测试配置文件：service nginx configtest</span><br></pre></td></tr></table></figure>
+
+<h3 id="启动运行uwsgi"><a href="#启动运行uwsgi" class="headerlink" title="启动运行uwsgi"></a>启动运行uwsgi</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uwsgi --ini uwsgi.ini</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用supervisor管理uwsgi进程"><a href="#使用supervisor管理uwsgi进程" class="headerlink" title="使用supervisor管理uwsgi进程"></a>使用supervisor管理uwsgi进程</h2><p>supervisor.conf是一个Supervisor进程管理器的配置文件，用于指定要监控和管理的进程以及它们的行为。这个文件通常需要在安装Supervisor后手动创建。 </p>
+<h3 id="安装supervisor"><a href="#安装supervisor" class="headerlink" title="安装supervisor"></a>安装supervisor</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install supervisor</span><br></pre></td></tr></table></figure>
+
+<p>配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /srv/etc/[项目名称]/supervisor.conf</span><br></pre></td></tr></table></figure>
+
+<p>我的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /srv/test/supervisor.conf</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"># supervisor的程序名字</span><br><span class="line">[program:项目名称]</span><br><span class="line"># supervisor执行的命令</span><br><span class="line">command=uwsgi --ini uwsgi.ini</span><br><span class="line"># 项目的目录</span><br><span class="line">directory = /srv/[项目名称]</span><br><span class="line"># 开始的时候等待多少秒</span><br><span class="line">startsecs=0</span><br><span class="line"># 停止的时候等待多少秒</span><br><span class="line">stopwaitsecs=0</span><br><span class="line"># 自动开始</span><br><span class="line">autostart=true</span><br><span class="line"># 程序挂了后自动重启</span><br><span class="line">autorestart=true</span><br><span class="line"># 输出的log文件</span><br><span class="line">stdout_logfile=/var/log/[项目名称]_supervisord.log</span><br><span class="line"># 输出的错误文件</span><br><span class="line">stderr_logfile=/var/log/[项目名称]_supervisord.err</span><br><span class="line"></span><br><span class="line">[supervisord]</span><br><span class="line"># log的级别</span><br><span class="line">loglevel=debug</span><br><span class="line"></span><br><span class="line">[inet_http_server]</span><br><span class="line"># supervisor的服务器</span><br><span class="line">port = :9001</span><br><span class="line"># 用户名和密码</span><br><span class="line">username = admin</span><br><span class="line">password = 123456</span><br><span class="line"></span><br><span class="line"># 使用supervisorctl的配置</span><br><span class="line">[supervisorctl]</span><br><span class="line"># 使用supervisorctl登录的地址和端口号</span><br><span class="line">serverurl = http://127.0.0.1:9001</span><br><span class="line"></span><br><span class="line"># 登录supervisorctl的用户名和密码</span><br><span class="line">username = admin</span><br><span class="line">password = 123456</span><br><span class="line"></span><br><span class="line">[rpcinterface:supervisor]</span><br><span class="line">supervisor.rpcinterface_factory = supervisor.rpcinterface:make_main_rpcinterface</span><br></pre></td></tr></table></figure>
+<p>我的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"># upervisor的程序名字</span><br><span class="line">[program:test]</span><br><span class="line"># supervisor执行的命令</span><br><span class="line">command=uwsgi --ini uwsgi.ini</span><br><span class="line"># 项目的目录</span><br><span class="line">directory = /srv/test</span><br><span class="line"># 开始的时候等待多少秒</span><br><span class="line">startsecs=0</span><br><span class="line"># 停止的时候等待多少秒</span><br><span class="line">stopwaitsecs=0</span><br><span class="line"># 自动开始</span><br><span class="line">autostart=true</span><br><span class="line"># 程序挂了后自动重启</span><br><span class="line">autorestart=true</span><br><span class="line"># 输出的log文件</span><br><span class="line">stdout_logfile=/var/log/test_supervisord.log</span><br><span class="line"># 输出的错误文件</span><br><span class="line">stderr_logfile=/var/log/test_supervisord.err</span><br><span class="line"></span><br><span class="line">[supervisord]</span><br><span class="line"># log的级别</span><br><span class="line">loglevel=debug</span><br><span class="line"></span><br><span class="line">[inet_http_server]</span><br><span class="line"># supervisor的服务器</span><br><span class="line">port = :9001</span><br><span class="line"># 用户名和密码</span><br><span class="line">username = admin</span><br><span class="line">password = 123456</span><br><span class="line"></span><br><span class="line"># 使用supervisorctl的配置</span><br><span class="line">[supervisorctl]</span><br><span class="line"># 使用supervisorctl登录的地址和端口号</span><br><span class="line">serverurl = http://127.0.0.1:9001</span><br><span class="line"></span><br><span class="line"># 登录supervisorctl的用户名和密码</span><br><span class="line">username = admin</span><br><span class="line">password = 123456</span><br><span class="line"></span><br><span class="line">[rpcinterface:supervisor]</span><br><span class="line">supervisor.rpcinterface_factory = supervisor.rpcinterface:make_main_rpcinterface</span><br></pre></td></tr></table></figure>
+
+<h3 id="启动supervisor"><a href="#启动supervisor" class="headerlink" title="启动supervisor"></a>启动supervisor</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">supervisord -c supervisor.conf</span><br></pre></td></tr></table></figure>
+
+<h3 id="通过supervisor客户端查看进程"><a href="#通过supervisor客户端查看进程" class="headerlink" title="通过supervisor客户端查看进程"></a>通过supervisor客户端查看进程</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">supervisorctl -c supervisor.conf # 进入到管理控制台</span><br></pre></td></tr></table></figure>
+
+<h3 id="supervisor-常用命令"><a href="#supervisor-常用命令" class="headerlink" title="supervisor 常用命令"></a>supervisor 常用命令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">status # 查看状态</span><br><span class="line">start program_name #启动程序</span><br><span class="line">restart program_name #重新启动程序</span><br><span class="line">stop program_name # 关闭程序</span><br><span class="line">reload # 重新加载配置文件</span><br><span class="line">quit # 退出控制台</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/469713.html">使用密码无法登录Linux云服务器ECS该如何处理？ (aliyun.com)</a> </p>
+<p><a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/25434.htm?userCode=r3yteowb">通过密码认证登录Linux实例 (aliyun.com)</a> </p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/gmbjzg/gzh_xiaoyaobiancheng/blob/master/flask%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2.md">flask项目部署.md · xyz&#x2F;gzh_xiaoyaobiancheng - 码云 - 开源中国 (gitee.com)</a> </p>
+</blockquote>
+
+    </div>
+
+       <div>
+        
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------本文到这里结束了，感谢您的阅读------</div>
+    
+</div>
+
+        
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div><您的支持将是我继续创作的动力！></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechat.png" alt="君不见 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="君不见 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>君不见
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://decxlr.github.io/2023/05/25/%E5%B0%86Flask%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A/" title="将Flask项目部署到阿里云服务器上">https://decxlr.github.io/2023/05/25/将Flask项目部署到阿里云服务器上/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+ 
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Flask/" rel="tag"><i class="fa fa-tag"></i> Flask</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/05/22/AJAX%E4%B8%8EJSON%E5%AD%A6%E4%B9%A0/" rel="prev" title="AJAX与JSON学习">
+      <i class="fa fa-chevron-left"></i> AJAX与JSON学习
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="SOHUCS"></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%86%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="nav-number">1.</span> <span class="nav-text">将本地项目部署到远程仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E6%8D%A2%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.</span> <span class="nav-text">更换操作系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E5%AE%89%E5%85%A8%E7%BB%84"><span class="nav-number">3.</span> <span class="nav-text">添加安全组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E8%BF%87PuTTY%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">4.</span> <span class="nav-text">通过PuTTY远程连接云服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%AF%86%E7%A0%81%E6%97%A0%E6%B3%95%E7%99%BB%E5%BD%95Linux%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8ECS%E5%A4%84%E7%90%86"><span class="nav-number">5.</span> <span class="nav-text">使用密码无法登录Linux云服务器ECS处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flask%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2"><span class="nav-number">6.</span> <span class="nav-text">Flask项目部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85nginx"><span class="nav-number">6.1.</span> <span class="nav-text">安装nginx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0pip"><span class="nav-number">6.2.</span> <span class="nav-text">更新pip</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83"><span class="nav-number">6.3.</span> <span class="nav-text">创建虚拟环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%86%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E6%8B%89%E5%8F%96%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">6.4.</span> <span class="nav-text">将远程仓库项目拉取到服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85uwsgi"><span class="nav-number">6.5.</span> <span class="nav-text">安装uwsgi</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C"><span class="nav-number">6.6.</span> <span class="nav-text">运行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E5%88%B0%E4%BA%86nginx%E9%83%A8%E7%BD%B2-%E6%B2%A1%E6%88%90%E5%8A%9F"><span class="nav-number">7.</span> <span class="nav-text">用到了nginx部署(没成功)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEuwsgi"><span class="nav-number">7.1.</span> <span class="nav-text">配置uwsgi</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx%E9%85%8D%E7%BD%AE"><span class="nav-number">7.2.</span> <span class="nav-text">nginx配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E8%BF%90%E8%A1%8Cuwsgi"><span class="nav-number">7.3.</span> <span class="nav-text">启动运行uwsgi</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8supervisor%E7%AE%A1%E7%90%86uwsgi%E8%BF%9B%E7%A8%8B"><span class="nav-number">8.</span> <span class="nav-text">使用supervisor管理uwsgi进程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85supervisor"><span class="nav-number">8.1.</span> <span class="nav-text">安装supervisor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8supervisor"><span class="nav-number">8.2.</span> <span class="nav-text">启动supervisor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E8%BF%87supervisor%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%9F%A5%E7%9C%8B%E8%BF%9B%E7%A8%8B"><span class="nav-number">8.3.</span> <span class="nav-text">通过supervisor客户端查看进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#supervisor-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">8.4.</span> <span class="nav-text">supervisor 常用命令</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="君不见"
+      src="/images/tsy.png">
+  <p class="site-author-name" itemprop="name">君不见</p>
+  <div class="site-description" itemprop="description">君不见，黄河之水天上来，奔流到海不复回。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">37</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/godx06" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godx06" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/3451246424@qq.com" title="E-Mail → 3451246424@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/7655616259/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;7655616259&#x2F;profile?rightmod&#x3D;1&amp;wvr&#x3D;6&amp;mod&#x3D;personinfo&amp;is_all&#x3D;1" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/m0_61465701?spm=1018.2226.3001.5343" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;m0_61465701?spm&#x3D;1018.2226.3001.5343" rel="noopener" target="_blank"><i class="fab fa-skype fa-fw"></i>CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://leetcode.cn/" title="https:&#x2F;&#x2F;leetcode.cn&#x2F;" rel="noopener" target="_blank">力扣</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.nowcoder.com/" title="https:&#x2F;&#x2F;www.nowcoder.com&#x2F;" rel="noopener" target="_blank">牛客</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+      <div id="music163player">
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=8029840379&auto=0&height=430">
+        </iframe>
+      </div>
+      
+    </div>
+
+
+  </aside>
+
+    
+
+  <div id="sidebar-dimmer"></div>
+
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">君不见</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+  <script data-pjax>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  <script src="//code.tidio.co/qkwnepnheqrn9usrfqkth95hu196bfin.js"></script>
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+  <script>
+  NexT.utils.loadComments(document.querySelector('#SOHUCS'), () => {
+    var appid = 'cyw4nNoc5';
+    var conf = '00d96ca2de6f5fc1a13903b7caf0a878';
+    var width = window.innerWidth || document.documentElement.clientWidth;
+    if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>');
+    } else {
+      var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})});
+    }
+  });
+  </script>
+  <script src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+
+    </div>
+
+
+
+
+</body>
+</html>
