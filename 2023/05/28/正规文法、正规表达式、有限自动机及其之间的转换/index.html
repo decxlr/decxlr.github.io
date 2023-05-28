@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <!--自定义看板娘-->
+  <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"/>
+
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/dragon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/dragon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="baidu-site-verification" content="6EMwG3w0uT">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-center-circle.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"decxlr.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":300,"display":"post","padding":5,"offset":5,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="The Equivalent Transforming among RG, RE and FA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="正规文法、正规表达式、有限自动机及其之间的转换">
+<meta property="og:url" content="https://decxlr.github.io/2023/05/28/%E6%AD%A3%E8%A7%84%E6%96%87%E6%B3%95%E3%80%81%E6%AD%A3%E8%A7%84%E8%A1%A8%E8%BE%BE%E5%BC%8F%E3%80%81%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%8F%8A%E5%85%B6%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2/index.html">
+<meta property="og:site_name" content="君不见の博客">
+<meta property="og:description" content="The Equivalent Transforming among RG, RE and FA">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEBc3454a789adfe7b82476173a29038882?method=download&shareKey=acda1fb492990ae9057b6417fe8b3807">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEB71861a227dae9a89a6fd1328a632322a?method=download&shareKey=a26098fd2b714e39125d490a90bba1fe">
+<meta property="og:image" content="https://decxlr.github.io/assets%5C1685251040516.png">
+<meta property="og:image" content="https://decxlr.github.io/assets%5C1685251117384.png">
+<meta property="og:image" content="https://decxlr.github.io/assets%5C1685251161521.png">
+<meta property="og:image" content="https://decxlr.github.io/assets%5C1685251233699.png">
+<meta property="og:image" content="https://decxlr.github.io/assets%5C1685251293109.png">
+<meta property="og:image" content="https://decxlr.github.io/assets%5C1685251366253.png">
+<meta property="og:image" content="https://decxlr.github.io/assets%5C1685251402316.png">
+<meta property="og:image" content="https://decxlr.github.io/assets%5C1685251668193.png">
+<meta property="og:image" content="https://decxlr.github.io/assets%5C1685251647570.png">
+<meta property="article:published_time" content="2023-05-28T07:24:31.000Z">
+<meta property="article:modified_time" content="2023-05-28T07:30:01.474Z">
+<meta property="article:author" content="君不见">
+<meta property="article:tag" content="FA">
+<meta property="article:tag" content="RG">
+<meta property="article:tag" content="RE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://note.youdao.com/yws/api/personal/file/WEBc3454a789adfe7b82476173a29038882?method=download&shareKey=acda1fb492990ae9057b6417fe8b3807">
+
+<link rel="canonical" href="https://decxlr.github.io/2023/05/28/%E6%AD%A3%E8%A7%84%E6%96%87%E6%B3%95%E3%80%81%E6%AD%A3%E8%A7%84%E8%A1%A8%E8%BE%BE%E5%BC%8F%E3%80%81%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%8F%8A%E5%85%B6%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>正规文法、正规表达式、有限自动机及其之间的转换 | 君不见の博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  
+<link rel="alternate" href="/atom.xml" title="君不见の博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script type="text/javascript" src="/js/dytitle.js"></script>
+
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">君不见の博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录生活中的点点滴滴</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">21</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">10</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">38</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://decxlr.github.io/2023/05/28/%E6%AD%A3%E8%A7%84%E6%96%87%E6%B3%95%E3%80%81%E6%AD%A3%E8%A7%84%E8%A1%A8%E8%BE%BE%E5%BC%8F%E3%80%81%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%8F%8A%E5%85%B6%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/tsy.png">
+      <meta itemprop="name" content="君不见">
+      <meta itemprop="description" content="君不见，黄河之水天上来，奔流到海不复回。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="君不见の博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          正规文法、正规表达式、有限自动机及其之间的转换
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-05-28 15:24:31 / 修改时间：15:30:01" itemprop="dateCreated datePublished" datetime="2023-05-28T15:24:31+08:00">2023-05-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">编译原理</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2023/05/28/%E6%AD%A3%E8%A7%84%E6%96%87%E6%B3%95%E3%80%81%E6%AD%A3%E8%A7%84%E8%A1%A8%E8%BE%BE%E5%BC%8F%E3%80%81%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%8F%8A%E5%85%B6%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2/#SOHUCS" itemprop="discussionUrl">
+        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2023/05/28/正规文法、正规表达式、有限自动机及其之间的转换/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>The Equivalent Transforming among RG, RE and FA </p>
+<h2 id="正规文法"><a href="#正规文法" class="headerlink" title="正规文法"></a>正规文法</h2><p>A Grammar G is a quadruple (四元组):G &#x3D; (V<del>N</del>, V<del>T</del>, S,  P )</p>
+<p>Where,</p>
+<ul>
+<li>V<del>N</del> is a finite set of nonterminals.</li>
+<li>V<del>T</del> is a finite set of terminals.</li>
+<li>S is the start symbol, S$\in$ V<del>N</del>.</li>
+<li>P is a finite set of productions (产生式).</li>
+</ul>
+<p>Regular Grammar (RG) (正规文法):</p>
+<p>α∈V<del>N</del> and β ∈V<del>T</del>∪V<del>T</del>V<del>N</del></p>
+<h2 id="正规表达式"><a href="#正规表达式" class="headerlink" title="正规表达式"></a>正规表达式</h2><p>Regular Expression: </p>
+<p>Regular expressions over ∑ are defined as : </p>
+<ol>
+<li>ε and $\phi$ are RE’s, denoting the sets {ε} and Φ , respectively ;</li>
+<li>Any a $\in$∑ , a is an RE, denoting the set { a };</li>
+<li>If a and  b are RE’s, denoting the sets A and B respectively,   then a b ,  a | b, and a* are  RE’s, denoting the sets AB, AUB and A* respectively;</li>
+<li>Nothing is an RE unless it follows from 1 to 3 finite times.</li>
+</ol>
+<h2 id="有限自动机"><a href="#有限自动机" class="headerlink" title="有限自动机"></a>有限自动机</h2><h3 id="确定的有限自动机"><a href="#确定的有限自动机" class="headerlink" title="确定的有限自动机"></a>确定的有限自动机</h3><p>Deterministic Finite Automata:</p>
+<p>A Deterministic Finite Automaton (DFA) is a quintuple (五元组)</p>
+<p>M &#x3D; (S, ∑ , f, s<del>0</del>  , Z), </p>
+<p>where</p>
+<ul>
+<li>S is a finite set of states;</li>
+<li>∑ is the set of input symbols;</li>
+<li>f : S×∑ →S, the transition function;</li>
+<li>s<del>0</del> $\in$S, the initial state;</li>
+<li>Z $\subseteq$ S, the set of final states.</li>
+</ul>
+<h3 id="非确定有限自动机"><a href="#非确定有限自动机" class="headerlink" title="非确定有限自动机"></a>非确定有限自动机</h3><p>Nondeterministic Finite Automata:</p>
+<p>An Nondeterministic Finite Automata (NFA) is also a quintuple</p>
+<p> M &#x3D; ( S, ∑ , f, s<del>0</del>  , Z),</p>
+<p>where:</p>
+<ul>
+<li>S is a finite set of states;</li>
+<li>∑ is the set of input symbols;</li>
+<li>f : S×∑* →ρ(S), the transition function;</li>
+<li>s<del>0</del>$\in$S, the initial state;</li>
+<li>Z $\subseteq$S, the set of final states.</li>
+</ul>
+<h3 id="Difference-between-DFA-amp-NFA"><a href="#Difference-between-DFA-amp-NFA" class="headerlink" title="Difference between DFA &amp; NFA"></a>Difference between DFA &amp; NFA</h3><p>The definitions of transition functions of DFA and NFA are different:</p>
+<p>​                   DFA  f: S×∑ →S</p>
+<p>​                   NFA  f: S×∑* →ρ(S) </p>
+<p>That means: a state of DFA has a unique next state and can not transit without input, but a state of NFA may have more than one next states and can transit without input.  </p>
+<h2 id="正规表达式转换为正规文法"><a href="#正规表达式转换为正规文法" class="headerlink" title="正规表达式转换为正规文法"></a>正规表达式转换为正规文法</h2><h3 id="Transforming-RE-to-RG"><a href="#Transforming-RE-to-RG" class="headerlink" title="Transforming RE to RG"></a>Transforming RE to RG</h3><p>Let r be an RE on∑. Construct G &#x3D; (V<del>N</del>, V<del>T</del>, S, P): </p>
+<ol>
+<li><p>Initialization: V<del>T</del>＝∑; P &#x3D; {S → r}; V<del>N</del> &#x3D;{S};</p>
+</li>
+<li><p>For any production in P,  rewrite it as follows:</p>
+<p>⑴ A → x*y  &#x3D;&gt; A → xA |y.</p>
+<p>⑵ A→x | y &#x3D;&gt; A → x | y; </p>
+<p>⑶A → xy  &#x3D;&gt; A → xB   B → y; V<del>N</del> &#x3D; V<del>N</del> ∪{B};</p>
+<p>⑷A→(x | y)B  &#x3D;&gt;A → xB | yB; V<del>N</del> &#x3D; V<del>N</del> ∪{B};</p>
+<p>where x and y be RE’s, B be a new nonterminal. </p>
+</li>
+<li><p>Repeat step 2 until each rule has one termianal.</p>
+</li>
+</ol>
+<h3 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h3><p>Transform a(a | d)* to RG</p>
+<p>V<del>T</del>＝{a, b}; P &#x3D; {S →  a(a | d)* }; V<del>N</del> &#x3D;{S};</p>
+<p>S →  a(a | d)* &#x3D;&gt; S →  aA  A →  (a | d)* </p>
+<p>A →  (a | d)* &#x3D;&gt; A →  (a | d)A |ε </p>
+<p>A →  (a | d)A &#x3D;&gt; A →  aA | dA </p>
+<p>Finally  we get the regular grammar G is</p>
+<p>({S, A}, {a, b}, S, {S→ aA  A→ aA|dA|ε})</p>
+<h2 id="正规文法转换为正规表达式"><a href="#正规文法转换为正规表达式" class="headerlink" title="正规文法转换为正规表达式"></a>正规文法转换为正规表达式</h2><h3 id="Transforming-RG-to-RE"><a href="#Transforming-RG-to-RE" class="headerlink" title="Transforming RG to RE"></a>Transforming RG to RE</h3><ol>
+<li>Transform RG to a group of equations by replacing → and | as &#x3D; and +, respectively.</li>
+<li>For equations X &#x3D; aY + a and Y &#x3D; b, we replace Y by b,  and get X &#x3D; ab + a.</li>
+<li>If there is an equation X&#x3D;rX + t, we have the solution X &#x3D; r*t;</li>
+<li>Repeat step 2 and 3, until the solution S&#x3D;r is got. Then r is the corresponding RE.</li>
+</ol>
+<h3 id="样例-1"><a href="#样例-1" class="headerlink" title="样例"></a>样例</h3><p>Consider the grammar G:S  → aS | aA   A  → bB      B  → aB | a</p>
+<ul>
+<li><p>Transform the rules into a group of equations: </p>
+<p>S &#x3D; aS + aA   (1)</p>
+<p>A &#x3D; bB          (2)</p>
+<p>B &#x3D; aB + a     (3)</p>
+</li>
+<li><p>For equation 3 we have: B &#x3D; a*a; </p>
+</li>
+<li><p>For equation 2 we have: A &#x3D; ba*a; </p>
+</li>
+<li><p>For equation 1 we have: S &#x3D; aS + aba*a; </p>
+</li>
+<li><p>Finally we have: S &#x3D; a*aba*a;</p>
+</li>
+</ul>
+<h2 id="正规文法转换为有限自动机"><a href="#正规文法转换为有限自动机" class="headerlink" title="正规文法转换为有限自动机"></a>正规文法转换为有限自动机</h2><h3 id="Transforming-RG-to-FA"><a href="#Transforming-RG-to-FA" class="headerlink" title="Transforming RG to FA"></a>Transforming RG to FA</h3><p>G &#x3D; (V<del>N</del>, V<del>T</del>, S, P) is a right linear grammar, there is an FA M such that L(M) &#x3D; L(G).  </p>
+<p>Let M &#x3D; (Q, ∑, f, s<del>0</del> , {Z}), where</p>
+<p>∑&#x3D; V<del>T</del>; Q &#x3D; V<del>N</del>∪{Z}; Z$\notin$ V<del>N</del>; s<del>0</del>&#x3D; S;</p>
+<p>For $\forall$ A→tB∈P, t∈V<del>T</del>∪{e}, A, B∈V<del>N</del>, then f(A, t) &#x3D; B;</p>
+<p>For $\forall$ A→t∈P, A∈V<del>N</del>, t∈V<del>T</del>∪{ε}, then f(A, t) &#x3D; Z. </p>
+<h3 id="样例-2"><a href="#样例-2" class="headerlink" title="样例"></a>样例</h3><p>Given G＝({A,B,C,D},{0,1},f,A,P), </p>
+<p>P &#x3D; {A → 0 | 0B | 1D  B → 0D | 1C             </p>
+<p>​       C → 0 | 0B| 1D    D → 0D | 1D }</p>
+<ul>
+<li>Construct M &#x3D; (Q,∑,f,A,{Z}):</li>
+<li>Q&#x3D;{A,B,C,D,Z}, ∑ &#x3D; {0, 1},</li>
+<li>f(A, 0)&#x3D;B, f(A, 0)&#x3D;Z, f(A, 1)&#x3D;D, </li>
+<li>f(B, 0)&#x3D;D, f(B, 1)&#x3D;C, </li>
+<li>f(C, 0)&#x3D;B, f(C, 0)&#x3D;Z, f(C, 1)&#x3D;D, </li>
+<li>f(D, 0)&#x3D;D, f(D, 1)&#x3D;D.</li>
+</ul>
+<p><img src="https://note.youdao.com/yws/api/personal/file/WEBc3454a789adfe7b82476173a29038882?method=download&shareKey=acda1fb492990ae9057b6417fe8b3807" alt="1678606633549"></p>
+<h2 id="有限自动机转换为正规文法"><a href="#有限自动机转换为正规文法" class="headerlink" title="有限自动机转换为正规文法"></a>有限自动机转换为正规文法</h2><h3 id="Transforming-FA-to-RG"><a href="#Transforming-FA-to-RG" class="headerlink" title="Transforming FA to RG"></a>Transforming FA to RG</h3><p>M&#x3D;(Q, ∑, f, s<del>0</del> , F) is a DFA, there is a right linear grammar G such that L(M) &#x3D; L(G).  </p>
+<p>Let G &#x3D; (V<del>N</del>, V<del>T</del>, S, P), where</p>
+<p>V<del>T</del> &#x3D; ∑; V<del>N</del> &#x3D; Q; S &#x3D; s<del>0</del>;</p>
+<p>For  $\forall$ t∈V<del>T</del>,  $\forall$ A, B∈V<del>N</del>, if f(A, t) &#x3D; B </p>
+<p>then   If B ∈F then A →tB | t∈P </p>
+<p>​    else A→tB∈P;</p>
+<h3 id="样例-3"><a href="#样例-3" class="headerlink" title="样例"></a>样例</h3><p>Given M＝({0,1},{A,B,C,D},f,A,{B}) </p>
+<ul>
+<li><p>Construc G &#x3D; (V<del>N</del>,V<del>T</del>, A, P),</p>
+</li>
+<li><p>V<del>N</del> &#x3D; {A, B, C, D},</p>
+</li>
+<li><p>V<del>T</del> &#x3D; {0, 1},</p>
+</li>
+<li><p>P &#x3D; { A → 0B | 0 | 1D</p>
+<p>​	B → 0D | 1C </p>
+<p>​	C → 0B | 0 | 1D  D → 0D | 1D }</p>
+</li>
+</ul>
+<p><img src="https://note.youdao.com/yws/api/personal/file/WEB71861a227dae9a89a6fd1328a632322a?method=download&shareKey=a26098fd2b714e39125d490a90bba1fe" alt="1678606718831"></p>
+<h2 id="正规表达式转换为有限自动机"><a href="#正规表达式转换为有限自动机" class="headerlink" title="正规表达式转换为有限自动机"></a>正规表达式转换为有限自动机</h2><h3 id="Transforming-RE-to-FA"><a href="#Transforming-RE-to-FA" class="headerlink" title="Transforming RE to FA"></a>Transforming RE to FA</h3><p>Given an RE r, there is an FA M, such that L(M) &#x3D; L(r).</p>
+<ul>
+<li>Basis: |r| &#x3D; 1.</li>
+<li>We prove it by induction on the length of r.</li>
+</ul>
+<p><img src="/assets%5C1685251040516.png" alt="1685251040516"></p>
+<p>Assume that for any RE r1 and r2,  if |r1| &lt; k  and |r2| &lt; k, they have their NFA M1 and M2.</p>
+<ul>
+<li>For any RE r, |r| &#x3D; k, we have:</li>
+</ul>
+<p><img src="/assets%5C1685251117384.png" alt="1685251117384"></p>
+<p>Initialization: set up two state X and Y, such as:</p>
+<p><img src="/assets%5C1685251161521.png" alt="1685251161521"></p>
+<p>Repeat dividing the RE r on the arcs according  to the following rules (1) to (3): </p>
+<p><img src="/assets%5C1685251233699.png" alt="1685251233699"></p>
+<p>Until each arc labeled by a symbol. </p>
+<h3 id="样例-4"><a href="#样例-4" class="headerlink" title="样例"></a>样例</h3><p><img src="/assets%5C1685251293109.png" alt="1685251293109"></p>
+<h2 id="有限自动机转换为正规表达式"><a href="#有限自动机转换为正规表达式" class="headerlink" title="有限自动机转换为正规表达式"></a>有限自动机转换为正规表达式</h2><h3 id="Transforming-FA-to-RE"><a href="#Transforming-FA-to-RE" class="headerlink" title="Transforming FA to RE"></a>Transforming FA to RE</h3><p>Initialization: Add two state : X , Y. X is the unique initial state and Y is the unique final state</p>
+<p><img src="/assets%5C1685251366253.png" alt="1685251366253"></p>
+<p>Repeat linking the RE r on the arcs according  to the following rules (1) to (3):</p>
+<p><img src="/assets%5C1685251402316.png" alt="1685251402316"></p>
+<p><img src="/assets%5C1685251668193.png" alt="1685251668193"></p>
+<h3 id="样例-5"><a href="#样例-5" class="headerlink" title="样例"></a>样例</h3><p><img src="/assets%5C1685251647570.png" alt="1685251647570"></p>
+
+    </div>
+
+       <div>
+        
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------本文到这里结束了，感谢您的阅读------</div>
+    
+</div>
+
+        
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div><您的支持将是我继续创作的动力！></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechat.png" alt="君不见 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="君不见 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>君不见
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://decxlr.github.io/2023/05/28/%E6%AD%A3%E8%A7%84%E6%96%87%E6%B3%95%E3%80%81%E6%AD%A3%E8%A7%84%E8%A1%A8%E8%BE%BE%E5%BC%8F%E3%80%81%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%8F%8A%E5%85%B6%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2/" title="正规文法、正规表达式、有限自动机及其之间的转换">https://decxlr.github.io/2023/05/28/正规文法、正规表达式、有限自动机及其之间的转换/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+ 
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/FA/" rel="tag"><i class="fa fa-tag"></i> FA</a>
+              <a href="/tags/RG/" rel="tag"><i class="fa fa-tag"></i> RG</a>
+              <a href="/tags/RE/" rel="tag"><i class="fa fa-tag"></i> RE</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/05/25/%E5%B0%86Flask%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A/" rel="prev" title="将Flask项目部署到阿里云服务器上">
+      <i class="fa fa-chevron-left"></i> 将Flask项目部署到阿里云服务器上
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="SOHUCS"></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E8%A7%84%E6%96%87%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">正规文法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E8%A7%84%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">正规表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA"><span class="nav-number">3.</span> <span class="nav-text">有限自动机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A1%AE%E5%AE%9A%E7%9A%84%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA"><span class="nav-number">3.1.</span> <span class="nav-text">确定的有限自动机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%9E%E7%A1%AE%E5%AE%9A%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA"><span class="nav-number">3.2.</span> <span class="nav-text">非确定有限自动机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Difference-between-DFA-amp-NFA"><span class="nav-number">3.3.</span> <span class="nav-text">Difference between DFA &amp; NFA</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E8%A7%84%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%AD%A3%E8%A7%84%E6%96%87%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">正规表达式转换为正规文法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Transforming-RE-to-RG"><span class="nav-number">4.1.</span> <span class="nav-text">Transforming RE to RG</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B7%E4%BE%8B"><span class="nav-number">4.2.</span> <span class="nav-text">样例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E8%A7%84%E6%96%87%E6%B3%95%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%AD%A3%E8%A7%84%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">5.</span> <span class="nav-text">正规文法转换为正规表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Transforming-RG-to-RE"><span class="nav-number">5.1.</span> <span class="nav-text">Transforming RG to RE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B7%E4%BE%8B-1"><span class="nav-number">5.2.</span> <span class="nav-text">样例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E8%A7%84%E6%96%87%E6%B3%95%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA"><span class="nav-number">6.</span> <span class="nav-text">正规文法转换为有限自动机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Transforming-RG-to-FA"><span class="nav-number">6.1.</span> <span class="nav-text">Transforming RG to FA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B7%E4%BE%8B-2"><span class="nav-number">6.2.</span> <span class="nav-text">样例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%AD%A3%E8%A7%84%E6%96%87%E6%B3%95"><span class="nav-number">7.</span> <span class="nav-text">有限自动机转换为正规文法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Transforming-FA-to-RG"><span class="nav-number">7.1.</span> <span class="nav-text">Transforming FA to RG</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B7%E4%BE%8B-3"><span class="nav-number">7.2.</span> <span class="nav-text">样例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E8%A7%84%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA"><span class="nav-number">8.</span> <span class="nav-text">正规表达式转换为有限自动机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Transforming-RE-to-FA"><span class="nav-number">8.1.</span> <span class="nav-text">Transforming RE to FA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B7%E4%BE%8B-4"><span class="nav-number">8.2.</span> <span class="nav-text">样例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%AD%A3%E8%A7%84%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">9.</span> <span class="nav-text">有限自动机转换为正规表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Transforming-FA-to-RE"><span class="nav-number">9.1.</span> <span class="nav-text">Transforming FA to RE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B7%E4%BE%8B-5"><span class="nav-number">9.2.</span> <span class="nav-text">样例</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="君不见"
+      src="/images/tsy.png">
+  <p class="site-author-name" itemprop="name">君不见</p>
+  <div class="site-description" itemprop="description">君不见，黄河之水天上来，奔流到海不复回。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/godx06" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godx06" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/3451246424@qq.com" title="E-Mail → 3451246424@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/7655616259/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;7655616259&#x2F;profile?rightmod&#x3D;1&amp;wvr&#x3D;6&amp;mod&#x3D;personinfo&amp;is_all&#x3D;1" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/m0_61465701?spm=1018.2226.3001.5343" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;m0_61465701?spm&#x3D;1018.2226.3001.5343" rel="noopener" target="_blank"><i class="fab fa-skype fa-fw"></i>CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://leetcode.cn/" title="https:&#x2F;&#x2F;leetcode.cn&#x2F;" rel="noopener" target="_blank">力扣</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.nowcoder.com/" title="https:&#x2F;&#x2F;www.nowcoder.com&#x2F;" rel="noopener" target="_blank">牛客</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+      <div id="music163player">
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=8029840379&auto=0&height=430">
+        </iframe>
+      </div>
+      
+    </div>
+
+
+  </aside>
+
+    
+
+  <div id="sidebar-dimmer"></div>
+
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">君不见</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+  <script data-pjax>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  <script src="//code.tidio.co/qkwnepnheqrn9usrfqkth95hu196bfin.js"></script>
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+  <script>
+  NexT.utils.loadComments(document.querySelector('#SOHUCS'), () => {
+    var appid = 'cyw4nNoc5';
+    var conf = '00d96ca2de6f5fc1a13903b7caf0a878';
+    var width = window.innerWidth || document.documentElement.clientWidth;
+    if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>');
+    } else {
+      var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})});
+    }
+  });
+  </script>
+  <script src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+
+    </div>
+
+
+
+
+</body>
+</html>
