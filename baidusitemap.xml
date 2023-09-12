@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://decxlr.github.io/2023/09/12/SpringSecurity%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2023-09-12</lastmod>
+  </url>
+  <url>
     <loc>https://decxlr.github.io/2023/09/05/SpringBoot%E5%AE%9E%E7%94%A8%E7%AF%87-%E6%B6%88%E6%81%AF%EF%BC%8C%E7%9B%91%E6%8E%A7/</loc>
     <lastmod>2023-09-05</lastmod>
   </url>
