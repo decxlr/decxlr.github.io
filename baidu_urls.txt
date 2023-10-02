@@ -1,3 +1,4 @@
+https://decxlr.github.io/2023/10/02/JWT%E5%AD%A6%E4%B9%A0/
 https://decxlr.github.io/2023/09/30/Java%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E9%83%A8%E5%88%86%E7%9F%A5%E8%AF%86%E7%82%B9/
 https://decxlr.github.io/2023/09/21/Redis%E5%9F%BA%E7%A1%80/
 https://decxlr.github.io/2023/09/12/SpringSecurity%E5%AD%A6%E4%B9%A0/
