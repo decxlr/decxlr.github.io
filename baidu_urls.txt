@@ -1,3 +1,4 @@
+https://decxlr.github.io/2023/10/18/RabbitMQ%E5%AD%A6%E4%B9%A0/
 https://decxlr.github.io/2023/10/15/Docker%E5%AD%A6%E4%B9%A0/
 https://decxlr.github.io/2023/10/09/SpringCloud%E5%AD%A6%E4%B9%A0/
 https://decxlr.github.io/2023/10/02/JWT%E5%AD%A6%E4%B9%A0/
